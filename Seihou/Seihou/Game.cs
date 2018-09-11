@@ -14,6 +14,7 @@ namespace Seihou
             this.IsMouseVisible = true;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            Content.Load<Texture2D>("");
         }
 		
         protected override void Initialize()
@@ -47,7 +48,7 @@ namespace Seihou
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
 

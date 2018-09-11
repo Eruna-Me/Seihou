@@ -44,12 +44,16 @@
     <Compile Include="Main\Entity.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Main\EntityManager.cs" />
+    <Compile Include="Main\SpriteManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Primitives2D">
+      <HintPath>..\..\..\..\..\MonoGame.Primitives2D.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
