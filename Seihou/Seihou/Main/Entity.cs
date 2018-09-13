@@ -10,6 +10,7 @@ namespace Seihou
         protected SpriteBatch sb;
         protected float x, y;
 		protected EntityManager em;
+        public Global.Faction faction = Global.Faction.noFaction;
 
         protected Entity(float x, float y, SpriteBatch sb, EntityManager em)
         {
