@@ -18,5 +18,13 @@ namespace Seihou
 		{
 			
 		}
+
+		public override void Update(GameTime gt)
+		{
+			if (y + Global.outOfScreenMargin < 0 || y > Global.screenHeight + Global.outOfScreenMargin || x + Global.outOfScreenMargin < 0 || x > Global.screenWidth + Global.outOfScreenMargin)
+			{
+				em.RemoveEntity(this);
+			}
+		}
 	}
 }

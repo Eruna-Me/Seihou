@@ -11,7 +11,7 @@ namespace Seihou
 {
 	class Bullet : Projectile
 	{
-		public Bullet(float x, float y, SpriteBatch sb, EntityManager em, float ySpeed, float xSpeed) : base(x, y, sb, em)
+		public Bullet(float x, float y, SpriteBatch sb, EntityManager em, float xSpeed, float ySpeed) : base(x, y, sb, em)
 		{
 			this.xSpeed = xSpeed;
 			this.ySpeed = ySpeed;
@@ -19,14 +19,11 @@ namespace Seihou
 
 		public override void Update(GameTime gt)
 		{
+			base.Update(gt);
 			x += xSpeed * (float)gt.ElapsedGameTime.TotalSeconds; 
-			y += ySpeed * (float)gt.ElapsedGameTime.TotalSeconds; 
-
-            if (y < 0)
-            {
-                em.RemoveEntity(this);
-            }
+			y += ySpeed * (float)gt.ElapsedGameTime.TotalSeconds;
 		}
+
 
 		public override void Draw(GameTime gt)
 		{

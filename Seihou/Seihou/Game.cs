@@ -16,8 +16,8 @@ namespace Seihou
         {
 			this.IsMouseVisible = true;
             graphics = new GraphicsDeviceManager(this);
-			graphics.PreferredBackBufferWidth = Settings.screenWidth;  // set this value to the desired width of your window
-			graphics.PreferredBackBufferHeight = Settings.screenHeight;   // set this value to the desired height of your window
+			graphics.PreferredBackBufferWidth = Global.screenWidth;
+			graphics.PreferredBackBufferHeight = Global.screenHeight;
 			graphics.ApplyChanges();
 			Content.RootDirectory = "Content";
 
@@ -48,12 +48,6 @@ namespace Seihou
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape)) // TODO: remove escape
-                Exit();
-
-            // TODO: Add your update logic here
-
-           
             entityManager.Update(gameTime);
 
             base.Update(gameTime);
@@ -67,8 +61,6 @@ namespace Seihou
             spriteBatch.Begin();
             entityManager.Draw(gameTime);
             spriteBatch.End();
-            
-            // TODO: Add your drawing code here
 
             base.Draw(gameTime);
         }

@@ -44,6 +44,7 @@
     <Compile Include="Main\Entity.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Main\EntityManager.cs" />
+    <Compile Include="Main\Global.cs" />
     <Compile Include="Main\Player.cs" />
     <Compile Include="Main\Settings.cs" />
     <Compile Include="Main\SpriteManager.cs" />

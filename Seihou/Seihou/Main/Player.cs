@@ -13,10 +13,12 @@ namespace Seihou
     {
         private float speed;
 		const int size = 50;
+		private float fireDelay = 0;
+		const float maxFireDelay = 0.1f;
 
         public Player(float x,float y,SpriteBatch sb, EntityManager em) : base(x, y, sb, em)
         {
-            //Init player blabalbala
+            //Init player
         }
 
         public override void Update(GameTime gt)
@@ -32,8 +34,13 @@ namespace Seihou
 			if (Keyboard.GetState().IsKeyDown(Settings.upKey))
 				y -= speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
-			if (Keyboard.GetState().IsKeyDown(Keys.X))
-				em.AddEntity(new Bullet(x, y, sb, em, -400, 0));
+			if (Keyboard.GetState().IsKeyDown(Keys.X) && fireDelay <= 0)
+			{
+				em.AddEntity(new Bullet(x, y, sb, em, 0, -400));
+
+				fireDelay = maxFireDelay;
+			}
+			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
 		}
 
         public override void Draw(GameTime gt)
