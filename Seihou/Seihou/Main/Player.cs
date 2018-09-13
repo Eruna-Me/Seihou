@@ -36,7 +36,7 @@ namespace Seihou
 
 			if (Keyboard.GetState().IsKeyDown(Keys.X) && fireDelay <= 0)
 			{
-				em.AddEntity(new Bullet(x, y, sb, em, 0, -400));
+				em.AddEntity(new Bullet(x, y, sb, em, this, 0, -400));
 
 				fireDelay = maxFireDelay;
 			}

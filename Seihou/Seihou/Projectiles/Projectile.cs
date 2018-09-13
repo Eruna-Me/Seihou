@@ -14,7 +14,7 @@ namespace Seihou
 		protected float xSpeed;
 		protected float ySpeed;
 
-		protected Projectile(float x, float y, SpriteBatch sb, EntityManager em) : base(x, y, sb, em)
+		protected Projectile(float x, float y, SpriteBatch sb, EntityManager em, Entity owner) : base(x, y, sb, em)
 		{
 			
 		}

@@ -11,7 +11,7 @@ namespace Seihou
 {
 	class Bullet : Projectile
 	{
-		public Bullet(float x, float y, SpriteBatch sb, EntityManager em, float xSpeed, float ySpeed) : base(x, y, sb, em)
+		public Bullet(float x, float y, SpriteBatch sb, EntityManager em, Entity owner, float xSpeed, float ySpeed) : base(x, y, sb, em, owner)
 		{
 			this.xSpeed = xSpeed;
 			this.ySpeed = ySpeed;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Seihou
 {
-	class Global
+	static class Global
 	{
 		//	SCREENSIZE
 		public static readonly int screenWidth = 800;
