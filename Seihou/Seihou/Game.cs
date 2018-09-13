@@ -35,7 +35,7 @@ namespace Seihou
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            player = new Player(100, 100, spriteBatch);
+            player = new Player(100, 100, spriteBatch, entityManager);
             entityManager.AddEntity(player);
 
             // TODO: use this.Content to load your game content here

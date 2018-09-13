@@ -9,12 +9,14 @@ namespace Seihou
         public readonly int id;
         protected SpriteBatch sb;
         protected float x, y;
+		protected EntityManager em;
 
-        public Entity(int x, int y, SpriteBatch sb)
+        protected Entity(float x, float y, SpriteBatch sb, EntityManager em)
         {
             this.sb = sb;
             this.x = x;
             this.y = y;
+			this.em = em;
 
             newId++;
             id = newId;

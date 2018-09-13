@@ -12,8 +12,9 @@ namespace Seihou
     class Player : Entity
     {
         private float speed;
+		const int size = 50;
 
-        public Player(int x,int y,SpriteBatch sb) : base(x, y, sb)
+        public Player(float x,float y,SpriteBatch sb, EntityManager em) : base(x, y, sb, em)
         {
             //Init player blabalbala
         }
@@ -31,6 +32,8 @@ namespace Seihou
 			if (Keyboard.GetState().IsKeyDown(Settings.upKey))
 				y -= speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
+			if (Keyboard.GetState().IsKeyDown(Keys.X))
+				em.AddEntity(new Bullet(x, y, sb, em, -400, 0));
 		}
 
         public override void Draw(GameTime gt)
