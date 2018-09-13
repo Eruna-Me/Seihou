@@ -21,6 +21,11 @@ namespace Seihou
 		{
 			x += xSpeed * (float)gt.ElapsedGameTime.TotalSeconds; 
 			y += ySpeed * (float)gt.ElapsedGameTime.TotalSeconds; 
+
+            if (y < 0)
+            {
+                em.RemoveEntity(this);
+            }
 		}
 
 		public override void Draw(GameTime gt)
