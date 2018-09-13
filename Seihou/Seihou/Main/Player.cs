@@ -25,13 +25,13 @@ namespace Seihou
         {
 			speed = Keyboard.GetState().IsKeyDown(Settings.slowKey) ? 100 : 200 ;
 
-            if (Keyboard.GetState().IsKeyDown(Settings.rightKey))
+            if (Keyboard.GetState().IsKeyDown(Settings.rightKey) && x <= Global.screenWidth - size)
                 x += speed * (float)gt.ElapsedGameTime.TotalSeconds;
-			if (Keyboard.GetState().IsKeyDown(Settings.leftKey))
+			if (Keyboard.GetState().IsKeyDown(Settings.leftKey) && x >= size)
 				x -= speed * (float)gt.ElapsedGameTime.TotalSeconds;
-			if (Keyboard.GetState().IsKeyDown(Settings.downKey))
+			if (Keyboard.GetState().IsKeyDown(Settings.downKey) && y <= Global.screenHeight - size)
 				y += speed * (float)gt.ElapsedGameTime.TotalSeconds;
-			if (Keyboard.GetState().IsKeyDown(Settings.upKey))
+			if (Keyboard.GetState().IsKeyDown(Settings.upKey) && y >= size)
 				y -= speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
 			if (Keyboard.GetState().IsKeyDown(Keys.X) && fireDelay <= 0)
