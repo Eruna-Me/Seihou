@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Seihou
 {
-    class Entity
+    abstract class Entity
     {
-        static int newId = 0;
-        readonly int id;
-        int x, y;
+        private static int newId = 0;
+        public readonly int id;
+        protected SpriteBatch sb;
+        protected float x, y;
 
-        Entity(int x, int y)
+        public Entity(int x, int y, SpriteBatch sb)
         {
+            this.sb = sb;
             this.x = x;
             this.y = y;
 
             newId++;
             id = newId;
         }
+
+        public abstract void Draw(GameTime gt);
+        public abstract void Update(GameTime gt);
     }
 }

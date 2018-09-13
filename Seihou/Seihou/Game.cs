@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Seihou
 {
@@ -8,25 +9,32 @@ namespace Seihou
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        readonly EntityManager entityManager;
+        Player player;
 
         public Game()
         {
+
             this.IsMouseVisible = true;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            Content.Load<Texture2D>("");
+
+            entityManager = new EntityManager();
         }
 		
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
 
+  
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            player = new Player(100, 100, spriteBatch);
+            entityManager.AddEntity(player);
 
             // TODO: use this.Content to load your game content here
         }
@@ -43,13 +51,21 @@ namespace Seihou
 
             // TODO: Add your update logic here
 
+           
+            entityManager.Update(gameTime);
+
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
+
             GraphicsDevice.Clear(Color.Black);
 
+            spriteBatch.Begin();
+            entityManager.Draw(gameTime);
+            spriteBatch.End();
+            
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);

@@ -12,7 +12,7 @@ namespace Seihou
 {
     class SpriteManager
     {
-        public readonly Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
+        public static readonly Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
 
         void LoadTextures(ContentManager cm)
         {
