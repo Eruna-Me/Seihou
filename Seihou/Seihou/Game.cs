@@ -14,10 +14,12 @@ namespace Seihou
 
         public Game()
         {
-
-            this.IsMouseVisible = true;
+			this.IsMouseVisible = true;
             graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+			graphics.PreferredBackBufferWidth = Settings.screenWidth;  // set this value to the desired width of your window
+			graphics.PreferredBackBufferHeight = Settings.screenHeight;   // set this value to the desired height of your window
+			graphics.ApplyChanges();
+			Content.RootDirectory = "Content";
 
             entityManager = new EntityManager();
         }

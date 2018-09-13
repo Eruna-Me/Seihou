@@ -20,15 +20,15 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
-			speed = Keyboard.GetState().IsKeyDown(Keys.LeftShift) ? 100 : 200 ;
+			speed = Keyboard.GetState().IsKeyDown(Settings.slowKey) ? 100 : 200 ;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            if (Keyboard.GetState().IsKeyDown(Settings.rightKey))
                 x += speed * (float)gt.ElapsedGameTime.TotalSeconds;
-			if (Keyboard.GetState().IsKeyDown(Keys.Left))
+			if (Keyboard.GetState().IsKeyDown(Settings.leftKey))
 				x -= speed * (float)gt.ElapsedGameTime.TotalSeconds;
-			if (Keyboard.GetState().IsKeyDown(Keys.Down))
+			if (Keyboard.GetState().IsKeyDown(Settings.downKey))
 				y += speed * (float)gt.ElapsedGameTime.TotalSeconds;
-			if (Keyboard.GetState().IsKeyDown(Keys.Up))
+			if (Keyboard.GetState().IsKeyDown(Settings.upKey))
 				y -= speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
 		}
