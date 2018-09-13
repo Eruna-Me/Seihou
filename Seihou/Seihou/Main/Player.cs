@@ -11,7 +11,7 @@ namespace Seihou
 {
     class Player : Entity
     {
-        private float speed = 50.3151f;
+        private float speed;
 
         public Player(int x,int y,SpriteBatch sb) : base(x, y, sb)
         {
@@ -20,13 +20,18 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
-            Console.WriteLine("Update");
+			speed = Keyboard.GetState().IsKeyDown(Keys.LeftShift) ? 100 : 200 ;
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
-            {
                 x += speed * (float)gt.ElapsedGameTime.TotalSeconds;
-            }
-        }
+			if (Keyboard.GetState().IsKeyDown(Keys.Left))
+				x -= speed * (float)gt.ElapsedGameTime.TotalSeconds;
+			if (Keyboard.GetState().IsKeyDown(Keys.Down))
+				y += speed * (float)gt.ElapsedGameTime.TotalSeconds;
+			if (Keyboard.GetState().IsKeyDown(Keys.Up))
+				y -= speed * (float)gt.ElapsedGameTime.TotalSeconds;
+
+		}
 
         public override void Draw(GameTime gt)
         {
