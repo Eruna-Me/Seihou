@@ -45,8 +45,11 @@
     <Compile Include="Game.cs" />
     <Compile Include="Main\EntityManager.cs" />
     <Compile Include="Main\Player.cs" />
+    <Compile Include="Main\Settings.cs" />
     <Compile Include="Main\SpriteManager.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Projectiles\Bullet.cs" />
+    <Compile Include="Projectiles\Projectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,7 +57,7 @@
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Primitives2D">
-      <HintPath>..\..\..\..\..\MonoGame.Primitives2D.dll</HintPath>
+      <HintPath>C:\Users\Lenovo-Denovo\Downloads\MonoGame.Primitives2D.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
