@@ -34,11 +34,10 @@ namespace Seihou
             }
 		}
 
-
 		public override void Draw(GameTime gt)
 		{
-			//MonoGame.Primitives2D.DrawCircle(sb,pos, size, 8, Color.Blue, 1);
-			sb.Draw(SpriteManager.textures["Dart1"], pos, Color.White);
+			double angle = Math.Atan2(speed.Y, speed.X) + Math.PI / 2; // TODO fix dart texture so I don't have to rotate it. :S
+			sb.Draw(SpriteManager.textures["Dart1"], pos, null, Color.White, (float)angle, new Vector2(0,0), 1.0f, SpriteEffects.None, 0f);
 		}
 	}
 }

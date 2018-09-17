@@ -13,7 +13,7 @@ namespace Seihou
     {
         //Firing
         private float fireDelay = 0;
-        private const float maxFireDelay = 0.01f;
+        private const float maxFireDelay = 0.1f;
         private const float bulletSpeed = 500.0f;
 
         //Speed
