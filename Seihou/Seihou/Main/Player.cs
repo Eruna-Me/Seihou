@@ -19,7 +19,6 @@ namespace Seihou
         //Speed
         private const float normalSpeed = 300.0f;
 		private const float slowSpeed = 150.0f;
-		
 
         public Player(Vector2 pos,SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
@@ -44,25 +43,28 @@ namespace Seihou
             bool r = kb.IsKeyDown(Settings.rightKey);
             bool d = kb.IsKeyDown(Settings.downKey);
             bool l = kb.IsKeyDown(Settings.leftKey);
-			bool slow = kb.IsKeyDown(Settings.slowKey);
+			bool slowMode = kb.IsKeyDown(Settings.slowKey);
+
+			bool s = kb.IsKeyDown(Settings.shootKey);
 
             //Movement
-            speed.X = (Convert.ToInt32(r) - Convert.ToInt32(l)) * (slow ? slowSpeed : normalSpeed);
-            speed.Y = (Convert.ToInt32(d) - Convert.ToInt32(u)) * (slow ? slowSpeed : normalSpeed);
+            speed.X = (Convert.ToInt32(r) - Convert.ToInt32(l)) * (slowMode ? slowSpeed : normalSpeed);
+            speed.Y = (Convert.ToInt32(d) - Convert.ToInt32(u)) * (slowMode ? slowSpeed : normalSpeed);
 
-            //Fire
-            if (Keyboard.GetState().IsKeyDown(Settings.shootKey) && fireDelay <= 0)
+			pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
+
+			if (pos.X + size > Global.playingFieldWidth) pos.X = Global.playingFieldWidth - size;
+			if (pos.X - size < 0) pos.X = 0 + size;
+			if (pos.Y + size > Global.screenHeight) pos.Y = Global.screenHeight - size;
+			if (pos.Y - size < 0) pos.Y = 0 + size;
+
+			//Fire
+			if (s && fireDelay <= 0)
 			{
                 Fire();
 				fireDelay = maxFireDelay;
 			}
-			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
-
-            if (!((pos.X + speed.X * (float)gt.ElapsedGameTime.TotalSeconds + size > Global.playingFieldWidth) || (pos.X + speed.X * (float)gt.ElapsedGameTime.TotalSeconds - size < 0)))
-                pos.X += speed.X * (float)gt.ElapsedGameTime.TotalSeconds;
-
-            if (!((pos.Y + speed.Y * (float)gt.ElapsedGameTime.TotalSeconds + size > Global.screenHeight) || (pos.Y + speed.Y * (float)gt.ElapsedGameTime.TotalSeconds - size < 0)))
-                pos.Y += speed.Y * (float)gt.ElapsedGameTime.TotalSeconds;
+			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;		
         }
 
         public override void Draw(GameTime gt)
