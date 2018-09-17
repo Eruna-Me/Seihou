@@ -11,6 +11,7 @@ namespace Seihou
         SpriteBatch spriteBatch;
         readonly EntityManager entityManager;
         Player player;
+        private SpriteFont font;
 
         public Game()
         {
@@ -20,14 +21,14 @@ namespace Seihou
 			graphics.PreferredBackBufferHeight = Global.screenHeight;
 			graphics.ApplyChanges();
 			Content.RootDirectory = "Content";
-
+            font = Content.Load<SpriteFont>("DefaultFont");
             entityManager = new EntityManager();
+            IsFixedTimeStep = false;
+            graphics.SynchronizeWithVerticalRetrace = false;
         }
 		
         protected override void Initialize()
         {
-
-  
             base.Initialize();
         }
 
@@ -35,8 +36,15 @@ namespace Seihou
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            
             player = new Player(new Vector2(300,300), spriteBatch, entityManager);
             entityManager.AddEntity(player);
+
+            for (int i = 0; i < 400; i++)
+            {
+                TestEnemy testEnemy = new TestEnemy(new Vector2(300, 300), spriteBatch, entityManager);
+                entityManager.AddEntity(testEnemy);
+            }
 
             // TODO: use this.Content to load your game content here
         }
@@ -59,7 +67,11 @@ namespace Seihou
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
+            
             entityManager.Draw(gameTime);
+
+            spriteBatch.DrawString(font, $"FPS: {1 / gameTime.ElapsedGameTime.TotalSeconds} \nENTITIES: {entityManager.GetEntityCount()}", new Vector2(20, 20), Color.Green);
+
             spriteBatch.End();
 
             base.Draw(gameTime);

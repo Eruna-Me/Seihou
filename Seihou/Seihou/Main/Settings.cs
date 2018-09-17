@@ -17,5 +17,6 @@ namespace Seihou
 		public static Keys leftKey = Keys.Left;
 		public static Keys rightKey = Keys.Right;
 		public static Keys slowKey = Keys.LeftShift;
+        public static Keys shootKey = Keys.X;
 	}
 }

@@ -29,6 +29,19 @@ namespace Seihou
             return null;
         }
 
+        public Entity Touching(Entity ent)
+        {
+            foreach (Entity e in entities)
+            {
+                if (e.id == ent.id) continue;
+                if (Collision.Circle(ent,e))
+                {
+                    return e;
+                }
+            }
+            return null;
+        }
+
         public int GetEntityCount() => entities.Count;
 
 		public void RemoveEntity(Entity ent) => pollRemoveEntities.Enqueue(ent);

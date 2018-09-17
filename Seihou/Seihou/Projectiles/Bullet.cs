@@ -11,23 +11,33 @@ namespace Seihou
 {
 	class Bullet : Projectile
 	{
-		public Bullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, float xSpeed, float ySpeed) : base(pos, sb, em, owner)
+		public Bullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em, owner)
 		{
-			this.xSpeed = xSpeed;
-			this.ySpeed = ySpeed;
+            size = 10;
+
+            this.speed = speed;
 		}
 
 		public override void Update(GameTime gt)
 		{
 			base.Update(gt);
-			pos.X += xSpeed * (float)gt.ElapsedGameTime.TotalSeconds; 
-			pos.Y += ySpeed * (float)gt.ElapsedGameTime.TotalSeconds;
+			pos += speed * (float)gt.ElapsedGameTime.TotalSeconds; 
+
+            Entity c = em.Touching(this);
+
+            if (c != null)
+            {
+                if (c.faction != owner.faction)
+                {
+                    c.Damage(owner, 1);
+                }
+            }
 		}
 
 
 		public override void Draw(GameTime gt)
 		{
-			MonoGame.Primitives2D.DrawCircle(sb,pos, 20, 100, Color.Blue, 5);
+			MonoGame.Primitives2D.DrawCircle(sb,pos, size, 100, Color.Blue, 1);
 		}
 	}
 }

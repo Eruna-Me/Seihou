@@ -11,12 +11,11 @@ namespace Seihou
 {
 	abstract class Projectile : Entity
 	{
-		protected float xSpeed;
-		protected float ySpeed;
+        protected readonly Entity owner;
 
 		protected Projectile(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner) : base(pos, sb, em)
 		{
-			
+            this.owner = owner;
 		}
 
 		public override void Update(GameTime gt)
