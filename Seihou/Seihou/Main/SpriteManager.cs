@@ -21,6 +21,7 @@ namespace Seihou
             cm = com;
 
             textures.Add("FireParticle", cm.Load<Texture2D>("FireParticle"));
-        }
+			textures.Add("Dart1", cm.Load<Texture2D>("Dart1"));
+		}
     }
 }

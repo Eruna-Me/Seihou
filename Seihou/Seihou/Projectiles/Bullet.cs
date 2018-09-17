@@ -27,7 +27,7 @@ namespace Seihou
 
             if (c != null)
             {
-                if (c.faction != owner.faction)
+                if (c.faction != owner.faction )
                 {
                     c.Damage(owner, 1);
                 }
@@ -37,7 +37,8 @@ namespace Seihou
 
 		public override void Draw(GameTime gt)
 		{
-			MonoGame.Primitives2D.DrawCircle(sb,pos, size, 8, Color.Blue, 1);
+			//MonoGame.Primitives2D.DrawCircle(sb,pos, size, 8, Color.Blue, 1);
+			sb.Draw(SpriteManager.textures["Dart1"], pos, Color.White);
 		}
 	}
 }

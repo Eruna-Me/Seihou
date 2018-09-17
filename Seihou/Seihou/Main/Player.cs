@@ -16,8 +16,9 @@ namespace Seihou
         private const float maxFireDelay = 0.01f;
         private const float bulletSpeed = 500.0f;
 
-        //Player
-        private const float maxSpeed = 300.0f;
+        //Speed
+        private const float normalSpeed = 300.0f;
+		private const float slowSpeed = 150.0f;
 		
 
         public Player(Vector2 pos,SpriteBatch sb, EntityManager em) : base(pos, sb, em)
@@ -43,10 +44,11 @@ namespace Seihou
             bool r = kb.IsKeyDown(Settings.rightKey);
             bool d = kb.IsKeyDown(Settings.downKey);
             bool l = kb.IsKeyDown(Settings.leftKey);
+			bool slow = kb.IsKeyDown(Settings.slowKey);
 
             //Movement
-            speed.X = (Convert.ToInt32(r) - Convert.ToInt32(l)) * maxSpeed;
-            speed.Y = (Convert.ToInt32(d) - Convert.ToInt32(u)) * maxSpeed;
+            speed.X = (Convert.ToInt32(r) - Convert.ToInt32(l)) * (slow ? slowSpeed : normalSpeed);
+            speed.Y = (Convert.ToInt32(d) - Convert.ToInt32(u)) * (slow ? slowSpeed : normalSpeed);
 
             //Fire
             if (Keyboard.GetState().IsKeyDown(Settings.shootKey) && fireDelay <= 0)

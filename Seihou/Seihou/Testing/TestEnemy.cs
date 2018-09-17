@@ -23,7 +23,8 @@ namespace Seihou
 
         public override void Draw(GameTime gt)
         {
-            MonoGame.Primitives2D.DrawCircle(sb,pos, 10, 15, Color.Green, 3);
+			MonoGame.Primitives2D.DrawCircle(sb,pos, 10, 3, Color.Green, 3);
+			//MonoGame.Primitives2D.PutPixel(sb, pos, Color.Green);
         }
 
         public override void Update(GameTime gt)

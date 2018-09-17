@@ -4,6 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/FireParticle.png</File>
+    <File>D:/Seihou/Seihou/Seihou/Content/FireParticle.png</File>
+    <File>D:/Seihou/Seihou/Seihou/Content/Dart1.png</File>
   </SourceFiles>
 </SourceFileCollection>
