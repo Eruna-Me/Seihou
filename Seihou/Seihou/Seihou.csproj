@@ -41,9 +41,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Debug\Particle.cs" />
+    <Compile Include="Testing\Particle.cs" />
     <Compile Include="Enemies\Enemy.cs" />
-    <Compile Include="Debug\TestEnemy.cs" />
+    <Compile Include="Testing\TestEnemy.cs" />
     <Compile Include="Main\Collision.cs" />
     <Compile Include="Main\Entity.cs" />
     <Compile Include="Game.cs" />
