@@ -14,7 +14,7 @@ namespace Seihou
 		public Bullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em, owner)
 		{
             size = 10;
-            collision = false;
+            collision = true;
             this.speed = speed;
 		}
 
@@ -37,7 +37,7 @@ namespace Seihou
 
 		public override void Draw(GameTime gt)
 		{
-			MonoGame.Primitives2D.DrawCircle(sb,pos, size, 100, Color.Blue, 1);
+			MonoGame.Primitives2D.DrawCircle(sb,pos, size, 8, Color.Blue, 1);
 		}
 	}
 }

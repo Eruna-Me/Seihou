@@ -21,6 +21,7 @@ namespace Seihou
         public Particle(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
             life = (float)Global.random.NextDouble() * maxLife;
+            collision = false;
             size = 3;
             faction = Global.Faction.friendly;
             speed = new Vector2((float)(Global.random.NextDouble() - 0.5) * maxSpeed, (float)(Global.random.NextDouble() - 0.5) * maxSpeed);

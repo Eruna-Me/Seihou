@@ -47,6 +47,7 @@
     <Compile Include="Testing\TestEnemy.cs" />
     <Compile Include="Main\Collision.cs" />
     <Compile Include="Main\Entity.cs" />
+	<Compile Include="Enemies\Faller.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Main\EntityManager.cs" />
     <Compile Include="Main\Global.cs" />

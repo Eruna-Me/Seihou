@@ -45,7 +45,7 @@ namespace Seihou
             return null;
         }
 
-        public int GetEntityCount() => entities.Count;
+        public int GetEntityCount() => entities.Count + nonSolidEntities.Count;
 
 		public void RemoveEntity(Entity ent) => pollRemoveEntities.Enqueue(ent);
 
