@@ -15,6 +15,7 @@ namespace Seihou
         public Vector2 speed = new Vector2(0, 0);
         public Global.Faction faction = Global.Faction.noFaction;
         public int size = 1;
+        public bool collision = true;
 
         public virtual void Damage(Entity by, int damage)
         {

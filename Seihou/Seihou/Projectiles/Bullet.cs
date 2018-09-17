@@ -14,7 +14,7 @@ namespace Seihou
 		public Bullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em, owner)
 		{
             size = 10;
-
+            collision = false;
             this.speed = speed;
 		}
 

@@ -11,12 +11,15 @@ namespace Seihou
 {
     class EntityManager
     {
+
+        private readonly List<Entity>  nonSolidEntities = new List<Entity>();
         private readonly List<Entity>  entities = new List<Entity>();
 		private readonly Queue<Entity> pollAddEntities = new Queue<Entity>();
 		private readonly Queue<Entity> pollRemoveEntities = new Queue<Entity>();
 
         public EntityManager() { }
-
+    
+        //TODO: make it find nonSolidEntities too
         public Entity FindById(int id)
         {
             foreach(Entity e in entities)
@@ -51,24 +54,47 @@ namespace Seihou
         public void Update(GameTime gt)
         {
             foreach (Entity e in entities) e.Update(gt);
+            foreach (Entity e in nonSolidEntities) e.Update(gt);
 
 			while(pollAddEntities.Count > 0)
 			{
-				entities.Add(pollAddEntities.Dequeue());
-			}
+                Entity add = pollAddEntities.Dequeue();
+                
+                if (add.collision)
+                {
+                    entities.Add(add);
+                }
+                else
+                {
+                    nonSolidEntities.Add(add);
+                }
+            }
 
             while (pollRemoveEntities.Count > 0)
             {
-                entities.Remove(pollRemoveEntities.Dequeue());
-            }
+                Entity rem = pollRemoveEntities.Dequeue();
 
+                if (rem.collision)
+                {
+                    entities.Remove(rem);
+                }
+                else
+                {
+                    nonSolidEntities.Remove(rem);
+                }
+            }
         }
 
         public void Draw(GameTime gt)
         {
             foreach (Entity e in entities) e.Draw(gt);
+            foreach (Entity e in nonSolidEntities) e.Draw(gt);
         }
 
-        public void ClearEntities() => entities.Clear(); 
+        public void ClearEntities()
+        {
+            entities.Clear();
+            nonSolidEntities.Clear();
+        }
     }
 }

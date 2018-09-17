@@ -10,13 +10,17 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Seihou
 {
-    class SpriteManager
+    static class SpriteManager
     {
         public static readonly Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
+        public static ContentManager cm;
 
-        void LoadTextures(ContentManager cm)
+
+        public static void Load(ContentManager com)
         {
-            //textures.Add("Test", cm.Load<Texture2D>("Texture name"));
+            cm = com;
+
+            textures.Add("FireParticle", cm.Load<Texture2D>("FireParticle"));
         }
     }
 }

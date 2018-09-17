@@ -25,6 +25,7 @@ namespace Seihou
             entityManager = new EntityManager();
             IsFixedTimeStep = false;
             graphics.SynchronizeWithVerticalRetrace = false;
+            SpriteManager.Load(Content);
         }
 		
         protected override void Initialize()
