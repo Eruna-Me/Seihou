@@ -11,7 +11,7 @@ namespace Seihou
 {
 	class Bullet : Projectile
 	{
-		public Bullet(float x, float y, SpriteBatch sb, EntityManager em, Entity owner, float xSpeed, float ySpeed) : base(x, y, sb, em, owner)
+		public Bullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, float xSpeed, float ySpeed) : base(pos, sb, em, owner)
 		{
 			this.xSpeed = xSpeed;
 			this.ySpeed = ySpeed;
@@ -20,14 +20,14 @@ namespace Seihou
 		public override void Update(GameTime gt)
 		{
 			base.Update(gt);
-			x += xSpeed * (float)gt.ElapsedGameTime.TotalSeconds; 
-			y += ySpeed * (float)gt.ElapsedGameTime.TotalSeconds;
+			pos.X += xSpeed * (float)gt.ElapsedGameTime.TotalSeconds; 
+			pos.Y += ySpeed * (float)gt.ElapsedGameTime.TotalSeconds;
 		}
 
 
 		public override void Draw(GameTime gt)
 		{
-			MonoGame.Primitives2D.DrawCircle(sb, x, y, 20, 100, Color.Blue, 5);
+			MonoGame.Primitives2D.DrawCircle(sb,pos, 20, 100, Color.Blue, 5);
 		}
 	}
 }

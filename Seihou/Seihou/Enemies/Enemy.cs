@@ -12,7 +12,7 @@ namespace Seihou
     abstract class Enemy : Entity 
     {
         float hp;
-        protected Enemy(float x, float y, SpriteBatch sb, EntityManager em) : base(x, y, sb, em)
+        protected Enemy(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
             
         }

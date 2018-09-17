@@ -14,14 +14,14 @@ namespace Seihou
 		protected float xSpeed;
 		protected float ySpeed;
 
-		protected Projectile(float x, float y, SpriteBatch sb, EntityManager em, Entity owner) : base(x, y, sb, em)
+		protected Projectile(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner) : base(pos, sb, em)
 		{
 			
 		}
 
 		public override void Update(GameTime gt)
 		{
-			if (y + Global.outOfScreenMargin < 0 || y > Global.screenHeight + Global.outOfScreenMargin || x + Global.outOfScreenMargin < 0 || x > Global.screenWidth + Global.outOfScreenMargin)
+			if (pos.Y + Global.outOfScreenMargin < 0 || pos.Y > Global.screenHeight + Global.outOfScreenMargin || pos.X + Global.outOfScreenMargin < 0 || pos.X > Global.screenWidth + Global.outOfScreenMargin)
 			{
 				em.RemoveEntity(this);
 			}

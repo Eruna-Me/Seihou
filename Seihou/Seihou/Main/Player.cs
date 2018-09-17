@@ -11,41 +11,57 @@ namespace Seihou
 {
     class Player : Entity
     {
-        private float speed;
-		const int size = 50;
-		private float fireDelay = 0;
-		const float maxFireDelay = 0.1f;
+        //Firing
+        private float fireDelay = 0;
+        private const float maxFireDelay = 0.05f;
 
-        public Player(float x,float y,SpriteBatch sb, EntityManager em) : base(x, y, sb, em)
+        //Player
+        private Vector2 speed = new Vector2(0.0f, 0.0f);
+        private const float maxSpeed = 5.0f;
+		private const int size = 50;
+		
+
+        public Player(Vector2 pos,SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
             //Init player
         }
 
+        public void Fire()
+        {
+            em.AddEntity(new Bullet(pos, sb, em, this, 0, -400));
+        }
+
         public override void Update(GameTime gt)
         {
-			speed = Keyboard.GetState().IsKeyDown(Settings.slowKey) ? 100 : 200 ;
+            KeyboardState kb = Keyboard.GetState();
+            bool u = kb.IsKeyDown(Settings.upKey);
+            bool r = kb.IsKeyDown(Settings.rightKey);
+            bool d = kb.IsKeyDown(Settings.downKey);
+            bool l = kb.IsKeyDown(Settings.leftKey);
 
-            if (Keyboard.GetState().IsKeyDown(Settings.rightKey) && x <= Global.screenWidth - size)
-                x += speed * (float)gt.ElapsedGameTime.TotalSeconds;
-			if (Keyboard.GetState().IsKeyDown(Settings.leftKey) && x >= size)
-				x -= speed * (float)gt.ElapsedGameTime.TotalSeconds;
-			if (Keyboard.GetState().IsKeyDown(Settings.downKey) && y <= Global.screenHeight - size)
-				y += speed * (float)gt.ElapsedGameTime.TotalSeconds;
-			if (Keyboard.GetState().IsKeyDown(Settings.upKey) && y >= size)
-				y -= speed * (float)gt.ElapsedGameTime.TotalSeconds;
+            speed.X = 0.0f;
+            speed.Y = 0.0f;
 
-			if (Keyboard.GetState().IsKeyDown(Keys.X) && fireDelay <= 0)
+            //Movement
+            speed.X = (Convert.ToInt32(r) - Convert.ToInt32(l));
+            speed.Y = (Convert.ToInt32(d) - Convert.ToInt32(u));
+
+            speed = Global.Normalize(speed) * maxSpeed;
+
+            //Fire
+            if (Keyboard.GetState().IsKeyDown(Keys.X) && fireDelay <= 0)
 			{
-				em.AddEntity(new Bullet(x, y, sb, em, this, 0, -400));
-
+                Fire();
 				fireDelay = maxFireDelay;
 			}
 			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
+
+            pos += speed;
 		}
 
         public override void Draw(GameTime gt)
         {
-            MonoGame.Primitives2D.DrawCircle(sb, x, y, 50, 100, Color.Red, 5);
+            MonoGame.Primitives2D.DrawCircle(sb, pos, 50, 100, Color.Red, 5);
         }
     }
 }

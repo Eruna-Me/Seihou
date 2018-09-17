@@ -12,20 +12,20 @@ namespace Seihou
     {
         Random rnd = new Random();
 
-        TestEnemy(float x, float y, SpriteBatch sb, EntityManager em) : base(x, y, sb, em)
+        TestEnemy(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
 
         }
 
         public override void Draw(GameTime gt)
         {
-            MonoGame.Primitives2D.DrawCircle(sb, x, y, 10, 15, Color.Green, 3);
+            MonoGame.Primitives2D.DrawCircle(sb,pos, 10, 15, Color.Green, 3);
         }
 
         public override void Update(GameTime gt)
         {
-            x += rnd.Next(-1,2) * 5;
-            y += rnd.Next(-1,2) * 5;
+            pos.X += rnd.Next(-1,2) * 5;
+            pos.Y += rnd.Next(-1,2) * 5;
         }
     }
 }

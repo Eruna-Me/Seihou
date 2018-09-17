@@ -8,15 +8,14 @@ namespace Seihou
         private static int newId = 0;
         public readonly int id;
         protected SpriteBatch sb;
-        protected float x, y;
+        protected Vector2 pos;
 		protected EntityManager em;
         public Global.Faction faction = Global.Faction.noFaction;
 
-        protected Entity(float x, float y, SpriteBatch sb, EntityManager em)
+        protected Entity(Vector2 pos, SpriteBatch sb, EntityManager em)
         {
             this.sb = sb;
-            this.x = x;
-            this.y = y;
+            this.pos = pos;
 			this.em = em;
 
             newId++;
