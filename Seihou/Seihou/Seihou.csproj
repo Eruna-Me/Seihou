@@ -41,6 +41,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Main\UI.cs" />
     <Compile Include="Testing\Particle.cs" />
     <Compile Include="Enemies\Enemy.cs" />
     <Compile Include="Testing\TestEnemy.cs" />

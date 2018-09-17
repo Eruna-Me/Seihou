@@ -10,9 +10,11 @@ namespace Seihou
 	static class Global
 	{
 		//	SCREENSIZE
-		public static readonly int screenWidth = 600;
-		public static readonly int screenHeight = 800;
+		public static readonly int screenWidth = 800;
+		public static readonly int screenHeight = 600;
 		public static readonly int outOfScreenMargin = 100;
+		public static readonly int uiWidth = 300;
+		public static readonly int playingFieldWidth = screenWidth - uiWidth;
 
         public static Random random = new Random();
 

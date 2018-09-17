@@ -71,6 +71,8 @@ namespace Seihou
             
             entityManager.Draw(gameTime);
 
+			UI.Draw(gameTime, spriteBatch);
+
             spriteBatch.DrawString(font, $"FPS: {1 / gameTime.ElapsedGameTime.TotalSeconds} \nENTITIES: {entityManager.GetEntityCount()}", new Vector2(20, 20), Color.Green);
 
             spriteBatch.End();

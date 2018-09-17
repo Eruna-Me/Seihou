@@ -56,7 +56,7 @@ namespace Seihou
 			}
 			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
 
-            if (!((pos.X + speed.X * (float)gt.ElapsedGameTime.TotalSeconds + size > Global.screenWidth) || (pos.X + speed.X * (float)gt.ElapsedGameTime.TotalSeconds - size < 0)))
+            if (!((pos.X + speed.X * (float)gt.ElapsedGameTime.TotalSeconds + size > Global.playingFieldWidth) || (pos.X + speed.X * (float)gt.ElapsedGameTime.TotalSeconds - size < 0)))
                 pos.X += speed.X * (float)gt.ElapsedGameTime.TotalSeconds;
 
             if (!((pos.Y + speed.Y * (float)gt.ElapsedGameTime.TotalSeconds + size > Global.screenHeight) || (pos.Y + speed.Y * (float)gt.ElapsedGameTime.TotalSeconds - size < 0)))
