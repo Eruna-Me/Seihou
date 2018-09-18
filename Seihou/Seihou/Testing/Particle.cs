@@ -44,6 +44,6 @@ namespace Seihou
         {
             //MonoGame.Primitives2D.DrawCircle(sb, pos, size, 100,new Color(0,0,255,0.2f), 2);
             sb.Draw(SpriteManager.textures["FireParticle"], pos, new Color(new Vector4(alpha, alpha, alpha, alpha)));
-        }
+		}
     }
 }

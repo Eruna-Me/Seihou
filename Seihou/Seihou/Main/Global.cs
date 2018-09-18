@@ -37,6 +37,8 @@ namespace Seihou
 
             float mag = (float)Math.Sqrt(vec.X * vec.X + vec.Y * vec.Y);
                 return new Vector2(vec.X/mag,vec.Y/mag);
-        }   
-    }
+        }
+
+		public static float VtoD(Vector2 vector) => (float)Math.Atan2(vector.Y, vector.X);
+	}
 }
