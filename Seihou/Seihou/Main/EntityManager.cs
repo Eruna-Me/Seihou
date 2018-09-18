@@ -11,30 +11,50 @@ namespace Seihou
 {
     class EntityManager
     {
+        public enum EntityClass
+        {
+            nonSolid = 0,
+            enemy,
+            player,
+        }
 
-        private readonly List<Entity>  nonSolidEntities = new List<Entity>();
-        private readonly List<Entity>  entities = new List<Entity>();
-		private readonly Queue<Entity> pollAddEntities = new Queue<Entity>();
-		private readonly Queue<Entity> pollRemoveEntities = new Queue<Entity>();
+        private readonly Dictionary<EntityClass, List<Entity>>  entities =           new Dictionary<EntityClass, List<Entity>>();
+        private readonly Dictionary<EntityClass, Queue<Entity>> pollAddEntities =    new Dictionary<EntityClass, Queue<Entity>>();
+        private readonly Dictionary<EntityClass, Queue<Entity>> pollRemoveEntities = new Dictionary<EntityClass, Queue<Entity>>();
 
-        public EntityManager() { }
+        public EntityManager()
+        {
+            entities.Add(EntityClass.nonSolid, new List<Entity>());
+            entities.Add(EntityClass.enemy,    new List<Entity>());
+            entities.Add(EntityClass.player,   new List<Entity>());
+
+            pollAddEntities.Add(EntityClass.nonSolid, new Queue<Entity>());
+            pollAddEntities.Add(EntityClass.enemy,    new Queue<Entity>());
+            pollAddEntities.Add(EntityClass.player,   new Queue<Entity>());
+
+            pollRemoveEntities.Add(EntityClass.nonSolid, new Queue<Entity>());
+            pollRemoveEntities.Add(EntityClass.enemy,    new Queue<Entity>());
+            pollRemoveEntities.Add(EntityClass.player,   new Queue<Entity>());
+        }
     
-        //TODO: make it find nonSolidEntities too
         public Entity FindById(int id)
         {
-            foreach(Entity e in entities)
+            foreach (KeyValuePair<EntityClass, List<Entity>> pair in entities)
             {
-                if (e.id == id)
+                foreach (Entity e in pair.Value)
                 {
-                    return e;
+                    if (e.id == id)
+                    {
+                        return e;
+                    }
                 }
             }
             return null;
         }
 
-        public Entity Touching(Entity ent)
+        public Entity Touching(Entity ent,EntityClass ec)
         {
-            foreach (Entity e in entities)
+            foreach (Entity e in entities[ec])
             {
                 if (e.id == ent.id) continue;
                 if (Collision.Circle(ent,e))
@@ -45,56 +65,51 @@ namespace Seihou
             return null;
         }
 
-        public int GetEntityCount() => entities.Count + nonSolidEntities.Count;
+        public int GetEntityCount()
+        {
+            int c = 0;
+            foreach (KeyValuePair<EntityClass, List<Entity>> pair in entities)
+                c += pair.Value.Count;
+            return c;
+        }
 
-		public void RemoveEntity(Entity ent) => pollRemoveEntities.Enqueue(ent);
+        public void RemoveEntity(Entity ent) => pollRemoveEntities[ent.ec].Enqueue(ent);
 
-        public void AddEntity(Entity ent) => pollAddEntities.Enqueue(ent);
+        public void AddEntity(Entity ent) => pollAddEntities[ent.ec].Enqueue(ent);
 
         public void Update(GameTime gt)
         {
-            foreach (Entity e in entities) e.Update(gt);
-            foreach (Entity e in nonSolidEntities) e.Update(gt);
-
-			while(pollAddEntities.Count > 0)
-			{
-                Entity add = pollAddEntities.Dequeue();
-                
-                if (add.collision)
-                {
-                    entities.Add(add);
-                }
-                else
-                {
-                    nonSolidEntities.Add(add);
-                }
+            foreach (KeyValuePair<EntityClass, List<Entity>> pair in entities)
+            {
+                foreach (Entity e in pair.Value) e.Update(gt);
             }
 
-            while (pollRemoveEntities.Count > 0)
+            foreach (KeyValuePair<EntityClass, Queue<Entity>> pair in pollAddEntities)
             {
-                Entity rem = pollRemoveEntities.Dequeue();
+                while (pair.Value.Count > 0)
+                    entities[pair.Key].Add(pair.Value.Dequeue());
+            }
 
-                if (rem.collision)
-                {
-                    entities.Remove(rem);
-                }
-                else
-                {
-                    nonSolidEntities.Remove(rem);
-                }
+            foreach (KeyValuePair<EntityClass, Queue<Entity>> pair in pollRemoveEntities)
+            {
+                while (pair.Value.Count > 0)
+                    entities[pair.Key].Remove(pair.Value.Dequeue());
             }
         }
 
         public void Draw(GameTime gt)
         {
-            foreach (Entity e in entities) e.Draw(gt);
-            foreach (Entity e in nonSolidEntities) e.Draw(gt);
+            foreach (KeyValuePair<EntityClass, List<Entity>> pair in entities)
+            {
+                foreach (Entity e in pair.Value)
+                    e.Draw(gt);
+            }
         }
 
         public void ClearEntities()
         {
-            entities.Clear();
-            nonSolidEntities.Clear();
+            foreach (KeyValuePair<EntityClass, List<Entity>> pair in entities)
+                pair.Value.Clear();
         }
     }
 }

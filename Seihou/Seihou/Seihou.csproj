@@ -41,13 +41,14 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Level\LevelManager.cs" />
     <Compile Include="Main\UI.cs" />
     <Compile Include="Testing\Particle.cs" />
     <Compile Include="Enemies\Enemy.cs" />
     <Compile Include="Testing\TestEnemy.cs" />
     <Compile Include="Main\Collision.cs" />
     <Compile Include="Main\Entity.cs" />
-	<Compile Include="Enemies\Faller.cs" />
+    <Compile Include="Enemies\Faller.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Main\EntityManager.cs" />
     <Compile Include="Main\Global.cs" />

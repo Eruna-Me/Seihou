@@ -15,6 +15,7 @@ namespace Seihou
         private float fireDelay = 0;
         private const float maxFireDelay = 0.1f;
         private const float bulletSpeed = 500.0f;
+        private const float bulletSpread = 50.0f;
 
         //Speed
         private const float normalSpeed = 300.0f;
@@ -24,15 +25,14 @@ namespace Seihou
         {
             size = 30;
             faction = Global.Faction.friendly;
+            ec = EntityManager.EntityClass.player;
         }
 
         public void Fire()
-        { 
-            em.AddEntity(new Bullet(pos, sb, em, this,new Vector2( 0, -bulletSpeed)));
-            em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(100, -bulletSpeed)));
-            em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(-100, -bulletSpeed)));
-            em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(200, -bulletSpeed)));
-            em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(-200, -bulletSpeed)));
+        {
+                em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(0 , -bulletSpeed )));
+                em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(bulletSpread , -bulletSpeed )));
+                em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(-bulletSpread , -bulletSpeed )));
         }
 
         public override void Update(GameTime gt)

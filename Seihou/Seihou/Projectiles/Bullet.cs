@@ -13,8 +13,8 @@ namespace Seihou
 	{
 		public Bullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em, owner)
 		{
+            ec = EntityManager.EntityClass.nonSolid;
 			size = 10;
-			collision = true;
 			this.speed = speed;
 		}
 
@@ -23,14 +23,21 @@ namespace Seihou
 			base.Update(gt);
 			pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
-			Entity c = em.Touching(this);
+            EntityManager.EntityClass target;
+            if (owner is Enemy)
+            {
+                target = EntityManager.EntityClass.player;
+            }
+            else
+            {
+                target = EntityManager.EntityClass.enemy;
+            }
+
+			Entity c = em.Touching(this,target);
 
 			if (c != null)
 			{
-				if (c.faction != owner.faction)
-				{
-					c.Damage(owner, 1);
-				}
+			    c.Damage(owner, 1);
 			}
 		}
 

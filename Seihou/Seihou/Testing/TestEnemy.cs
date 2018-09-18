@@ -10,8 +10,9 @@ namespace Seihou
 {
     class TestEnemy : Enemy
     {
-        public TestEnemy(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, 30, sb, em)
+        public TestEnemy(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
+
         }
 
         public override void Damage(Entity by, int damage)

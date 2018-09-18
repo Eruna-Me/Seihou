@@ -11,7 +11,7 @@ namespace Seihou
 {
     class Faller : Entity
     {
-        public Faller(Vector2 pos, int size, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
+        public Faller(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
 
         }

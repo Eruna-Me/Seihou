@@ -41,7 +41,7 @@ namespace Seihou
             player = new Player(new Vector2(300,300), spriteBatch, entityManager);
             entityManager.AddEntity(player);
 
-            for (int i = 0; i < 400; i++)
+            for (int i = 0; i < 100; i++)
             {
                 TestEnemy testEnemy = new TestEnemy(new Vector2(300, 300), spriteBatch, entityManager);
                 entityManager.AddEntity(testEnemy);

@@ -15,6 +15,7 @@ namespace Seihou
 		public static readonly int outOfScreenMargin = 100;
 		public static readonly int uiWidth = 300;
 		public static readonly int playingFieldWidth = screenWidth - uiWidth;
+        public const int spawnHeight = -50;
 
         public static Random random = new Random();
 
