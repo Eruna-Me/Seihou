@@ -37,6 +37,8 @@ namespace Seihou
             pollRemoveEntities.Add(EntityClass.player,   new Queue<Entity>());
         }
     
+        public Entity GetPlayer() => entities[EntityClass.player][0];
+
         public Entity FindById(int id)
         {
             foreach (KeyValuePair<EntityClass, List<Entity>> pair in entities)
