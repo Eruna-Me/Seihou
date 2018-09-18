@@ -24,13 +24,13 @@ namespace Seihou
 
         public EntityManager()
         {
-            entities.Add(EntityClass.nonSolid, new List<Entity>());
-            entities.Add(EntityClass.enemy,    new List<Entity>());
-            entities.Add(EntityClass.player,   new List<Entity>());
+            entities.Add(EntityClass.nonSolid,           new List<Entity>());
+            entities.Add(EntityClass.enemy,              new List<Entity>());
+            entities.Add(EntityClass.player,             new List<Entity>());
 
-            pollAddEntities.Add(EntityClass.nonSolid, new Queue<Entity>());
-            pollAddEntities.Add(EntityClass.enemy,    new Queue<Entity>());
-            pollAddEntities.Add(EntityClass.player,   new Queue<Entity>());
+            pollAddEntities.Add(EntityClass.nonSolid,    new Queue<Entity>());
+            pollAddEntities.Add(EntityClass.enemy,       new Queue<Entity>());
+            pollAddEntities.Add(EntityClass.player,      new Queue<Entity>());
 
             pollRemoveEntities.Add(EntityClass.nonSolid, new Queue<Entity>());
             pollRemoveEntities.Add(EntityClass.enemy,    new Queue<Entity>());
@@ -65,6 +65,14 @@ namespace Seihou
                 }
             }
             return null;
+        }
+
+        public int GetPollRemoveEntityCount()
+        {
+            int c = 0;
+            foreach (KeyValuePair<EntityClass, Queue<Entity>> pair in pollAddEntities)
+                c += pair.Value.Count;
+            return c;
         }
 
         public int GetEntityCount()

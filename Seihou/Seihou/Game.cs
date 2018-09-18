@@ -41,9 +41,11 @@ namespace Seihou
             player = new Player(new Vector2(300,300), spriteBatch, entityManager);
             entityManager.AddEntity(player);
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 50; i++)
             {
-                TestEnemy testEnemy = new TestEnemy(new Vector2(300, 300), spriteBatch, entityManager);
+
+                Faller testEnemy = new Faller(new Vector2(300, i*10), spriteBatch, entityManager,(byte)(i/10));
+                //TestEnemy testEnemy = new TestEnemy(new Vector2(300, 300), spriteBatch, entityManager);
                 entityManager.AddEntity(testEnemy);
             }
 
@@ -73,7 +75,7 @@ namespace Seihou
 
 			UI.Draw(gameTime, spriteBatch);
 
-            spriteBatch.DrawString(font, $"FPS: {1 / gameTime.ElapsedGameTime.TotalSeconds} \nENTITIES: {entityManager.GetEntityCount()}", new Vector2(20, 20), Color.Green);
+            spriteBatch.DrawString(font, $"FPS: {1 / gameTime.ElapsedGameTime.TotalSeconds} \nENTITIES: {entityManager.GetEntityCount()} \nREMOVE {entityManager.GetPollRemoveEntityCount()}", new Vector2(20, 20), Color.Green);
 
             spriteBatch.End();
 

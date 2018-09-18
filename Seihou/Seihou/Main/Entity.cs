@@ -32,7 +32,6 @@ namespace Seihou
             id = newId;
         }
 
-
         public abstract void Draw(GameTime gt);
         public abstract void Update(GameTime gt);
     }

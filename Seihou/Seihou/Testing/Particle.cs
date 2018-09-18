@@ -24,7 +24,6 @@ namespace Seihou
             size = 3;
             faction = Global.Faction.friendly;
             speed = new Vector2((float)(Global.random.NextDouble() - 0.5) * maxSpeed, (float)(Global.random.NextDouble() - 0.5) * maxSpeed);
-
         }
 
         public override void Update(GameTime gt)
