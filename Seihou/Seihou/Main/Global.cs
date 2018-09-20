@@ -17,6 +17,9 @@ namespace Seihou
 		public static readonly int playingFieldWidth = screenWidth - uiWidth;
         public const int spawnHeight = -50;
 
+		//temporary
+		public static int lives = 3;
+
         public static Random random = new Random();
 
         public enum Faction

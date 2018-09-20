@@ -11,9 +11,13 @@ namespace Seihou
 {
     class Player : Entity
     {
-        //Firing
-        private float fireDelay = 0;
-        private const float maxFireDelay = 0.1f;
+		//Survivability
+		private float invincibilityTimer = 0;
+		private const float maxInvincibilityTimer = 1.0f;
+		private const float maxFireDelay = 0.1f;
+
+		//Firing
+		private float fireDelay = 0;
         private const float bulletSpeed = 500.0f;
         private const float bulletSpread = 50.0f;
 
@@ -64,12 +68,32 @@ namespace Seihou
                 Fire();
 				fireDelay = maxFireDelay;
 			}
-			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;		
-        }
+			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
+			invincibilityTimer -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
+		}
 
         public override void Draw(GameTime gt)
         {
             MonoGame.Primitives2D.DrawCircle(sb, pos, size, 100, Color.Red, 5);
         }
-    }
+
+		public override void Damage(Entity by, int damage)
+		{
+			if(invincibilityTimer <= 0)
+			{ 
+				for (int i = 0; i < 20; i++)
+				{
+					em.AddEntity(new Particle(pos, sb, em));
+				}
+				ResetPosition();
+				Global.lives--;
+				invincibilityTimer = maxInvincibilityTimer;
+			}
+		}
+
+		void ResetPosition()
+		{
+			pos = new Vector2(Global.playingFieldWidth / 2 , Global.screenHeight - 50);
+		}
+	}
 }
