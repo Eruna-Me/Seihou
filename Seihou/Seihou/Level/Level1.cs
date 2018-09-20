@@ -15,8 +15,8 @@ namespace Seihou
         {
             for (int i = 0; i < 50000; i++)
             {
-                Spawn(new Faller(Global.GetSpawn(100 - (i % 80) + 10), sb, em, Convert.ToBoolean(i % 2)), 0.000f);
-                Spawn(new Faller(Global.GetSpawn((i % 80) + 10), sb, em,Convert.ToBoolean(i % 2)), 0.005f);
+                Spawn(new Faller(Global.GetSpawn(100 - (i % 80) + 10), sb, em,false), 0.006f);
+                Spawn(new Faller(Global.GetSpawn((i % 80) + 10), sb, em,true), 0.005f);
             }
         }
     }

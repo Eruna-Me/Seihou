@@ -61,15 +61,15 @@ namespace Seihou
         {
             if (pause) return;
 
-                while (timer <= 0.0f)
-                {
-                    if (spawner.Count < 1) return;
+            while (timer <= gt.ElapsedGameTime.TotalSeconds)
+            {
+                if (spawner.Count < 1) return;
 
-                    SpawnTask st = spawner.Dequeue();
-                    timer = st.sleep;
-                    if (st.spawn != null) em.AddEntity(st.spawn);
-                }
-                timer -= (float)gt.ElapsedGameTime.TotalSeconds;
+                SpawnTask st = spawner.Dequeue();
+                timer += st.sleep;
+                if (st.spawn != null) em.AddEntity(st.spawn);
+            }
+            timer -= (float)gt.ElapsedGameTime.TotalSeconds;
         }
     }
 }

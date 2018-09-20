@@ -67,12 +67,12 @@ namespace Seihou
             return null;
         }
 
-        public int GetPollRemoveEntityCount()
+        public void DamageAll(int damage,EntityClass ec)
         {
-            int c = 0;
-            foreach (KeyValuePair<EntityClass, Queue<Entity>> pair in pollAddEntities)
-                c += pair.Value.Count;
-            return c;
+            foreach (Entity e in entities[ec])
+            {
+                e.Damage(null, damage);
+            }
         }
 
         public int GetEntityCount()

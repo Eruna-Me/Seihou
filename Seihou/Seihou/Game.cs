@@ -9,25 +9,26 @@ namespace Seihou
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        readonly EntityManager entityManager;
-        Player player;
-        LevelManager levelManager;
-        SpriteFont font;
+        StateManager stateManager;
 
         public Game()
         {
 			this.IsMouseVisible = true;
+
+            //Graphics options
             graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = Global.screenWidth;
 			graphics.PreferredBackBufferHeight = Global.screenHeight;
-			graphics.ApplyChanges();
-            
-			Content.RootDirectory = "Content";
-            font = Content.Load<SpriteFont>("DefaultFont");
-            entityManager = new EntityManager();
+            graphics.SynchronizeWithVerticalRetrace = true;
+            graphics.ApplyChanges();
             IsFixedTimeStep = false;
-            graphics.SynchronizeWithVerticalRetrace = false;
-            ResourceManager.Load(Content);
+
+            spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
+
+            //Set content directory
+            Content.RootDirectory = "Content";
+           
+            stateManager = new StateManager();
         }
 		
         protected override void Initialize()
@@ -37,16 +38,10 @@ namespace Seihou
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            ResourceManager.Load(Content);
 
-            levelManager = new LevelManager(entityManager);
-            levelManager.LoadLevel(new Level1(spriteBatch, entityManager));
-            
-            player = new Player(new Vector2(300,300), spriteBatch, entityManager);
-            entityManager.AddEntity(player);
-
-
-            // TODO: use this.Content to load your game content here
+            //TODO: change testState to menustate
+            stateManager.ChangeState(new TestState(stateManager, Content, spriteBatch, graphics)); //DoNT mOvE ThiS tO iNiTiAlIzE
         }
 
         protected override void UnloadContent()
@@ -56,9 +51,6 @@ namespace Seihou
 
         protected override void Update(GameTime gameTime)
         {
-            entityManager.Update(gameTime);
-            levelManager.Update(gameTime);
-
 			if (Keyboard.GetState().IsKeyDown(Keys.F11) || (Keyboard.GetState().IsKeyDown(Keys.LeftAlt) && Keyboard.GetState().IsKeyDown(Keys.Enter)))
 			{
 				graphics.ToggleFullScreen();
@@ -66,22 +58,17 @@ namespace Seihou
 				graphics.ApplyChanges();
 			}
 
+            stateManager.Update(gameTime);
+
 			base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-
             GraphicsDevice.Clear(Color.Black);
 
             spriteBatch.Begin();
-            
-            entityManager.Draw(gameTime);
-
-			UI.Draw(gameTime, spriteBatch);
-
-            spriteBatch.DrawString(font, $"FPS: {1 / gameTime.ElapsedGameTime.TotalSeconds} \nENTITIES: {entityManager.GetEntityCount()} \nREMOVE {entityManager.GetPollRemoveEntityCount()}", new Vector2(20, 20), Color.Green);
-
+            stateManager.Draw(gameTime);
             spriteBatch.End();
 
             base.Draw(gameTime);

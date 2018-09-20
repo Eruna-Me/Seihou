@@ -15,6 +15,8 @@ namespace Seihou
 		public static readonly int outOfScreenMargin = 100;
 		public static readonly int uiWidth = 300;
 		public static readonly int playingFieldWidth = screenWidth - uiWidth;
+        public static readonly Vector2 FpsCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 50);
+        public static readonly Vector2 EntCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 20);
         public const int spawnHeight = -50;
 
 		//temporary
