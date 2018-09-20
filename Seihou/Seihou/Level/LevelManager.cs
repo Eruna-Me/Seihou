@@ -10,102 +10,66 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
-
-    class Level
+    class SpawnTask
     {
-        //Constructor
-        public Level(byte[] data) => this.data = new Queue<byte>(data);
+        public readonly float sleep = 0;
+        public readonly Entity spawn;
 
-        //Getters
-        public byte GetByte() => data.Dequeue();
-        public short GetShort() => BitConverter.ToInt16(new byte[]{ data.Dequeue(), data.Dequeue() }, 0);
-
-        //Data
-        private Queue<byte> data;
-        public bool Empty() => (data.Count < 1);
+        public SpawnTask(Entity spawn, float sleep)
+        {
+            this.sleep = sleep;
+            this.spawn = spawn;
+        }
     }
 
-    class LevelManager
+    abstract class Level
     {
-        //Data
-        private readonly EntityManager em;
-        private readonly SpriteBatch sb;
+        SpriteBatch sb;
+        EntityManager em;
 
-        //Callback
-        public delegate void LevelDelegate();
-        public LevelDelegate OnLevelEnd;
-
-        //Variables
-        public bool paused = false;
-        private Level currentLevel = null;
-        private float timer = 0.0f;
-
-        //Commands
-        private enum Command { sleep, spawn, }
-
-
-        //Constructor
-        public LevelManager(EntityManager em,SpriteBatch sb)
+        public Level(SpriteBatch sb, EntityManager em)
         {
             this.sb = sb;
             this.em = em;
         }
 
-        //Add new entities here
-        private void SpawnEntity(short entityType,byte location,byte arguments)
-        {
-            Vector2 getLocation() => new Vector2(Global.playingFieldWidth * (location / byte.MaxValue), Global.spawnHeight);
+        public readonly Queue<SpawnTask> spawner = new Queue<SpawnTask>();
 
-            switch(entityType)
-            {
-                case 0: em.AddEntity(new TestEnemy(getLocation(), sb, em)); break;
-                case 1: em.AddEntity(new Faller(getLocation(), sb, em,arguments)); break;
-            }
+        protected void Spawn(Entity e) => spawner.Enqueue(new SpawnTask(e, 0));
+        protected void Spawn(Entity e, float t) => spawner.Enqueue(new SpawnTask(e, t));
+        protected void Sleep(float t) => spawner.Enqueue(new SpawnTask(null,t));
+    }
+
+    class LevelManager
+    {
+        private Queue<SpawnTask> spawner = new Queue<SpawnTask>();
+        private EntityManager em;
+        private float timer = 0.0f;
+        public bool pause = false;
+
+        public LevelManager(EntityManager em)
+        {
+            this.em = em;
         }
 
-        //Load level
-        private Level LoadLevel(string file)
+        public void LoadLevel(Level l)
         {
-            return new Level(File.ReadAllBytes(file));
+            spawner = new Queue<SpawnTask>(l.spawner);
         }
 
-        private void Start(Level l)
+        public void Update(GameTime gt)
         {
-            currentLevel = l;
-            timer = 0.0f;
-            paused = false;
-        }
+            if (pause) return;
 
-        private void Update(GameTime gt, EntityManager em, SpriteBatch sb)
-        {
-            if (timer > 0.0f)
-            {
+                while (timer <= 0.0f)
+                {
+                    if (spawner.Count < 1) return;
+
+                    SpawnTask st = spawner.Dequeue();
+                    timer = st.sleep;
+                    if (st.spawn != null) em.AddEntity(st.spawn);
+                }
                 timer -= (float)gt.ElapsedGameTime.TotalSeconds;
-                return;
-            }
-
-            if (currentLevel != null && !paused)
-            {
-                if (currentLevel.Empty())
-                {
-                    currentLevel = null;
-                    OnLevelEnd();
-                    return;
-                }
-                   
-                Command c = (Command)currentLevel.GetByte();
-
-                switch (c)
-                {
-                    case Command.sleep:
-                        timer = currentLevel.GetShort();
-                        break;
-
-                    case Command.spawn:
-                        SpawnEntity(currentLevel.GetShort(), currentLevel.GetByte(), currentLevel.GetByte());
-                        break;
-                }
-            }
         }
     }
 }

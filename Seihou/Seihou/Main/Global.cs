@@ -10,8 +10,8 @@ namespace Seihou
 	static class Global
 	{
 		//	SCREENSIZE
-		public static readonly int screenWidth = 800;
-		public static readonly int screenHeight = 600;
+		public static readonly int screenWidth = 1200;
+		public static readonly int screenHeight = 675;
 		public static readonly int outOfScreenMargin = 100;
 		public static readonly int uiWidth = 300;
 		public static readonly int playingFieldWidth = screenWidth - uiWidth;
@@ -31,6 +31,8 @@ namespace Seihou
         }
 
         public static float Choose(float[] floats) => floats[random.Next(0, floats.Length)];
+
+        public static Vector2 GetSpawn(float location) => new Vector2(playingFieldWidth * (location / 100.0f), spawnHeight);
 
         //Normalize vector
         public static Vector2 Normalize(Vector2 vec)

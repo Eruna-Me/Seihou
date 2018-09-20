@@ -11,6 +11,7 @@ namespace Seihou
         SpriteBatch spriteBatch;
         readonly EntityManager entityManager;
         Player player;
+        LevelManager levelManager;
         SpriteFont font;
 
         public Game()
@@ -20,6 +21,7 @@ namespace Seihou
 			graphics.PreferredBackBufferWidth = Global.screenWidth;
 			graphics.PreferredBackBufferHeight = Global.screenHeight;
 			graphics.ApplyChanges();
+            
 			Content.RootDirectory = "Content";
             font = Content.Load<SpriteFont>("DefaultFont");
             entityManager = new EntityManager();
@@ -37,17 +39,12 @@ namespace Seihou
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            levelManager = new LevelManager(entityManager);
+            levelManager.LoadLevel(new Level1(spriteBatch, entityManager));
             
             player = new Player(new Vector2(300,300), spriteBatch, entityManager);
             entityManager.AddEntity(player);
 
-            for (int i = 0; i < 50; i++)
-            {
-
-                Faller testEnemy = new Faller(new Vector2(300, i*10), spriteBatch, entityManager,(byte)(i/10));
-                //TestEnemy testEnemy = new TestEnemy(new Vector2(300, 300), spriteBatch, entityManager);
-                entityManager.AddEntity(testEnemy);
-            }
 
             // TODO: use this.Content to load your game content here
         }
@@ -60,6 +57,7 @@ namespace Seihou
         protected override void Update(GameTime gameTime)
         {
             entityManager.Update(gameTime);
+            levelManager.Update(gameTime);
 
 			if (Keyboard.GetState().IsKeyDown(Keys.F11) || (Keyboard.GetState().IsKeyDown(Keys.LeftAlt) && Keyboard.GetState().IsKeyDown(Keys.Enter)))
 			{

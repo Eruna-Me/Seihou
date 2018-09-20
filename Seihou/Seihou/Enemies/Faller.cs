@@ -13,17 +13,17 @@ namespace Seihou
     {
         //Byte arguments =
 
-        private const float fallSpeed = 10.0f;
+        private const float fallSpeed = 900.0f;
         private const float range = 100.0f;
         private const float swingSpeed = 5f;
         private const float fireRate = 0.05f;
         private float fireDelay = 0;
         private float startX;
-        private readonly byte args;
+        private readonly bool direction;
 
-        public Faller(Vector2 pos, SpriteBatch sb, EntityManager em,byte args) : base(pos, sb, em)
+        public Faller(Vector2 pos, SpriteBatch sb, EntityManager em,bool direction) : base(pos, sb, em)
         {
-            this.args = args;
+            this.direction = direction;
             ec = EntityManager.EntityClass.enemy;
             startX = pos.X;
             size = 40; 
@@ -32,7 +32,9 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
-            pos.X = startX + (float)Math.Sin(gt.TotalGameTime.TotalSeconds * Math.PI * args) * range;
+            base.Update(gt);
+
+            pos.X = startX + (float)Math.Sin(gt.TotalGameTime.TotalSeconds * Math.PI * Convert.ToDouble(direction)) * range;
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
             fireDelay += (float)gt.ElapsedGameTime.TotalSeconds;
@@ -55,7 +57,7 @@ namespace Seihou
 
         public override void Draw(GameTime gt)
         {
-            MonoGame.Primitives2D.DrawCircle(sb, pos, 10, size, Color.Orange, 3);
+            MonoGame.Primitives2D.DrawCircle(sb, pos, 10, 3, Color.Green, 3);
         }
     }
 }

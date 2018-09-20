@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Enemies\JSF.cs" />
+    <Compile Include="Level\Level1.cs" />
     <Compile Include="Level\LevelManager.cs" />
     <Compile Include="Main\UI.cs" />
     <Compile Include="Projectiles\CoolBullet.cs" />
