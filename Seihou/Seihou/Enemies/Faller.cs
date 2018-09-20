@@ -9,22 +9,53 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
-    class Faller : Entity
+    class Faller : Enemy
     {
-        public Faller(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
+        //Byte arguments =
+
+        private const float fallSpeed = 10.0f;
+        private const float range = 100.0f;
+        private const float swingSpeed = 5f;
+        private const float fireRate = 0.05f;
+        private float fireDelay = 0;
+        private float startX;
+        private readonly byte args;
+
+        public Faller(Vector2 pos, SpriteBatch sb, EntityManager em,byte args) : base(pos, sb, em)
         {
-
+            this.args = args;
+            ec = EntityManager.EntityClass.enemy;
+            startX = pos.X;
+            size = 40; 
+            speed.Y = fallSpeed;
         }
-
 
         public override void Update(GameTime gt)
         {
-            throw new NotImplementedException();
+            pos.X = startX + (float)Math.Sin(gt.TotalGameTime.TotalSeconds * Math.PI * args) * range;
+            pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
+
+            fireDelay += (float)gt.ElapsedGameTime.TotalSeconds;
+
+            if (fireDelay > fireRate)
+            {
+                em.AddEntity(new Bullet(pos, sb, em, this,new Vector2(0,200)));
+                fireDelay = 0;
+            }
+        }
+
+        public override void Damage(Entity by, int damage)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                em.AddEntity(new Particle(pos, sb, em));
+            }
+            em.RemoveEntity(this);
         }
 
         public override void Draw(GameTime gt)
         {
-            throw new NotImplementedException();
+            MonoGame.Primitives2D.DrawCircle(sb, pos, 10, size, Color.Orange, 3);
         }
     }
 }

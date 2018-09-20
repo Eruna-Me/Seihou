@@ -13,12 +13,14 @@ namespace Seihou
 
     class Level
     {
+        //Constructor
         public Level(byte[] data) => this.data = new Queue<byte>(data);
 
         //Getters
         public byte GetByte() => data.Dequeue();
         public short GetShort() => BitConverter.ToInt16(new byte[]{ data.Dequeue(), data.Dequeue() }, 0);
 
+        //Data
         private Queue<byte> data;
         public bool Empty() => (data.Count < 1);
     }
@@ -57,7 +59,7 @@ namespace Seihou
             switch(entityType)
             {
                 case 0: em.AddEntity(new TestEnemy(getLocation(), sb, em)); break;
-                case 1: em.AddEntity(new Faller(getLocation(), sb, em)); break;
+                case 1: em.AddEntity(new Faller(getLocation(), sb, em,arguments)); break;
             }
         }
 
