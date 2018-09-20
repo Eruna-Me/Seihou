@@ -10,9 +10,10 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Seihou
 {
-	static class SpriteManager
+	static class ResourceManager
 	{
 		public static readonly Dictionary<string, Texture2D> textures = new Dictionary<string, Texture2D>();
+		public static readonly Dictionary<string, SpriteFont> fonts = new Dictionary<string, SpriteFont>();
 		public static ContentManager cm;
 
 
@@ -20,6 +21,7 @@ namespace Seihou
 		{
 			cm = com;
 
+			fonts.Add("DefaultFont", cm.Load<SpriteFont>("DefaultFont"));
 			textures.Add("FireParticle", cm.Load<Texture2D>("FireParticle"));
 			textures.Add("Dart1", cm.Load<Texture2D>("Dart1"));
 		}
@@ -28,7 +30,7 @@ namespace Seihou
 
 		public static void DrawAngledTexture(SpriteBatch sb, string texture, Vector2 pos, Vector2 speed)
 		{
-			sb.Draw(textures["Dart1"], pos, null, Color.White, Global.VtoD(speed), Origin("Dart1"), 1.0f, SpriteEffects.None, 0f);
+			sb.Draw(textures[texture], pos, null, Color.White, Global.VtoD(speed), Origin(texture), 1.0f, SpriteEffects.None, 0f);
 		}
 	}
 }

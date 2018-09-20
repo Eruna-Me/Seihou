@@ -13,7 +13,8 @@ namespace Seihou
 	{
 		public static void Draw(GameTime gt, SpriteBatch sb)
 		{
-			MonoGame.Primitives2D.FillRectangle(sb, Global.playingFieldWidth, 0, Global.uiWidth, Global.screenHeight, Color.Blue);
+			MonoGame.Primitives2D.FillRectangle(sb, Global.playingFieldWidth, 0, Global.uiWidth, Global.screenHeight, new Color(60,60,60));
+			sb.DrawString(ResourceManager.fonts["DefaultFont"], "O hi mark", new Vector2(Global.playingFieldWidth + 20, 20), Color.White);
 		}
 	}
 }

@@ -11,7 +11,7 @@ namespace Seihou
         SpriteBatch spriteBatch;
         readonly EntityManager entityManager;
         Player player;
-        private SpriteFont font;
+        SpriteFont font;
 
         public Game()
         {
@@ -25,7 +25,7 @@ namespace Seihou
             entityManager = new EntityManager();
             IsFixedTimeStep = false;
             graphics.SynchronizeWithVerticalRetrace = false;
-            SpriteManager.Load(Content);
+            ResourceManager.Load(Content);
         }
 		
         protected override void Initialize()
@@ -61,7 +61,14 @@ namespace Seihou
         {
             entityManager.Update(gameTime);
 
-            base.Update(gameTime);
+			if (Keyboard.GetState().IsKeyDown(Keys.F11) || (Keyboard.GetState().IsKeyDown(Keys.LeftAlt) && Keyboard.GetState().IsKeyDown(Keys.Enter)))
+			{
+				graphics.ToggleFullScreen();
+				graphics.SynchronizeWithVerticalRetrace = true;
+				graphics.ApplyChanges();
+			}
+
+			base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)

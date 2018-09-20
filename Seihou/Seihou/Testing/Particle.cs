@@ -41,7 +41,7 @@ namespace Seihou
         public override void Draw(GameTime gt)
         {
             //MonoGame.Primitives2D.DrawCircle(sb, pos, size, 100,new Color(0,0,255,0.2f), 2);
-            sb.Draw(SpriteManager.textures["FireParticle"], pos, new Color(new Vector4(alpha, alpha, alpha, alpha)));
+            sb.Draw(ResourceManager.textures["FireParticle"], pos, new Color(new Vector4(alpha, alpha, alpha, alpha)));
 		}
     }
 }

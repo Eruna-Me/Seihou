@@ -56,7 +56,7 @@
     <Compile Include="Main\Global.cs" />
     <Compile Include="Main\Player.cs" />
     <Compile Include="Main\Settings.cs" />
-    <Compile Include="Main\SpriteManager.cs" />
+    <Compile Include="Main\ResourceManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Projectiles\Bullet.cs" />
     <Compile Include="Projectiles\Projectile.cs" />

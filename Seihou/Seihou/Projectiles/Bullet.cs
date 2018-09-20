@@ -23,15 +23,7 @@ namespace Seihou
 			base.Update(gt);
 			pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
-            EntityManager.EntityClass target;
-            if (owner is Enemy)
-            {
-                target = EntityManager.EntityClass.player;
-            }
-            else
-            {
-                target = EntityManager.EntityClass.enemy;
-            }
+			EntityManager.EntityClass target = (owner is Enemy) ? EntityManager.EntityClass.player : EntityManager.EntityClass.enemy ;
 			
 			Entity c = em.Touching(this,target);
 
@@ -43,8 +35,7 @@ namespace Seihou
 
 		public override void Draw(GameTime gt)
 		{	
-			//sb.Draw(SpriteManager.textures["Dart1"], pos, null, Color.White, Global.VtoD(speed), SpriteManager.Origin("Dart1"), 1.0f, SpriteEffects.None, 0f);
-			SpriteManager.DrawAngledTexture(sb, "Dart1", pos, speed);
+			ResourceManager.DrawAngledTexture(sb, "Dart1", pos, speed);
 		}
 	}
 }

@@ -46,7 +46,7 @@ namespace Seihou
 
 		public override void Draw(GameTime gt)
 		{	
-			SpriteManager.DrawAngledTexture(sb, "Dart1", pos, speed);
+			ResourceManager.DrawAngledTexture(sb, "Dart1", pos, speed);
 		}
 	}
 }
