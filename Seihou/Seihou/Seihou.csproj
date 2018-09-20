@@ -41,8 +41,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Enemies\JSF.cs" />
     <Compile Include="Level\LevelManager.cs" />
     <Compile Include="Main\UI.cs" />
+    <Compile Include="Projectiles\CoolBullet.cs" />
     <Compile Include="Testing\Particle.cs" />
     <Compile Include="Enemies\Enemy.cs" />
     <Compile Include="Testing\TestEnemy.cs" />

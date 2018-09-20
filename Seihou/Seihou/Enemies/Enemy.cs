@@ -15,5 +15,12 @@ namespace Seihou
         {
             ec = EntityManager.EntityClass.enemy;
         }
-    }
+		public override void Update(GameTime gt)
+		{
+			if (pos.Y > Global.screenHeight + Global.outOfScreenMargin)
+			{
+				em.RemoveEntity(this);
+			}
+		}
+	}
 }
