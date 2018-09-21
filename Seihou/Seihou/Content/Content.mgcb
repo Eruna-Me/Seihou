@@ -37,3 +37,24 @@
 /processorParam:TextureFormat=Color
 /build:Dart1.png
 
+#begin Arial-Small.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Arial-Small.spritefont
+
+#begin KosugiMaru-Medium.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:KosugiMaru-Medium.spritefont
+
+#begin KosugiMaru-Small.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:KosugiMaru-Small.spritefont
+

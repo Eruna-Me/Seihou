@@ -14,7 +14,7 @@ namespace Seihou
 		public Bullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em, owner)
 		{
             ec = EntityManager.EntityClass.nonSolid;
-			size = 10;
+			size = 3;
 			this.speed = speed;
 		}
 

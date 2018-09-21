@@ -11,13 +11,11 @@ namespace Seihou
 {
     class Faller : Enemy
     {
-        //Byte arguments =
-
-        private const float fallSpeed = 900.0f;
+        private const float fallSpeed = 300.0f;
         private const float range = 100.0f;
         private const float swingSpeed = 5f;
-        private const float fireRate = 0.05f;
-        private float fireDelay = 0;
+        private const float fireRate = 0.0005f;
+        private float fireDelay = 0.0f;
         private float startX;
         private float rotateTimer = 0.0f;
         private readonly bool direction;
@@ -36,14 +34,14 @@ namespace Seihou
             base.Update(gt);
 
             rotateTimer += (float)gt.ElapsedGameTime.TotalSeconds;
-            pos.X = startX + (float)Math.Sin(rotateTimer * Math.PI * Convert.ToDouble(direction)) * range;
+            pos.X = startX + (float)Math.Sin(rotateTimer * (Math.PI + (Convert.ToDouble(direction)+1))) * range;
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
             fireDelay += (float)gt.ElapsedGameTime.TotalSeconds;
-
-            if (fireDelay > fireRate)
+            Console.WriteLine("Fire delay is : " + fireDelay.ToString());
+            if (fireDelay >= fireRate)
             {
-                em.AddEntity(new Bullet(pos, sb, em, this,new Vector2(0,200)));
+                em.AddEntity(new Bullet(pos, sb, em, this,new Vector2(0,1000)));
                 fireDelay = 0;
             }
         }

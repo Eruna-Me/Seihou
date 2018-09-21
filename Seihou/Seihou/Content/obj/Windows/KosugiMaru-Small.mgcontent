@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>DefaultFont.spritefont</SourceFile>
-  <SourceTime>2017-03-01T16:05:30+01:00</SourceTime>
-  <DestFile>bin\Windows\DefaultFont.xnb</DestFile>
-  <DestTime>2018-09-16T18:01:15.6315114+02:00</DestTime>
+  <SourceFile>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/KosugiMaru-Small.spritefont</SourceFile>
+  <SourceTime>2018-09-21T16:00:32.9578478+02:00</SourceTime>
+  <DestFile>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/bin/Windows/KosugiMaru-Small.xnb</DestFile>
+  <DestTime>2018-09-21T16:02:46.2767561+02:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2017-03-01T16:05:36+01:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

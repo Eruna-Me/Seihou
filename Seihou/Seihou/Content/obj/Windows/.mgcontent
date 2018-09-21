@@ -4,7 +4,10 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/Seihou/Seihou/Seihou/Content/FireParticle.png</File>
-    <File>D:/Seihou/Seihou/Seihou/Content/Dart1.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/FireParticle.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Dart1.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Arial-Small.spritefont</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/KosugiMaru-Medium.spritefont</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/KosugiMaru-Small.spritefont</File>
   </SourceFiles>
 </SourceFileCollection>

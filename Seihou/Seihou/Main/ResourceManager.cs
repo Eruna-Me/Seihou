@@ -21,7 +21,7 @@ namespace Seihou
 		{
 			cm = com;
 
-			fonts.Add("DefaultFont", cm.Load<SpriteFont>("DefaultFont"));
+			fonts.Add("DefaultFont", cm.Load<SpriteFont>("KosugiMaru-Medium"));
 			textures.Add("FireParticle", cm.Load<Texture2D>("FireParticle"));
 			textures.Add("Dart1", cm.Load<Texture2D>("Dart1"));
 		}

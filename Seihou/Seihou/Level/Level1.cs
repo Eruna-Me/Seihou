@@ -13,10 +13,14 @@ namespace Seihou
     {
         public Level1(SpriteBatch sb, EntityManager em) : base(sb,em)
         {
-            for (int i = 0; i < 50000; i++)
+            for (int i = 0; i < 500000; i++)
             {
-                Spawn(new Faller(Global.GetSpawn(100 - (i % 80) + 10), sb, em,false), 0.006f);
-                Spawn(new Faller(Global.GetSpawn((i % 80) + 10), sb, em,true), 0.005f);
+                Spawn(new Shooter(Global.GetSpawn(30), sb, em,902,0.5f), 20.0f);
+
+                if (i % 10 == 0)
+                {
+                    Sleep(0.5f);
+                }
             }
         }
     }
