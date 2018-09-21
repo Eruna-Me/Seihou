@@ -19,6 +19,7 @@ namespace Seihou
         private const float fireRate = 0.05f;
         private float fireDelay = 0;
         private float startX;
+        private float rotateTimer = 0.0f;
         private readonly bool direction;
 
         public Faller(Vector2 pos, SpriteBatch sb, EntityManager em,bool direction) : base(pos, sb, em)
@@ -34,6 +35,7 @@ namespace Seihou
         {
             base.Update(gt);
 
+            rotateTimer += (float)gt.ElapsedGameTime.TotalSeconds;
             pos.X = startX + (float)Math.Sin(gt.TotalGameTime.TotalSeconds * Math.PI * Convert.ToDouble(direction)) * range;
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
