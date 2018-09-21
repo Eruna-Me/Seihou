@@ -12,8 +12,9 @@ namespace Seihou
     class Player : Entity
     {
 		//Survivability
-		private float invincibilityTimer = 0;
-		private const float maxInvincibilityTimer = 1.0f;
+		private float invincibilityTimer = 0.0f;
+		private const float invincibilityBlinkSpeed = 0.5f;
+		private const float maxInvincibilityTimer = 5.0f;
 		private const float maxFireDelay = 0.1f;
 
 		//Firing
@@ -74,7 +75,10 @@ namespace Seihou
 
         public override void Draw(GameTime gt)
         {
-            MonoGame.Primitives2D.DrawCircle(sb, pos, size, 100, Color.Red, 5);
+			if (invincibilityTimer <= 0 || (invincibilityTimer % invincibilityBlinkSpeed) >= invincibilityBlinkSpeed /2)
+			{
+				MonoGame.Primitives2D.DrawCircle(sb, pos, size, 100, Color.Red, 5);
+			}
         }
 
 		public override void Damage(Entity by, int damage)
