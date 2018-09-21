@@ -16,6 +16,9 @@ namespace Seihou
         LevelManager lm;
         SpriteFont font1;
         Player player;
+		KeyboardState oldKeyState;
+
+		bool pause = false;
 
         public TestState (StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
         {
@@ -35,8 +38,19 @@ namespace Seihou
         
         public override void Update(GameTime gt)
         {
-            lm.Update(gt);
-            em.Update(gt);
+			KeyboardState currentKeyState = Keyboard.GetState();
+
+			if ((currentKeyState.IsKeyDown(Global.PauseKey1) && oldKeyState.IsKeyUp(Global.PauseKey1)) || (oldKeyState.IsKeyUp(Global.PauseKey2) && currentKeyState.IsKeyDown(Global.PauseKey2)))
+			{
+				pause = !pause;
+			}
+			oldKeyState = currentKeyState;
+
+			if (!pause)
+			{
+				lm.Update(gt);
+				em.Update(gt);
+			}
         }
 
         public override void OnStart()

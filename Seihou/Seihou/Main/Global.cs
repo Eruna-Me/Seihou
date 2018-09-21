@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
@@ -18,6 +19,9 @@ namespace Seihou
         public static readonly Vector2 FpsCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 50);
         public static readonly Vector2 EntCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 20);
         public const int spawnHeight = -50;
+
+		public static Keys PauseKey1 = Keys.F10;
+		public static Keys PauseKey2 = Keys.Escape;
 
 		//temporary
 		public static int lives = 3;
