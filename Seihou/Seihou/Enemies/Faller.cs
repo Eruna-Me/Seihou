@@ -36,7 +36,7 @@ namespace Seihou
             base.Update(gt);
 
             rotateTimer += (float)gt.ElapsedGameTime.TotalSeconds;
-            pos.X = startX + (float)Math.Sin(gt.TotalGameTime.TotalSeconds * Math.PI * Convert.ToDouble(direction)) * range;
+            pos.X = startX + (float)Math.Sin(rotateTimer * Math.PI * Convert.ToDouble(direction)) * range;
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
             fireDelay += (float)gt.ElapsedGameTime.TotalSeconds;
