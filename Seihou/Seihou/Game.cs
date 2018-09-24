@@ -61,6 +61,8 @@ namespace Seihou
 
             stateManager.Update(gameTime);
 
+            if (stateManager.abort) Exit();
+
 			base.Update(gameTime);
         }
 

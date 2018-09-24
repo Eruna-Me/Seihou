@@ -47,9 +47,9 @@ namespace Seihou
 			oldKeyState = currentKeyState;
 
 			if (!pause)
-			{
-				lm.Update(gt);
-				em.Update(gt);
+            { 
+                lm.Update(gt);
+                em.Update(gt);
 			}
         }
 

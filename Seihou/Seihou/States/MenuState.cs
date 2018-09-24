@@ -12,44 +12,62 @@ namespace Seihou
 {
 	class MenuState : State
 	{
-		const int firstButtonHeight = 80;
-		const int buttonX = 50;
-		const int buttonHeight = 30;
+
+        StateManager sm;
+		const int firstButtonHeight = 30;
+        const int buttonsX = Global.screenWidth - 200;
 		int y;
-		Button bob;
+        Button[] buttons = new Button[5];
+
+        void OnClickedStart()
+        {
+
+        }
+
+        void OnClickedLevels()
+        {
+
+        }
+
+        void OnClickedSettings()
+        {
+
+        }
+
+        void OnClickedFinite()
+        {
+
+        }
+
+        void  OnClickedExit()
+        {
+            sm.abort = true;
+        }
+
 
 		public MenuState (StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
         {
-			bob = new Button(new Vector2(400, 200), new Vector2(300, 100), sb, "O hi mark");
+            this.sm = sm;
+            int s = 80; //Spacing
+            int i = 0;
+
+            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedStart,  "Start");
+            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedLevels, "Levels");
+            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedSettings, "Infinite");
+            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedSettings, "Settings");
+            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedExit, "Exit");
+
 		}
 
 		public override void Draw(GameTime gt)
 		{
-			y = firstButtonHeight - buttonHeight;
-			sb.DrawString(ResourceManager.fonts["DefaultFont"], "O hi mark", new Vector2(buttonX, y+= buttonHeight), Color.White);
-			sb.DrawString(ResourceManager.fonts["DefaultFont"], "O hi mark", new Vector2(buttonX, y += buttonHeight), Color.White);
-			sb.DrawString(ResourceManager.fonts["DefaultFont"], "O hi mark", new Vector2(buttonX, y += buttonHeight), Color.White);
-
-			MouseState mouseState = Mouse.GetState();
-			if (mouseState.LeftButton == ButtonState.Pressed)
-			{
-				sb.DrawString(ResourceManager.fonts["DefaultFont"], $"X {mouseState.X} Y {mouseState.Y}", new Vector2(200, 200), Color.White);
-			}
-
-			bob.Draw(gt);
+            //MonoGame.Primitives2D.DrawLine(sb, new Vector2(Global.screenWidth / 2, Global.screenHeight), new Vector2(Global.screenWidth, 0),0,Color.Orange,100);
+            foreach (Button b in buttons) b.Draw(gt);
 		}
 
 		public override void Update(GameTime gt)
 		{
-			bob.Update(gt);
-		}
-
-		public override void OnStart()
-		{
-		}
-
-		public override void OnExit()
-		{
+            foreach (Button b in buttons) b.Update(gt);
 		}
 	}
 }

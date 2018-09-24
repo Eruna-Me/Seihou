@@ -10,15 +10,21 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Seihou
 {
+    public delegate void ButtonCallBack();
+
 	public class Button
 	{
+        public ButtonCallBack bcb;
 		Vector2 pos, size;
 		SpriteBatch sb;
 		string text;
+        bool hovering = false;
+        bool clicked = false;
 
-		public Button(Vector2 pos, Vector2 size, SpriteBatch sb, string text)
+		public Button(Vector2 pos, Vector2 size, SpriteBatch sb,ButtonCallBack bcb, string text)
 		{
-			this.pos = pos;
+            this.bcb = bcb;
+            this.pos = pos - size / 2;
 			this.size = size;
 			this.sb = sb;
 			this.text = text;
@@ -26,28 +32,26 @@ namespace Seihou
 
 		public void Draw(GameTime gt)
 		{
-			sb.DrawString(ResourceManager.fonts["DefaultFont"], text, pos, Color.White);
+            sb.DrawString(ResourceManager.fonts["DefaultFont"], text, pos + size/2, hovering ? Color.White : Color.Gray, 0,new Vector2(10,(ResourceManager.fonts["DefaultFont"].MeasureString(text)/2).Y),1,SpriteEffects.None,0);
 
-			MouseState mouseState = Mouse.GetState();
-			if (mouseState.LeftButton == ButtonState.Pressed && ButtonHit())
+            if (clicked)
 			{
-				sb.DrawString(ResourceManager.fonts["DefaultFont"], $"CRITICAL HIT", new Vector2(300, 200), Color.White);
+				sb.DrawString(ResourceManager.fonts["DefaultFont"], $"CRITICAL HIT", new Vector2(300, 200),Color.White);
 			}
 		}
 
 		public void Update(GameTime gt)
 		{
-			
-		}
+            MouseState mouseState = Mouse.GetState();
+            hovering = MouseOnButton();
+            clicked = mouseState.LeftButton == ButtonState.Pressed && hovering;
+            if (clicked) bcb();
+        }
 
-		private bool ButtonHit()
+		private bool MouseOnButton()
 		{
 			MouseState mouseState = Mouse.GetState();
-			if (((mouseState.X > pos.X) && (mouseState.X < pos.X + size.X)) && ((mouseState.Y > pos.Y) && (mouseState.Y < pos.Y + size.Y)))
-			{
-				return true;
-			}
-			return false;
+            return (((mouseState.X > pos.X) && (mouseState.X < pos.X + size.X)) && ((mouseState.Y > pos.Y) && (mouseState.Y < pos.Y + size.Y)));
 		}
 	}
 }

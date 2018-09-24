@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Content;
 namespace Seihou
 {
     abstract class State
-    { 
+    {
         protected readonly StateManager sm;
         protected readonly GraphicsDeviceManager gdm;
         protected readonly SpriteBatch sb;
@@ -33,6 +33,9 @@ namespace Seihou
 
     class StateManager
     {
+        //Game
+        public bool abort = false;
+
         //State
         private State currentState = null;
         private State pollState = null;
