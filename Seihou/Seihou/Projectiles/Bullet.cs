@@ -27,7 +27,15 @@ namespace Seihou
 			
 			Entity c = em.Touching(this,target);
 
-			if (c != null) c.Damage(owner, 1);
+			if (c != null)
+			{
+				if (c.hp > 0 && this.hp > 0)
+				{
+					this.hp--;
+					c.Damage(owner, 1);
+					em.RemoveEntity(this);
+				}
+			}
 		}
 
 		public override void Draw(GameTime gt)

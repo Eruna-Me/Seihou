@@ -12,15 +12,15 @@ namespace Seihou
     class Shooter : Enemy
     {
         private const float fallSpeed = 40.0f;
-        private readonly float fireRate;
-        private const float fireSpeed = 100.0f;
+        private readonly float maxFireDelay;
+        private const float bulletSpeed = 200.0f;
         private float fireDelay = 0;
         private readonly int bullets;
 
 
-        public Shooter(Vector2 pos, SpriteBatch sb, EntityManager em,int bullets = 4,float fireRate = 0.2f) : base(pos, sb, em)
+        public Shooter(Vector2 pos, SpriteBatch sb, EntityManager em,int bullets = 4,float maxFireDelay = 0.2f) : base(pos, sb, em)
         {
-            this.fireRate = fireRate;
+            this.maxFireDelay = maxFireDelay;
             this.bullets = bullets;
             ec = EntityManager.EntityClass.enemy;
             size = 40; 
@@ -29,16 +29,16 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
-            fireDelay += (float)gt.ElapsedGameTime.TotalSeconds;
+            fireDelay -= (float)gt.ElapsedGameTime.TotalSeconds;
 
-            if (fireDelay > fireRate)
+            if (fireDelay < 0)
             {
                 for (int i = 0; i < bullets; i++)
                 {
                     float dir = (i + 1) * (float)((Math.PI * 2) / bullets);
-                    em.AddEntity(new Bullet(pos, sb, em, this, new Vector2((float)Math.Cos(dir),(float)Math.Sin(dir))*fireSpeed));
+                    em.AddEntity(new Bullet(pos, sb, em, this, new Vector2((float)Math.Cos(dir),(float)Math.Sin(dir))* bulletSpeed));
                 }
-                fireDelay = 0;
+                fireDelay = maxFireDelay;
             }
 
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;

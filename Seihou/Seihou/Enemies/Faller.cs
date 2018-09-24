@@ -14,7 +14,7 @@ namespace Seihou
         private const float fallSpeed = 300.0f;
         private const float range = 100.0f;
         private const float swingSpeed = 5f;
-        private const float fireRate = 0.0005f;
+        private const float maxFireDelay = 0.5f;
         private float fireDelay = 0.0f;
         private float startX;
         private float rotateTimer = 0.0f;
@@ -37,12 +37,12 @@ namespace Seihou
             pos.X = startX + (float)Math.Sin(rotateTimer * (Math.PI + (Convert.ToDouble(direction)+1))) * range;
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
-            fireDelay += (float)gt.ElapsedGameTime.TotalSeconds;
-            Console.WriteLine("Fire delay is : " + fireDelay.ToString());
-            if (fireDelay >= fireRate)
+            fireDelay -= (float)gt.ElapsedGameTime.TotalSeconds;
+            //Console.WriteLine("Fire delay is : " + fireDelay.ToString());
+            if (fireDelay >= 0)
             {
                 em.AddEntity(new Bullet(pos, sb, em, this,new Vector2(0,1000)));
-                fireDelay = 0;
+                fireDelay = maxFireDelay;
             }
         }
 

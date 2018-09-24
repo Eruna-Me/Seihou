@@ -28,6 +28,7 @@ namespace Seihou
 
         public Player(Vector2 pos,SpriteBatch sb, EntityManager em) : base(pos, sb, em)
 		{
+			hp = 1000;
             size = 5;
             faction = Global.Faction.friendly;
             ec = EntityManager.EntityClass.player;

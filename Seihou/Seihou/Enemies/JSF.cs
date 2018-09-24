@@ -10,7 +10,8 @@ namespace Seihou
 {
 	class JSF : Enemy
 	{
-		private const float bulletSpeed = 200;
+		private const float fallSpeed = 50.0f;
+		private const float bulletSpeed = 400.0f;
 		private float fireDelay = 1f;
 		private const float maxFireDelay = 0.5f;
 

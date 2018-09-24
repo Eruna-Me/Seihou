@@ -14,6 +14,7 @@ namespace Seihou
         protected Enemy(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
             ec = EntityManager.EntityClass.enemy;
+			//hp = 1;
         }
 		public override void Update(GameTime gt)
 		{

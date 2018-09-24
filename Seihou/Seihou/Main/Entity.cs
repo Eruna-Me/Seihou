@@ -6,6 +6,7 @@ namespace Seihou
     abstract class Entity
     {
         private static int newId = 0;
+		public int hp = 1;
         public readonly int id;
         protected SpriteBatch sb;
         public Vector2 pos;
