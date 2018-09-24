@@ -27,8 +27,8 @@ namespace Seihou
 		private const float slowSpeed = 150.0f;
 
         public Player(Vector2 pos,SpriteBatch sb, EntityManager em) : base(pos, sb, em)
-        {
-            size = 30;
+		{
+            size = 5;
             faction = Global.Faction.friendly;
             ec = EntityManager.EntityClass.player;
         }
@@ -77,6 +77,8 @@ namespace Seihou
         {
 			if (invincibilityTimer <= 0 || (invincibilityTimer % invincibilityBlinkSpeed) >= invincibilityBlinkSpeed /2)
 			{
+				int SpriteSize = ResourceManager.textures["Lenovo-DenovoMan"].Height / 2;
+				sb.Draw(ResourceManager.textures["Lenovo-DenovoMan"], new Vector2(pos.X - SpriteSize, pos.Y - SpriteSize), Color.White);
 				MonoGame.Primitives2D.DrawCircle(sb, pos, size, 100, Color.Red, 5);
 			}
         }
