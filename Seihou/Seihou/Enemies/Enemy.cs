@@ -11,12 +11,24 @@ namespace Seihou
 {
     abstract class Enemy : Entity 
     {
+        protected int explosionParticles = 5;
+
         protected Enemy(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
             ec = EntityManager.EntityClass.enemy;
-			//hp = 1;
         }
-		public override void Update(GameTime gt)
+
+        public override void OnDamaged(Entity by, int damage)
+        {
+            hp--;
+            for (int i = 0; i < explosionParticles; i++)
+            {
+                em.AddEntity(new Particle(pos, sb, em));
+            }
+            em.RemoveEntity(this);
+        }
+
+        public override void Update(GameTime gt)
 		{
 			if (pos.Y > Global.screenHeight + Global.outOfScreenMargin)
 			{

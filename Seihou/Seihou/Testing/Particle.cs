@@ -22,7 +22,6 @@ namespace Seihou
         {
             life = (float)Global.random.NextDouble() * maxLife;
             size = 3;
-            faction = Global.Faction.friendly;
             speed = new Vector2((float)(Global.random.NextDouble() - 0.5) * maxSpeed, (float)(Global.random.NextDouble() - 0.5) * maxSpeed);
         }
 

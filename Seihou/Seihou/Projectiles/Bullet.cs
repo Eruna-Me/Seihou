@@ -20,8 +20,9 @@ namespace Seihou
 
 		public override void Update(GameTime gt)
 		{
-			base.Update(gt);
-			pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
+
+            base.Update(gt);
+            pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
 			EntityManager.EntityClass target = (owner is Enemy) ? EntityManager.EntityClass.player : EntityManager.EntityClass.enemy ;
 			
@@ -31,16 +32,16 @@ namespace Seihou
 			{
 				if (c.hp > 0 && this.hp > 0)
 				{
-					this.hp--;
-					c.Damage(owner, 1);
+					hp--;
+					c.OnDamaged(owner, 1);
 					em.RemoveEntity(this);
 				}
 			}
 		}
 
 		public override void Draw(GameTime gt)
-		{	
-			ResourceManager.DrawAngledTexture(sb, "Dart1", pos, speed);
+		{
+            ResourceManager.DrawAngledTexture(sb, "Dart1", pos, speed);
 		}
 	}
 }

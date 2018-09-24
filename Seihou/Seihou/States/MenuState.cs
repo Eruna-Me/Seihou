@@ -12,16 +12,13 @@ namespace Seihou
 {
 	class MenuState : State
 	{
-
-        StateManager sm;
 		const int firstButtonHeight = 30;
         const int buttonsX = Global.screenWidth - 200;
-		int y;
         Button[] buttons = new Button[5];
 
         void OnClickedStart()
         {
-
+            sm.ChangeState(new TestState(sm, cm, sb, gdm));
         }
 
         void OnClickedLevels()
@@ -47,10 +44,10 @@ namespace Seihou
 
 		public MenuState (StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
         {
-            this.sm = sm;
             int s = 80; //Spacing
             int i = 0;
 
+            
             buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedStart,  "Start");
             buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedLevels, "Levels");
             buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedSettings, "Infinite");
@@ -61,9 +58,10 @@ namespace Seihou
 
 		public override void Draw(GameTime gt)
 		{
-            //MonoGame.Primitives2D.DrawLine(sb, new Vector2(Global.screenWidth / 2, Global.screenHeight), new Vector2(Global.screenWidth, 0),0,Color.Orange,100);
             foreach (Button b in buttons) b.Draw(gt);
-		}
+            sb.DrawString(ResourceManager.fonts["DefaultFont"], "O hi mark. you tearing me apart lisa", new Vector2(30,30), new Color(4, 4, 4));
+            sb.Draw(ResourceManager.textures["Logo"], new Vector2(200, 200), Color.White);
+        }
 
 		public override void Update(GameTime gt)
 		{

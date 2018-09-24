@@ -14,11 +14,10 @@ namespace Seihou
 
         //Optional
         public Vector2 speed = new Vector2(0, 0);
-        public Global.Faction faction = Global.Faction.noFaction; //TODO remove faction (EntityClass is almost the same)
         public int size = 1;
         public EntityManager.EntityClass ec = EntityManager.EntityClass.nonSolid;
 
-        public virtual void Damage(Entity by,int damage) {}
+        public virtual void OnDamaged(Entity by,int damage) { }
 
         protected Entity(Vector2 pos, SpriteBatch sb, EntityManager em)
         {

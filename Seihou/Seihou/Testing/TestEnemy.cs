@@ -15,7 +15,7 @@ namespace Seihou
 
         }
 
-        public override void Damage(Entity by, int damage)
+        public override void OnDamaged(Entity by, int damage)
         {
             for (int i = 0; i < 5; i++)
                 em.AddEntity(new Particle(pos, sb, em));

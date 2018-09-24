@@ -40,7 +40,7 @@ namespace Seihou
 
 			if (c != null)
 			{
-			    c.Damage(owner, 1);
+			    c.OnDamaged(owner, 1);
 			}
 		}
 

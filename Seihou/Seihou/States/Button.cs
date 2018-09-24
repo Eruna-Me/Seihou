@@ -33,11 +33,6 @@ namespace Seihou
 		public void Draw(GameTime gt)
 		{
             sb.DrawString(ResourceManager.fonts["DefaultFont"], text, pos + size/2, hovering ? Color.White : Color.Gray, 0,new Vector2(10,(ResourceManager.fonts["DefaultFont"].MeasureString(text)/2).Y),1,SpriteEffects.None,0);
-
-            if (clicked)
-			{
-				sb.DrawString(ResourceManager.fonts["DefaultFont"], $"CRITICAL HIT", new Vector2(300, 200),Color.White);
-			}
 		}
 
 		public void Update(GameTime gt)

@@ -71,7 +71,7 @@ namespace Seihou
         {
             foreach (Entity e in entities[ec])
             {
-                e.Damage(null, damage);
+                e.OnDamaged(null, damage);
             }
         }
 

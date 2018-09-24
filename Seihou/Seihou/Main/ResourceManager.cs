@@ -25,7 +25,8 @@ namespace Seihou
 			textures.Add("FireParticle", cm.Load<Texture2D>("FireParticle"));
 			textures.Add("Dart1", cm.Load<Texture2D>("Dart1"));
 			textures.Add("Lenovo-DenovoMan", cm.Load<Texture2D>("Lenovo-DenovoMan"));
-		}
+            textures.Add("Logo", cm.Load<Texture2D>("Logo"));
+        }
 
 		public static Vector2 Origin(string texture) => new Vector2(textures[texture].Width / 2, textures[texture].Height / 2);
 

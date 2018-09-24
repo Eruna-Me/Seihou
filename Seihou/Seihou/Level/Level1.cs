@@ -15,12 +15,7 @@ namespace Seihou
         {
             for (int i = 0; i < 500000; i++)
             {
-                Spawn(new Shooter(Global.GetSpawn(30), sb, em,902,0.5f), 20.0f);
-
-                if (i % 10 == 0)
-                {
-                    Sleep(0.5f);
-                }
+                Spawn(new Shooter(Global.GetSpawn(i % 80 + 20), sb, em,10,10f),0.3f);
             }
         }
     }

@@ -46,18 +46,9 @@ namespace Seihou
             base.Update(gt);
         }
 
-        public override void Damage(Entity by, int damage)
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                em.AddEntity(new Particle(pos, sb, em));
-            }
-            em.RemoveEntity(this);
-        }
-
         public override void Draw(GameTime gt)
         {
-            MonoGame.Primitives2D.DrawCircle(sb, pos, 10, 3, Color.Green, 3);
+            MonoGame.Primitives2D.DrawCircle(sb, pos, size, 3, Color.Green, 3);
         }
     }
 }
