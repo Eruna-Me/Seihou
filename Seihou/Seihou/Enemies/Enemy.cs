@@ -25,6 +25,7 @@ namespace Seihou
             {
                 em.AddEntity(new Particle(pos, sb, em));
             }
+			em.AddEntity(new Point(pos, sb, em));
             em.RemoveEntity(this);
         }
 

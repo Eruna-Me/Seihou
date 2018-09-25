@@ -46,6 +46,7 @@
     <Compile Include="Level\Level1.cs" />
     <Compile Include="Level\LevelManager.cs" />
     <Compile Include="Main\UI.cs" />
+    <Compile Include="Powerups\Point.cs" />
     <Compile Include="Projectiles\EnemyBullet.cs" />
     <Compile Include="Projectiles\CoolBullet.cs" />
     <Compile Include="States\Button.cs" />

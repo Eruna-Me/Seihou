@@ -14,19 +14,19 @@ namespace Seihou
 		public const int screenWidth = 1200;
 		public const int screenHeight = 675;
 		public const int outOfScreenMargin = 100;
-		public const int uiWidth = 300;
+		public const int uiWidth = 600;
 		public static readonly int playingFieldWidth = screenWidth - uiWidth;
         public static readonly Vector2 FpsCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 90);
         public static readonly Vector2 EntCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 50);
         public const int spawnHeight = -50;
 
+		//	BUTTONS
 		public static Keys PauseKey1 = Keys.F10;
 		public static Keys PauseKey2 = Keys.Escape;
 
-		//temporary
-		public static int lives = 3;
-
+		//	VARIOUS
         public static Random random = new Random();
+		public static Player player = null;
 
         public enum Faction
         {

@@ -40,8 +40,6 @@ namespace Seihou
         {
             ResourceManager.Load(Content);
 
-			//TODO: change testState to menustate
-			// stateManager.ChangeState(new TestState(stateManager, Content, spriteBatch, graphics)); //DoNT mOvE ThiS tO iNiTiAlIzE
 			stateManager.ChangeState(new MenuState(stateManager, Content, spriteBatch, graphics));
 		}
 

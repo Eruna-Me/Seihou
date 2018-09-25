@@ -27,7 +27,9 @@ namespace Seihou
 			textures.Add("Lenovo-DenovoMan", cm.Load<Texture2D>("Lenovo-DenovoMan"));
             textures.Add("Logo", cm.Load<Texture2D>("Logo"));
             textures.Add("EnemyBullet", cm.Load<Texture2D>("EnemyBullet"));
-        }
+			textures.Add("Point", cm.Load<Texture2D>("Point"));
+			textures.Add("Power", cm.Load<Texture2D>("Power"));
+		}
 
 		public static Vector2 Origin(string texture) => new Vector2(textures[texture].Width / 2, textures[texture].Height / 2);
 
