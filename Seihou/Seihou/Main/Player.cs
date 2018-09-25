@@ -31,7 +31,7 @@ namespace Seihou
 		private const float slowSpeed = 150.0f;
 
 		//Score
-		public int score = 0;
+		public double score = 0;
 		public int collectedPowerUps = 0;
 
 		public Player(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)

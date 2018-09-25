@@ -30,7 +30,7 @@ namespace Seihou
 
 		public override void Draw(GameTime gt)
 		{
-			sb.Draw(ResourceManager.textures["Point"], pos, Color.White);
+			sb.Draw(ResourceManager.textures["Point"], pos - ResourceManager.Origin("Point"), Color.White);
 			MonoGame.Primitives2D.DrawCircle(sb, pos, size, 3, Color.Blue, 1);
 		}	
 	}
