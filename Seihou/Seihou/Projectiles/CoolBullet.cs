@@ -26,17 +26,9 @@ namespace Seihou
 			if ((speed.Length() < maxSpeed.Length()) || false) speed += maxSpeed * (float)gt.ElapsedGameTime.TotalSeconds;
 			pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
-            EntityManager.EntityClass target;
-            if (owner is Enemy)
-            {
-                target = EntityManager.EntityClass.player;
-            }
-            else
-            {
-                target = EntityManager.EntityClass.enemy;
-            }
+            EntityManager.EntityClass target = (owner is Enemy) ? EntityManager.EntityClass.player : EntityManager.EntityClass.enemy;
 
-			Entity c = em.Touching(this,target);
+            Entity c = em.Touching(this,target);
 
 			if (c != null)
 			{

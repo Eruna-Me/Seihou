@@ -36,7 +36,7 @@ namespace Seihou
                 for (int i = 0; i < bullets; i++)
                 {
                     float dir = (i + 1) * (float)((Math.PI * 2) / bullets);
-                    em.AddEntity(new Bullet(pos, sb, em, this, new Vector2((float)Math.Cos(dir),(float)Math.Sin(dir))* bulletSpeed));
+                    em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(dir),(float)Math.Sin(dir))* bulletSpeed));
                 }
                 fireDelay = maxFireDelay;
             }
