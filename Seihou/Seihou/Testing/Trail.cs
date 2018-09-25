@@ -25,6 +25,7 @@ namespace Seihou
 
         public void AddSection(Vector2 v)
         {
+            if (Settings.SimpleGraphics) return;
             sections.Add(v);
 
             if (sections.Count > 10)
@@ -35,6 +36,7 @@ namespace Seihou
 
         public void Draw(GameTime gt)
         {
+            if (Settings.SimpleGraphics) return;
             for (int i = 0; i < sections.Count; i++)
             {
                 float alpha = 0.05f;
