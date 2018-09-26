@@ -92,7 +92,7 @@ namespace Seihou
 				sb.Draw(ResourceManager.textures["Lenovo-DenovoMan"], new Vector2(pos.X - SpriteSize, pos.Y - SpriteSize), Color.White);
 				trail.Draw(gt);
 				sb.Draw(ResourceManager.textures["Lenovo-DenovoMan"], new Vector2(pos.X - SpriteSize, pos.Y - SpriteSize), Color.White);
-				MonoGame.Primitives2D.DrawCircle(sb, pos, size, 100, Color.Red, 5);
+				if (Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, size, 100, Color.Red, 5);
 			}
 		}
 
@@ -116,6 +116,12 @@ namespace Seihou
 		}
 
 		public void CollectPoint()
+		{
+			collectedPowerUps++;
+			score += collectedPowerUps;
+		}
+
+		public void CollectPower()
 		{
 			collectedPowerUps++;
 			score += collectedPowerUps;

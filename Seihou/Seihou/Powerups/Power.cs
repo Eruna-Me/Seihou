@@ -9,11 +9,11 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
-	class Point : Powerup
+	class Power : Powerup
 	{
-		public Point(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
+		public Power(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
 		{
-			texture = "Point";
+			texture = "Power";
 		}
 
 		public override void Update(GameTime gt)
@@ -26,14 +26,14 @@ namespace Seihou
 			{
 				hp--;
 				em.RemoveEntity(this);
-				Global.player.CollectPoint();
+				Global.player.CollectPower();
 			}
 		}
 
 		public override void Draw(GameTime gt)
 		{
 			base.Draw(gt);
-			if (Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, size, 10, Color.Blue, 1);
-		}	
+			if(Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, size, 10, Color.Red, 1);
+		}
 	}
 }
