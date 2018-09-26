@@ -16,7 +16,7 @@ namespace Seihou
 		private const float invincibilityBlinkSpeed = 0.5f;
 
 		//Survivability
-		public int lives = 3;
+		public int lives = 6;
 		private float invincibilityTimer = 0.0f;
 		private const float maxInvincibilityTimer = 5.0f;
 		private const float maxFireDelay = 0.1f;
@@ -35,8 +35,9 @@ namespace Seihou
 		public double score = 0;
 		public int collectedPowerUps = 0;
 
-		public Player(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
+		public Player(SpriteBatch sb, EntityManager em) : base(new Vector2(0,0), sb, em)
 		{
+            ResetPosition();
 			trail = new Trail(100, sb, ResourceManager.textures["Lenovo-DenovoMan"]);
 			size = 5;
 			ec = EntityManager.EntityClass.player;

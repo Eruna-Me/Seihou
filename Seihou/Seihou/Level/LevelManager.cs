@@ -27,6 +27,8 @@ namespace Seihou
         SpriteBatch sb;
         EntityManager em;
 
+        protected static Vector2 GetSpawn(float location) => new Vector2(Global.playingFieldWidth * (location / 100.0f), Global.spawnHeight);
+
         public Level(SpriteBatch sb, EntityManager em)
         {
             this.sb = sb;

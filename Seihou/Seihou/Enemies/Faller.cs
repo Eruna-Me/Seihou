@@ -11,7 +11,7 @@ namespace Seihou
 {
     class Faller : Enemy
     {
-        private const float fallSpeed = 300.0f;
+        private const float fallSpeed = 100.0f;
         private const float range = 100.0f;
         private const float swingSpeed = 5f;
         private const float maxFireDelay = 0.5f;
@@ -38,10 +38,10 @@ namespace Seihou
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
             fireDelay -= (float)gt.ElapsedGameTime.TotalSeconds;
-            //Console.WriteLine("Fire delay is : " + fireDelay.ToString());
-            if (fireDelay >= 0)
+
+            if (fireDelay <= 0)
             {
-                em.AddEntity(new Bullet(pos, sb, em, this,new Vector2(0,1000)));
+                em.AddEntity(new Bullet(pos, sb, em, this,new Vector2(0,200)));
                 fireDelay = maxFireDelay;
             }
         }

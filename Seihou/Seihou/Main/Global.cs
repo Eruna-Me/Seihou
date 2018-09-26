@@ -13,11 +13,12 @@ namespace Seihou
 		//	SCREENSIZE
 		public const int screenWidth = 1200;
 		public const int screenHeight = 675;
-		public const int outOfScreenMargin = 100;
+        public const int outOfScreenMargin = 100;
 		public const int uiWidth = 600;
 		public static readonly int playingFieldWidth = screenWidth - uiWidth;
-        public static readonly Vector2 FpsCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 90);
-        public static readonly Vector2 EntCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 50);
+        public static readonly Vector2 FpsCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 100);
+        public static readonly Vector2 EntCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 60);
+        public static readonly Vector2 Center = new Vector2(playingFieldWidth / 2, screenHeight / 2);
         public const int spawnHeight = -50;
 
 		//	BUTTONS
@@ -38,8 +39,6 @@ namespace Seihou
         }
 
         public static float Choose(float[] floats) => floats[random.Next(0, floats.Length)];
-
-        public static Vector2 GetSpawn(float location) => new Vector2(playingFieldWidth * (location / 100.0f), spawnHeight);
 
         //Normalize vector
         public static Vector2 Normalize(Vector2 vec)
