@@ -59,3 +59,8 @@ Seihou/.vs/Seihou/v15/Server/sqlite3/storage.ide-shm
 Seihou/.vs/Seihou/v15/Server/sqlite3/storage.ide-wal
 Seihou/Seihou/Content/obj/Windows/Dart1.mgcontent
 Seihou/Seihou/Content/obj/Windows/FireParticle.mgcontent
+*.mgcontent
+Seihou/.vs/Seihou/v15/Server/sqlite3/storage.ide-wal
+Seihou/.vs/Seihou/v15/Server/sqlite3/storage.ide-shm
+Seihou/.vs/Seihou/v15/Server/sqlite3/storage.ide
+Seihou/.vs/Seihou/v15/Browse.VC.db
