@@ -11,9 +11,12 @@ namespace Seihou
 {
 	class Point : Entity
 	{
+		private const float maxSpeed = 300.0f;
+		private const float acceleration = 75.0f;
+
 		public Point(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
 		{
-			size = 20;
+			size = 25;
 		}
 
 		public override void Update(GameTime gt)
@@ -26,6 +29,12 @@ namespace Seihou
 				em.RemoveEntity(this);
 				Global.player.CollectPoint();
 			}
+
+			speed.Y += acceleration * (float)gt.ElapsedGameTime.TotalSeconds;
+
+			if (speed.Y > maxSpeed) speed.Y = maxSpeed;
+
+			pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 		}
 
 		public override void Draw(GameTime gt)
