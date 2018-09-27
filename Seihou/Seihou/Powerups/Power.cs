@@ -29,11 +29,5 @@ namespace Seihou
 				Global.player.CollectPower();
 			}
 		}
-
-		public override void Draw(GameTime gt)
-		{
-			base.Draw(gt);
-			if(Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, size, 10, Color.Red, 1);
-		}
 	}
 }

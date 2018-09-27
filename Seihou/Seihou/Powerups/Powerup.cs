@@ -13,7 +13,6 @@ namespace Seihou
 	{
 		private const float maxSpeed = 300.0f;
 		private const float acceleration = 75.0f;
-		protected string texture;
 
 		public Powerup(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
 		{
@@ -32,11 +31,6 @@ namespace Seihou
 			{
 				em.RemoveEntity(this);
 			}
-		}
-
-		public override void Draw(GameTime gt)
-		{
-			sb.Draw(ResourceManager.textures[texture], pos - ResourceManager.Origin(texture), Color.White);
 		}
 	}
 }

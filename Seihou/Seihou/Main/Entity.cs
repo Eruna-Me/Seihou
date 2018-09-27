@@ -3,33 +3,38 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Seihou
 {
-    abstract class Entity
-    {
-        private static int newId = 0;
+	abstract class Entity
+	{
+		private static int newId = 0;
 		public int hp = 1;
-        public readonly int id;
-        protected SpriteBatch sb;
-        public Vector2 pos;
+		public readonly int id;
+		protected SpriteBatch sb;
+		public Vector2 pos;
 		protected EntityManager em;
+		protected string texture = "NOTEXTURE";
 
-        //Optional
-        public Vector2 speed = new Vector2(0, 0);
-        public int size = 1;
-        public EntityManager.EntityClass ec = EntityManager.EntityClass.nonSolid;
+		//Optional
+		public Vector2 speed = new Vector2(0, 0);
+		public int size = 1;
+		public EntityManager.EntityClass ec = EntityManager.EntityClass.nonSolid;
 
-        public virtual void OnDamaged(Entity by,int damage) { }
+		public virtual void OnDamaged(Entity by, int damage) { }
 
-        protected Entity(Vector2 pos, SpriteBatch sb, EntityManager em)
-        {
-            this.sb = sb;
-            this.pos = pos;
+		protected Entity(Vector2 pos, SpriteBatch sb, EntityManager em)
+		{
+			this.sb = sb;
+			this.pos = pos;
 			this.em = em;
 
-            newId++;
-            id = newId;
-        }
+			newId++;
+			id = newId;
+		}
 
-        public abstract void Draw(GameTime gt);
+		public virtual void Draw(GameTime gt)
+		{
+			if (texture != "NOTEXTURE")sb.Draw(ResourceManager.textures[texture], pos - ResourceManager.Origin(texture), Color.White);
+			if (Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, size, 10, Color.White, 1);
+		}
         public abstract void Update(GameTime gt);
     }
 }

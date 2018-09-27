@@ -22,11 +22,6 @@ namespace Seihou
 			speed.Y = 10f;
 		}
 
-		public override void Draw(GameTime gt)
-		{
-			MonoGame.Primitives2D.DrawCircle(sb, pos, 10, 3, Color.Red, 3);
-		}
-
 		public override void Update(GameTime gt)
 		{
 			base.Update(gt);

@@ -45,10 +45,5 @@ namespace Seihou
 
             base.Update(gt);
         }
-
-        public override void Draw(GameTime gt)
-        {
-            MonoGame.Primitives2D.DrawCircle(sb, pos, size, 3, Color.Green, 3);
-        }
     }
 }

@@ -45,10 +45,5 @@ namespace Seihou
                 fireDelay = maxFireDelay;
             }
         }
-        
-        public override void Draw(GameTime gt)
-        {
-            MonoGame.Primitives2D.DrawCircle(sb, pos, 10, 3, Color.Green, 3);
-        }
     }
 }

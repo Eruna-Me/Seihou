@@ -37,8 +37,9 @@ namespace Seihou
 
 		public Player(SpriteBatch sb, EntityManager em) : base(new Vector2(0,0), sb, em)
 		{
-            ResetPosition();
-			trail = new Trail(100, sb, ResourceManager.textures["Lenovo-DenovoMan"]);
+			texture = "Lenovo-DenovoMan";
+			ResetPosition();
+			trail = new Trail(100, sb, ResourceManager.textures[texture]);
 			size = 5;
 			ec = EntityManager.EntityClass.player;
 		}
@@ -52,7 +53,7 @@ namespace Seihou
 
 		public override void Update(GameTime gt)
 		{
-			int SpriteSize = ResourceManager.textures["Lenovo-DenovoMan"].Height / 2;
+			int SpriteSize = ResourceManager.textures[texture].Height / 2;
 			trail.AddSection(new Vector2(pos.X - SpriteSize, pos.Y - SpriteSize));
 			KeyboardState kb = Keyboard.GetState();
 
@@ -89,10 +90,10 @@ namespace Seihou
 		{
 			if (invincibilityTimer <= 0 || (invincibilityTimer % invincibilityBlinkSpeed) >= invincibilityBlinkSpeed / 2)
 			{
-				int SpriteSize = ResourceManager.textures["Lenovo-DenovoMan"].Height / 2;
-				sb.Draw(ResourceManager.textures["Lenovo-DenovoMan"], new Vector2(pos.X - SpriteSize, pos.Y - SpriteSize), Color.White);
+				int SpriteSize = ResourceManager.textures[texture].Height / 2;
+				sb.Draw(ResourceManager.textures[texture], new Vector2(pos.X - SpriteSize, pos.Y - SpriteSize), Color.White);
 				trail.Draw(gt);
-				sb.Draw(ResourceManager.textures["Lenovo-DenovoMan"], new Vector2(pos.X - SpriteSize, pos.Y - SpriteSize), Color.White);
+				sb.Draw(ResourceManager.textures[texture], new Vector2(pos.X - SpriteSize, pos.Y - SpriteSize), Color.White);
 				if (Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, size, 100, Color.Red, 5);
 			}
 		}
