@@ -35,11 +35,11 @@ namespace Seihou
 
         }
 
-		public static Vector2 Origin(string texture) => new Vector2(textures[texture].Width / 2, textures[texture].Height / 2);
+		public static Vector2 Center(string texture) => new Vector2(textures[texture].Width / 2, textures[texture].Height / 2);
 
 		public static void DrawAngledTexture(SpriteBatch sb, string texture, Vector2 pos, Vector2 speed)
 		{
-			sb.Draw(textures[texture], pos, null, Color.White, Global.VtoD(speed), Origin(texture), 1.0f, SpriteEffects.None, 0f);
+			sb.Draw(textures[texture], pos, null, Color.White, Global.VtoD(speed), Center(texture), 1.0f, SpriteEffects.None, 0f);
 		}
 	}
 }

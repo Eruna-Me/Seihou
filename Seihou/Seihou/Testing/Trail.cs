@@ -13,13 +13,13 @@ namespace Seihou
     {
         readonly int length;
         private List<Vector2> sections = new List<Vector2>();
-        private Texture2D txt;
+        private string texture;
         private SpriteBatch sb;
 
-        public Trail(int length,SpriteBatch sb,Texture2D txt)
+        public Trail(int length,SpriteBatch sb,string texture)
         {
             this.sb = sb;
-            this.txt = txt;
+            this.texture = texture;
             this.length = length;
         }
 
@@ -40,7 +40,7 @@ namespace Seihou
             for (int i = 0; i < sections.Count; i++)
             {
                 float alpha = 0.05f;
-                sb.Draw(txt, sections[i],new Color(new Vector4(alpha,alpha,alpha,alpha)));
+                sb.Draw(ResourceManager.textures[texture],sections[i] - ResourceManager.Center(texture),new Color(new Vector4(alpha,alpha,alpha,alpha)));
             }
         }
     }

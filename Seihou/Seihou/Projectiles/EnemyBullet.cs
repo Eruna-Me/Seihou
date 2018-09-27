@@ -16,7 +16,7 @@ namespace Seihou
 		public EnemyBullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em, owner)
 		{
 			texture = "EnemyBullet";
-            trail = new Trail(1,sb,ResourceManager.textures[texture]);
+            trail = new Trail(1,sb,texture);
             ec = EntityManager.EntityClass.nonSolid;
 			size = 3;
 			this.speed = speed;
