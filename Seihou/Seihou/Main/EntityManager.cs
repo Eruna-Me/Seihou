@@ -16,6 +16,7 @@ namespace Seihou
             nonSolid = 0,
             enemy,
             player,
+            ui,
         }
 
         private readonly Dictionary<EntityClass, List<Entity>>  entities =           new Dictionary<EntityClass, List<Entity>>();

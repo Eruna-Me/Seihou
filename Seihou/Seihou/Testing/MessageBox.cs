@@ -25,6 +25,8 @@ namespace Seihou
 
         public MessageBox(Vector2 pos, SpriteBatch sb,EntityManager em,string text, float life = 2.0f,float fadeIn = 2.0f,float fadeOut = 2.0f,string fontName = "DefaultFontBig") : base(pos, sb, em)
         {
+            ec = EntityManager.EntityClass.ui;
+
             this.fontName = fontName;
             this.text = text;
 
