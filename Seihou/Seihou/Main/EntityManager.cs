@@ -71,6 +71,19 @@ namespace Seihou
             return null;
         }
 
+        public Entity Touching(Vector2 pos, int size, EntityClass ec)
+        {
+            foreach (Entity e in entities[ec])
+            {
+                if (Collision.Circle(e,pos,size))
+                {
+                    return e;
+                }
+            }
+            return null;
+        }
+
+
         public void DamageAll(int damage,EntityClass ec)
         {
             foreach (Entity e in entities[ec])
