@@ -56,6 +56,10 @@ namespace Seihou
                         fadeOut -= (float)gt.ElapsedGameTime.TotalSeconds;
                         alpha = fadeOut / maxFadeOut;
                     }
+                    else
+                    {
+                        em.RemoveEntity(this);
+                    }
                 }
                 else
                 {
