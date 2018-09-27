@@ -87,6 +87,8 @@ namespace Seihou
             return c;
         }
 
+        public int GetEntityCount(EntityClass e) => entities[e].Count;
+
         public void RemoveEntity(Entity ent) => pollRemoveEntities[ent.ec].Enqueue(ent);
 
         public void AddEntity(Entity ent) => pollAddEntities[ent.ec].Enqueue(ent);

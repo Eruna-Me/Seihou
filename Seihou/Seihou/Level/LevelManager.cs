@@ -12,11 +12,13 @@ namespace Seihou
 {
     class SpawnTask
     {
+        public bool waitUntilClear = false;
         public readonly float sleep = 0;
         public readonly Entity spawn;
 
-        public SpawnTask(Entity spawn, float sleep)
+        public SpawnTask(Entity spawn, float sleep,bool waitUntilClear)
         {
+            this.waitUntilClear = waitUntilClear;
             this.sleep = sleep;
             this.spawn = spawn;
         }
@@ -37,13 +39,15 @@ namespace Seihou
 
         public readonly Queue<SpawnTask> spawner = new Queue<SpawnTask>();
 
-        protected void Spawn(Entity e) => spawner.Enqueue(new SpawnTask(e, 0));
-        protected void Spawn(Entity e, float t) => spawner.Enqueue(new SpawnTask(e, t));
-        protected void Sleep(float t) => spawner.Enqueue(new SpawnTask(null,t));
+        protected void Spawn(Entity e) => spawner.Enqueue(new SpawnTask(e, 0,false));
+        protected void Spawn(Entity e, float t) => spawner.Enqueue(new SpawnTask(e, t,false));
+        protected void Sleep(float t) => spawner.Enqueue(new SpawnTask(null,t,false));
+        protected void WaitUntilClear() => spawner.Enqueue(new SpawnTask(null, 0, true));
     }
 
     class LevelManager
     {
+        public bool waitUntilClear = false;
         private Queue<SpawnTask> spawner = new Queue<SpawnTask>();
         private EntityManager em;
         private float timer = 0.0f;
@@ -61,6 +65,12 @@ namespace Seihou
 
         public void Update(GameTime gt)
         {
+            if (waitUntilClear)
+            {
+                waitUntilClear = em.GetEntityCount(EntityManager.EntityClass.enemy) != 0;
+                return;
+            }
+
             if (pause) return;
 
             while (timer <= gt.ElapsedGameTime.TotalSeconds)
@@ -68,8 +78,16 @@ namespace Seihou
                 if (spawner.Count < 1) return;
 
                 SpawnTask st = spawner.Dequeue();
+                
                 timer += st.sleep;
                 if (st.spawn != null) em.AddEntity(st.spawn);
+
+                if (st.waitUntilClear)
+                {
+                    waitUntilClear = st.waitUntilClear;
+                    return;
+                }
+
             }
             timer -= (float)gt.ElapsedGameTime.TotalSeconds;
         }

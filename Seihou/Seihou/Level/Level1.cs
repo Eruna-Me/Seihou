@@ -29,9 +29,9 @@ namespace Seihou
                 Sleep(1f);
             }
 
-            Sleep(2.5f);
+            WaitUntilClear();
             Spawn(new MessageBox(new Vector2(Global.playingFieldWidth/2,Global.screenHeight/2), sb, em, "Stage 2"));
-            Sleep(2.5f);
+           
 
             //PART 2
             for (int i = 0; i < 10; i++)
