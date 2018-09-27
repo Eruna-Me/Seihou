@@ -36,7 +36,13 @@ namespace Seihou
 
 		//Score
 		public double score = 0;
+		public double graze = 0; // TODO: add graze
 		public int collectedPowerUps = 0;
+		public const float pointBaseScore = 10000.0f;
+		public const float pointCPUbonusScore = 100.0f;
+		public const float powerBaseScore = 0.0f;
+		public const float powerCPUbonusScore = 100.0f;
+		public const float grazeScore = 0.0f;
 
 		public Player(SpriteBatch sb, EntityManager em) : base(new Vector2(0,0), sb, em)
 		{
@@ -131,7 +137,7 @@ namespace Seihou
 		public void CollectPoint()
 		{
 			collectedPowerUps++;
-			score += collectedPowerUps;
+			score += pointBaseScore + collectedPowerUps * pointCPUbonusScore;
 		}
 
 		public void CollectPower()
@@ -139,7 +145,7 @@ namespace Seihou
 			power++;
 			power = power > fullPower ? fullPower : power;
 			collectedPowerUps++;
-			score += collectedPowerUps;
+			score += powerBaseScore + collectedPowerUps * powerCPUbonusScore;
 		}
 	}
 }
