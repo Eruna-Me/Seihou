@@ -25,7 +25,7 @@ namespace Seihou
             //Load content
             lm = new LevelManager(em);
             font1 = ResourceManager.fonts["DefaultFont"];
-            player = new Player(new Vector2(200, 200), sb, em);
+            player = new Player(sb, em);
 			Global.player = player;
         }
 

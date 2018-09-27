@@ -22,14 +22,18 @@ namespace Seihou
 			cm = com;
 
 			fonts.Add("DefaultFont", cm.Load<SpriteFont>("KosugiMaru-Medium"));
-			textures.Add("FireParticle", cm.Load<Texture2D>("FireParticle"));
+            fonts.Add("DefaultFontBig", cm.Load<SpriteFont>("KosugiMaru-Big"));
+            textures.Add("FireParticle", cm.Load<Texture2D>("FireParticle"));
 			textures.Add("Dart1", cm.Load<Texture2D>("Dart1"));
 			textures.Add("Lenovo-DenovoMan", cm.Load<Texture2D>("Lenovo-DenovoMan"));
             textures.Add("Logo", cm.Load<Texture2D>("Logo"));
             textures.Add("EnemyBullet", cm.Load<Texture2D>("EnemyBullet"));
 			textures.Add("Point", cm.Load<Texture2D>("Point"));
-			textures.Add("Power", cm.Load<Texture2D>("Power"));
-		}
+			textures.Add("Power", cm.Load<Texture2D>("Power")); 
+            textures.Add("SeihouText1", cm.Load<Texture2D>("SeihouText1"));
+            textures.Add("Tree", cm.Load<Texture2D>("Tree"));
+
+        }
 
 		public static Vector2 Origin(string texture) => new Vector2(textures[texture].Width / 2, textures[texture].Height / 2);
 

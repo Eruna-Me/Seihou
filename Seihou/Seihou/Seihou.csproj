@@ -56,6 +56,7 @@
     <Compile Include="States\MenuState.cs" />
     <Compile Include="States\StateManager.cs" />
     <Compile Include="States\TestState.cs" />
+    <Compile Include="Testing\MessageBox.cs" />
     <Compile Include="Testing\Particle.cs" />
     <Compile Include="Enemies\Enemy.cs" />
     <Compile Include="Testing\TestEnemy.cs" />
