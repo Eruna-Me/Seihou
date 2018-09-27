@@ -22,9 +22,12 @@ namespace Seihou
 		private const float maxFireDelay = 0.1f;
 
 		//Firing
+		public int power = 0;
+		private const int powerStage1 = 3;
+		private const int fullPower = 10;
 		private float fireDelay = 0;
 		private const float bulletSpeed = 500.0f;
-		private const float bulletSpread = 50.0f;
+		private const float bulletSpread = 30.0f;
 
 		//Movement
 		private const float normalSpeed = 300.0f;
@@ -42,13 +45,6 @@ namespace Seihou
 			trail = new Trail(100, sb, ResourceManager.textures[texture]);
 			size = 5;
 			ec = EntityManager.EntityClass.player;
-		}
-
-		public void Fire()
-		{
-			em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
-			em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));
-			em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(-bulletSpread, -bulletSpeed)));
 		}
 
 		public override void Update(GameTime gt)
@@ -112,6 +108,21 @@ namespace Seihou
 			}
 		}
 
+		public void Fire()
+		{
+			em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
+			if (power >= powerStage1)
+			{
+				em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));
+				em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(-bulletSpread, -bulletSpeed)));
+			}
+			if (power >= fullPower)
+			{
+				em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(bulletSpread * 2, -bulletSpeed)));
+				em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(-bulletSpread * 2, -bulletSpeed)));
+			}
+		}
+
 		void ResetPosition()
 		{
 			pos = new Vector2(Global.playingFieldWidth / 2, Global.screenHeight - 50);
@@ -125,6 +136,8 @@ namespace Seihou
 
 		public void CollectPower()
 		{
+			power++;
+			power = power > fullPower ? fullPower : power;
 			collectedPowerUps++;
 			score += collectedPowerUps;
 		}

@@ -40,7 +40,7 @@ namespace Seihou
 
             //Powerups
             sb.DrawString(font1, "Power: ", new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White);
-            sb.DrawString(font1, Global.player.collectedPowerUps.ToString(), new Vector2(Global.playingFieldWidth + 20 + font1.MeasureString("Power: ").X, y), Color.Red);
+            sb.DrawString(font1, Global.player.power.ToString(), new Vector2(Global.playingFieldWidth + 20 + font1.MeasureString("Power: ").X, y), Color.Red);
 
             //Grace
             sb.DrawString(font1, "Grace: ", new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White);
