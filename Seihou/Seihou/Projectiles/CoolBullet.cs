@@ -30,10 +30,15 @@ namespace Seihou
 
 			if (c != null)
 			{
-			    c.OnDamaged(owner, 1);
+				if (c.hp > 0 && hp > 0)
+				{
+					hp--;
+					c.OnDamaged(owner, 1);
+					em.RemoveEntity(this);
+				}
 			}
 
-			if (pos.Y + Global.outOfScreenMargin < 0 || pos.Y > Global.screenHeight + Global.outOfScreenMargin || pos.X + Global.outOfScreenMargin < 0 || pos.X > Global.screenWidth + Global.outOfScreenMargin)
+			if (pos.Y + Global.outOfScreenMargin < 0 || pos.Y > Global.screenHeight + Global.outOfScreenMargin || pos.X + Global.outOfScreenMargin < 0 || pos.X > Global.playingFieldWidth + Global.outOfScreenMargin)
 			{
 				em.RemoveEntity(this);
 			}
