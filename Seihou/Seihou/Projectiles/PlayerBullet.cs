@@ -9,9 +9,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
-	class Bullet : EnemyProjectile
+	class PlayerBullet : PlayerProjectile
 	{
-		public Bullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em, owner)
+		public PlayerBullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em, owner)
 		{
 			texture = "Dart1";
 			ec = EntityManager.EntityClass.nonSolid;

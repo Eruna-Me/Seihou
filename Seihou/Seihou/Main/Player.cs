@@ -116,16 +116,16 @@ namespace Seihou
 
 		public void Fire()
 		{
-			em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
+			em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
 			if (power >= powerStage1)
 			{
-				em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));
-				em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(-bulletSpread, -bulletSpeed)));
+				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));
+				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(-bulletSpread, -bulletSpeed)));
 			}
 			if (power >= fullPower)
 			{
-				em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(bulletSpread * 2, -bulletSpeed)));
-				em.AddEntity(new Bullet(pos, sb, em, this, new Vector2(-bulletSpread * 2, -bulletSpeed)));
+				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(-bulletSpread * 2, -bulletSpeed)));
+				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread * 2, -bulletSpeed)));
 			}
 		}
 
