@@ -23,15 +23,19 @@ namespace Seihou
 			pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
 			Entity c = em.Touching(this, EntityManager.EntityClass.player);
-
-			if (c != null)
+			Entity g = em.Touching(pos, Global.player.grazeDistance, EntityManager.EntityClass.player);
+			if (g != null)
 			{
-				if (c.hp > 0 && hp > 0)
+				if (c != null)
 				{
-					hp--;
-					c.OnDamaged(owner, 1);
-					em.RemoveEntity(this);
+					if (c.hp > 0 && hp > 0)
+					{
+						hp--;
+						c.OnDamaged(owner, 1);
+						em.RemoveEntity(this);
+					}
 				}
+				else Global.player.Graze(gt);
 			}
 
 			if (pos.Y + Global.outOfScreenMargin < 0 || pos.Y > Global.screenHeight + Global.outOfScreenMargin || pos.X + Global.outOfScreenMargin < 0 || pos.X > Global.playingFieldWidth + Global.outOfScreenMargin)

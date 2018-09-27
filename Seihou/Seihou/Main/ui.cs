@@ -28,7 +28,7 @@ namespace Seihou
 
             //Score
             sb.DrawString(font2, "Score: ", new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White);
-            sb.DrawString(font2, Global.player.score.ToString(), new Vector2(Global.playingFieldWidth + 20 + font2.MeasureString("Score: ").X, y), Color.Gray);
+            sb.DrawString(font2, Math.Round(Global.player.score).ToString(), new Vector2(Global.playingFieldWidth + 20 + font2.MeasureString("Score: ").X, y), Color.Gray);
 
             y += uiLineHeight; //New line
 
@@ -43,8 +43,8 @@ namespace Seihou
             sb.DrawString(font1, Global.player.power.ToString(), new Vector2(Global.playingFieldWidth + 20 + font1.MeasureString("Power: ").X, y), Color.Red);
 
             //Grace
-            sb.DrawString(font1, "Grace: ", new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White);
-            sb.DrawString(font1, Global.player.collectedPowerUps.ToString(), new Vector2(Global.playingFieldWidth + 20 + font1.MeasureString("Grace: ").X, y), Color.Blue);
+            sb.DrawString(font1, "Graze: ", new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White);
+            sb.DrawString(font1, Math.Round(Global.player.graze).ToString(), new Vector2(Global.playingFieldWidth + 20 + font1.MeasureString("Grace: ").X, y), Color.Blue);
 
             y += uiLineHeight; //New line
 

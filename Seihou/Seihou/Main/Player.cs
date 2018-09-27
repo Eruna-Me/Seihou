@@ -37,18 +37,19 @@ namespace Seihou
 		//Score
 		public double score = 0;
 		public double graze = 0; // TODO: add graze
+		public int grazeDistance = ResourceManager.textures["Lenovo-DenovoMan"].Height / 2;
 		public int collectedPowerUps = 0;
 		public const float pointBaseScore = 10000.0f;
 		public const float pointCPUbonusScore = 100.0f;
 		public const float powerBaseScore = 0.0f;
 		public const float powerCPUbonusScore = 100.0f;
-		public const float grazeScore = 0.0f;
+		public const float grazeScore = 10000.0f;
 
 		public Player(SpriteBatch sb, EntityManager em) : base(new Vector2(0,0), sb, em)
 		{
 			texture = "Lenovo-DenovoMan";
 			ResetPosition();
-			trail = new Trail(100, sb, ResourceManager.textures[texture]);
+			trail = new Trail(100, sb, texture);
 			size = 5;
 			ec = EntityManager.EntityClass.player;
 		}
@@ -56,7 +57,7 @@ namespace Seihou
 		public override void Update(GameTime gt)
 		{
 			int SpriteSize = ResourceManager.textures[texture].Height / 2;
-			trail.AddSection(new Vector2(pos.X - SpriteSize, pos.Y - SpriteSize));
+			trail.AddSection(pos);
 			KeyboardState kb = Keyboard.GetState();
 
 			bool u = kb.IsKeyDown(Settings.upKey);
@@ -93,10 +94,10 @@ namespace Seihou
 			if (invincibilityTimer <= 0 || (invincibilityTimer % invincibilityBlinkSpeed) >= invincibilityBlinkSpeed / 2)
 			{
 				int SpriteSize = ResourceManager.textures[texture].Height / 2;
-				sb.Draw(ResourceManager.textures[texture], new Vector2(pos.X - SpriteSize, pos.Y - SpriteSize), Color.White);
+				sb.Draw(ResourceManager.textures[texture], pos - ResourceManager.Center(texture), Color.White);
 				trail.Draw(gt);
-				sb.Draw(ResourceManager.textures[texture], new Vector2(pos.X - SpriteSize, pos.Y - SpriteSize), Color.White);
 				if (Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, size, 100, Color.Red, 5);
+				if (Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, grazeDistance, 10, Color.White, 1);
 			}
 		}
 
@@ -126,6 +127,15 @@ namespace Seihou
 			{
 				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(-bulletSpread * 2, -bulletSpeed)));
 				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread * 2, -bulletSpeed)));
+			}
+		}
+
+		public void Graze(GameTime gt)
+		{
+			if (invincibilityTimer <= 0)
+			{
+				graze += (float)gt.ElapsedGameTime.TotalSeconds;
+				score += grazeScore * (float)gt.ElapsedGameTime.TotalSeconds;
 			}
 		}
 
