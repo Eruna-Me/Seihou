@@ -83,6 +83,7 @@ namespace Seihou
             return null;
         }
 
+        public List<Entity> GetEntities(EntityClass e) => entities[e];
 
         public void DamageAll(int damage,EntityClass ec)
         {

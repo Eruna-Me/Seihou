@@ -15,10 +15,7 @@ namespace Seihou
         private static int checks = 0;
 
         [Conditional("DEBUG")]
-        public static void Write(string message)
-        {
-            Console.WriteLine(message);
-        }
+        public static void Write(object sender,string message) => Console.WriteLine($"{sender} : {message}");
 
         [Conditional("DEBUG")]
         public static void Write(Entity e)

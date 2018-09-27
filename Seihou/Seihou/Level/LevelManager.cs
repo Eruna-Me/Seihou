@@ -68,6 +68,11 @@ namespace Seihou
             if (waitUntilClear)
             {
                 waitUntilClear = em.GetEntityCount(EntityManager.EntityClass.enemy) != 0;
+                if (!waitUntilClear)
+                {
+                    Debugging.Write(this, "Field cleared!");
+                }
+
                 return;
             }
 
@@ -78,12 +83,18 @@ namespace Seihou
                 if (spawner.Count < 1) return;
 
                 SpawnTask st = spawner.Dequeue();
+
                 
                 timer += st.sleep;
-                if (st.spawn != null) em.AddEntity(st.spawn);
+                if (st.spawn != null)
+                {
+                    Debugging.Write(this, $"Spawning {st.spawn}...");
+                    em.AddEntity(st.spawn);
+                }
 
                 if (st.waitUntilClear)
                 {
+                    Debugging.Write(this, "Waiting until clear...");
                     waitUntilClear = st.waitUntilClear;
                     return;
                 }

@@ -14,9 +14,6 @@ namespace Seihou
         public Level1(SpriteBatch sb, EntityManager em) : base(sb,em)
         {
 
-            Spawn(new MessageBox(Global.Center, sb, em, "Plz turn off \n fullscreen \n because it might \n crash, or \n save all your \n stuff first",5,5,5));
-            Sleep(16.0f);
-
             Spawn(new MessageBox(Global.Center, sb, em, "Level 1"));
 
 
@@ -41,7 +38,6 @@ namespace Seihou
 
                 Sleep(1f);
             }
-
 
             Sleep(2.5f);
             Spawn(new MessageBox(new Vector2(Global.playingFieldWidth / 2, Global.screenHeight / 2), sb, em, "Stage 3"));

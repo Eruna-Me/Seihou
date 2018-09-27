@@ -115,9 +115,25 @@ namespace Seihou
 			}
 		}
 
+        public void Fire()
+        {
+            em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));
+            if (power >= powerStage1)
+            {
+                em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));
+                em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(-bulletSpread, -bulletSpeed)));
+            }
+            if (power >= fullPower)
+            {
+                em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(-bulletSpread * 2, -bulletSpeed)));
+                em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(bulletSpread * 2, -bulletSpeed)));
+            }
+        }
+
+        /*
 		public void Fire()
 		{
-			em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
+			em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));
 			if (power >= powerStage1)
 			{
 				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));
@@ -129,8 +145,9 @@ namespace Seihou
 				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread * 2, -bulletSpeed)));
 			}
 		}
+        */
 
-		public void Graze(GameTime gt)
+        public void Graze(GameTime gt)
 		{
 			if (invincibilityTimer <= 0)
 			{
