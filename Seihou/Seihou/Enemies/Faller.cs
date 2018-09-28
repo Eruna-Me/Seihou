@@ -12,8 +12,8 @@ namespace Seihou
     class Faller : Enemy
     {
         private const float fallSpeed = 100.0f;
-        private const float range = 100.0f;
-        private const float swingSpeed = 5f;
+        private const float range = 30.0f;
+        private const float swingSpeed = 0.1f;
         private const float maxFireDelay = 0.5f;
         private float fireDelay = 0.0f;
         private float startX;
@@ -28,6 +28,7 @@ namespace Seihou
             startX = pos.X;
             size = 40; 
             speed.Y = fallSpeed;
+			hp = 3;
         }
 
         public override void Update(GameTime gt)
@@ -35,7 +36,7 @@ namespace Seihou
             base.Update(gt);
 
             rotateTimer += (float)gt.ElapsedGameTime.TotalSeconds;
-            pos.X = startX + (float)Math.Sin(rotateTimer * (Math.PI + (Convert.ToDouble(direction)+1))) * range;
+            pos.X = startX + (float)Math.Sin(rotateTimer * Math.PI + Math.PI * (Convert.ToDouble(direction))) * range;
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
             fireDelay -= (float)gt.ElapsedGameTime.TotalSeconds;

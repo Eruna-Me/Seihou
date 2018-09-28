@@ -25,8 +25,12 @@ namespace Seihou
             {
                 em.AddEntity(new Particle(pos, sb, em));
             }
-			em.AddEntity(new Power(pos, sb, em));
-            em.RemoveEntity(this);
+			
+			if (hp <= 0)
+			{
+				em.AddEntity(new Power(pos, sb, em));
+				em.RemoveEntity(this);
+			}
         }
 
         public override void Update(GameTime gt)

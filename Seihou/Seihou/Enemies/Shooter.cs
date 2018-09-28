@@ -26,6 +26,7 @@ namespace Seihou
             ec = EntityManager.EntityClass.enemy;
             size = 40; 
             speed.Y = fallSpeed;
+			hp = 10;
         }
 
         public override void Update(GameTime gt)

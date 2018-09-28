@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Enemies\JSF.cs" />
     <Compile Include="Enemies\Shooter.cs" />
+    <Compile Include="Level\DemoLevel.cs" />
     <Compile Include="Level\Level1.cs" />
     <Compile Include="Level\LevelManager.cs" />
     <Compile Include="Main\UI.cs" />

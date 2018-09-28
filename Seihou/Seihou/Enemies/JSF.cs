@@ -20,6 +20,7 @@ namespace Seihou
 			texture = "JSF";
 			size = 10;
 			speed.Y = 10f;
+			hp = 5;
 		}
 
 		public override void Update(GameTime gt)
