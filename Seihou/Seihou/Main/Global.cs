@@ -28,7 +28,7 @@ namespace Seihou
 		//	VARIOUS
         public static Random random = new Random();
 		public static Player player = null;
-		public const bool drawCollisionBoxes = true;
+		public const bool drawCollisionBoxes = false;
 
         public enum Faction
         {

@@ -117,7 +117,7 @@ namespace Seihou
 
         public void Fire()
         {
-            em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));
+            em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
             if (power >= powerStage1)
             {
                 em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));

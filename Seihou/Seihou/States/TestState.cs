@@ -31,6 +31,7 @@ namespace Seihou
 
         public override void Draw(GameTime gt)
         {
+            sb.Draw(ResourceManager.textures["Wallpaper1"],new Vector2(0,0),Color.White);
             em.Draw(gt);
             UI.Draw(gt, sb);
             sb.DrawString(font1,$"Fps: {sm.GetFps()}",Global.FpsCounterPos,CoolFpsColorThing(sm.GetFps()));

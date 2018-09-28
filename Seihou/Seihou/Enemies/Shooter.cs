@@ -20,6 +20,7 @@ namespace Seihou
 
         public Shooter(Vector2 pos, SpriteBatch sb, EntityManager em,int bullets = 4,float maxFireDelay = 0.2f) : base(pos, sb, em)
         {
+            texture = "MeanMan";
             this.maxFireDelay = maxFireDelay;
             this.bullets = bullets;
             ec = EntityManager.EntityClass.enemy;

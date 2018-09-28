@@ -14,14 +14,16 @@ namespace Seihou
         protected readonly Entity owner;
         protected Entity target;
         private float bulletSpeed;
-        private float mooiBoogjeLevel = 0;
+        private float mooiBoogjeLevel = 5;
+        private float minimumBulletSpeed;
         private float homingTime;
 
         public HomingBullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner,Vector2 speed) : base(pos, sb, em)
         {
-            texture = "Dart1";
+            texture = "Dart2";
             this.owner = owner;
             this.speed = speed;
+            minimumBulletSpeed = 1000;
             homingTime = Global.screenHeight / speed.Length();
             bulletSpeed = speed.Length();
         }
@@ -47,6 +49,10 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
+            if (speed.Length() < minimumBulletSpeed)
+            {
+                speed *= (minimumBulletSpeed / speed.Length());
+            }
 
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 

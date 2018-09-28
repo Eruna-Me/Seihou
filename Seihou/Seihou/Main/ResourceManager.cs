@@ -21,17 +21,39 @@ namespace Seihou
 		{
 			cm = com;
 
-			fonts.Add("DefaultFont", cm.Load<SpriteFont>("KosugiMaru-Medium"));
-            fonts.Add("DefaultFontBig", cm.Load<SpriteFont>("KosugiMaru-Big"));
-            textures.Add("FireParticle", cm.Load<Texture2D>("FireParticle"));
-			textures.Add("Dart1", cm.Load<Texture2D>("Dart1"));
-			textures.Add("Lenovo-DenovoMan", cm.Load<Texture2D>("Lenovo-DenovoMan"));
-            textures.Add("Logo", cm.Load<Texture2D>("Logo"));
-            textures.Add("EnemyBullet", cm.Load<Texture2D>("EnemyBullet"));
-			textures.Add("Point", cm.Load<Texture2D>("Point"));
-			textures.Add("Power", cm.Load<Texture2D>("Power")); 
-            textures.Add("SeihouText1", cm.Load<Texture2D>("SeihouText1"));
-            textures.Add("Tree", cm.Load<Texture2D>("Tree"));
+            //Spritefonts
+            fonts.Add("DefaultFont",         cm.Load<SpriteFont>("Spritefonts/KosugiMaru-Medium"));
+            fonts.Add("DefaultFontBig",      cm.Load<SpriteFont>("Spritefonts/KosugiMaru-Big"));
+                                
+            //Projectiles
+            textures.Add("Dart1",            cm.Load<Texture2D>("Projectiles/Dart1"));
+            textures.Add("Dart2",            cm.Load<Texture2D>("Projectiles/Dart2"));
+            textures.Add("EnemyBullet",      cm.Load<Texture2D>("Projectiles/EnemyBullet"));
+            textures.Add("Laser1",           cm.Load<Texture2D>("Projectiles/Laser1"));
+            textures.Add("Laser2",           cm.Load<Texture2D>("Projectiles/Laser2"));
+            textures.Add("Laser3",           cm.Load<Texture2D>("Projectiles/Laser3"));
+
+            //Enemies
+            textures.Add("MeanMan",          cm.Load<Texture2D>("Enemies/Meanman"));
+            textures.Add("KawaiiMan",        cm.Load<Texture2D>("Enemies/KawaiiMan"));
+
+            //Powerups
+            textures.Add("Point",            cm.Load<Texture2D>("Powerups/Point"));
+            textures.Add("Power",            cm.Load<Texture2D>("Powerups/Power"));
+
+            //Lenovo-DenovoMan
+            textures.Add("Lenovo-DenovoMan", cm.Load<Texture2D>("Player/Lenovo-DenovoMan"));
+
+            //Misc
+            textures.Add("Logo",             cm.Load<Texture2D>("Misc/Logo"));
+            textures.Add("SeihouText1",      cm.Load<Texture2D>("Misc/SeihouText1"));
+            textures.Add("Tree",             cm.Load<Texture2D>("Misc/Tree"));
+
+            //Other
+            textures.Add("FireParticle",     cm.Load<Texture2D>("FireParticle"));
+
+            //Wallpapers
+            textures.Add("Wallpaper1",       cm.Load<Texture2D>("Wallpapers/Wallpaper1"));
 
         }
 
