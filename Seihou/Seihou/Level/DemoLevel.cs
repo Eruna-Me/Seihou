@@ -22,9 +22,15 @@ namespace Seihou
 			{
 				Spawn(new Faller(GetSpawn(5 + (i * 10)), sb, em, true));
 				Spawn(new Faller(GetSpawn(95 - (i * 10)), sb, em, false));
+				if (i % 5 == 0) Spawn(new JSF(GetSpawn(50), sb, em));
 
 				Sleep(0.5f);
 			}
+			WaitUntilClear();
+			Spawn(new MessageBox(Global.Center, sb, em, "REEEEEEEEEEEEEEE\nEEEEEEEEEEEEEE\nEEEEEEEEEEEEEEEE\nEEEEEEEEEEEEE"));
+			Sleep(3f);
+
+			Spawn(new JSF(GetSpawn(50), sb, em));
 
 			for (int i = 0; i < 5; i++)
 			{
@@ -33,7 +39,7 @@ namespace Seihou
 
 				Sleep(1f);
 			}
-
+			Spawn(new JSF(GetSpawn(50), sb, em));
 		}
 	}
 }

@@ -12,14 +12,14 @@ namespace Seihou
 	{
 		private const float fallSpeed = 50.0f;
 		private const float bulletSpeed = 400.0f;
-		private float fireDelay = 1f;
+		private float fireDelay = 1.5f;
 		private const float maxFireDelay = 0.5f;
 
 		public JSF(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
 		{
 			texture = "JSF";
 			size = 10;
-			speed.Y = 10f;
+			speed.Y = 50f;
 			hp = 5;
 		}
 
