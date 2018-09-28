@@ -22,6 +22,7 @@ namespace Seihou
 
         public Faller(Vector2 pos, SpriteBatch sb, EntityManager em,bool direction) : base(pos, sb, em)
         {
+			texture = "KawaiiMan";
             this.direction = direction;
             ec = EntityManager.EntityClass.enemy;
             startX = pos.X;

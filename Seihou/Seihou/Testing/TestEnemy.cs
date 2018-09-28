@@ -12,7 +12,7 @@ namespace Seihou
     {
         public TestEnemy(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
-
+			texture = "LenovoDenovoMan";
         }
 
         public override void OnDamaged(Entity by, int damage)

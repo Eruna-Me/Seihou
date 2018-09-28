@@ -36,9 +36,10 @@ namespace Seihou
             //Enemies
             textures.Add("MeanMan",          cm.Load<Texture2D>("Enemies/Meanman"));
             textures.Add("KawaiiMan",        cm.Load<Texture2D>("Enemies/KawaiiMan"));
+			textures.Add("JSF",				 cm.Load<Texture2D>("Enemies/JSF"));
 
-            //Powerups
-            textures.Add("Point",            cm.Load<Texture2D>("Powerups/Point"));
+			//Powerups
+			textures.Add("Point",            cm.Load<Texture2D>("Powerups/Point"));
             textures.Add("Power",            cm.Load<Texture2D>("Powerups/Power"));
 
             //Lenovo-DenovoMan

@@ -11,7 +11,7 @@ namespace Seihou
 		protected SpriteBatch sb;
 		public Vector2 pos;
 		protected EntityManager em;
-		protected string texture = "NOTEXTURE";
+		protected string texture;
 
 		//Optional
 		public Vector2 speed = new Vector2(0, 0);
@@ -32,7 +32,7 @@ namespace Seihou
 
 		public virtual void Draw(GameTime gt)
 		{
-			if (texture != "NOTEXTURE")sb.Draw(ResourceManager.textures[texture], pos - ResourceManager.Center(texture), Color.White);
+			sb.Draw(ResourceManager.textures[texture], pos - ResourceManager.Center(texture), Color.White);
 			if (Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, size, 10, Color.White, 1);
 		}
         public abstract void Update(GameTime gt);

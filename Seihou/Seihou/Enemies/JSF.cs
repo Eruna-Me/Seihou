@@ -15,9 +15,9 @@ namespace Seihou
 		private float fireDelay = 1f;
 		private const float maxFireDelay = 0.5f;
 
-
 		public JSF(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
 		{
+			texture = "JSF";
 			size = 10;
 			speed.Y = 10f;
 		}
