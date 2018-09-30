@@ -13,7 +13,7 @@ namespace Seihou
 	{
 		private const float maxSpeed = 300.0f;
 		private const float acceleration = 200.0f;
-		private const int deltaXspeed = 200;
+		private const int deltaXspeed = 150;
 		private const float xDeceleration1 = 50;
 		private const float xDeceleration2 = 200;
 		private const float xDeceleration2Margin = 75; //this has to be the worst variable name in the entire project

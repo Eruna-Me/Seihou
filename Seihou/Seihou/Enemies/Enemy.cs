@@ -11,6 +11,8 @@ namespace Seihou
 {
     abstract class Enemy : Entity 
     {
+		protected int scoreDropChance = 50;
+		protected int powerDropChance = 30;
         protected int explosionParticles = 5;
 
         protected Enemy(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
@@ -31,9 +33,9 @@ namespace Seihou
 					em.AddEntity(new Particle(pos, sb, em));
 				}
 
-				if (randomNumber > 50)
+				if (randomNumber > scoreDropChance)
 				{
-					if (randomNumber > 80)
+					if (randomNumber > scoreDropChance + powerDropChance)
 						em.AddEntity(new Power(pos, sb, em));
 					else
 						em.AddEntity(new Point(pos, sb, em));
@@ -49,6 +51,10 @@ namespace Seihou
 			{
 				em.RemoveEntity(this);
 			}
+
+			Entity c = em.Touching(this, EntityManager.EntityClass.player);
+
+			if (c != null && hp > 0) c.OnDamaged(this, 1);
 		}
 	}
 }

@@ -36,14 +36,14 @@ namespace Seihou
 
 		//Score
 		public double score = 0;
-		public double graze = 0; // TODO: add graze
+		public double graze = 0;
 		public int grazeDistance = ResourceManager.textures["Lenovo-DenovoMan"].Height / 2;
 		public int collectedPowerUps = 0;
-		public const float pointBaseScore = 10000.0f;
-		public const float pointCPUbonusScore = 100.0f;
-		public const float powerBaseScore = 0.0f;
-		public const float powerCPUbonusScore = 100.0f;
-		public const float grazeScore = 10000.0f;
+		private const float pointBaseScore = 10000.0f;
+		private const float pointCPUbonusScore = 100.0f;
+		private const float powerBaseScore = 0.0f;
+		private const float powerCPUbonusScore = 100.0f;
+		private const float grazeScore = 10000.0f;
 
 		public Player(SpriteBatch sb, EntityManager em) : base(new Vector2(0,0), sb, em)
 		{
@@ -114,7 +114,7 @@ namespace Seihou
 				invincibilityTimer = maxInvincibilityTimer;
 			}
 		}
-
+		/*
         public void Fire()
         {
             em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
@@ -129,11 +129,11 @@ namespace Seihou
                 em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(bulletSpread * 2, -bulletSpeed)));
             }
         }
-
-        /*
+		*/
+        
 		public void Fire()
 		{
-			em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));
+			em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
 			if (power >= powerStage1)
 			{
 				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));
@@ -145,7 +145,6 @@ namespace Seihou
 				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread * 2, -bulletSpeed)));
 			}
 		}
-        */
 
         public void Graze(GameTime gt)
 		{
@@ -164,15 +163,22 @@ namespace Seihou
 		public void CollectPoint()
 		{
 			collectedPowerUps++;
-			score += pointBaseScore + collectedPowerUps * pointCPUbonusScore;
+			float scoreGain = pointBaseScore + collectedPowerUps * pointCPUbonusScore;
+			score += scoreGain;
+
+			em.AddEntity(new ScoreGain(pos, sb, em, scoreGain));
 		}
 
 		public void CollectPower()
 		{
+			
 			power++;
 			power = power > fullPower ? fullPower : power;
 			collectedPowerUps++;
-			score += powerBaseScore + collectedPowerUps * powerCPUbonusScore;
+			float scoreGain = powerBaseScore + collectedPowerUps * powerCPUbonusScore;
+			score += scoreGain;
+
+			em.AddEntity(new ScoreGain(pos, sb, em, scoreGain));
 		}
 	}
 }
