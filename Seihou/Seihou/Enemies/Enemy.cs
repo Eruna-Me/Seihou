@@ -21,14 +21,24 @@ namespace Seihou
         public override void OnDamaged(Entity by, int damage)
         {
             hp--;
-            for (int i = 0; i < explosionParticles; i++)
-            {
-                em.AddEntity(new Particle(pos, sb, em));
-            }
-			
+
 			if (hp <= 0)
 			{
-				em.AddEntity(new Power(pos, sb, em));
+				int randomNumber = Global.random.Next(0, 100);
+
+				for (int i = 0; i < explosionParticles; i++)
+				{
+					em.AddEntity(new Particle(pos, sb, em));
+				}
+
+				if (randomNumber > 50)
+				{
+					if (randomNumber > 80)
+						em.AddEntity(new Power(pos, sb, em));
+					else
+						em.AddEntity(new Point(pos, sb, em));
+				}
+				
 				em.RemoveEntity(this);
 			}
         }
