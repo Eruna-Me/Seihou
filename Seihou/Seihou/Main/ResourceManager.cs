@@ -33,8 +33,9 @@ namespace Seihou
             textures.Add("Laser2",           cm.Load<Texture2D>("Projectiles/Laser2"));
             textures.Add("Laser3",           cm.Load<Texture2D>("Projectiles/Laser3"));
 
-            //Enemies
-            textures.Add("MeanMan",          cm.Load<Texture2D>("Enemies/Meanman"));
+			//Enemies
+			textures.Add("Samurai",			 cm.Load<Texture2D>("Enemies/Samurai"));
+			textures.Add("MeanMan",          cm.Load<Texture2D>("Enemies/Meanman"));
             textures.Add("KawaiiMan",        cm.Load<Texture2D>("Enemies/KawaiiMan"));
 			textures.Add("JSF",				 cm.Load<Texture2D>("Enemies/JSF"));
 
