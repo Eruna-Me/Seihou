@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+//xxx69 #FrankWasHere
+
 namespace Seihou
 {
     class MessageBox : Entity
@@ -21,11 +23,17 @@ namespace Seihou
         private string text;
         private string fontName;
 
-        private float alpha = 0;
+        private Color? color;
 
-        public MessageBox(Vector2 pos, SpriteBatch sb,EntityManager em,string text, float life = 2.0f,float fadeIn = 2.0f,float fadeOut = 2.0f,string fontName = "DefaultFontBig") : base(pos, sb, em)
+        private float alpha = 0f;
+        private float maxAlpha;
+
+        public MessageBox(Vector2 pos, SpriteBatch sb,EntityManager em,string text, float life = 2.0f,float fadeIn = 2.0f,float fadeOut = 2.0f,string fontName = "DefaultFontBig",float maxAlpha = 1.0f,Color ?color = null) : base(pos, sb, em)
         {
             ec = EntityManager.EntityClass.ui;
+
+            if (color == null) color = Color.White;
+            this.color = color;
 
             this.fontName = fontName;
             this.text = text;
@@ -35,6 +43,8 @@ namespace Seihou
 
             maxFadeOut = fadeOut;
             this.fadeOut = maxFadeOut;
+
+            this.maxAlpha = maxAlpha;
 
             maxLife = life;
             life = maxLife;
@@ -54,7 +64,7 @@ namespace Seihou
                     if (fadeOut > 0)
                     {
                         fadeOut -= (float)gt.ElapsedGameTime.TotalSeconds;
-                        alpha = fadeOut / maxFadeOut;
+                        alpha = fadeOut / maxFadeOut - (1 - maxAlpha);
                     }
                     else
                     {
@@ -69,8 +79,9 @@ namespace Seihou
             else
             {
                 fadeIn -= (float)gt.ElapsedGameTime.TotalSeconds;
-                alpha = 1 - fadeIn / maxFadeIn;
+                alpha = 1 - fadeIn / maxFadeIn - (1 - maxAlpha);
             }
+            
         }
     }
 }

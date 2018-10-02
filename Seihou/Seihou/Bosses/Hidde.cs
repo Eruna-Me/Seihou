@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Seihou.Projectiles
+namespace Seihou.Bosses
 {
-    class Laser
+    class Hidde
     {
     }
 }

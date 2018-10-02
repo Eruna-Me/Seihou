@@ -41,11 +41,15 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Bosses\Boss.cs" />
+    <Compile Include="Bosses\Hidde.cs" />
     <Compile Include="Enemies\JSF.cs" />
+    <Compile Include="Enemies\Laserpen.cs" />
     <Compile Include="Enemies\Shooter.cs" />
     <Compile Include="Level\DemoLevel.cs" />
     <Compile Include="Level\Level1.cs" />
     <Compile Include="Level\LevelManager.cs" />
+    <Compile Include="Level\SuperSecretLevel.cs" />
     <Compile Include="Main\UI.cs" />
     <Compile Include="Player\ScoreGain.cs" />
     <Compile Include="Powerups\Point.cs" />
@@ -53,10 +57,12 @@
     <Compile Include="Powerups\Powerup.cs" />
     <Compile Include="Projectiles\EnemyBullet.cs" />
     <Compile Include="Projectiles\CoolBullet.cs" />
+    <Compile Include="Projectiles\EnergyBall.cs" />
     <Compile Include="Projectiles\HomingBullet.cs" />
     <Compile Include="Projectiles\PlayerProjectile.cs" />
     <Compile Include="Projectiles\PlayerBullet.cs" />
     <Compile Include="States\Button.cs" />
+    <Compile Include="States\GameoverState.cs" />
     <Compile Include="States\MainState.cs" />
     <Compile Include="States\MenuState.cs" />
     <Compile Include="States\StateManager.cs" />

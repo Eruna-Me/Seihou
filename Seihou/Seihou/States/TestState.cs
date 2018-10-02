@@ -25,7 +25,7 @@ namespace Seihou
             //Load content
             lm = new LevelManager(em);
             font1 = ResourceManager.fonts["DefaultFont"];
-            player = new Player(sb, em);
+            player = new Player(sb, em,this.sm,this);
 			Global.player = player;
         }
 
@@ -58,7 +58,7 @@ namespace Seihou
         public override void OnStart()
         {
             em.AddEntity(player);
-            lm.LoadLevel(new Level1(sb, em));
+            lm.LoadLevel(new SuperSecretLevel(sb, em));
         }
         
         public override void OnExit()

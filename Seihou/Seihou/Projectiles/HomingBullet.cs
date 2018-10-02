@@ -9,19 +9,17 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
-    class HomingBullet : Entity
+    class HomingBullet : PlayerProjectile
     {
-        protected readonly Entity owner;
         protected Entity target;
         private float bulletSpeed;
         private float mooiBoogjeLevel = 5;
         private float minimumBulletSpeed;
         private float homingTime;
 
-        public HomingBullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner,Vector2 speed) : base(pos, sb, em)
+        public HomingBullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner,Vector2 speed) : base(pos, sb, em, owner)
         {
             texture = "Dart2";
-            this.owner = owner;
             this.speed = speed;
             minimumBulletSpeed = 1000;
             homingTime = Global.screenHeight / speed.Length();

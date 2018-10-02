@@ -11,8 +11,14 @@ namespace Seihou
 {
     class Trail
     {
+        private struct Section
+        {
+            public float rotation;
+            public Vector2 pos;
+        }
+
         readonly int length;
-        private List<Vector2> sections = new List<Vector2>();
+        private List<Section> sections = new List<Section>();
         private string texture;
         private SpriteBatch sb;
 
@@ -23,12 +29,23 @@ namespace Seihou
             this.length = length;
         }
 
+        public void AddSection(Vector2 v,float rotation)
+        {
+            if (Settings.SimpleGraphics) return;
+            sections.Add(new Section() { pos = v, rotation = rotation });
+
+            if (sections.Count > length)
+            {
+                sections.Remove(sections.First());
+            }
+        }
+
         public void AddSection(Vector2 v)
         {
             if (Settings.SimpleGraphics) return;
-            sections.Add(v);
+            sections.Add(new Section(){pos = v,rotation = 0});
 
-            if (sections.Count > 10)
+            if (sections.Count > length)
             {
                 sections.Remove(sections.First());
             }
@@ -39,8 +56,8 @@ namespace Seihou
             if (Settings.SimpleGraphics) return;
             for (int i = 0; i < sections.Count; i++)
             {
-                float alpha = 0.05f;
-                sb.Draw(ResourceManager.textures[texture],sections[i] - ResourceManager.Center(texture),new Color(new Vector4(alpha,alpha,alpha,alpha)));
+                float alpha = 0.1f;
+                sb.Draw(ResourceManager.textures[texture],sections[i].pos, null,new Color(new Vector4(alpha,alpha,alpha,alpha)),sections[i].rotation,ResourceManager.Center(texture), 1.0f, SpriteEffects.None, 0f);
             }
         }
     }

@@ -56,6 +56,8 @@ namespace Seihou
             //Wallpapers
             textures.Add("Wallpaper1",       cm.Load<Texture2D>("Wallpapers/Wallpaper1"));
 
+            textures.Add("EnergyBall", cm.Load<Texture2D>("Projectiles/EnergyBall"));
+
         }
 
 		public static Vector2 Center(string texture) => new Vector2(textures[texture].Width / 2, textures[texture].Height / 2);

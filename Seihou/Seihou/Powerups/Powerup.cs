@@ -29,10 +29,10 @@ namespace Seihou
 		{
 			speed.Y += acceleration * (float)gt.ElapsedGameTime.TotalSeconds;
 
-			if(speed.X > 0)	speed.X -= (speed.X > xDeceleration2Margin ? xDeceleration2 : xDeceleration1) * (float)gt.ElapsedGameTime.TotalSeconds; 
-			if(speed.X < 0)	speed.X += (speed.X < xDeceleration2Margin ? xDeceleration2 : xDeceleration1) * (float)gt.ElapsedGameTime.TotalSeconds; 
+            if(speed.X > 0)	speed.X -= (speed.X > xDeceleration2Margin ? xDeceleration2 : xDeceleration1) * (float)gt.ElapsedGameTime.TotalSeconds; 
+            if(speed.X < 0)	speed.X += (speed.X < xDeceleration2Margin ? xDeceleration2 : xDeceleration1) * (float)gt.ElapsedGameTime.TotalSeconds; 
 
-			if (speed.Y > maxSpeed) speed.Y = maxSpeed;
+            if (speed.Y > maxSpeed) speed.Y = maxSpeed;
 
 			pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 

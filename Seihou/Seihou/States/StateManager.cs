@@ -12,12 +12,12 @@ namespace Seihou
 {
     abstract class State
     {
-        protected readonly StateManager sm;
-        protected readonly GraphicsDeviceManager gdm;
-        protected readonly SpriteBatch sb;
-        protected readonly ContentManager cm;
-        
-        public State(StateManager sm, ContentManager cm,SpriteBatch sb, GraphicsDeviceManager gdm)
+        public readonly StateManager sm;
+        public readonly GraphicsDeviceManager gdm;
+        public readonly SpriteBatch sb;
+        public readonly ContentManager cm;
+
+        public State(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm)
         {
             this.sm = sm;
             this.sb = sb;
@@ -37,6 +37,7 @@ namespace Seihou
         public bool abort = false;
 
         //State
+        private readonly Dictionary<string,State> states = new Dictionary<string,State>();
         private State currentState = null;
         private State pollState = null;
 
@@ -45,6 +46,31 @@ namespace Seihou
         private const int fpsSampleSize = 20;
 
         public float GetFps() => fpsMeasure.Average();
+
+        //Stores a state in the statemanager, returns false if failed
+        public bool StoreThisState(string state)
+        {
+            if (states.ContainsKey(state))
+                return false;
+
+            states.Add(state, currentState);
+            return true;
+        }
+
+        //Change to a state (stored in the statemanager), returns false if failed
+        public bool LoadStoredState(string state)
+        {
+            if (states.ContainsKey(state))
+            {
+                ChangeState(states[state]);
+                states.Remove(state);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public void ChangeState(State s) => pollState = s;
 

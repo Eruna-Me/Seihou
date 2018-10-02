@@ -9,8 +9,14 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
+
+
 	class Player : Entity
 	{
+        //Other
+        StateManager sm;
+        State myState;
+
 		//Graphics
 		private Trail trail;
 		private const float invincibilityBlinkSpeed = 0.5f;
@@ -22,7 +28,7 @@ namespace Seihou
 		private const float maxFireDelay = 0.1f;
 
 		//Firing
-		public int power = 0;
+		public int power = 10;
 		private const int powerStage1 = 3;
 		private const int fullPower = 10;
 		private float fireDelay = 0;
@@ -45,11 +51,13 @@ namespace Seihou
 		private const float powerCPUbonusScore = 100.0f;
 		private const float grazeScore = 10000.0f;
 
-		public Player(SpriteBatch sb, EntityManager em) : base(new Vector2(0,0), sb, em)
+        public Player(SpriteBatch sb, EntityManager em,StateManager sm,State state) : base(new Vector2(0,0), sb, em)
 		{
+            this.sm = sm;
+            this.myState = state;
 			texture = "Lenovo-DenovoMan";
 			ResetPosition();
-			trail = new Trail(100, sb, texture);
+			trail = new Trail(5, sb, texture);
 			size = 5;
 			ec = EntityManager.EntityClass.player;
 		}
@@ -112,9 +120,15 @@ namespace Seihou
 				ResetPosition();
 				lives--;
 				invincibilityTimer = maxInvincibilityTimer;
+
+                if (lives <= 0)
+                {
+                    sm.StoreThisState("SavedGame");
+                    sm.ChangeState(new GameoverState(myState.sm,myState.cm,myState.sb,myState.gdm));
+                }
 			}
 		}
-		/*
+		
         public void Fire()
         {
             em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
@@ -125,12 +139,16 @@ namespace Seihou
             }
             if (power >= fullPower)
             {
-                em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(-bulletSpread * 2, -bulletSpeed)));
-                em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(bulletSpread * 2, -bulletSpeed)));
+                for (int i = 0; i < 500; i++)
+                {
+                    em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(-bulletSpread * i, -bulletSpeed)));
+                    em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(bulletSpread * i, -bulletSpeed)));
+                }
             }
         }
-		*/
+		
         
+            /*
 		public void Fire()
 		{
 			em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
@@ -145,6 +163,7 @@ namespace Seihou
 				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread * 2, -bulletSpeed)));
 			}
 		}
+        */
 
         public void Graze(GameTime gt)
 		{
@@ -166,8 +185,8 @@ namespace Seihou
 			float scoreGain = pointBaseScore + collectedPowerUps * pointCPUbonusScore;
 			score += scoreGain;
 
-			em.AddEntity(new ScoreGain(pos, sb, em, scoreGain));
-		}
+            em.AddEntity(new MessageBox(pos + new Vector2(0, -50), sb, em, scoreGain.ToString(), 2.5f, 0, 1, "DefaultFont", 0.5f));
+        }
 
 		public void CollectPower()
 		{
@@ -178,7 +197,7 @@ namespace Seihou
 			float scoreGain = powerBaseScore + collectedPowerUps * powerCPUbonusScore;
 			score += scoreGain;
 
-			em.AddEntity(new ScoreGain(pos, sb, em, scoreGain));
+			em.AddEntity(new MessageBox(pos + new Vector2(0,-50), sb, em,scoreGain.ToString(),2.5f,0,1,"DefaultFont",0.5f));
 		}
 	}
 }

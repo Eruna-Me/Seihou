@@ -20,8 +20,8 @@ namespace Seihou
             //PART 1
             for (int i = 0; i < 10; i++)
             {
-                Spawn(new Shooter(GetSpawn(5 + (i*5)), sb, em, 4, 5.0f));
-                Spawn(new Shooter(GetSpawn(95 - (i*5)), sb, em, 4, 5.0f));
+                Spawn(new Laserpen(GetSpawn(5 + (i*5)), sb, em, 4));
+                Spawn(new Laserpen(GetSpawn(95 - (i*5)), sb, em, 4));
 
                 Sleep(1f);
             }
