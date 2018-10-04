@@ -13,9 +13,9 @@ namespace Seihou
 	{
 
         private Trail trail;
-		public EnemyBullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em, owner)
+		public EnemyBullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed, String texture = "EnemyBullet") : base(pos, sb, em, owner)
 		{
-			texture = "EnemyBullet";
+			this.texture = texture;
             trail = new Trail(1,sb,texture);
             ec = EntityManager.EntityClass.nonSolid;
 			size = 3;

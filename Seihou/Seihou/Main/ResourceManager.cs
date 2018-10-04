@@ -29,11 +29,13 @@ namespace Seihou
             textures.Add("Dart1",            cm.Load<Texture2D>("Projectiles/Dart1"));
             textures.Add("Dart2",            cm.Load<Texture2D>("Projectiles/Dart2"));
             textures.Add("EnemyBullet",      cm.Load<Texture2D>("Projectiles/EnemyBullet"));
-            textures.Add("Laser1",           cm.Load<Texture2D>("Projectiles/Laser1"));
+			textures.Add("Snowflake",		 cm.Load<Texture2D>("Projectiles/Snowflake"));
+			textures.Add("Laser1",           cm.Load<Texture2D>("Projectiles/Laser1"));
             textures.Add("Laser2",           cm.Load<Texture2D>("Projectiles/Laser2"));
             textures.Add("Laser3",           cm.Load<Texture2D>("Projectiles/Laser3"));
 
 			//Enemies
+			textures.Add("YukiOnna",		 cm.Load<Texture2D>("Enemies/YukiOnna"));
 			textures.Add("Samurai",			 cm.Load<Texture2D>("Enemies/Samurai"));
 			textures.Add("MeanMan",          cm.Load<Texture2D>("Enemies/Meanman"));
             textures.Add("KawaiiMan",        cm.Load<Texture2D>("Enemies/KawaiiMan"));
@@ -43,7 +45,7 @@ namespace Seihou
 			textures.Add("Point",            cm.Load<Texture2D>("Powerups/Point"));
             textures.Add("Power",            cm.Load<Texture2D>("Powerups/Power"));
 
-            //Lenovo-DenovoMan
+            //Players
             textures.Add("Lenovo-DenovoMan", cm.Load<Texture2D>("Player/Lenovo-DenovoMan"));
 
             //Misc

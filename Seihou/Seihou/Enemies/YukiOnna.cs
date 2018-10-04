@@ -10,8 +10,8 @@ namespace Seihou
 {
 	class YukiOnna : Enemy
 	{
-		private const float fallSpeed = 100.0f;
-		private const float bulletSpeed = 400.0f;
+		private const float fallSpeed = 60.0f;
+		private const float bulletSpeed = 300.0f;
 		private float fireTimer = 2f;
 		private float fireDelay = 0f;
 		private const float maxFireDelay = 0.1f;
@@ -22,7 +22,7 @@ namespace Seihou
 
 		public YukiOnna(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
 		{
-			texture = "Samurai";
+			texture = "YukiOnna";
 			size = 10;
 			speed.Y = fallSpeed;
 			hp = 20;
@@ -40,12 +40,12 @@ namespace Seihou
 					targetSet = true;
 				}
 				float Direction = Global.VtoD(target);
-				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction + Math.PI / spread) *bulletSpeed, (float)Math.Sin(Direction + Math.PI / spread)* bulletSpeed)));
-				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction + Math.PI / (spread/2)) * bulletSpeed, (float)Math.Sin(Direction + Math.PI / (spread / 2)) * bulletSpeed)));
-				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction - Math.PI / spread) * bulletSpeed, (float)Math.Sin(Direction - Math.PI / spread) * bulletSpeed)));
-				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction - Math.PI / (spread/2)) * bulletSpeed, (float)Math.Sin(Direction - Math.PI / (spread / 2)) * bulletSpeed)));
+				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction + Math.PI / spread) *bulletSpeed, (float)Math.Sin(Direction + Math.PI / spread)* bulletSpeed), "Snowflake"));
+				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction + Math.PI / (spread/2)) * bulletSpeed, (float)Math.Sin(Direction + Math.PI / (spread / 2)) * bulletSpeed) , "Snowflake"));
+				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction - Math.PI / spread) * bulletSpeed, (float)Math.Sin(Direction - Math.PI / spread) * bulletSpeed), "Snowflake"));
+				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction - Math.PI / (spread/2)) * bulletSpeed, (float)Math.Sin(Direction - Math.PI / (spread / 2)) * bulletSpeed), "Snowflake"));
 
-				em.AddEntity(new EnemyBullet(pos, sb, em, this, target));
+				em.AddEntity(new EnemyBullet(pos, sb, em, this, target, "Snowflake"));
 				fireDelay = maxFireDelay;
 				ammo--;
 			}

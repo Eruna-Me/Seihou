@@ -16,6 +16,27 @@ namespace Seihou
 
 			Spawn(new MessageBox(Global.Center, sb, em, "Demo Level"));
 			Sleep(3f);
+			for (int i = 0; i < 10; i++)
+			{
+				Spawn(new YukiOnna(GetSpawn(5 + (i * 10)), sb, em));
+				Spawn(new YukiOnna(GetSpawn(95 - (i * 10)), sb, em));
+
+				Sleep(2f);
+			}
+
+			//PART 1
+			float j = 3f;
+			for (int i = 0; i < 10; i++)
+			{
+				Spawn(new Samurai(GetSpawn(5 + (i * 10)), sb, em));
+				Spawn(new Samurai(GetSpawn(95 - (i * 10)), sb, em));
+
+				Sleep(j);
+				if (i == 8) { i = 0; j /= 2f; }
+				if (j < 0.01f) break;
+			}
+
+			Sleep(3f);
 
 			//PART 1
 			for (int i = 0; i < 10; i++)
