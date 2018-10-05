@@ -11,10 +11,10 @@ namespace Seihou
 	static class Global
 	{
 		//	SCREENSIZE
-		public const int screenWidth = 1200;
-		public const int screenHeight = 675;
+		public const int screenWidth = 800;  // 1152	648, 1024	576
+		public const int screenHeight = 600;
         public const int outOfScreenMargin = 100;
-		public const int uiWidth = 600;
+		public const int uiWidth = screenWidth / 2;
 		public static readonly int playingFieldWidth = screenWidth - uiWidth;
         public static readonly Vector2 FpsCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 100);
         public static readonly Vector2 EntCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 60);
