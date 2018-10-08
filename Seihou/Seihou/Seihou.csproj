@@ -66,6 +66,7 @@
     <Compile Include="States\Button.cs" />
     <Compile Include="States\GameoverState.cs" />
     <Compile Include="States\MainState.cs" />
+    <Compile Include="States\DifficultySelectionState.cs" />
     <Compile Include="States\MenuState.cs" />
     <Compile Include="States\StateManager.cs" />
     <Compile Include="States\TestState.cs" />

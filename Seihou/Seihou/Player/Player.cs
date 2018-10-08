@@ -15,20 +15,20 @@ namespace Seihou
 	{
         //Other
         StateManager sm;
-        State myState;
+        protected State myState;
 
 		//Graphics
 		private Trail trail;
 		private const float invincibilityBlinkSpeed = 0.5f;
 
 		//Survivability
-		public int lives = 6;
+		public int lives = 6; 
 		private float invincibilityTimer = 0.0f;
 		private const float maxInvincibilityTimer = 5.0f;
 		private const float maxFireDelay = 0.1f;
 
 		//Firing
-		public int power = 10;
+		public int power = 0;
 		private const int powerStage1 = 3;
 		private const int fullPower = 10;
 		private float fireDelay = 0;
@@ -128,7 +128,7 @@ namespace Seihou
                 }
 			}
 		}
-		
+		/*
         public void Fire()
         {
             em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
@@ -146,9 +146,9 @@ namespace Seihou
                 }
             }
         }
-		
+		*/
         
-            /*
+            
 		public void Fire()
 		{
 			em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
@@ -163,7 +163,7 @@ namespace Seihou
 				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread * 2, -bulletSpeed)));
 			}
 		}
-        */
+        
 
         public void Graze(GameTime gt)
 		{
@@ -174,7 +174,7 @@ namespace Seihou
 			}
 		}
 
-		void ResetPosition()
+		protected void ResetPosition()
 		{
 			pos = new Vector2(Global.playingFieldWidth / 2, Global.screenHeight - 50);
 		}

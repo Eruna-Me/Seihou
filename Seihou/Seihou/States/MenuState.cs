@@ -18,7 +18,7 @@ namespace Seihou
 
         void OnClickedStart()
         {
-            sm.ChangeState(new TestState(sm, cm, sb, gdm));
+            sm.ChangeState(new DifficultySelectionState(sm, cm, sb, gdm));
         }
 
         void OnClickedLevels()
