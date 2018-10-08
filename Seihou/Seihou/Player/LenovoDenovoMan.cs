@@ -13,9 +13,7 @@ namespace Seihou
 	{
 		public LenovoDenovoMan(SpriteBatch sb, EntityManager em, StateManager sm, State state) : base(sb, em, sm, state)
 		{
-			//this.sm = sm;
 			texture = "Lenovo-DenovoMan";
-			//trail = new Trail(5, sb, texture);
-		}
+		} 
 	}
 }

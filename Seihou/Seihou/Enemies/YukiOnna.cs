@@ -25,7 +25,18 @@ namespace Seihou
 			texture = "YukiOnna";
 			size = 10;
 			speed.Y = fallSpeed;
-			hp = 20;
+			hp = 15;
+			if (Settings.difficulty == Settings.Difficulty.easy)
+			{
+				ammo = 3;
+				hp = 10;
+			}
+
+			if (Settings.difficulty == Settings.Difficulty.usagi)
+			{
+				ammo = 7;
+				hp = 20;
+			}
 		}
 
 		public override void Update(GameTime gt)
@@ -40,10 +51,14 @@ namespace Seihou
 					targetSet = true;
 				}
 				float Direction = Global.VtoD(target);
-				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction + Math.PI / spread) *bulletSpeed, (float)Math.Sin(Direction + Math.PI / spread)* bulletSpeed), "Snowflake"));
-				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction + Math.PI / (spread/2)) * bulletSpeed, (float)Math.Sin(Direction + Math.PI / (spread / 2)) * bulletSpeed) , "Snowflake"));
-				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction - Math.PI / spread) * bulletSpeed, (float)Math.Sin(Direction - Math.PI / spread) * bulletSpeed), "Snowflake"));
+				if (Settings.difficulty > Settings.Difficulty.easy)
+				{
+					em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction + Math.PI / spread) * bulletSpeed, (float)Math.Sin(Direction + Math.PI / spread) * bulletSpeed), "Snowflake"));
+					em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction - Math.PI / spread) * bulletSpeed, (float)Math.Sin(Direction - Math.PI / spread) * bulletSpeed), "Snowflake"));
+				}
+
 				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction - Math.PI / (spread/2)) * bulletSpeed, (float)Math.Sin(Direction - Math.PI / (spread / 2)) * bulletSpeed), "Snowflake"));
+				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction + Math.PI / (spread / 2)) * bulletSpeed, (float)Math.Sin(Direction + Math.PI / (spread / 2)) * bulletSpeed), "Snowflake"));
 
 				em.AddEntity(new EnemyBullet(pos, sb, em, this, target, "Snowflake"));
 				fireDelay = maxFireDelay;
