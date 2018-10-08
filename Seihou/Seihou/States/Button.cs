@@ -14,15 +14,26 @@ namespace Seihou
 
 	public class Button
 	{
+        public enum Align
+        {
+            left,
+            center,
+            right,
+        }
+
         public ButtonCallBack bcb;
 		Vector2 pos, size;
 		SpriteBatch sb;
 		string text;
+        string font;
         bool hovering = false;
         bool clicked = false;
+        Align align;
 
-		public Button(Vector2 pos, Vector2 size, SpriteBatch sb,ButtonCallBack bcb, string text)
+		public Button(Vector2 pos, Vector2 size, SpriteBatch sb,ButtonCallBack bcb, string text,Align align = Align.left, string font = "DefaultFont")
 		{
+            this.font = font;
+            this.align = align;
             this.bcb = bcb;
             this.pos = pos - size / 2;
 			this.size = size;
@@ -32,7 +43,31 @@ namespace Seihou
 
 		public void Draw(GameTime gt)
 		{
-            sb.DrawString(ResourceManager.fonts["DefaultFont"], text, pos + size/2, hovering ? Color.White : Color.Gray, 0,new Vector2(10,(ResourceManager.fonts["DefaultFont"].MeasureString(text)/2).Y),1,SpriteEffects.None,0);
+            if (Global.drawCollisionBoxes)
+                MonoGame.Primitives2D.DrawRectangle(sb, pos, size, Color.Red);
+
+            Vector2 orgin = new Vector2();
+            orgin.Y = ResourceManager.fonts[font].MeasureString(text).Y / 2;
+
+            //Current font
+            var cf = ResourceManager.fonts[font]; 
+
+            switch (align)
+            {
+                case Align.left:
+                    orgin.X = 0;
+                    break;
+
+                case Align.center:
+                    orgin.X = cf.MeasureString(text).X / 2;
+                    break;
+
+                case Align.right:
+                    orgin.X = cf.MeasureString(text).X;
+                    break;
+            }
+
+            sb.DrawString(cf, text, pos + size/2, hovering ? Color.White : Color.Gray, 0,orgin,1,SpriteEffects.None,0);
 		}
 
 		public void Update(GameTime gt)
