@@ -25,7 +25,7 @@ namespace Seihou
 			speed.Y = fallSpeed;
 			hp = 3;
 
-			if (fireDelay <= 0 && Settings.difficulty >= Settings.Difficulty.hard)
+			if (fireDelay <= 0 && Settings.difficulty == Settings.Difficulty.usagi)
 				maxFireDelay = 1.25f;
 		}
 

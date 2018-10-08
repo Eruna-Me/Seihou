@@ -29,11 +29,8 @@ namespace Seihou
 
 		//Firing
 		public int power = 0;
-		private const int powerStage1 = 3;
-		private const int fullPower = 10;
-		private float fireDelay = 0;
-		private const float bulletSpeed = 500.0f;
-		private const float bulletSpread = 30.0f;
+		protected int fullPower = 10;
+		protected float fireDelay = 0;
 
 		//Movement
 		private const float normalSpeed = 300.0f;
@@ -43,7 +40,7 @@ namespace Seihou
 		//Score
 		public double score = 0;
 		public double graze = 0;
-		public int grazeDistance = ResourceManager.textures["Lenovo-DenovoMan"].Height / 2;
+		public int grazeDistance = (int)(ResourceManager.textures["Lenovo-DenovoMan"].Height / 2 * 1.5f);
 		public int collectedPowerUps = 0;
 		private const float pointBaseScore = 10000.0f;
 		private const float pointCPUbonusScore = 100.0f;
@@ -149,19 +146,9 @@ namespace Seihou
 		*/
         
             
-		public void Fire()
+		public virtual void Fire()
 		{
-			em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
-			if (power >= powerStage1)
-			{
-				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));
-				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(-bulletSpread, -bulletSpeed)));
-			}
-			if (power >= fullPower)
-			{
-				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(-bulletSpread * 2, -bulletSpeed)));
-				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread * 2, -bulletSpeed)));
-			}
+
 		}
         
 

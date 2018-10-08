@@ -61,7 +61,7 @@ namespace Seihou
             buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(2000, 90), sb, OnClickedEasy,  "EASY \n    Eh? Easy modo? How lame! Only kids play on easy modo!!");
             buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(2000, 90), sb, OnClickedMedium, "MEDIUM \n    Why don't you at least challenge as much as normal mode \n     once in your life.");
             buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(2000, 90), sb, OnClickedHard, "HARD \n    The only proper difficulty setting.");
-            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(2000, 90), sb, OnClickedUsagi, "USAGI \n    Rabbits are scary animals.");
+            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(2000, 90), sb, OnClickedUsagi, "UDONGE \n    Rabbits are scary animals.");
             buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i + firstButtonHeight), new Vector2(300, 50), sb, OnClickedExit, "Back");
 
 		}

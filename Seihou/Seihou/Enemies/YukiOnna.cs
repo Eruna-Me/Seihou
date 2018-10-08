@@ -51,6 +51,7 @@ namespace Seihou
 					targetSet = true;
 				}
 				float Direction = Global.VtoD(target);
+
 				if (Settings.difficulty > Settings.Difficulty.easy)
 				{
 					em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction + Math.PI / spread) * bulletSpeed, (float)Math.Sin(Direction + Math.PI / spread) * bulletSpeed), "Snowflake"));
