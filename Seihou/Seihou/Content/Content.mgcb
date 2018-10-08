@@ -173,18 +173,6 @@
 /processorParam:TextureFormat=Color
 /build:Enemies/KawaiiMan.png
 
-#begin Wallpapers/Wallpaper1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Wallpapers/Wallpaper1.png
-
 #begin Enemies/MeanMan.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -292,4 +280,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Projectiles/Snowflake.png
+
+#begin Wallpapers/Wallpaper1.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Wallpapers/Wallpaper1.jpg
 
