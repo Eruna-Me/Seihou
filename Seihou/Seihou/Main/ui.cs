@@ -11,12 +11,11 @@ namespace Seihou
 {
 	public static class UI
 	{
-		public static void Draw(GameTime gt, SpriteBatch sb)
+		public static void Draw(GameTime gt, SpriteBatch sb,StateManager sm,EntityManager em)
 		{
             var font1 = ResourceManager.fonts["DefaultFont"];
             var font2 = ResourceManager.fonts["DefaultFontBig"];
             
-
 			const int uiLineHeight = 30;
 			MonoGame.Primitives2D.FillRectangle(sb, Global.playingFieldWidth, 0, Global.uiWidth, Global.screenHeight, new Color(60,60,60));
             MonoGame.Primitives2D.FillRectangle(sb, Global.playingFieldWidth, 20, Global.uiWidth, Global.screenHeight-40, new Color(80, 80, 80));
@@ -38,9 +37,11 @@ namespace Seihou
 
             y += uiLineHeight; //New line
 
-            //Powerups
+            //Powerups 
+            string powerText = (Global.player.power >= Global.player.fullPower) ? "max" : Global.player.power.ToString();
+
             sb.DrawString(font1, "Power: ", new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White);
-            sb.DrawString(font1, Global.player.power.ToString(), new Vector2(Global.playingFieldWidth + 20 + font1.MeasureString("Power: ").X, y), Color.Red);
+            sb.DrawString(font1,powerText, new Vector2(Global.playingFieldWidth + 20 + font1.MeasureString("Power: ").X, y), Color.Red);
 
             //Grace
             sb.DrawString(font1, "Graze: ", new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White);
@@ -50,6 +51,18 @@ namespace Seihou
 
             //Grace
             sb.DrawString(font1, "Stage: 1", new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White);
+
+            //Fps
+            sb.DrawString(font1, $"Fps: {sm.GetFps()}", Global.FpsCounterPos, CoolFpsColorThing(sm.GetFps()));
+            sb.DrawString(font1, $"Entities: {em.GetEntityCount()}", Global.EntCounterPos, Color.White);
+
+            //Make the fps counter the proper color
+            Color CoolFpsColorThing(float fps)
+            {
+                if (fps > 50.0f) { return new Color(0, 255, 0); }
+                if (fps > 30.0f) { return Color.Orange; }
+                return Color.Red;
+            }
         }
     }
 }

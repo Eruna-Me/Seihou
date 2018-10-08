@@ -21,6 +21,9 @@ namespace Seihou
             right,
         }
 
+        public Color background = Color.Transparent;
+        public Color background3D = Color.Transparent;
+        public Vector2 background3DOffset = new Vector2(4, 4);
         public ButtonCallBack bcb;
 		Vector2 pos, size;
 		SpriteBatch sb;
@@ -43,6 +46,10 @@ namespace Seihou
 
 		public void Draw(GameTime gt)
 		{
+            MonoGame.Primitives2D.FillRectangle(sb, pos + background3DOffset, size, background3D, 0);
+            MonoGame.Primitives2D.FillRectangle(sb, pos, size, background, 0);
+            
+
             if (Global.drawCollisionBoxes)
                 MonoGame.Primitives2D.DrawRectangle(sb, pos, size, Color.Red);
 

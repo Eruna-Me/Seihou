@@ -9,9 +9,8 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
-
-
-	class Player : Entity
+    //Don't place outside mainstate.
+	abstract class Player : Entity
 	{
         //Other
         StateManager sm;
@@ -22,14 +21,14 @@ namespace Seihou
 		private const float invincibilityBlinkSpeed = 0.5f;
 
 		//Survivability
-		public int lives = 6; 
+		public int lives = 1; 
 		private float invincibilityTimer = 0.0f;
 		private const float maxInvincibilityTimer = 5.0f;
 		private const float maxFireDelay = 0.1f;
 
 		//Firing
 		public int power = 0;
-		protected int fullPower = 10;
+		public int fullPower = 10;
 		protected float fireDelay = 0;
 
 		//Movement
@@ -119,13 +118,10 @@ namespace Seihou
 				invincibilityTimer = maxInvincibilityTimer;
 
                 if (lives <= 0)
-                {
-                    sm.StoreThisState("SavedGame");
-                    sm.ChangeState(new GameoverState(myState.sm,myState.cm,myState.sb,myState.gdm));
-                }
+                    ((MainState)sm.GetCurrentState()).OnPlayerDeath();
 			}
 		}
-		/*
+        /*
         public void Fire()
         {
             em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
@@ -144,13 +140,8 @@ namespace Seihou
             }
         }
 		*/
-        
-            
-		public virtual void Fire()
-		{
 
-		}
-        
+        public abstract void Fire();
 
         public void Graze(GameTime gt)
 		{

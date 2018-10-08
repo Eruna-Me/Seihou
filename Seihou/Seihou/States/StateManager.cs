@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Seihou
 {
-    abstract class State
+    public abstract class State
     {
         public readonly StateManager sm;
         public readonly GraphicsDeviceManager gdm;
@@ -31,7 +31,7 @@ namespace Seihou
         public virtual void OnStart() { }
     }
 
-    class StateManager
+    public class StateManager
     {
         //Game
         public bool abort = false;
@@ -45,32 +45,9 @@ namespace Seihou
         private readonly Queue<float> fpsMeasure = new Queue<float>();
         private const int fpsSampleSize = 20;
 
+        public State GetCurrentState() => currentState;
+
         public float GetFps() => fpsMeasure.Average();
-
-        //Stores a state in the statemanager, returns false if failed
-        public bool StoreThisState(string state)
-        {
-            if (states.ContainsKey(state))
-                return false;
-
-            states.Add(state, currentState);
-            return true;
-        }
-
-        //Change to a state (stored in the statemanager), returns false if failed
-        public bool LoadStoredState(string state)
-        {
-            if (states.ContainsKey(state))
-            {
-                ChangeState(states[state]);
-                states.Remove(state);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
 
         public void ChangeState(State s) => pollState = s;
 

@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
-    class EntityManager
+    public class EntityManager
     {
         public enum EntityClass
         {

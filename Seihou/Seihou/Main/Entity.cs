@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Seihou
 {
-	abstract class Entity
+	public abstract class Entity
 	{
 		private static int newId = 0;
 		public int hp = 1;

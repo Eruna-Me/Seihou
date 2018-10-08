@@ -68,7 +68,7 @@ namespace Seihou
         {
             GraphicsDevice.Clear(Color.Black);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
             Debugging.DrawCollisionChecks(spriteBatch);
             stateManager.Draw(gameTime);
             spriteBatch.End();

@@ -21,28 +21,28 @@ namespace Seihou
         {
 			Settings.difficulty = Settings.Difficulty.easy;
 			if (0 > timer)
-				sm.ChangeState(new TestState(sm, cm, sb, gdm));
+				sm.ChangeState(new MainState(sm, cm, sb, gdm));
 		}
 
         void OnClickedMedium()
         {
 			Settings.difficulty = Settings.Difficulty.normal;
 			if (0 > timer)
-				sm.ChangeState(new TestState(sm, cm, sb, gdm));
+				sm.ChangeState(new MainState(sm, cm, sb, gdm));
 		}
 
         void OnClickedHard()
         {
 			Settings.difficulty = Settings.Difficulty.hard;
 			if (0 > timer)
-				sm.ChangeState(new TestState(sm, cm, sb, gdm));
+				sm.ChangeState(new MainState(sm, cm, sb, gdm));
 		}
 
         void OnClickedUsagi()
         {
 			Settings.difficulty = Settings.Difficulty.usagi;
 			if (0 > timer)
-				sm.ChangeState(new TestState(sm, cm, sb, gdm));
+				sm.ChangeState(new MainState(sm, cm, sb, gdm));
 		}
 
         void  OnClickedExit()
