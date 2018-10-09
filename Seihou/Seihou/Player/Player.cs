@@ -99,8 +99,8 @@ namespace Seihou
 			if (invincibilityTimer <= 0 || (invincibilityTimer % invincibilityBlinkSpeed) >= invincibilityBlinkSpeed / 2)
 			{
 				int SpriteSize = ResourceManager.textures[texture].Height / 2;
-				sb.Draw(ResourceManager.textures[texture], pos - ResourceManager.Center(texture), Color.White);
 				trail.Draw(gt);
+				sb.Draw(ResourceManager.textures[texture], pos - ResourceManager.Center(texture), Color.White);
 				if (Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, size, 100, Color.Red, 5);
 				if (Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, grazeDistance, 10, Color.White, 1);
 			}
@@ -114,6 +114,7 @@ namespace Seihou
 				{
 					em.AddEntity(new Particle(pos, sb, em));
 				}
+				em.AddEntity(new MessageBox(pos + new Vector2(0, -50), sb, em, "KAPOFT", 5f, 0, 2f, "DefaultFont", 1f) { color = Color.Red });
 				ResetPosition();
 				lives--;
 				invincibilityTimer = maxInvincibilityTimer;

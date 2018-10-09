@@ -11,7 +11,7 @@ namespace Seihou
 		protected SpriteBatch sb;
 		public Vector2 pos;
 		protected EntityManager em;
-		protected string texture;
+		public string texture;
 
 		//Optional
 		public Vector2 speed = new Vector2(0, 0);

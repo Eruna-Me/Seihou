@@ -33,7 +33,11 @@ namespace Seihou
 
             //Lives       
             sb.DrawString(font1, "Lives: ", new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White);
-            sb.DrawString(font1, "Lenovo".Substring(0,Math.Max(Global.player.lives,0)), new Vector2(Global.playingFieldWidth + 20 + font1.MeasureString("Lives: ").X, y), new Color(0,240,0));
+            //sb.DrawString(font1, "Lenovo".Substring(0,Math.Max(Global.player.lives,0)), new Vector2(Global.playingFieldWidth + 20 + font1.MeasureString("Lives: ").X, y), new Color(0,240,0));
+			for (int i = 0; i < Global.player.lives; i++)
+			{
+				sb.Draw(ResourceManager.textures[Global.player.texture], new Vector2(Global.uiWidth + 120 + i * ResourceManager.textures[Global.player.texture].Width, y), Color.White);
+			}
 
             y += uiLineHeight; //New line
 
