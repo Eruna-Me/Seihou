@@ -164,7 +164,7 @@ namespace Seihou
 			float scoreGain = pointBaseScore + collectedPowerUps * pointCPUbonusScore;
 			score += scoreGain;
 
-            em.AddEntity(new MessageBox(pos + new Vector2(0, -50), sb, em, scoreGain.ToString(), 2.5f, 0, 1, "DefaultFont", 0.5f));
+            em.AddEntity(new MessageBox(pos + new Vector2(0, -50), sb, em, scoreGain.ToString(), 2.5f, 0, 1, "DefaultFont", 1f) { color = Color.Blue });
         }
 
 		public void CollectPower()
@@ -176,7 +176,7 @@ namespace Seihou
 			float scoreGain = powerBaseScore + collectedPowerUps * powerCPUbonusScore;
 			score += scoreGain;
 
-			em.AddEntity(new MessageBox(pos + new Vector2(0,-50), sb, em,scoreGain.ToString(),2.5f,0,1,"DefaultFont",0.5f));
+			em.AddEntity(new MessageBox(pos + new Vector2(0, -50), sb, em, scoreGain.ToString(), 2.5f, 0, 1, "DefaultFont", 1f) { color = Color.Red});
 		}
 	}
 }
