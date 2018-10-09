@@ -12,7 +12,7 @@ namespace Seihou
 {
     class Samurai : Enemy
     {
-        private const float fallSpeed = 100.0f;
+        private const float fallSpeed = 90.0f;
 		private const float bulletSpeed = 400.0f;
 		private float fireDelay = 2.0f;
 		private float maxFireDelay = 2.0f;
