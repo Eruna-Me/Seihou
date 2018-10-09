@@ -21,7 +21,7 @@ namespace Seihou
 		private const float invincibilityBlinkSpeed = 0.5f;
 
 		//Survivability
-		public int lives = 1; 
+		public int lives; 
 		private float invincibilityTimer = 0.0f;
 		private const float maxInvincibilityTimer = 5.0f;
 		private const float maxFireDelay = 0.1f;
@@ -55,6 +55,7 @@ namespace Seihou
 			ResetPosition();
 			trail = new Trail(5, sb, texture);
 			size = 5;
+			lives = Settings.startingLives;
 			ec = EntityManager.EntityClass.player;
 		}
 
@@ -86,7 +87,7 @@ namespace Seihou
 			//Fire
 			if (s && fireDelay <= 0)
 			{
-				Fire();
+				Fire(slowMode);
 				fireDelay = maxFireDelay;
 			}
 			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
@@ -141,7 +142,7 @@ namespace Seihou
         }
 		*/
 
-        public abstract void Fire();
+        public abstract void Fire(bool slowMode);
 
         public void Graze(GameTime gt)
 		{

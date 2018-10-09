@@ -13,54 +13,62 @@ namespace Seihou
 	{
 		public DemoLevel (SpriteBatch sb, EntityManager em) : base(sb, em)
 		{
-
 			Spawn(new MessageBox(Global.Center, sb, em, "Demo Level"));
 			Sleep(3f);
-			for (int i = 0; i < 10; i++)
+
+			//part 1 rise of the samurai
+			for (int i = 0; i < 5; i++)
 			{
-				Spawn(new YukiOnna(GetSpawn(5 + (i * 10)), sb, em));
-				Spawn(new YukiOnna(GetSpawn(95 - (i * 10)), sb, em));
+				Spawn(new Samurai(GetSpawn(45), sb, em));
+				Spawn(new Samurai(GetSpawn(55), sb, em));
 
-				Sleep(2f);
+				Sleep(0.75f);
 			}
-
-			//PART 1
-			float j = 3f;
-			for (int i = 0; i < 10; i++)
-			{
-				Spawn(new Samurai(GetSpawn(5 + (i * 10)), sb, em));
-				Spawn(new Samurai(GetSpawn(95 - (i * 10)), sb, em));
-
-				Sleep(j);
-				if (i == 8) { i = 0; j /= 2f; }
-				if (j < 0.01f) break;
-			}
-
 			Sleep(3f);
 
-			//PART 1
 			for (int i = 0; i < 10; i++)
 			{
-				Spawn(new Faller(GetSpawn(5 + (i * 10)), sb, em, true));
-				Spawn(new Faller(GetSpawn(95 - (i * 10)), sb, em, false));
-				if (i % 5 == 0) Spawn(new JSF(GetSpawn(50), sb, em));
+				Spawn(new Samurai(GetSpawn(10), sb, em));
+				Spawn(new Samurai(GetSpawn(20), sb, em));
 
 				Sleep(0.5f);
 			}
-			WaitUntilClear();
-			Spawn(new MessageBox(Global.Center, sb, em, "REEEEEEEEEEEEEEE\nEEEEEEEEEEEEEE\nEEEEEEEEEEEEEEEE\nEEEEEEEEEEEEE"));
+			Sleep(5f);
+
+			for (int i = 0; i < 10; i++)
+			{
+				Spawn(new Samurai(GetSpawn(90), sb, em));
+				Spawn(new Samurai(GetSpawn(80), sb, em));
+
+				Sleep(0.5f);
+			}
+			Sleep(5f);
+
+			//part 2 YukiOnna appears
+			Spawn(new YukiOnna(GetSpawn(50), sb, em));
+
 			Sleep(3f);
 
-			Spawn(new JSF(GetSpawn(50), sb, em));
-
-			for (int i = 0; i < 5; i++)
+			//part 3 Combined arms warfare
+			Spawn(new YukiOnna(GetSpawn(80), sb, em));
+			for (int i = 0; i < 10; i++)
 			{
-				Spawn(new Shooter(GetSpawn(20 + (i * 5)), sb, em, 20, 5.0f));
-				Spawn(new Shooter(GetSpawn(80 - (i * 5)), sb, em, 20, 5.0f));
+				Spawn(new Samurai(GetSpawn(10), sb, em));
+				Spawn(new Samurai(GetSpawn(20), sb, em));
 
-				Sleep(1f);
+				Sleep(0.5f);
 			}
-			Spawn(new JSF(GetSpawn(50), sb, em));
+			Sleep(7.5f);
+
+			Spawn(new YukiOnna(GetSpawn(20), sb, em));
+			for (int i = 0; i < 10; i++)
+			{
+				Spawn(new Samurai(GetSpawn(90), sb, em));
+				Spawn(new Samurai(GetSpawn(80), sb, em));
+
+				Sleep(0.5f);
+			}
+			Sleep(7.5f);
 		}
 	}
 }

@@ -10,7 +10,7 @@ namespace Seihou
 {
 	class YukiOnna : Enemy
 	{
-		private const float fallSpeed = 60.0f;
+		private const float fallSpeed = 70.0f;
 		private const float bulletSpeed = 300.0f;
 		private float fireTimer = 2f;
 		private float fireDelay = 0f;
