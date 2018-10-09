@@ -21,6 +21,8 @@ namespace Seihou
             right,
         }
 
+        public Color SelectedTextColor = Color.White;
+        public Color TextColor = Color.Gray;
         public Color background = Color.Transparent;
         public Color background3D = Color.Transparent;
         public Vector2 background3DOffset = new Vector2(4, 4);
@@ -74,7 +76,7 @@ namespace Seihou
                     break;
             }
 
-            sb.DrawString(cf, text, pos + size/2, hovering ? Color.White : Color.Gray, 0,orgin,1,SpriteEffects.None,0);
+            sb.DrawString(cf, text, pos + size/2, hovering ? SelectedTextColor : TextColor, 0,orgin,1,SpriteEffects.None,0);
 		}
 
 		public void Update(GameTime gt)
