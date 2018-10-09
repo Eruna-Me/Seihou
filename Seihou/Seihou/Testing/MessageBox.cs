@@ -12,6 +12,8 @@ namespace Seihou
 {
     class MessageBox : Entity
     {
+        public Color color = Color.White;
+
         private float maxLife;
         private float maxFadeIn;
         private float maxFadeOut;
@@ -23,17 +25,12 @@ namespace Seihou
         private string text;
         private string fontName;
 
-        private Color? color;
-
         private float alpha = 0f;
         private float maxAlpha;
 
-        public MessageBox(Vector2 pos, SpriteBatch sb,EntityManager em,string text, float life = 2.0f,float fadeIn = 2.0f,float fadeOut = 2.0f,string fontName = "DefaultFontBig",float maxAlpha = 1.0f,Color ?color = null) : base(pos, sb, em)
+        public MessageBox(Vector2 pos, SpriteBatch sb,EntityManager em,string text, float life = 2.0f,float fadeIn = 2.0f,float fadeOut = 2.0f,string fontName = "DefaultFontBig",float maxAlpha = 1.0f) : base(pos, sb, em)
         {
             ec = EntityManager.EntityClass.ui;
-
-            if (color == null) color = Color.White;
-            this.color = color;
 
             this.fontName = fontName;
             this.text = text;
@@ -52,7 +49,7 @@ namespace Seihou
 
         public override void Draw(GameTime gt)
         {
-            sb.DrawString(ResourceManager.fonts[fontName], text, pos,new Color(new Vector4(alpha,alpha,alpha,alpha)), 0, ResourceManager.fonts[fontName].MeasureString(text) / 2, 1, SpriteEffects.None, 1);
+            sb.DrawString(ResourceManager.fonts[fontName], text, pos, new Color(color, alpha), 0, ResourceManager.fonts[fontName].MeasureString(text) / 2, 1, SpriteEffects.None, 1);
         }
 
         public override void Update(GameTime gt)
