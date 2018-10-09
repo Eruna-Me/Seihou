@@ -116,11 +116,12 @@ namespace Seihou
 				}
 				em.AddEntity(new MessageBox(pos + new Vector2(0, -50), sb, em, "KAPOFT", 5f, 0, 2f, "DefaultFont", 1f) { color = Color.Red });
 				ResetPosition();
-				lives--;
 				invincibilityTimer = maxInvincibilityTimer;
 
                 if (lives <= 0)
                     ((MainState)sm.GetCurrentState()).OnPlayerDeath();
+
+				lives--;
 			}
 		}
         /*
