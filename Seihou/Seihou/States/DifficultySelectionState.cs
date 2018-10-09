@@ -14,7 +14,7 @@ namespace Seihou
 	{
 		const int firstButtonHeight = 30;
         const int buttonsX = 100;
-		float timer = 1;
+		float timer = 0.5f;
         Button[] buttons = new Button[5];
 
         void OnClickedEasy()
@@ -64,13 +64,15 @@ namespace Seihou
             buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(2000, 90), sb, OnClickedUsagi, "UDONGE \n    Rabbits are scary animals.");
             buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i + firstButtonHeight), new Vector2(300, 50), sb, OnClickedExit, "Back");
 
+			buttons[0].TextColor = Color.Green;
+			buttons[1].TextColor = Color.Yellow;
+			buttons[2].TextColor = Color.Red;
+			buttons[3].TextColor = Color.Purple;
 		}
 
 		public override void Draw(GameTime gt)
 		{
             foreach (Button b in buttons) b.Draw(gt);
-            //sb.DrawString(ResourceManager.fonts["DefaultFont"], "O hi mark. you tearing me apart lisa", new Vector2(30,30), new Color(4, 4, 4));
-            //sb.Draw(ResourceManager.textures["Logo"], new Vector2(200, 200), Color.White);
         }
 
 		public override void Update(GameTime gt)
