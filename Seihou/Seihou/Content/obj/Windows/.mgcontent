@@ -4,15 +4,31 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/Seihou/Seihou/Seihou/Content/FireParticle.png</File>
-    <File>D:/Seihou/Seihou/Seihou/Content/Dart1.png</File>
-    <File>D:/Seihou/Seihou/Seihou/Content/Arial-Small.spritefont</File>
-    <File>D:/Seihou/Seihou/Seihou/Content/KosugiMaru-Medium.spritefont</File>
-    <File>D:/Seihou/Seihou/Seihou/Content/KosugiMaru-Small.spritefont</File>
-    <File>D:/Seihou/Seihou/Seihou/Content/Lenovo-DenovoMan.png</File>
-    <File>D:/Seihou/Seihou/Seihou/Content/Logo.png</File>
-    <File>D:/Seihou/Seihou/Seihou/Content/EnemyBullet.png</File>
-    <File>D:/Seihou/Seihou/Seihou/Content/Point.png</File>
-    <File>D:/Seihou/Seihou/Seihou/Content/Power.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/FireParticle.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Spritefonts/KosugiMaru-Small.spritefont</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Spritefonts/Arial-Small.spritefont</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Spritefonts/KosugiMaru-Big.spritefont</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Spritefonts/KosugiMaru-Medium.spritefont</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Projectiles/Dart1.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Projectiles/EnemyBullet.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Misc/SeihouText1.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Misc/Tree.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Misc/Logo.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Powerups/Power.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Player/Lenovo-DenovoMan.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Powerups/Point.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Projectiles/Dart2.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Enemies/KawaiiMan.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Enemies/MeanMan.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Enemies/JSF.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Projectiles/Laser2.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Projectiles/Laser3.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Projectiles/Laser1.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Projectiles/EnergyBall.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Enemies/Samurai.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Enemies/YukiOnna.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Projectiles/Snowflake.png</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Wallpapers/Wallpaper1.jpg</File>
+    <File>C:/Users/Dennis/Desktop/C# Programma's/Seihou/Seihou/Seihou/Seihou/Content/Bosses/Katje.png</File>
   </SourceFiles>
 </SourceFileCollection>

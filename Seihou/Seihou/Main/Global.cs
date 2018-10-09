@@ -10,9 +10,9 @@ namespace Seihou
 {
 	static class Global
 	{
-		//	SCREENSIZE
-		public const int screenWidth = 1152;
-		public const int screenHeight = 648;
+        //	SCREENSIZE
+        public const int screenWidth = 1280;//640;//1280;
+        public const int screenHeight = 720;//310;//720;
         public const int outOfScreenMargin = 100;
 		public const int uiWidth = screenWidth / 2;
 		public static readonly int playingFieldWidth = screenWidth - uiWidth;
