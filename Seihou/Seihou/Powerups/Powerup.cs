@@ -36,7 +36,10 @@ namespace Seihou
 
 			pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
-			if (pos.Y + Global.outOfScreenMargin < 0 || pos.Y > Global.screenHeight + Global.outOfScreenMargin || pos.X + Global.outOfScreenMargin < 0 || pos.X > Global.screenWidth + Global.outOfScreenMargin)
+			if (pos.X > Global.playingFieldWidth) pos.X = Global.playingFieldWidth;
+			if (pos.X < 0) pos.X = 0;
+
+			if (pos.Y + Global.outOfScreenMargin < 0 || pos.Y > Global.screenHeight + Global.outOfScreenMargin)
 			{
 				em.RemoveEntity(this);
 			}
