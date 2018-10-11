@@ -55,6 +55,7 @@
     <Compile Include="Level\SuperSecretLevel.cs" />
     <Compile Include="Main\UI.cs" />
     <Compile Include="Player\LenovoDenovoMan.cs" />
+    <Compile Include="Powerups\LiveUp.cs" />
     <Compile Include="Powerups\Point.cs" />
     <Compile Include="Powerups\Power.cs" />
     <Compile Include="Powerups\Powerup.cs" />

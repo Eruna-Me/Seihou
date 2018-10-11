@@ -69,5 +69,11 @@ namespace Seihou
 			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
 			fireTimer -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
 		}
+		public override void OnDamaged(Entity by, int damage)
+		{
+			base.OnDamaged(by, damage);
+
+			em.AddEntity(new LiveUp(pos, sb, em));
+		}
 	}
 }

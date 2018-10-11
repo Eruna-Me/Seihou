@@ -35,7 +35,7 @@ namespace Seihou
             textures.Add("Laser3",           cm.Load<Texture2D>("Projectiles/Laser3"));
 
             //Bosses
-            textures.Add("cat", cm.Load<Texture2D>("Bosses/Katje"));
+            textures.Add("ManekiNeko",		 cm.Load<Texture2D>("Bosses/Katje"));
 
             //Enemies
             textures.Add("YukiOnna",		 cm.Load<Texture2D>("Enemies/YukiOnna"));
@@ -47,9 +47,10 @@ namespace Seihou
 			//Powerups
 			textures.Add("Point",            cm.Load<Texture2D>("Powerups/Point"));
             textures.Add("Power",            cm.Load<Texture2D>("Powerups/Power"));
+			textures.Add("LiveUp",			 cm.Load<Texture2D>("Powerups/LiveUp"));
 
-            //Players
-            textures.Add("Lenovo-DenovoMan", cm.Load<Texture2D>("Player/Lenovo-DenovoMan"));
+			//Players
+			textures.Add("Lenovo-DenovoMan", cm.Load<Texture2D>("Player/Lenovo-DenovoMan"));
 
             //Misc
             textures.Add("Logo",             cm.Load<Texture2D>("Misc/Logo"));
