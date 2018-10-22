@@ -50,6 +50,9 @@
     <Compile Include="Enemies\YukiOnna.cs" />
     <Compile Include="Enemies\Samurai.cs" />
     <Compile Include="Enemies\Shooter.cs" />
+    <Compile Include="Form\ListBox.cs" />
+    <Compile Include="Form\Cursor.cs" />
+    <Compile Include="Form\Textbox.cs" />
     <Compile Include="Graphics\Cloud.cs" />
     <Compile Include="Graphics\CloudManager.cs" />
     <Compile Include="Level\DemoLevel.cs" />
@@ -65,13 +68,14 @@
     <Compile Include="Projectiles\HomingBullet.cs" />
     <Compile Include="Projectiles\PlayerProjectile.cs" />
     <Compile Include="Projectiles\PlayerBullet.cs" />
-    <Compile Include="States\Button.cs" />
+    <Compile Include="Form\Button.cs" />
+    <Compile Include="States\HighscoreState.cs" />
     <Compile Include="States\MainState.cs" />
     <Compile Include="States\DifficultySelectionState.cs" />
     <Compile Include="States\MainStateMenus.cs" />
     <Compile Include="States\MenuState.cs" />
+    <Compile Include="States\ScoreMenu.cs" />
     <Compile Include="States\StateManager.cs" />
-    <Compile Include="States\TestState.cs" />
     <Compile Include="Main\Debugging.cs" />
     <Compile Include="Graphics\MessageBox.cs" />
     <Compile Include="Graphics\Particle.cs" />
@@ -97,16 +101,31 @@
       <HintPath>.\MonoGame.Primitives2D.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GameData.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="GameData_log.ldf">
+      <DependentUpon>GameData.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

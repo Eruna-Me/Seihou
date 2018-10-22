@@ -12,7 +12,6 @@ namespace Seihou
 {
     class Debugging
     {
-        private static int checks = 0;
 
         [Conditional("DEBUG")]
         public static void Write(object sender,string message) => Console.WriteLine($"{sender} : {message}");
@@ -27,19 +26,6 @@ namespace Seihou
             Console.WriteLine($"SPEED: X{e.speed.X} , Y{e.speed.Y}");
             Console.WriteLine($"SIZE: {e.size}");
             Console.WriteLine("}");
-        }
-
-        [Conditional("DEBUG")]
-        public static void Check()
-        {
-            checks++;
-        }
-
-        [Conditional("DEBUG")]
-        public static void DrawCollisionChecks(SpriteBatch sb)
-        {
-            sb.DrawString(ResourceManager.fonts["DefaultFont"],$"CPF {checks.ToString()}", new Vector2(20, 20), Color.Red);
-            checks = 0;
         }
     }
 }

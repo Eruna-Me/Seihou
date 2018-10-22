@@ -16,8 +16,6 @@ namespace Seihou
             float deltaX = (b.pos - a.pos).X;
             float deltaY = (b.pos - a.pos).Y;
 
-            Debugging.Check();
-
             return Math.Sqrt(deltaX * deltaX + deltaY * deltaY) <= a.size + b.size;
         }
 
@@ -25,8 +23,6 @@ namespace Seihou
         {
             float deltaX = (pos - a.pos).X;
             float deltaY = (pos - a.pos).Y;
-
-            Debugging.Check();
 
             return Math.Sqrt(deltaX * deltaX + deltaY * deltaY) <= a.size + size;
         }

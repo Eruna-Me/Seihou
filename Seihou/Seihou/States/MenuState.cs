@@ -23,7 +23,7 @@ namespace Seihou
 
         void OnClickedLevels()
         {
-
+            sm.ChangeState(new HighscoreState(sm, cm, sb, gdm));
         }
 
         void OnClickedSettings()
