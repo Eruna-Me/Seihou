@@ -49,6 +49,8 @@
     <Compile Include="Enemies\YukiOnna.cs" />
     <Compile Include="Enemies\Samurai.cs" />
     <Compile Include="Enemies\Shooter.cs" />
+    <Compile Include="Graphics\Cloud.cs" />
+    <Compile Include="Graphics\CloudManager.cs" />
     <Compile Include="Level\DemoLevel.cs" />
     <Compile Include="Level\LevelManager.cs" />
     <Compile Include="Graphics\UI.cs" />
