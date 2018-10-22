@@ -16,6 +16,9 @@ namespace Seihou
 			Spawn(new MessageBox(Global.Center, sb, em, "Demo Level"));
 			Sleep(3f);
 
+            Spawn(new ManekiNeko(sb, em));
+            WaitUntilClear();
+
 			//part 1 rise of the samurai
 			for (int i = 0; i < 5; i++)
 			{

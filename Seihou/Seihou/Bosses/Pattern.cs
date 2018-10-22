@@ -10,11 +10,22 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Seihou
 {
-    class Pattern
+    abstract class Pattern
     {
-        void Update(GameTime gt,Boss daddy)
-        {
+        public bool finsihed;
+        private float timer;
+        private Boss daddy;
+        private EntityManager em;
 
+        public Pattern(float duration)
+        {
+            timer = duration;
+        }
+
+        public virtual void Update(GameTime gt)
+        {
+            timer -= (float)gt.ElapsedGameTime.TotalSeconds;
+            if (timer < 0) { finsihed = true; }
         }
     }
 }

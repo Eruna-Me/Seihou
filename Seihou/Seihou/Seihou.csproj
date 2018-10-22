@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Bosses\Boss.cs" />
     <Compile Include="Bosses\Hidde.cs" />
+    <Compile Include="Bosses\ManekiNeko\ManekiNeko.cs" />
+    <Compile Include="Bosses\ManekiNeko\CoinThrow.cs" />
     <Compile Include="Bosses\Pattern.cs" />
     <Compile Include="Enemies\YukiOnna.cs" />
     <Compile Include="Enemies\Samurai.cs" />
