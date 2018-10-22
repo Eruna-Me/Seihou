@@ -19,7 +19,7 @@ namespace Seihou
         public static readonly Vector2 FpsCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 100);
         public static readonly Vector2 EntCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 60);
         public static readonly Vector2 Center = new Vector2(playingFieldWidth / 2, screenHeight / 2);
-        public const int spawnHeight = -50;
+        public const int spawnHeight = -100;
 
 		//	BUTTONS
 		public static Keys PauseKey1 = Keys.F10;

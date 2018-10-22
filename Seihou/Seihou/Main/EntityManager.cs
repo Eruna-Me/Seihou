@@ -13,7 +13,8 @@ namespace Seihou
     {
         public enum EntityClass
         {
-            nonSolid = 0,
+			cloud = 0,
+            nonSolid,
             enemy,
             player,
             ui,
@@ -25,17 +26,20 @@ namespace Seihou
 
         public EntityManager()
         {
-            entities.Add(EntityClass.nonSolid,           new List<Entity>());
+			entities.Add(EntityClass.cloud,				 new List<Entity>());
+			entities.Add(EntityClass.nonSolid,           new List<Entity>());
             entities.Add(EntityClass.enemy,              new List<Entity>());
             entities.Add(EntityClass.player,             new List<Entity>());
             entities.Add(EntityClass.ui,                 new List<Entity>());
 
-            pollAddEntities.Add(EntityClass.nonSolid,    new Queue<Entity>());
+			pollAddEntities.Add(EntityClass.cloud,		 new Queue<Entity>());
+			pollAddEntities.Add(EntityClass.nonSolid,    new Queue<Entity>());
             pollAddEntities.Add(EntityClass.enemy,       new Queue<Entity>());
             pollAddEntities.Add(EntityClass.player,      new Queue<Entity>());
             pollAddEntities.Add(EntityClass.ui,          new Queue<Entity>());
 
-            pollRemoveEntities.Add(EntityClass.nonSolid, new Queue<Entity>());
+			pollRemoveEntities.Add(EntityClass.cloud,	 new Queue<Entity>());
+			pollRemoveEntities.Add(EntityClass.nonSolid, new Queue<Entity>());
             pollRemoveEntities.Add(EntityClass.enemy,    new Queue<Entity>());
             pollRemoveEntities.Add(EntityClass.player,   new Queue<Entity>());
             pollRemoveEntities.Add(EntityClass.ui,       new Queue<Entity>());

@@ -35,7 +35,7 @@ namespace Seihou
 
         public override void Draw(GameTime gt)
         {
-            sb.Draw(ResourceManager.textures["Wallpaper1"], new Vector2(0, 0), Color.White);
+            //sb.Draw(ResourceManager.textures["Wallpaper1"], new Vector2(0, 0), Color.White);
             em.Draw(gt);
             UI.Draw(gt, sb, sm, em);
 
@@ -57,6 +57,7 @@ namespace Seihou
             {
                 lm.Update(gt);
                 em.Update(gt);
+				CloudManager.Update(gt, sb, em);
             }
 
             if (pause) UpdatePauseMenu(gt);

@@ -33,9 +33,10 @@ namespace Seihou
 			textures.Add("Laser1",           cm.Load<Texture2D>("Projectiles/Laser1"));
             textures.Add("Laser2",           cm.Load<Texture2D>("Projectiles/Laser2"));
             textures.Add("Laser3",           cm.Load<Texture2D>("Projectiles/Laser3"));
+			textures.Add("EnergyBall", cm.Load<Texture2D>("Projectiles/EnergyBall"));
 
-            //Bosses
-            textures.Add("ManekiNeko",		 cm.Load<Texture2D>("Bosses/ManekiNeko"));
+			//Bosses
+			textures.Add("ManekiNeko",		 cm.Load<Texture2D>("Bosses/ManekiNeko"));
 
             //Enemies
             textures.Add("YukiOnna",		 cm.Load<Texture2D>("Enemies/YukiOnna"));
@@ -64,7 +65,8 @@ namespace Seihou
             //Wallpapers
             textures.Add("Wallpaper1",       cm.Load<Texture2D>("Wallpapers/Wallpaper1"));
 
-            textures.Add("EnergyBall",       cm.Load<Texture2D>("Projectiles/EnergyBall"));
+			//Clouds
+			textures.Add("Cloud1",			 cm.Load<Texture2D>("Clouds/Cloud1"));
 
         }
 
