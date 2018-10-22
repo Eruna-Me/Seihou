@@ -48,13 +48,9 @@
     <Compile Include="Bosses\Pattern.cs" />
     <Compile Include="Enemies\YukiOnna.cs" />
     <Compile Include="Enemies\Samurai.cs" />
-    <Compile Include="Enemies\JSF.cs" />
-    <Compile Include="Enemies\Laserpen.cs" />
     <Compile Include="Enemies\Shooter.cs" />
     <Compile Include="Level\DemoLevel.cs" />
-    <Compile Include="Level\Level1.cs" />
     <Compile Include="Level\LevelManager.cs" />
-    <Compile Include="Level\SuperSecretLevel.cs" />
     <Compile Include="Main\UI.cs" />
     <Compile Include="Player\LenovoDenovoMan.cs" />
     <Compile Include="Powerups\LiveUp.cs" />
@@ -62,7 +58,6 @@
     <Compile Include="Powerups\Power.cs" />
     <Compile Include="Powerups\Powerup.cs" />
     <Compile Include="Projectiles\EnemyBullet.cs" />
-    <Compile Include="Projectiles\CoolBullet.cs" />
     <Compile Include="Projectiles\EnergyBall.cs" />
     <Compile Include="Projectiles\HomingBullet.cs" />
     <Compile Include="Projectiles\PlayerProjectile.cs" />
@@ -74,14 +69,12 @@
     <Compile Include="States\MenuState.cs" />
     <Compile Include="States\StateManager.cs" />
     <Compile Include="States\TestState.cs" />
-    <Compile Include="Testing\Debugging.cs" />
-    <Compile Include="Testing\MessageBox.cs" />
-    <Compile Include="Testing\Particle.cs" />
+    <Compile Include="Main\Debugging.cs" />
+    <Compile Include="Effects\MessageBox.cs" />
+    <Compile Include="Effects\Particle.cs" />
     <Compile Include="Enemies\Enemy.cs" />
-    <Compile Include="Testing\TestEnemy.cs" />
     <Compile Include="Main\Collision.cs" />
     <Compile Include="Main\Entity.cs" />
-    <Compile Include="Enemies\Faller.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Main\EntityManager.cs" />
     <Compile Include="Main\Global.cs" />
@@ -89,10 +82,9 @@
     <Compile Include="Main\Settings.cs" />
     <Compile Include="Main\ResourceManager.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Projectiles\Bullet.cs" />
     <Compile Include="Projectiles\EnemyProjectile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Testing\Trail.cs" />
+    <Compile Include="Effects\Trail.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
