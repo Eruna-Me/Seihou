@@ -12,20 +12,18 @@ namespace Seihou
 {
     class CoinThrow : Pattern
     {
-        float timer = 0;
 
-        public CoinThrow() : base(20)
+        public CoinThrow(Boss daddy,EntityManager em) : base(20,em,daddy)
         {
 
         }
 
         public override void Update(GameTime gt)
         {
-            timer += (float)gt.ElapsedGameTime.TotalSeconds;
-
-
-
             base.Update(gt);
+
+
+            
         }
     }
 }

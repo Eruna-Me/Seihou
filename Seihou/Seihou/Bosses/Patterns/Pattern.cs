@@ -17,15 +17,17 @@ namespace Seihou
         private Boss daddy;
         private EntityManager em;
 
-        public Pattern(float duration)
+        public Pattern(float duration,EntityManager em, Boss daddy)
         {
+            this.daddy = daddy;
+            this.em = em;
             timer = duration;
         }
 
         public virtual void Update(GameTime gt)
         {
             timer -= (float)gt.ElapsedGameTime.TotalSeconds;
-            if (timer < 0) { finsihed = true; }
+            if (timer < 0) { finsihed = true; return; }
         }
     }
 }
