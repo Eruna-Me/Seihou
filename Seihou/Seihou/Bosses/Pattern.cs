@@ -17,6 +17,12 @@ namespace Seihou
         private Boss daddy;
         private EntityManager em;
 
+        public void Reset()
+        {
+            timer = 0;
+            finsihed = false;
+        }
+
         public Pattern(float duration,EntityManager em, Boss daddy)
         {
             this.daddy = daddy;
@@ -24,6 +30,7 @@ namespace Seihou
             timer = duration;
         }
 
+        //Always call this base update at top of override call
         public virtual void Update(GameTime gt)
         {
             timer -= (float)gt.ElapsedGameTime.TotalSeconds;

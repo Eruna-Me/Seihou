@@ -22,6 +22,22 @@ namespace Seihou
         {
             speed.Y = fallspeed;
             texture = "ManekiNeko";
+
+            hp = 40;
+
+            highHp = hp;
+            midHp = (int)(hp * 0.5f);
+            lowHp = (int)(hp * 0.25f);
+
+
+            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 1
+            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 2
+            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 3
+            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 4
+            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 5
+            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 6
+            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 7
+            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 8
         }
 
         public override void Update(GameTime gt)
@@ -35,7 +51,6 @@ namespace Seihou
 
             if (pos.X > Global.playingFieldWidth - borderWidth) speed.X = -moveSpeed;
             if (pos.X < borderWidth) speed.X = moveSpeed;
-
 
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
