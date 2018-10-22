@@ -29,13 +29,11 @@ namespace Seihou
 			if (Settings.difficulty == Settings.Difficulty.easy)
 			{
 				ammo = 3;
-				hp = 10;
 			}
 
 			if (Settings.difficulty == Settings.Difficulty.usagi)
 			{
 				ammo = 7;
-				hp = 20;
 			}
 		}
 
