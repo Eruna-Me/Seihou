@@ -19,7 +19,7 @@ namespace Seihou
 		private const float xDeceleration2Margin = 75; //this has to be the worst variable name in the entire project
 		private const int homingRange = 64;
 		private const float homingSlowness = 15;
-		private const float homingSpeed = 200.0f;
+		private const float homingSpeed = 400.0f;
 
 		public Powerup(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
 		{
@@ -31,7 +31,7 @@ namespace Seihou
 		public override void Update(GameTime gt)
 		{
 			Entity h = em.Touching(pos, homingRange, EntityManager.EntityClass.player);
-			if (h != null)
+			if (h != null || (Global.player.pos.Y < Global.screenHeight * 0.3f))
 			{
 				speed = (Global.Normalize(Global.player.pos - pos) * homingSpeed + speed * homingSlowness) / (homingSlowness + 1);
 			}
