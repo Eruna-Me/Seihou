@@ -13,6 +13,8 @@ namespace Seihou
 	{
 		public DemoLevel (SpriteBatch sb, EntityManager em) : base(sb, em)
 		{
+			CloudManager.FillScreen(sb, em);
+
 			Spawn(new MessageBox(Global.Center, sb, em, "Demo Level"));
 			Sleep(3f);
 

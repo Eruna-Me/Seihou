@@ -17,7 +17,7 @@ namespace Seihou
 		static public float minAlpha = 0.0f;
 		static public float maxAlpha = 0.8f;
 		static public float spawnDelay = 0.0f;
-		static public float maxSpawnDelay = 0.0f;
+		static public float maxSpawnDelay = 0.01f;
 		static public float deltaSpawnDelay = 0.1f;
 		static public float deltaSpeedVariance = 10.0f;
 
@@ -35,6 +35,19 @@ namespace Seihou
 			}
 
 			spawnDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
+		}
+
+		public static void FillScreen(SpriteBatch sb, EntityManager em)
+		{
+			float y = Global.spawnHeight;
+			while (y < Global.screenHeight + Global.outOfScreenMargin)
+			{
+				float alpha = (float)Global.random.NextDouble() * (maxAlpha - minAlpha) - minAlpha;
+				float deltaSpeed = (float)Global.random.NextDouble() * deltaSpeedVariance;
+				Vector2 pos = new Vector2(Global.random.Next(-Global.outOfScreenMargin, Global.playingFieldWidth + Global.outOfScreenMargin), y);
+				em.AddEntity(new Cloud(pos, sb, em, "Cloud1", alpha, deltaSpeed));
+				y += maxSpawnDelay + (float)Global.random.NextDouble() * deltaSpawnDelay * (speed + (float)Global.random.NextDouble() * deltaSpeedVariance);
+			}
 		}
 	}
 }
