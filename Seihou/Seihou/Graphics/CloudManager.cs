@@ -23,12 +23,10 @@ namespace Seihou
 
 		public static void Update(GameTime gt, SpriteBatch sb, EntityManager em)
 		{	
-			float alpha = (float)Global.random.NextDouble() * (maxAlpha - minAlpha) - minAlpha;
-			float deltaSpeed = (float)Global.random.NextDouble() * deltaSpeedVariance;
-
-
 			while (spawnDelay < gt.ElapsedGameTime.TotalSeconds)
 			{
+				float alpha = (float)Global.random.NextDouble() * (maxAlpha - minAlpha) - minAlpha;
+				float deltaSpeed = (float)Global.random.NextDouble() * deltaSpeedVariance;
 				Vector2 pos = new Vector2(Global.random.Next(-Global.outOfScreenMargin, Global.playingFieldWidth + Global.outOfScreenMargin), Global.spawnHeight);
 				em.AddEntity(new Cloud(pos, sb, em, "Cloud1", alpha, deltaSpeed));
 				spawnDelay += maxSpawnDelay + (float)Global.random.NextDouble() * deltaSpawnDelay;
