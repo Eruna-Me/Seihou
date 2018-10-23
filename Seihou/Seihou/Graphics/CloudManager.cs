@@ -13,19 +13,28 @@ namespace Seihou
 	static class CloudManager
 	{
 		static public Color color = Color.White;
-		static public float speed = 100.0f;
+		static public float speed = 50.0f;
 		static public float minAlpha = 0.0f;
-		static public float maxAlpha = 1.0f;
-		static public float spawnChance = 1.0f;
-		static public float deltaSpeedVariance = 20.0f;
+		static public float maxAlpha = 0.8f;
+		static public float spawnDelay = 0.0f;
+		static public float maxSpawnDelay = 0.0f;
+		static public float deltaSpawnDelay = 0.1f;
+		static public float deltaSpeedVariance = 10.0f;
 
 		public static void Update(GameTime gt, SpriteBatch sb, EntityManager em)
 		{	
-			Vector2 pos = new Vector2(Global.random.Next(-Global.outOfScreenMargin, Global.playingFieldWidth + Global.outOfScreenMargin),Global.spawnHeight);
 			float alpha = (float)Global.random.NextDouble() * (maxAlpha - minAlpha) - minAlpha;
 			float deltaSpeed = (float)Global.random.NextDouble() * deltaSpeedVariance;
 
-			em.AddEntity(new Cloud(pos, sb, em, "Cloud1", alpha, deltaSpeed));
+
+			while (spawnDelay < gt.ElapsedGameTime.TotalSeconds)
+			{
+				Vector2 pos = new Vector2(Global.random.Next(-Global.outOfScreenMargin, Global.playingFieldWidth + Global.outOfScreenMargin), Global.spawnHeight);
+				em.AddEntity(new Cloud(pos, sb, em, "Cloud1", alpha, deltaSpeed));
+				spawnDelay += maxSpawnDelay + (float)Global.random.NextDouble() * deltaSpawnDelay;
+			}
+
+			spawnDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
 		}
 	}
 }
