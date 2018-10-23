@@ -33,7 +33,6 @@ namespace Seihou
         {
             trail.Draw(gt);
             sb.Draw(ResourceManager.textures[texture], pos, null, Color.White,(rotation * (float)Math.PI),ResourceManager.Center(texture), 1.0f, SpriteEffects.None, 0f);
-            base.Draw(gt);
         }
 
     }

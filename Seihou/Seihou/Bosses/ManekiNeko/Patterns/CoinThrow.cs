@@ -14,8 +14,9 @@ namespace Seihou
     {
         float spawnRate;
         float spawnTimer = 0;
+        const float bulletSpeed = 300;
 
-        public CoinThrow(Boss daddy,EntityManager em,float spawnRate) : base(20,em,daddy)
+        public CoinThrow(Boss daddy,EntityManager em,float spawnRate) : base(2,em,daddy)
         {
             this.spawnRate = spawnRate;
         }
@@ -27,7 +28,9 @@ namespace Seihou
             if (spawnTimer > spawnRate)
             {
                 spawnTimer = 0;
-                em.AddEntity(new Coin(daddy.pos,daddy.sb, em, daddy, new Vector2(0,100)));
+                em.AddEntity(new Coin(daddy.pos,daddy.sb, em, daddy, new Vector2(0,    bulletSpeed)));
+                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(40,  bulletSpeed)));
+                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(-40, bulletSpeed)));
             }
 
             base.Update(gt);
