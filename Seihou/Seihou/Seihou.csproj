@@ -45,6 +45,7 @@
     <Compile Include="Bosses\Hidde.cs" />
     <Compile Include="Bosses\ManekiNeko\ManekiNeko.cs" />
     <Compile Include="Bosses\ManekiNeko\Patterns\CoinThrow.cs" />
+    <Compile Include="Bosses\Patterns\Spray.cs" />
     <Compile Include="Bosses\Pattern.cs" />
     <Compile Include="Bosses\Patterns\Nothing.cs" />
     <Compile Include="Enemies\YukiOnna.cs" />

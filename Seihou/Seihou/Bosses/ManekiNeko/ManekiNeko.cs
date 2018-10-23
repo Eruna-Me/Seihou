@@ -31,7 +31,7 @@ namespace Seihou
             lowHp = (int)(hp * 0.25f);
 
 
-            patterns[Stages.high].Add(new CoinThrow(this, em,3f)); //Pattern 1
+            patterns[Stages.high].Add(new Spray(this, em, 0.1f)); //Pattern 1
             patterns[Stages.mid].Add(new CoinThrow(this, em, 1.3f)); //Pattern 1
             patterns[Stages.low].Add(new CoinThrow(this, em, 0.03f)); //Pattern 1
         }

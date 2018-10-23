@@ -12,6 +12,8 @@ namespace Seihou
     
     abstract class Boss : Enemy
     {
+        Stages current = Stages.high;
+
         protected enum Stages
         {
             high,
@@ -38,6 +40,9 @@ namespace Seihou
         {
             base.Update(gt);
             bool ok = false;
+
+
+
 
             foreach (var p in patterns[Stages.high])
             {
