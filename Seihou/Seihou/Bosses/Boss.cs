@@ -36,6 +36,8 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
+            base.Update(gt);
+
             Stages pattern = Stages.high;
             if (hp <= midHp)
             {
@@ -68,9 +70,7 @@ namespace Seihou
             {
                 foreach (var p in patterns[pattern]) p.Reset();
                 Debugging.Write(this, "Pattern reset");
-            }
-
-            base.Update(gt);
+            }    
         }
     }
 }

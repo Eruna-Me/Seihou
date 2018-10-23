@@ -64,6 +64,7 @@
     <Compile Include="Powerups\Power.cs" />
     <Compile Include="Powerups\Powerup.cs" />
     <Compile Include="Projectiles\EnemyBullet.cs" />
+    <Compile Include="Projectiles\Coin.cs" />
     <Compile Include="Projectiles\EnergyBall.cs" />
     <Compile Include="Projectiles\HomingBullet.cs" />
     <Compile Include="Projectiles\PlayerProjectile.cs" />

@@ -8,7 +8,7 @@ namespace Seihou
 		private static int newId = 0;
 		public int hp = 1;
 		public readonly int id;
-		protected SpriteBatch sb;
+		public SpriteBatch sb;
 		public Vector2 pos;
 		protected EntityManager em;
 		public string texture;

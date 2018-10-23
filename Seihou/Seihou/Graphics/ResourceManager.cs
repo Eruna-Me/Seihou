@@ -33,7 +33,8 @@ namespace Seihou
 			textures.Add("Laser1",           cm.Load<Texture2D>("Projectiles/Laser1"));
             textures.Add("Laser2",           cm.Load<Texture2D>("Projectiles/Laser2"));
             textures.Add("Laser3",           cm.Load<Texture2D>("Projectiles/Laser3"));
-			textures.Add("EnergyBall", cm.Load<Texture2D>("Projectiles/EnergyBall"));
+			textures.Add("EnergyBall",       cm.Load<Texture2D>("Projectiles/EnergyBall"));
+            textures.Add("Coin",             cm.Load<Texture2D>("Projectiles/Coin"));
 
 			//Bosses
 			textures.Add("ManekiNeko",		 cm.Load<Texture2D>("Bosses/ManekiNeko"));

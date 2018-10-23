@@ -14,12 +14,13 @@ namespace Seihou
     {
         public bool finsihed;
         private float timer;
-        private Boss daddy;
-        private EntityManager em;
+        private readonly float duration;
+        protected Boss daddy;
+        protected EntityManager em;
 
         public void Reset()
         {
-            timer = 0;
+            timer = duration;
             finsihed = false;
         }
 
@@ -27,7 +28,9 @@ namespace Seihou
         {
             this.daddy = daddy;
             this.em = em;
+            this.duration = duration;
             timer = duration;
+            this.em = em;
         }
 
         //Always call this base update at top of override call

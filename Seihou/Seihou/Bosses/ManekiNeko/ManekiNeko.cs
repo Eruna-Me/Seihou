@@ -23,22 +23,25 @@ namespace Seihou
             speed.Y = fallspeed;
             texture = "ManekiNeko";
 
-            hp = 40;
+            size = ResourceManager.textures[texture].Height / 2;
+            hp = 300;
 
             highHp = hp;
             midHp = (int)(hp * 0.5f);
             lowHp = (int)(hp * 0.25f);
 
 
-            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 1
-            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 2
-            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 3
-            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 4
-            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 5
-            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 6
-            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 7
-            patterns[Stages.low].Add(new CoinThrow(this, em)); //Pattern 8
+            patterns[Stages.high].Add(new CoinThrow(this, em,0.3f)); //Pattern 1
+            patterns[Stages.high].Add(new CoinThrow(this, em,0.3f)); //Pattern 2
+            patterns[Stages.high].Add(new CoinThrow(this, em,0.3f)); //Pattern 3
+            patterns[Stages.high].Add(new CoinThrow(this, em,0.3f)); //Pattern 4
+            patterns[Stages.high].Add(new CoinThrow(this, em,0.3f)); //Pattern 5
+            patterns[Stages.high].Add(new CoinThrow(this, em,0.3f)); //Pattern 6
+            patterns[Stages.high].Add(new CoinThrow(this, em,0.3f)); //Pattern 7
+            patterns[Stages.high].Add(new CoinThrow(this, em,0.3f)); //Pattern 8
         }
+
+
 
         public override void Update(GameTime gt)
         {
@@ -55,6 +58,33 @@ namespace Seihou
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
             base.Update(gt);
+        }
+
+        public override void OnDamaged(Entity by, int damage)
+        {
+            hp--;
+
+            if (hp <= 0)
+            {
+                
+                for (int i = 0; i < explosionParticles; i++)
+                {
+                    em.AddEntity(new Particle(pos, sb, em));
+                }
+
+                for (int i = 0; i < 100; i++)
+                {
+                    Vector2 randomVec = new Vector2(Global.random.Next(-20, 21), Global.random.Next(-20, 21));
+
+                    em.AddEntity(new Power(pos + randomVec, sb, em));
+
+                    randomVec = new Vector2(Global.random.Next(-20, 21), Global.random.Next(-20, 21));
+
+                    em.AddEntity(new Point(pos + randomVec, sb, em));
+                }
+
+                em.RemoveEntity(this);
+            }
         }
     }
 }
