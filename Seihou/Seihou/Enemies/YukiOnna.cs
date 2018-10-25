@@ -53,7 +53,7 @@ namespace Seihou
 				}
 				float direction = Global.VtoD(target);
 
-				Global.SpreadShot(pos, sb, em, this, bulletSpeed, "bulletTexture", direction, spread, bulletsPerShot);
+				Global.SpreadShot(pos, sb, em, this, bulletSpeed, bulletTexture, direction, spread, bulletsPerShot);
 
 				fireDelay = maxFireDelay;
 				ammo--;
