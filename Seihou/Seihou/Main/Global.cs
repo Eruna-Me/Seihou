@@ -30,6 +30,7 @@ namespace Seihou
         public static Random random = new Random();
 		public static Player player = null;
 		public const bool drawCollisionBoxes = true;
+        public static Color gameBackgroundColor = Color.BlanchedAlmond;
 
         public enum Faction
         {

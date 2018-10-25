@@ -13,7 +13,8 @@ namespace Seihou
         private const float borderWidth = 100;
         private const float hoverHeight = 100;
         private const float fallspeed = 20;
-        private const float moveSpeed = 100;
+        private float moveSpeed = 100;
+        private const float lowHpSpeed = 300;
 
         //Variable
         private bool startMoving = false;
@@ -24,22 +25,32 @@ namespace Seihou
             texture = "ManekiNeko";
 
             size = ResourceManager.textures[texture].Height / 2;
-            hp = 90;
+            hp = 200;
 
             highHp = hp;
             midHp = (int)(hp * 0.5f);
             lowHp = (int)(hp * 0.25f);
 
 
-            patterns[Stages.high].Add(new Spray(this, em, 0.1f)); //Pattern 1
-            patterns[Stages.mid].Add(new CoinThrow(this, em, 1.3f)); //Pattern 1
-            patterns[Stages.low].Add(new CoinThrow(this, em, 0.03f)); //Pattern 1
+            patterns[Stages.high].Add(new CoinCircle(this, em, 1f)); 
+
+            patterns[Stages.mid].Add(new CoinThrow(this, em, 1.3f)); 
+            patterns[Stages.mid].Add(new CoinDirectional(this, em, 1.3f,5)); 
+
+            patterns[Stages.low].Add(new CoinThrow(this, em, 0.5f));
+            patterns[Stages.low].Add(new CoinDirectional(this, em, 0.1f, 1));
+            patterns[Stages.low].Add(new CoinCircle(this, em, 1f)); 
         }
 
 
 
         public override void Update(GameTime gt)
         {
+            if (currentStage == Stages.low)
+            {
+                moveSpeed = lowHpSpeed;
+            }
+
             if (pos.Y > hoverHeight && !startMoving)
             {
                 speed.Y = 0;

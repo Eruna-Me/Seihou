@@ -31,8 +31,8 @@ namespace Seihou
                 em.AddEntity(new Coin(daddy.pos,daddy.sb, em, daddy, new Vector2(0,    bulletSpeed)));
                 em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(40,  bulletSpeed)));
                 em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(-40, bulletSpeed)));
-                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(40, bulletSpeed)));
-                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(-40, bulletSpeed)));
+                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(80, bulletSpeed)));
+                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(-80, bulletSpeed)));
             }
 
             base.Update(gt);

@@ -12,7 +12,7 @@ namespace Seihou
     
     abstract class Boss : Enemy
     {
-        Stages current = Stages.high;
+        protected Stages currentStage = Stages.high;
 
         protected enum Stages
         {
@@ -41,10 +41,9 @@ namespace Seihou
             base.Update(gt);
             bool ok = false;
 
-
-
-
-            foreach (var p in patterns[Stages.high])
+            currentStage = (hp <= midHp) ? ((hp <= lowHp) ? Stages.low : Stages.mid) : Stages.high;
+            
+            foreach (var p in patterns[currentStage])
             {
                 if (!p.finsihed)
                 {
@@ -56,7 +55,7 @@ namespace Seihou
 
             if (!ok)
             {
-                foreach (var p in patterns[Stages.high]) p.Reset();
+                foreach (var p in patterns[currentStage]) p.Reset();
                 Debugging.Write(this, "Pattern reset");
             }    
         }

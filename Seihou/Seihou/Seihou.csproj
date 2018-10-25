@@ -44,6 +44,8 @@
     <Compile Include="Bosses\Boss.cs" />
     <Compile Include="Bosses\Hidde.cs" />
     <Compile Include="Bosses\ManekiNeko\ManekiNeko.cs" />
+    <Compile Include="Bosses\ManekiNeko\Patterns\CoinDirectional.cs" />
+    <Compile Include="Bosses\ManekiNeko\Patterns\CoinCircle.cs" />
     <Compile Include="Bosses\ManekiNeko\Patterns\CoinThrow.cs" />
     <Compile Include="Bosses\Patterns\Spray.cs" />
     <Compile Include="Bosses\Pattern.cs" />
@@ -120,6 +122,7 @@
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">

@@ -35,7 +35,7 @@ namespace Seihou
 
         public override void Draw(GameTime gt)
         {
-            //sb.Draw(ResourceManager.textures["Wallpaper1"], new Vector2(0, 0), Color.White);
+            MonoGame.Primitives2D.FillRectangle(sb, new Vector2(0, 0), new Vector2(Global.playingFieldWidth, Global.screenHeight),Global.gameBackgroundColor, 0);
             em.Draw(gt);
             UI.Draw(gt, sb, sm, em);
 
