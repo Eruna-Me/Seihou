@@ -16,6 +16,8 @@ namespace Seihou
 		private float fireDelay = 0f;
 		private const float maxFireDelay = 0.1f;
 		private int ammo = 5;
+		private int bulletsPerShot = 5;
+		private const string bulletTexture = "Snowflake";
 		private bool targetSet = false;
 		private Vector2 target;
 		private const float spread = 20;
@@ -29,6 +31,7 @@ namespace Seihou
 			if (Settings.difficulty == Settings.Difficulty.easy)
 			{
 				ammo = 3;
+				bulletsPerShot = 3;
 			}
 
 			if (Settings.difficulty == Settings.Difficulty.usagi)
@@ -48,18 +51,10 @@ namespace Seihou
 					target = Global.Normalize(em.GetPlayer().pos - pos) * bulletSpeed;
 					targetSet = true;
 				}
-				float Direction = Global.VtoD(target);
+				float direction = Global.VtoD(target);
 
-				if (Settings.difficulty > Settings.Difficulty.easy)
-				{
-					em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction + Math.PI / spread) * bulletSpeed, (float)Math.Sin(Direction + Math.PI / spread) * bulletSpeed), "Snowflake"));
-					em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction - Math.PI / spread) * bulletSpeed, (float)Math.Sin(Direction - Math.PI / spread) * bulletSpeed), "Snowflake"));
-				}
+				Global.SpreadShot(pos, sb, em, this, bulletSpeed, "bulletTexture", direction, spread, bulletsPerShot);
 
-				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction - Math.PI / (spread/2)) * bulletSpeed, (float)Math.Sin(Direction - Math.PI / (spread / 2)) * bulletSpeed), "Snowflake"));
-				em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(Direction + Math.PI / (spread / 2)) * bulletSpeed, (float)Math.Sin(Direction + Math.PI / (spread / 2)) * bulletSpeed), "Snowflake"));
-
-				em.AddEntity(new EnemyBullet(pos, sb, em, this, target, "Snowflake"));
 				fireDelay = maxFireDelay;
 				ammo--;
 			}

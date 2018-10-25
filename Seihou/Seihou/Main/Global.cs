@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Seihou
 {
@@ -52,5 +53,17 @@ namespace Seihou
         }
 
 		public static float VtoD(Vector2 vector) => (float)Math.Atan2(vector.Y, vector.X);
+
+		public static void SpreadShot(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, float bulletSpeed, string texture, float direction, float spread, int amount)
+		{
+			if (amount % 2 != 0)
+				em.AddEntity(new EnemyBullet(pos, sb, em, owner, new Vector2((float)Math.Cos(direction) * bulletSpeed, (float)Math.Sin(direction) * bulletSpeed), texture));
+
+			for (int i = amount / 2; i > 0; i--)
+			{
+				em.AddEntity(new EnemyBullet(pos, sb, em, owner, new Vector2((float)Math.Cos(direction - Math.PI / (spread / i)) * bulletSpeed, (float)Math.Sin(direction - Math.PI / (spread / i)) * bulletSpeed), texture));
+				em.AddEntity(new EnemyBullet(pos, sb, em, owner, new Vector2((float)Math.Cos(direction + Math.PI / (spread / i)) * bulletSpeed, (float)Math.Sin(direction + Math.PI / (spread / i)) * bulletSpeed), texture));
+			}
+		}
 	}
 }

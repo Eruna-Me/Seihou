@@ -17,8 +17,8 @@ namespace Seihou
 		static public float minAlpha = 0.0f;
 		static public float maxAlpha = 0.8f;
 		static public float spawnDelay = 0.0f;
-		static public float maxSpawnDelay = 0.01f;
-		static public float deltaSpawnDelay = 0.1f;
+		static public float maxSpawnDelay = 0.2f;
+		static public float deltaSpawnDelay = 0.3f;
 		static public float deltaSpeedVariance = 10.0f;
 
 		public static void Update(GameTime gt, SpriteBatch sb, EntityManager em)
