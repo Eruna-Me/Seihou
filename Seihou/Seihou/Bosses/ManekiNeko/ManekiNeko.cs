@@ -10,6 +10,7 @@ namespace Seihou
 {
     class ManekiNeko : Boss
     {
+		private const float drops = 20;
         private const float borderWidth = 100;
         private const float hoverHeight = 100;
         private const float fallspeed = 20;
@@ -30,8 +31,8 @@ namespace Seihou
 			highHp = hp;
 			midHp = (int)(hp * 0.5f);
 			lowHp = (int)(hp * 0.25f);
-
-
+			
+			//Patterns
 			patterns[Stages.high].Add(new CoinCircle(this, em, 1f, 12));
 			patterns[Stages.high].Add(new CoinThrow(this, em, 1.3f));
 
@@ -42,13 +43,20 @@ namespace Seihou
 			patterns[Stages.low].Add(new CoinDirectional(this, em, 0.1f, 1));
 			patterns[Stages.low].Add(new CoinCircle(this, em, 1f, 24));
 
-
+			//Move the above patterns in switch statement and you can 
+			//Adjust all adjust them all acording to difficulty 
+			//Leave above if its the same in all dificulties.
 
 			switch (Settings.difficulty)
 			{
 				case Settings.Difficulty.easy:
 					break;
-
+				case Settings.Difficulty.normal:
+					break;
+				case Settings.Difficulty.hard:
+					break;
+				case Settings.Difficulty.usagi:
+					break;
 			}
         }
 
@@ -88,7 +96,7 @@ namespace Seihou
                     em.AddEntity(new Particle(pos, sb, em));
                 }
 
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < drops; i++)
                 {
                     Vector2 randomVec = new Vector2(Global.random.Next(-20, 21), Global.random.Next(-20, 21));
 

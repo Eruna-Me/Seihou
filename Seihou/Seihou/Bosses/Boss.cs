@@ -63,10 +63,7 @@ namespace Seihou
             }
 
             if (!ok)
-            {
                 foreach (var p in patterns[currentStage]) p.Reset();
-                Debugging.Write(this, "Pattern reset");
-            }    
         }
 
 		public void SkipToNextStage()
