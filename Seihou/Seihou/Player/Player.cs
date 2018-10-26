@@ -24,12 +24,14 @@ namespace Seihou
 		public int lives; 
 		private float invincibilityTimer = 0.0f;
 		private const float maxInvincibilityTimer = 5.0f;
-		private const float maxFireDelay = 0.1f;
 
 		//Firing
 		public int power = 0;
 		public int fullPower = 10;
 		protected float fireDelay = 0;
+		private const float maxFireDelay = 0.1f;
+		protected float bombDelay = 0.0f;
+		private const float maxBombDelay = 1.0f;
 
 		//Movement
 		private const float normalSpeed = 300.0f;
@@ -91,12 +93,13 @@ namespace Seihou
 				Fire(slowMode);
 				fireDelay = maxFireDelay;
 			}
-			if (b && fireDelay <= 0)
+			if (b && bombDelay <= 0)
 			{
 				DropBomb();
-				fireDelay = maxFireDelay;
+				bombDelay = maxBombDelay;
 			}
 			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
+			bombDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
 			invincibilityTimer -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
 		}
 
@@ -167,6 +170,18 @@ namespace Seihou
 			score += scoreGain;
 
 			em.AddEntity(new MessageBox(pos + new Vector2(0, -50), sb, em, scoreGain.ToString(), 2.5f, 0, 1, "DefaultFont", 1f) { color = Color.Red});
+		}
+
+		public static void SpreadShot(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, float bulletSpeed, string texture, float direction, float spread, int amount)
+		{
+			if (amount % 2 != 0)
+				em.AddEntity(new PlayerBullet(pos, sb, em, owner, new Vector2((float)Math.Cos(direction) * bulletSpeed, (float)Math.Sin(direction) * bulletSpeed), texture));
+
+			for (int i = amount / 2; i > 0; i--)
+			{
+				em.AddEntity(new PlayerBullet(pos, sb, em, owner, new Vector2((float)Math.Cos(direction - Math.PI / (spread / i)) * bulletSpeed, (float)Math.Sin(direction - Math.PI / (spread / i)) * bulletSpeed), texture));
+				em.AddEntity(new PlayerBullet(pos, sb, em, owner, new Vector2((float)Math.Cos(direction + Math.PI / (spread / i)) * bulletSpeed, (float)Math.Sin(direction + Math.PI / (spread / i)) * bulletSpeed), texture));
+			}
 		}
 	}
 }

@@ -14,9 +14,11 @@ namespace Seihou
 		private const int powerStage1 = 5;
 		private const int powerStage2 = 10;
 		private const float bulletSpeed = 500.0f;
-		private float bulletSpread;
-		private const float baseBulletSpread = 60.0f;
-		private const float preciseBulletSpread = 25.0f;
+		private int bulletsPerShot = 5;
+		private const float baseBulletSpread = 40.0f;
+		private const float preciseBulletSpread = 80.0f;
+		private string bulletTexture = "Dart1";
+		private float spread;
 
 		public LenovoDenovoMan(SpriteBatch sb, EntityManager em, StateManager sm, State state) : base(sb, em, sm, state)
 		{
@@ -26,27 +28,27 @@ namespace Seihou
 
 		public override void Fire(bool slowMode)
 		{
-			bulletSpread = slowMode ? preciseBulletSpread : baseBulletSpread;
+			spread = slowMode ? preciseBulletSpread : baseBulletSpread;
 
-			if (power < powerStage1 || power >= powerStage2)
-			{
-				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
-			}
-			if (power >= powerStage1)
-			{
-				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));
-				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(-bulletSpread, -bulletSpeed)));
-			}
-			if (power >= fullPower)
-			{
-				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(-bulletSpread * 2, -bulletSpeed)));
-				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread * 2, -bulletSpeed)));
-			}
+			float direction = (float)-Math.PI / 2;
+
+			if (power >= fullPower) bulletsPerShot = 5;
+			else if (power >= powerStage2) bulletsPerShot = 3;
+			else if (power >= powerStage1) bulletsPerShot = 2;
+			else bulletsPerShot = 1;
+
+			SpreadShot(pos, sb, em, this, bulletSpeed, bulletTexture, direction, spread, bulletsPerShot);
 		}
 
 		public override void DropBomb()
 		{
-			em.AddEntity(new FlowerBombShrapnel(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
+			int amount = 25;
+
+			for (float i = 0; i < Math.PI * 2; i += (float)(Math.PI * 2 / (amount)))
+			{
+				Vector2 dir = new Vector2((float)Math.Cos(i), (float)Math.Sin(i)) * bulletSpeed;
+				em.AddEntity(new FlowerBombShrapnel(pos, sb, em, this, dir));
+			}
 		}
 	}
 }

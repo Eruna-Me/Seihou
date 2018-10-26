@@ -17,7 +17,7 @@ namespace Seihou
 		{
 			this.texture = texture;
             trail = new Trail(1,sb,texture);
-			size = 3;
+			size = texture.Length/2;
 			this.speed = speed;
 		}
 

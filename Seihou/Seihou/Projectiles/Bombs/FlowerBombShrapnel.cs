@@ -13,6 +13,7 @@ namespace Seihou
 	{
 		Trail trail;
 		float rotation = 0;
+		float bombScore = 100.0f;
 		public FlowerBombShrapnel(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em)
 		{
 			texture = "EnergyBall";
@@ -35,7 +36,15 @@ namespace Seihou
 			if (c != null && c.hp > 0)
 			{
 				c.OnDamaged(this, 10000);
+				float scoreGain = bombScore;
+				Global.player.score += scoreGain;
+				em.AddEntity(new MessageBox(pos + new Vector2(0, -50), sb, em, scoreGain.ToString(), 2.5f, 0, 1, "DefaultFont", 1f) { color = Color.Blue });
 				goto Bob;
+			}
+
+			if (pos.Y + Global.outOfScreenMargin < 0 || pos.Y > Global.screenHeight + Global.outOfScreenMargin || pos.X + Global.outOfScreenMargin < 0 || pos.X > Global.playingFieldWidth + Global.outOfScreenMargin)
+			{
+				em.RemoveEntity(this);
 			}
 		}
 
