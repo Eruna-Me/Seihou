@@ -19,27 +19,37 @@ namespace Seihou
         //Variable
         private bool startMoving = false;
 
-        public ManekiNeko(SpriteBatch sb, EntityManager em) : base(new Vector2(Global.Center.X,Global.spawnHeight), sb, em)
-        {
-            speed.Y = fallspeed;
-            texture = "ManekiNeko";
+		public ManekiNeko(SpriteBatch sb, EntityManager em) : base(new Vector2(Global.Center.X, Global.spawnHeight), sb, em)
+		{
+			speed.Y = fallspeed;
+			texture = "ManekiNeko";
 
-            size = ResourceManager.textures[texture].Height / 2;
-            hp = 200;
+			size = ResourceManager.textures[texture].Height / 2;
+			hp = 200;
 
-            highHp = hp;
-            midHp = (int)(hp * 0.5f);
-            lowHp = (int)(hp * 0.25f);
+			highHp = hp;
+			midHp = (int)(hp * 0.5f);
+			lowHp = (int)(hp * 0.25f);
 
 
-            patterns[Stages.high].Add(new CoinCircle(this, em, 1f)); 
+			patterns[Stages.high].Add(new CoinCircle(this, em, 1f, 12));
+			patterns[Stages.high].Add(new CoinThrow(this, em, 1.3f));
 
-            patterns[Stages.mid].Add(new CoinThrow(this, em, 1.3f)); 
-            patterns[Stages.mid].Add(new CoinDirectional(this, em, 1.3f,5)); 
+			patterns[Stages.mid].Add(new CoinThrow(this, em, (4 - (float)Settings.difficulty) / 2.0f));
+			patterns[Stages.mid].Add(new CoinDirectional(this, em, 1.3f, 25));
 
-            patterns[Stages.low].Add(new CoinThrow(this, em, 0.5f));
-            patterns[Stages.low].Add(new CoinDirectional(this, em, 0.1f, 1));
-            patterns[Stages.low].Add(new CoinCircle(this, em, 1f)); 
+			patterns[Stages.low].Add(new CoinThrow(this, em, 0.5f));
+			patterns[Stages.low].Add(new CoinDirectional(this, em, 0.1f, 1));
+			patterns[Stages.low].Add(new CoinCircle(this, em, 1f, 24));
+
+
+
+			switch (Settings.difficulty)
+			{
+				case Settings.Difficulty.easy:
+					break;
+
+			}
         }
 
 

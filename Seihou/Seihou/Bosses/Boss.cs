@@ -27,6 +27,9 @@ namespace Seihou
         protected int highHp = 0;
         protected int midHp = 0;
         protected int lowHp = 0;
+
+		//Variables
+		protected float timerUntilSkipStage = 10.0f;
         
 
         public Boss(Vector2 pos,SpriteBatch sb,EntityManager em) : base(pos,sb,em)
@@ -41,7 +44,13 @@ namespace Seihou
             base.Update(gt);
             bool ok = false;
 
+			var lastStage = currentStage;
             currentStage = (hp <= midHp) ? ((hp <= lowHp) ? Stages.low : Stages.mid) : Stages.high;
+
+			if (lastStage != currentStage)
+			{
+				Debugging.Write(this, $"{lastStage} -> {currentStage}");
+			}
             
             foreach (var p in patterns[currentStage])
             {
@@ -59,5 +68,11 @@ namespace Seihou
                 Debugging.Write(this, "Pattern reset");
             }    
         }
+
+		public void SkipToNextStage()
+		{
+			currentStage = (currentStage == Stages.high) ? currentStage = Stages.mid : currentStage = Stages.low;
+			hp = (currentStage == Stages.high) ? midHp : lowHp;
+		}
     }
 }
