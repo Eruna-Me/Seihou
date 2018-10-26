@@ -72,6 +72,7 @@ namespace Seihou
 			bool slowMode = kb.IsKeyDown(Settings.slowKey);
 
 			bool s = kb.IsKeyDown(Settings.shootKey);
+			bool b = kb.IsKeyDown(Settings.bombKey);
 
 			//Movement
 			speed.X = (Convert.ToInt32(r) - Convert.ToInt32(l)) * (slowMode ? slowSpeed : normalSpeed);
@@ -88,6 +89,11 @@ namespace Seihou
 			if (s && fireDelay <= 0)
 			{
 				Fire(slowMode);
+				fireDelay = maxFireDelay;
+			}
+			if (b && fireDelay <= 0)
+			{
+				DropBomb();
 				fireDelay = maxFireDelay;
 			}
 			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
@@ -118,35 +124,17 @@ namespace Seihou
 				ResetPosition();
 				invincibilityTimer = maxInvincibilityTimer;
 
-                if (lives <= 0)
-                    ((MainState)sm.GetCurrentState()).OnPlayerDeath();
+				if (lives <= 0)
+					((MainState)sm.GetCurrentState()).OnPlayerDeath();
 
 				lives--;
 			}
 		}
-        /*
-        public void Fire()
-        {
-            em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
-            if (power >= powerStage1)
-            {
-                em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(bulletSpread, -bulletSpeed)));
-                em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(-bulletSpread, -bulletSpeed)));
-            }
-            if (power >= fullPower)
-            {
-                for (int i = 0; i < 500; i++)
-                {
-                    em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(-bulletSpread * i, -bulletSpeed)));
-                    em.AddEntity(new HomingBullet(pos, sb, em, this, new Vector2(bulletSpread * i, -bulletSpeed)));
-                }
-            }
-        }
-		*/
 
         public abstract void Fire(bool slowMode);
+		public abstract void DropBomb();
 
-        public void Graze(GameTime gt)
+		public void Graze(GameTime gt)
 		{
 			if (invincibilityTimer <= 0)
 			{

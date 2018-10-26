@@ -18,6 +18,7 @@ namespace Seihou
 		public static Keys rightKey = Keys.Right;
 		public static Keys slowKey = Keys.LeftShift;
         public static Keys shootKey = Keys.Z;
+		public static Keys bombKey = Keys.X;
 
 		//	DIFFICULTY
 		public enum Difficulty{ easy, normal, hard, usagi }; // Uesugi Kenshin >> Usagi Kenshin?

@@ -22,7 +22,7 @@ namespace Seihou
 
         public override void OnDamaged(Entity by, int damage)
         {
-            hp--;
+			hp -= damage ;
 
 			if (hp <= 0)
 			{

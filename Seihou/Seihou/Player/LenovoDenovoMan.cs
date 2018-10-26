@@ -43,5 +43,10 @@ namespace Seihou
 				em.AddEntity(new PlayerBullet(pos, sb, em, this, new Vector2(bulletSpread * 2, -bulletSpeed)));
 			}
 		}
+
+		public override void DropBomb()
+		{
+			em.AddEntity(new FlowerBombShrapnel(pos, sb, em, this, new Vector2(0, -bulletSpeed)));
+		}
 	}
 }

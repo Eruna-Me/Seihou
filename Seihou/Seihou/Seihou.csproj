@@ -69,6 +69,7 @@
     <Compile Include="Projectiles\EnemyBullet.cs" />
     <Compile Include="Projectiles\Coin.cs" />
     <Compile Include="Projectiles\EnergyBall.cs" />
+    <Compile Include="Projectiles\Bombs\FlowerBombShrapnel.cs" />
     <Compile Include="Projectiles\HomingBullet.cs" />
     <Compile Include="Projectiles\PlayerProjectile.cs" />
     <Compile Include="Projectiles\PlayerBullet.cs" />

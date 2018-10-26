@@ -15,7 +15,8 @@ namespace Seihou
         {
 			cloud = 0,
             nonSolid,
-            enemy,
+			enemyProjectile,
+			enemy,
             player,
             ui,
         }
@@ -31,19 +32,22 @@ namespace Seihou
             entities.Add(EntityClass.enemy,              new List<Entity>());
             entities.Add(EntityClass.player,             new List<Entity>());
             entities.Add(EntityClass.ui,                 new List<Entity>());
+			entities.Add(EntityClass.enemyProjectile,	 new List<Entity>());
 
 			pollAddEntities.Add(EntityClass.cloud,		 new Queue<Entity>());
 			pollAddEntities.Add(EntityClass.nonSolid,    new Queue<Entity>());
             pollAddEntities.Add(EntityClass.enemy,       new Queue<Entity>());
             pollAddEntities.Add(EntityClass.player,      new Queue<Entity>());
             pollAddEntities.Add(EntityClass.ui,          new Queue<Entity>());
+			pollAddEntities.Add(EntityClass.enemyProjectile, new Queue<Entity>());
 
 			pollRemoveEntities.Add(EntityClass.cloud,	 new Queue<Entity>());
 			pollRemoveEntities.Add(EntityClass.nonSolid, new Queue<Entity>());
             pollRemoveEntities.Add(EntityClass.enemy,    new Queue<Entity>());
             pollRemoveEntities.Add(EntityClass.player,   new Queue<Entity>());
             pollRemoveEntities.Add(EntityClass.ui,       new Queue<Entity>());
-        }
+			pollRemoveEntities.Add(EntityClass.enemyProjectile, new Queue<Entity>());
+		}
     
         public Entity GetPlayer() => entities[EntityClass.player][0];
 

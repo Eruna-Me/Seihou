@@ -17,7 +17,6 @@ namespace Seihou
 		{
 			this.texture = texture;
             trail = new Trail(1,sb,texture);
-            ec = EntityManager.EntityClass.nonSolid;
 			size = 3;
 			this.speed = speed;
 		}

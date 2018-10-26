@@ -11,10 +11,11 @@ namespace Seihou
 {
 	abstract class EnemyProjectile : Entity
 	{
-        protected readonly Entity owner;
+		protected readonly Entity owner;
 
 		protected EnemyProjectile(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner) : base(pos, sb, em)
-		{
+		{ 
+			ec = EntityManager.EntityClass.enemyProjectile;
             this.owner = owner;
 		}
 
@@ -42,6 +43,12 @@ namespace Seihou
 			{
 				em.RemoveEntity(this);
 			}
+		}
+
+		public override void OnDamaged(Entity by, int damage)
+		{
+			em.RemoveEntity(this);
+			hp--;
 		}
 
 		public override void Draw(GameTime gt)
