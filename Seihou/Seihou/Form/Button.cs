@@ -31,7 +31,7 @@ namespace Seihou
 		Vector2 pos, size;
 		SpriteBatch sb;
 		string text;
-        string font;
+        string font;	
         bool hovering = false;
         bool clicked = false;
         Align align;
