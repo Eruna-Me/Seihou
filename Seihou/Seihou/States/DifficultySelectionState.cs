@@ -16,31 +16,31 @@ namespace Seihou
         const int buttonsX = Global.screenWidth/2;
         Button[] buttons = new Button[5];
 
-        void OnClickedEasy()
+        void OnClickedEasy(object sender)
         {
 			Settings.difficulty = Settings.Difficulty.easy;
 				sm.ChangeState(new MainState(sm, cm, sb, gdm));
 		}
 
-        void OnClickedMedium()
+        void OnClickedMedium(object sender)
         {
 			Settings.difficulty = Settings.Difficulty.normal;
 				sm.ChangeState(new MainState(sm, cm, sb, gdm));
 		}
 
-        void OnClickedHard()
+        void OnClickedHard(object sender)
         {
 			Settings.difficulty = Settings.Difficulty.hard;
 				sm.ChangeState(new MainState(sm, cm, sb, gdm));
 		}
 
-        void OnClickedUsagi()
+        void OnClickedUsagi(object sender)
         {
 			Settings.difficulty = Settings.Difficulty.usagi;
 				sm.ChangeState(new MainState(sm, cm, sb, gdm));
 		}
 
-        void  OnClickedExit()
+        void  OnClickedExit(object sender)
         {
 				sm.ChangeState(new MenuState(sm, cm, sb, gdm));
 		}

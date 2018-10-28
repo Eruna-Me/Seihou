@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
-    public class ListBox
+    class ListBox : Control
     {
         readonly SpriteBatch sb;
         public Vector2 pos;
@@ -29,7 +29,7 @@ namespace Seihou
             this.font = font;
         }
 
-        public void Draw(GameTime gt)
+        public override void Draw(GameTime gt)
         {
             var f = ResourceManager.fonts[font];
             MonoGame.Primitives2D.FillRectangle(sb, pos,size, background, 0);
@@ -39,6 +39,11 @@ namespace Seihou
                 string txt = text[i];
                 sb.DrawString(f,txt,new Vector2(pos.X,pos.Y + f.MeasureString(txt).Y*i+2),textColor);
             }
+        }
+
+        public override void Update(GameTime gt)
+        {
+            throw new NotImplementedException();
         }
     }
 }

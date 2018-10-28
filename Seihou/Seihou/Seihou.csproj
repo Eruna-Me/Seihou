@@ -53,6 +53,7 @@
     <Compile Include="Enemies\YukiOnna.cs" />
     <Compile Include="Enemies\Samurai.cs" />
     <Compile Include="Enemies\Shooter.cs" />
+    <Compile Include="Form\Control.cs" />
     <Compile Include="Form\ListBox.cs" />
     <Compile Include="Form\Cursor.cs" />
     <Compile Include="Form\Textbox.cs" />

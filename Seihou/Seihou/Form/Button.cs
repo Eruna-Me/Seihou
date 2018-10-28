@@ -10,9 +10,10 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Seihou
 {
-    public delegate void ButtonCallBack();
+    delegate void ButtonCallBack(object sender);
 
-	public class Button
+
+	class Button : Control
 	{
         public enum Align
         {
@@ -30,10 +31,9 @@ namespace Seihou
 
 		Vector2 pos, size;
 		SpriteBatch sb;
-		string text;
+		public string text;
         string font;	
         bool hovering = false;
-        bool clicked = false;
         Align align;
 
 		public Button(Vector2 pos, Vector2 size, SpriteBatch sb,ButtonCallBack bcb, string text,Align align = Align.left, string font = "DefaultFont")
@@ -47,7 +47,7 @@ namespace Seihou
 			this.text = text;
 		}
 
-		public void Draw(GameTime gt)
+		public override void Draw(GameTime gt)
 		{
             MonoGame.Primitives2D.FillRectangle(sb, pos + background3DOffset, size, background3D, 0);
             MonoGame.Primitives2D.FillRectangle(sb, pos, size, background, 0);
@@ -85,7 +85,7 @@ namespace Seihou
             sb.DrawString(cf, text,pos + place, hovering ? selectedTextColor : textColor,0,orgin,1,SpriteEffects.None,0);
 		}
 
-		public void Update(GameTime gt)
+		public override void Update(GameTime gt)
 		{
             MouseState mouseState = Mouse.GetState();
             hovering = MouseOnButton();
@@ -93,7 +93,7 @@ namespace Seihou
             if (hovering)
             {
                 if (Cursor.IsMouseLeftPressed())
-                    bcb();
+                    bcb(this);
             }
         }
 

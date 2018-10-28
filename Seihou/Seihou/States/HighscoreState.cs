@@ -18,7 +18,8 @@ namespace Seihou
         int printHeight = 0;
         const int maxElements = 17;
 
-        Button[] buttons;
+        List<Control> controls = new List<Control>();
+        Textbox textbox;
         
         string[] text;
 
@@ -65,18 +66,16 @@ namespace Seihou
             scoreBox = new ListBox(new Vector2(100, 100), new Vector2(1000, 500),this.sb);
             scoreBox.background = new Color(40, 40, 40);
 
-            buttons = new Button[2];
-
             var s = new Vector2(100, 30);
             var p = new Vector2(930, 650);
-            buttons[0] = new Button(p, s, sb, MoveUp, "UP");
-            buttons[1] = new Button(new Vector2(p.X + s.X,p.Y), s, sb, MoveDown, "DOWN");
-
+            controls.Add(new Button(p, s, sb, MoveUp, "UP"));
+            controls.Add(new Button(new Vector2(p.X + s.X,p.Y), s, sb, MoveDown, "DOWN"));
+            controls.Add(new Textbox(new Vector2(100, 650), sb));
 
             UpdateText();
         }
 
-        private void MoveUp()
+        private void MoveUp(object sender)
         {
             if (printHeight > 0)
             {
@@ -85,7 +84,7 @@ namespace Seihou
             }
         }
 
-        private void MoveDown()
+        private void MoveDown(object sender)
         {
             if (text.Length - printHeight > maxElements)
             {
@@ -102,25 +101,21 @@ namespace Seihou
                 part.Add(text[i]);
                 if (part.Count >= maxElements) break;
             }
-
-
-                scoreBox.text = part.ToArray();
-
+            scoreBox.text = part.ToArray();
         }
 
 
         public override void Draw(GameTime gt)
         {
             sb.DrawString(ResourceManager.fonts["DefaultFont"], "Score             Mode : name", new Vector2(scoreBox.pos.X, 50), Color.White);
-
-            foreach (var b in buttons) b.Draw(gt);
             scoreBox.Draw(gt);
-            UpdateText();
+            foreach (var c in controls) c.Draw(gt);     
         }
         
         public override void Update(GameTime gt)
         {
-            foreach (var b in buttons) b.Update(gt);
+            foreach (var c in controls) c.Update(gt);
+            UpdateText();
         }
         
         public override void OnStart()

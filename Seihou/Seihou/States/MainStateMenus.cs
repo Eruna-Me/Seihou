@@ -54,23 +54,23 @@ namespace Seihou
             foreach (var b in pauseMenu) { b.background = new Color(60, 60, 60); b.background3D = Color.Black; }
         }
 
-        public void OnClickedContinue()
+        public void OnClickedContinue(object sender)
         {
             Global.player.lives = Settings.startingLives;
             death = false;
         }
 
-        public void OnClickedResume()
+        public void OnClickedResume(object sender)
         {
             pause = false;
         }
 
-        public void OnClickedExit()
+        public void OnClickedExit(object sender)
         {
             sm.abort = true;
         }
 
-        public void OnClickedMenu()
+        public void OnClickedMenu(object sender)
         {
             sm.ChangeState(new MenuState(sm, cm, sb, gdm));
         }

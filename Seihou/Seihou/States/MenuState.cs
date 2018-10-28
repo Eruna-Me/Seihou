@@ -16,27 +16,27 @@ namespace Seihou
         const int buttonsX = Global.screenWidth - 200;
         Button[] buttons = new Button[5];
 
-        void OnClickedStart()
+        void OnClickedStart(object sender)
         {
             sm.ChangeState(new DifficultySelectionState(sm, cm, sb, gdm));
         }
 
-        void OnClickedLevels()
+        void OnClickedLevels(object sender)
         {
             sm.ChangeState(new HighscoreState(sm, cm, sb, gdm));
         }
 
-        void OnClickedSettings()
+        void OnClickedSettings(object sender)
         {
 
         }
 
-        void OnClickedFinite()
+        void OnClickedFinite(object sender)
         {
 
         }
 
-        void  OnClickedExit()
+        void  OnClickedExit(object sender)
         {
             sm.abort = true;
         }
