@@ -18,6 +18,8 @@ namespace Seihou
 		double playedScore;
 		string playedMode;
 
+		string selectedMode = "";
+
 		List<Control> controls = new List<Control>();
   
         Textbox textBox1;
@@ -27,17 +29,19 @@ namespace Seihou
         {
 			this.playedMode = mode;
 			this.playedScore = score;
+			selectedMode = playedMode;
 
             scoreDisplay = new ScoreDisplay(new Vector2(500, 100), new Vector2(650,395),this.sb,conStr);
             scoreDisplay.background = new Color(40, 40, 40);
-			scoreDisplay.SetModeFilter("Infinite");
-			textBox1 = new Textbox(new Vector2(100, 550), sb);
+			scoreDisplay.SetModeFilter(playedMode);
+			textBox1 = new Textbox(new Vector2(100, 550), sb,OnSubmit);
 
-			controls.Add(new Button(new Vector2(200, 200), new Vector2(200, 50), sb, FilterButtonPressed, "easy",   Button.Align.center));
-			controls.Add(new Button(new Vector2(200, 250), new Vector2(200, 50), sb, FilterButtonPressed, "hard",   Button.Align.center));
-			controls.Add(new Button(new Vector2(200, 300), new Vector2(200, 50), sb, FilterButtonPressed, "normal", Button.Align.center));
-			controls.Add(new Button(new Vector2(200, 350), new Vector2(200, 50), sb, FilterButtonPressed, "usagi",  Button.Align.center));
-			controls.Add(new Button(new Vector2(200, 400), new Vector2(200, 50), sb, FilterButtonPressed, "infinite", Button.Align.center));
+			var enumVals = Enum.GetValues(typeof(Settings.Difficulty));
+			for (int i = 0; i < enumVals.Length; i++)
+				controls.Add(new Button(new Vector2(200,200 + i * 50), new Vector2(200, 50), sb, FilterButtonPressed,Enum.GetName(typeof(Settings.Difficulty),enumVals.GetValue(i)), Button.Align.center));
+			controls.Add(new Button(new Vector2(200, 200 + (enumVals.Length) * 50), new Vector2(200, 50), sb, FilterButtonPressed,"infinite", Button.Align.center));
+
+			controls.Add(new Button(new Vector2(80, 690), new Vector2(100, 25), sb, GoHome, "Back", Button.Align.center));
 
 			controls.Add(scoreDisplay);
             controls.Add(textBox1);
@@ -45,12 +49,14 @@ namespace Seihou
 
 		private void FilterButtonPressed(object sender)
 		{
+			selectedMode = ((Button)sender).text;
 			scoreDisplay.SetModeFilter(((Button)sender).text);
 		}
 
         public override void Draw(GameTime gt)
         {
-            sb.DrawString(ResourceManager.fonts["DefaultFont"], "Highscores", new Vector2(scoreDisplay.pos.X, 50), Color.White);
+			sb.DrawString(ResourceManager.fonts["DefaultFont"], $"Your score: {playedScore}\nOn {playedMode}", new Vector2(10,10), Color.White);
+			sb.DrawString(ResourceManager.fonts["DefaultFont"], $"Highscores: {selectedMode}", new Vector2(scoreDisplay.pos.X, 50), Color.White);
             foreach (var c in controls) c.Draw(gt);     
         }
         
@@ -58,7 +64,18 @@ namespace Seihou
         {
             foreach (var c in controls) c.Update(gt);
         }
-        
+
+		public void GoHome(object sender)
+		{
+			sm.ChangeState(new MenuState(sm, cm, sb, gdm));
+		}
+
+		public void OnSubmit(object sender)
+		{
+			string name = textBox1.text;
+			scoreDisplay.RefreshAll();
+		}
+
         public override void OnStart()
         {
         }

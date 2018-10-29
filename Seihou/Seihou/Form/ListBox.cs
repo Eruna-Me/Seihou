@@ -11,7 +11,6 @@ namespace Seihou
 {
     class ListBox : Control
     {
-        readonly SpriteBatch sb;
         public Vector2 pos;
         public Vector2 size;
 
