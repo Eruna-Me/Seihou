@@ -71,5 +71,14 @@ namespace Seihou
 			currentStage = (currentStage == Stages.high) ? currentStage = Stages.mid : currentStage = Stages.low;
 			hp = (currentStage == Stages.high) ? midHp : lowHp;
 		}
-    }
+
+		public override void Draw(GameTime gt)
+		{
+			//Draw boss healthbar
+			MonoGame.Primitives2D.FillRectangle(sb, new Vector2(20, 10), new Vector2((float)(Global.playingFieldWidth - 20 * 2) / ((float)highHp / (float)hp), 10), Color.Red, 0);
+
+			base.Draw(gt);
+		}
+
+	}
 }
