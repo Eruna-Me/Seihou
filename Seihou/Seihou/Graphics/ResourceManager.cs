@@ -58,6 +58,10 @@ namespace Seihou
             textures.Add("Logo",             cm.Load<Texture2D>("Misc/Logo"));
             textures.Add("SeihouText1",      cm.Load<Texture2D>("Misc/SeihouText1"));
             textures.Add("Tree",             cm.Load<Texture2D>("Misc/Tree"));
+
+			//UI
+			textures.Add("Heart",			 cm.Load<Texture2D>("Misc/Hartje"));
+			textures.Add("Bomb",			 cm.Load<Texture2D>("Misc/Bomb"));
 			textures.Add("backgroundUI",	 cm.Load<Texture2D>("Misc/backgroundUI"));
 
 			//Other

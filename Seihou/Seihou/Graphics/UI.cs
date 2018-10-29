@@ -35,13 +35,23 @@ namespace Seihou
  
 			for (int i = 0; i < Global.player.lives; i++)
 			{
-				sb.Draw(ResourceManager.textures[Global.player.texture], new Vector2(Global.uiWidth + 120 + i * ResourceManager.textures[Global.player.texture].Width, y), Color.White);
+				sb.Draw(ResourceManager.textures["Heart"], new Vector2(Global.uiWidth + 120 + i * (ResourceManager.textures["Heart"].Width + 10), y), Color.White);
 			}
 
             y += uiLineHeight; //New line
 
-            //Powerups 
-            string powerText = (Global.player.power >= Global.player.fullPower) ? "max" : Global.player.power.ToString();
+			//Bombs
+			DrawOutlinedFont(font1, "Bombs: ", new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White, Color.Black);
+
+			for (int i = 0; i < Global.player.bombs; i++)
+			{
+				sb.Draw(ResourceManager.textures["Bomb"], new Vector2(Global.uiWidth + 120 + i * (ResourceManager.textures["Bomb"].Width + 10), y), Color.White);
+			}
+
+			y += uiLineHeight; //New line
+
+			//Powerups 
+			string powerText = (Global.player.power >= Global.player.fullPower) ? "Max" : Global.player.power.ToString();
 
 			DrawOutlinedFont(font1, "Power: ", new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White, Color.Black);
 			DrawOutlinedFont(font1,powerText, new Vector2(Global.playingFieldWidth + 20 + font1.MeasureString("Power: ").X, y), Color.Red, Color.Black);

@@ -24,7 +24,7 @@ namespace Seihou
 		public enum Difficulty{ easy, normal, hard, usagi }; // Uesugi Kenshin >> Usagi Kenshin?
 		public static Difficulty difficulty = Difficulty.easy;
 		public static int startingLives = 3;
-		public static int startingBombs = 0;
+		public static int startingBombs = 2;
 
 		//	GRAPHICS
         public static bool SimpleGraphics = false;

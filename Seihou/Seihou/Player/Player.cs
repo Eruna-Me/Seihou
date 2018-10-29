@@ -30,6 +30,7 @@ namespace Seihou
 		public int fullPower = 10;
 		protected float fireDelay = 0;
 		private const float maxFireDelay = 0.1f;
+		public int bombs;
 		protected float bombDelay = 0.0f;
 		private const float maxBombDelay = 1.0f;
 
@@ -58,6 +59,7 @@ namespace Seihou
 			trail = new Trail(5, sb, texture);
 			size = 5;
 			lives = Settings.startingLives;
+			bombs = Settings.startingBombs;
 			ec = EntityManager.EntityClass.player;
 		}
 
@@ -93,10 +95,11 @@ namespace Seihou
 				Fire(slowMode);
 				fireDelay = maxFireDelay;
 			}
-			if (b && bombDelay <= 0)
+			if (b && bombDelay <= 0 && bombs > 0)
 			{
 				DropBomb();
 				bombDelay = maxBombDelay;
+				bombs--;
 			}
 			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
 			bombDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
@@ -131,6 +134,7 @@ namespace Seihou
 					((MainState)sm.GetCurrentState()).OnPlayerDeath();
 
 				lives--;
+				bombs = Settings.startingBombs;
 			}
 		}
 
