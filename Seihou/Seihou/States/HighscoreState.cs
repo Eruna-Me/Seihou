@@ -73,7 +73,8 @@ namespace Seihou
 		public void OnSubmit(object sender)
 		{
 			string name = textBox1.text;
-			scoreDisplay.RefreshAll();
+
+			scoreDisplay.InsertInto(playedScore.ToString(), name, playedMode);
 		}
 
         public override void OnStart()

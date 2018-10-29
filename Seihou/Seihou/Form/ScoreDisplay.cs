@@ -36,9 +36,44 @@ namespace Seihou
 			RefreshAll();
 		}
 
+		public void InsertInto(string score,string name,string mode)
+		{
+			//Load data from MDF
+			try
+			{
+				using (SqlConnection con = new SqlConnection(connectionString))
+				{
+					con.Open();
+
+					var c = new SqlCommand($"INSERT INTO [Highscores] (Score,Name,Mode) VALUES ({score},'{name}','{mode}')");
+					c.Connection = con; 
+					c.CommandTimeout = 1;
+
+					using (SqlDataReader reader = c.ExecuteReader())
+					{
+						while (reader.Read())
+						{
+							scores.Add(new Score()
+							{
+								score = reader[0].ToString(),
+								name = reader[1].ToString(),
+								mode = reader[2].ToString()
+							});
+						}
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				Debugging.Write(this,"Could not insert score : " + e.Message);
+			}
+			RefreshAll();
+		}
+
 		public void RefreshAll()
 		{
 			//Load data from MDF
+			scores.Clear();
 			try
 			{
 				using (SqlConnection con = new SqlConnection(connectionString))
