@@ -12,7 +12,7 @@ namespace Seihou
 {
     class Textbox : Control
     {
-        const int maxLength = 10;
+        const int maxLength = 15;
 
         public string text = "";
         
@@ -35,13 +35,14 @@ namespace Seihou
             {
                 for (int key = 0; key < keys.GetLength(1); key++)
                 {
-                    buttons.Add(new Button(new Vector2(pos.X + key * xSpacing, pos.Y + row * ySpacing), new Vector2(xSpacing, ySpacing), sb, Pressed, keys[row, key].ToString(),Button.Align.center));
+                    buttons.Add(new Button(new Vector2(pos.X + key * xSpacing, pos.Y + (row+1) * ySpacing), new Vector2(xSpacing, ySpacing), sb, Pressed, keys[row, key].ToString(),Button.Align.center));
                 }
             }
         }
 
         public override void Draw(GameTime gt)
         {
+			sb.DrawString(ResourceManager.fonts["DefaultFont"], text, pos, Color.White,0,new Vector2(0,ResourceManager.fonts["DefaultFont"].MeasureString(text).Y/2),1,SpriteEffects.None,0);
             foreach (var b in buttons) b.Draw(gt);
         }
 
@@ -52,7 +53,10 @@ namespace Seihou
 
         public void BackSpace(object sender)
         {
-
+			if (text.Length > 1)
+			{
+				text.Substring(0, text.Length - 1);
+			}
         }
 
         private void Pressed(object sender)
@@ -60,9 +64,5 @@ namespace Seihou
             if (text.Length < maxLength)
                 text += ((Button)sender).text;
         }
-        
-        
-
-
     }
 }

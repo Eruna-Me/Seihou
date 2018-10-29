@@ -31,7 +31,7 @@ namespace Seihou
             scoreDisplay = new ScoreDisplay(new Vector2(500, 100), new Vector2(650,395),this.sb,conStr);
             scoreDisplay.background = new Color(40, 40, 40);
 			scoreDisplay.SetModeFilter("Infinite");
-			textBox1 = new Textbox(new Vector2(100, 650), sb);
+			textBox1 = new Textbox(new Vector2(100, 550), sb);
 
 			controls.Add(new Button(new Vector2(200, 200), new Vector2(200, 50), sb, FilterButtonPressed, "easy",   Button.Align.center));
 			controls.Add(new Button(new Vector2(200, 250), new Vector2(200, 50), sb, FilterButtonPressed, "hard",   Button.Align.center));
