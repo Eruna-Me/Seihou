@@ -27,7 +27,7 @@ namespace Seihou
         int xSpacing = 40;
         int ySpacing = 40;
 
-        public Textbox(Vector2 pos, SpriteBatch sb)
+        public Textbox(Vector2 pos, SpriteBatch sb) : base(sb)
         {
             this.pos = pos;
             this.sb = sb;

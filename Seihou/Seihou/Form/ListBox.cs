@@ -14,14 +14,11 @@ namespace Seihou
         readonly SpriteBatch sb;
         public Vector2 pos;
         public Vector2 size;
-        public Color background = Color.Transparent;
-        public Color textColor = Color.White;
+
         public string[] text = new string[] { "EMPTY" };
         public string font;
 
-        public bool Selected { get; private set; }
-
-        public ListBox(Vector2 pos,Vector2 size,SpriteBatch sb, string font = "DefaultFont")
+        public ListBox(Vector2 pos,Vector2 size,SpriteBatch sb, string font = "DefaultFont") : base(sb)
         {
             this.size = size;
             this.pos = pos;
@@ -39,6 +36,7 @@ namespace Seihou
                 string txt = text[i];
                 sb.DrawString(f,txt,new Vector2(pos.X,pos.Y + f.MeasureString(txt).Y*i+2),textColor);
             }
+
         }
 
         public override void Update(GameTime gt)

@@ -13,109 +13,50 @@ namespace Seihou
 {
     public class HighscoreState : State
     {
-        SpriteBatch sb;
-        ListBox scoreBox;
-        int printHeight = 0;
-        const int maxElements = 17;
+		readonly string conStr = $"Connection Timeout=30;Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={System.IO.Directory.GetCurrentDirectory()}\\GameData.mdf;Integrated Security=True;";
 
-        List<Control> controls = new List<Control>();
-        Textbox textbox;
-        
-        string[] text;
+		double playedScore;
+		string playedMode;
 
-        public HighscoreState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
+		List<Control> controls = new List<Control>();
+  
+        Textbox textBox1;
+		ScoreDisplay scoreDisplay;
+
+        public HighscoreState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm,double score,string mode) : base(sm, cm, sb, gdm)
         {
-            string conStr = $"Connection Timeout=30;Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={System.IO.Directory.GetCurrentDirectory()}\\GameData.mdf;Integrated Security=True;";
+			this.playedMode = mode;
+			this.playedScore = score;
 
-            try
-            {
-                using (SqlConnection con = new SqlConnection(conStr))
-                {
-                    con.Open();
+            scoreDisplay = new ScoreDisplay(new Vector2(500, 100), new Vector2(650,395),this.sb,conStr);
+            scoreDisplay.background = new Color(40, 40, 40);
+			scoreDisplay.SetModeFilter("Infinite");
+			textBox1 = new Textbox(new Vector2(100, 650), sb);
 
-                    Console.WriteLine("Connection open...");
+			controls.Add(new Button(new Vector2(200, 200), new Vector2(200, 50), sb, FilterButtonPressed, "easy",   Button.Align.center));
+			controls.Add(new Button(new Vector2(200, 250), new Vector2(200, 50), sb, FilterButtonPressed, "hard",   Button.Align.center));
+			controls.Add(new Button(new Vector2(200, 300), new Vector2(200, 50), sb, FilterButtonPressed, "normal", Button.Align.center));
+			controls.Add(new Button(new Vector2(200, 350), new Vector2(200, 50), sb, FilterButtonPressed, "usagi",  Button.Align.center));
+			controls.Add(new Button(new Vector2(200, 400), new Vector2(200, 50), sb, FilterButtonPressed, "infinite", Button.Align.center));
 
-                    List<string> print = new List<string>();
-                    var c = new SqlCommand("SELECT * FROM [Highscores] ORDER BY [score] DESC");
-                    c.Connection = con;
-                    c.CommandTimeout = 1;
-
-                    
-
-                    using (SqlDataReader reader = c.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            string score = reader[0].ToString();
-                            string modo = reader[2].ToString();
-                            string name = reader[1].ToString();
-
-                            while (score.Length < 14) score = score.Insert(0, "0");
-                            print.Add($"{score} | {modo} : {name}");
-                        }
-                    }
-                    text = print.ToArray();
-                }
-            }
-            catch(Exception e)
-            {
-                text = new string[] {"No highscores available",e.Message}; 
-            }
-
-            this.sb = sb;
-            scoreBox = new ListBox(new Vector2(100, 100), new Vector2(1000, 500),this.sb);
-            scoreBox.background = new Color(40, 40, 40);
-
-            var s = new Vector2(100, 30);
-            var p = new Vector2(930, 650);
-            controls.Add(new Button(p, s, sb, MoveUp, "UP"));
-            controls.Add(new Button(new Vector2(p.X + s.X,p.Y), s, sb, MoveDown, "DOWN"));
-            controls.Add(new Textbox(new Vector2(100, 650), sb));
-
-            UpdateText();
+			controls.Add(scoreDisplay);
+            controls.Add(textBox1);
         }
 
-        private void MoveUp(object sender)
-        {
-            if (printHeight > 0)
-            {
-                printHeight--;
-                UpdateText();
-            }
-        }
-
-        private void MoveDown(object sender)
-        {
-            if (text.Length - printHeight > maxElements)
-            {
-                printHeight++;
-                UpdateText();
-            }
-        }
-
-        private void UpdateText()
-        {
-            List<string> part = new List<string>();
-            for (int i = printHeight; i < text.Length; i++)
-            {
-                part.Add(text[i]);
-                if (part.Count >= maxElements) break;
-            }
-            scoreBox.text = part.ToArray();
-        }
-
+		private void FilterButtonPressed(object sender)
+		{
+			scoreDisplay.SetModeFilter(((Button)sender).text);
+		}
 
         public override void Draw(GameTime gt)
         {
-            sb.DrawString(ResourceManager.fonts["DefaultFont"], "Score             Mode : name", new Vector2(scoreBox.pos.X, 50), Color.White);
-            scoreBox.Draw(gt);
+            sb.DrawString(ResourceManager.fonts["DefaultFont"], "Highscores", new Vector2(scoreDisplay.pos.X, 50), Color.White);
             foreach (var c in controls) c.Draw(gt);     
         }
         
         public override void Update(GameTime gt)
         {
             foreach (var c in controls) c.Update(gt);
-            UpdateText();
         }
         
         public override void OnStart()
