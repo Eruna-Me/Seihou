@@ -29,8 +29,9 @@ namespace Seihou
         protected int lowHp = 0;
 
 		//Variables
-		protected float timerUntilSkipStage = 10.0f;
-        
+		protected float timeUntilSkipStage = 60.0f;
+		private float skipTimer = 0;
+		protected bool wantsToLeave = false;
 
         public Boss(Vector2 pos,SpriteBatch sb,EntityManager em) : base(pos,sb,em)
         {
@@ -41,7 +42,21 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
+			skipTimer += (float)gt.ElapsedGameTime.TotalSeconds;
+
+			if (skipTimer > timeUntilSkipStage)
+			{
+				skipTimer = 0;
+				if (currentStage == Stages.low)
+					wantsToLeave = true;
+				else
+					SkipToNextStage();
+			}
+
             base.Update(gt);
+
+
+
             bool ok = false;
 
 			var lastStage = currentStage;
@@ -68,8 +83,8 @@ namespace Seihou
 
 		public void SkipToNextStage()
 		{
-			currentStage = (currentStage == Stages.high) ? currentStage = Stages.mid : currentStage = Stages.low;
 			hp = (currentStage == Stages.high) ? midHp : lowHp;
+			currentStage = (currentStage == Stages.high) ? currentStage = Stages.mid : currentStage = Stages.low;	
 		}
 
 		public override void Draw(GameTime gt)

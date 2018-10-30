@@ -79,6 +79,16 @@ namespace Seihou
             if (pos.X > Global.playingFieldWidth - borderWidth) speed.X = -moveSpeed;
             if (pos.X < borderWidth) speed.X = moveSpeed;
 
+			if (wantsToLeave)
+			{
+				speed = new Vector2(-moveSpeed,-moveSpeed);
+
+				if (pos.Y < -100)
+				{
+					em.RemoveEntity(this);
+				}
+			}
+
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
             base.Update(gt);

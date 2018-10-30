@@ -42,13 +42,14 @@ namespace Seihou
 
         public void BuildMenus()
         {
-            deathMenu[0] = new Button(new Vector2(Global.Center.X,Global.Center.Y - buttonSpacing*2), new Vector2(200, buttonSpacing), sb, OnClickedContinue, "Continue", Button.Align.center);
-            deathMenu[1] = new Button(new Vector2(Global.Center.X,Global.Center.Y), new Vector2(200, buttonSpacing), sb, OnClickedMenu, "Menu", Button.Align.center);
-            deathMenu[2] = new Button(new Vector2(Global.Center.X,Global.Center.Y + buttonSpacing*2), new Vector2(200, buttonSpacing), sb, OnClickedExit, "Exit", Button.Align.center);
+			int width = 500;
+            deathMenu[0] = new Button(new Vector2(Global.Center.X,Global.Center.Y - buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedContinue, "Continue", Button.Align.center);
+            deathMenu[1] = new Button(new Vector2(Global.Center.X,Global.Center.Y), new Vector2(width, buttonSpacing), sb, OnClickedMenuScore, "Menu/Save score", Button.Align.center);
+            deathMenu[2] = new Button(new Vector2(Global.Center.X,Global.Center.Y + buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedExit, "Exit", Button.Align.center);
 
-            pauseMenu[0] = new Button(new Vector2(Global.Center.X,Global.Center.Y - buttonSpacing*2), new Vector2(200, buttonSpacing), sb, OnClickedResume, "Resume", Button.Align.center);
-            pauseMenu[1] = new Button(new Vector2(Global.Center.X,Global.Center.Y), new Vector2(200, buttonSpacing), sb, OnClickedMenu, "Menu", Button.Align.center);
-            pauseMenu[2] = new Button(new Vector2(Global.Center.X,Global.Center.Y + buttonSpacing*2), new Vector2(200, buttonSpacing), sb, OnClickedExit, "Exit", Button.Align.center);
+            pauseMenu[0] = new Button(new Vector2(Global.Center.X,Global.Center.Y - buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedResume, "Resume", Button.Align.center);
+            pauseMenu[1] = new Button(new Vector2(Global.Center.X,Global.Center.Y), new Vector2(width, buttonSpacing), sb, OnClickedMenu, "Menu", Button.Align.center);
+            pauseMenu[2] = new Button(new Vector2(Global.Center.X,Global.Center.Y + buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedExit, "Exit", Button.Align.center);
 
             foreach (var b in deathMenu) { b.background = new Color(60, 60, 60); b.background3D = Color.Black; }
             foreach (var b in pauseMenu) { b.background = new Color(60, 60, 60); b.background3D = Color.Black; }
@@ -72,7 +73,12 @@ namespace Seihou
 
         public void OnClickedMenu(object sender)
         {
-			sm.ChangeState(new QuestionState(sm, cm, sb, gdm,Math.Round(Global.player.score), Enum.GetName(typeof(Settings.Difficulty), Settings.difficulty)));
+			sm.ChangeState(new MenuState(sm, cm, sb, gdm));
         }
-    }
+
+		public void OnClickedMenuScore(object sender)
+		{
+			sm.ChangeState(new QuestionState(sm, cm, sb, gdm, Math.Round(Global.player.score), Enum.GetName(typeof(Settings.Difficulty), Settings.difficulty)));
+		}
+	}
 }
