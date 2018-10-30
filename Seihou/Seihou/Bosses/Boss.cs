@@ -29,7 +29,7 @@ namespace Seihou
         protected int lowHp = 0;
 
 		//Variables
-		protected float timeUntilSkipStage = 60.0f;
+		protected float timeUntilSkipStage = 120.0f;
 		private float skipTimer = 0;
 		protected bool wantsToLeave = false;
 

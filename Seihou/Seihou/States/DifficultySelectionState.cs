@@ -67,6 +67,8 @@ namespace Seihou
 
 		public override void Draw(GameTime gt)
 		{
+			var f = ResourceManager.fonts["DefaultFont"];
+			sb.DrawString(f, "Select difficulty", new Vector2(Global.screenWidth / 2, 50), Color.White, 0, f.MeasureString("Select difficulty")/2, 1, SpriteEffects.None, 0);
             foreach (Button b in buttons) b.Draw(gt);
         }
 

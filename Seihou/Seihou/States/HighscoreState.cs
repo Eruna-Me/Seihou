@@ -39,7 +39,6 @@ namespace Seihou
 			var enumVals = Enum.GetValues(typeof(Settings.Difficulty));
 			for (int i = 0; i < enumVals.Length; i++)
 				controls.Add(new Button(new Vector2(200,200 + i * 50), new Vector2(200, 50), sb, FilterButtonPressed,Enum.GetName(typeof(Settings.Difficulty),enumVals.GetValue(i)), Button.Align.center));
-			controls.Add(new Button(new Vector2(200, 200 + (enumVals.Length) * 50), new Vector2(200, 50), sb, FilterButtonPressed,"infinite", Button.Align.center));
 
 			controls.Add(new Button(new Vector2(80, 690), new Vector2(100, 25), sb, GoHome, "Back", Button.Align.center));
 

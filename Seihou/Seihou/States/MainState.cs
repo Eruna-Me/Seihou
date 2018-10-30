@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace Seihou
 {
+
     partial class MainState : State
     {
         //Variables
@@ -20,12 +21,14 @@ namespace Seihou
         Player player;
         KeyboardState oldKeyState;
 
+		bool infiniteMode;
         bool pause = false;
         bool death = false;
 
         //Constructor
-        public MainState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
+        public MainState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm,bool infiniteMode = false) : base(sm, cm, sb, gdm)
         {
+			this.infiniteMode = infiniteMode;
             BuildMenus();
             lm = new LevelManager(em);
             font1 = ResourceManager.fonts["DefaultFont"];

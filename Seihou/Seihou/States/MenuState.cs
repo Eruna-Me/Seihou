@@ -14,23 +14,18 @@ namespace Seihou
 	{
 		const int firstButtonHeight = 30;
         const int buttonsX = Global.screenWidth - 200;
-        Button[] buttons = new Button[5];
+        Button[] buttons = new Button[4];
 
         void OnClickedStart(object sender)
         {
             sm.ChangeState(new DifficultySelectionState(sm, cm, sb, gdm));
         }
 
-        void OnClickedLevels(object sender)
+        void OnClickedAbout(object sender)
         {
         }
 
         void OnClickedSettings(object sender)
-        {
-
-        }
-
-        void OnClickedFinite(object sender)
         {
 
         }
@@ -46,13 +41,10 @@ namespace Seihou
             int s = 80; //Spacing
             int i = 0;
 
-            
-            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedStart,  "Start");
-            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedLevels, "Levels");
-            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedSettings, "Infinite");
+            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedStart,    "Start");
             buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedSettings, "Settings");
-            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedExit, "Exit");
-
+			buttons[i++] = new Button(new Vector2(buttonsX, firstButtonHeight + s * i), new Vector2(300, 50), sb,OnClickedAbout,    "About");
+			buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedExit,     "Exit");
 		}
 
 		public override void Draw(GameTime gt)
