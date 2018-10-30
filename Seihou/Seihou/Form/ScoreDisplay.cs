@@ -13,7 +13,7 @@ namespace Seihou
 {
     class ScoreDisplay : Control
     {
-		string filterMode = "infinite";
+		string filterMode = "easy";
 
 		List<Score> scores = new List<Score>();
 
