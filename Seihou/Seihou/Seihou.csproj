@@ -83,6 +83,7 @@
     <Compile Include="States\MenuState.cs" />
     <Compile Include="States\QuestionState.cs" />
     <Compile Include="States\ScoreMenu.cs" />
+    <Compile Include="States\SettingsState.cs" />
     <Compile Include="States\StateManager.cs" />
     <Compile Include="Main\Debugging.cs" />
     <Compile Include="Graphics\MessageBox.cs" />
