@@ -17,7 +17,7 @@ namespace Seihou
 		public FlowerBombShrapnel(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em)
 		{
 			texture = "EnergyBall";
-			trail = new Trail(20, sb, texture);
+			trail = new Trail(sb, texture,20,0.016f);
 			this.speed = speed;
 			size = ResourceManager.textures[texture].Height / 2;
 		}
@@ -26,7 +26,7 @@ namespace Seihou
 		{
 			pos += speed /4 * (float)gt.ElapsedGameTime.TotalSeconds;
 			rotation += (float)gt.ElapsedGameTime.TotalSeconds;
-			trail.AddSection(pos, rotation);
+			trail.Update(pos,gt, rotation);
 			Bob:;
 			Entity c = em.Touching(this, EntityManager.EntityClass.enemy);
 

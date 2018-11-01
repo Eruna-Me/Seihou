@@ -56,7 +56,7 @@ namespace Seihou
             this.myState = state;
 			texture = "Lenovo-DenovoMan";
 			ResetPosition();
-			trail = new Trail(5, sb, texture);
+			trail = new Trail(sb, texture,5,0.01f);
 			size = 5;
 			lives = Settings.startingLives;
 			bombs = Settings.startingBombs;
@@ -66,7 +66,7 @@ namespace Seihou
 		public override void Update(GameTime gt)
 		{
 			int SpriteSize = ResourceManager.textures[texture].Height / 2;
-			trail.AddSection(pos);
+			trail.Update(pos,gt);
 			KeyboardState kb = Keyboard.GetState();
 
 			bool u = kb.IsKeyDown(Settings.upKey);

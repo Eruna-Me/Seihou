@@ -11,44 +11,44 @@ namespace Seihou
 {
     class Trail
     {
-        private struct Section
+        struct Section
         {
             public float rotation;
             public Vector2 pos;
         }
 
-        readonly int length;
-        private List<Section> sections = new List<Section>();
-        private string texture;
-        private SpriteBatch sb;
+		//Spawning
+        readonly int amount;
+		readonly float spawnTime;
+		float spawnTimer = 0;
 
-        public Trail(int length,SpriteBatch sb,string texture)
+        List<Section> sections = new List<Section>();
+        string texture;
+        SpriteBatch sb;
+
+        public Trail(SpriteBatch sb,string texture,int amount,float spawnTime)
         {
             this.sb = sb;
             this.texture = texture;
-            this.length = length;
+            this.amount = amount;
+			this.spawnTime = spawnTime;
         }
 
-        public void AddSection(Vector2 v,float rotation)
+        public void Update(Vector2 v,GameTime gt,float rotation = 0)
         {
-            if (Settings.SimpleGraphics) return;
-            sections.Add(new Section() { pos = v, rotation = rotation });
+			spawnTimer += (float)gt.ElapsedGameTime.TotalSeconds;
 
-            if (sections.Count > length)
-            {
-                sections.Remove(sections.First());
-            }
-        }
+			if (spawnTimer > spawnTime)
+			{
+				spawnTimer = 0;
+				if (Settings.SimpleGraphics) return;
+				sections.Add(new Section() { pos = v, rotation = rotation });
 
-        public void AddSection(Vector2 v)
-        {
-            if (Settings.SimpleGraphics) return;
-            sections.Add(new Section(){pos = v,rotation = 0});
-
-            if (sections.Count > length)
-            {
-                sections.Remove(sections.First());
-            }
+				if (sections.Count > amount)
+				{
+					sections.Remove(sections.First());
+				}
+			}
         }
 
         public void Draw(GameTime gt)

@@ -16,7 +16,7 @@ namespace Seihou
         public Coin(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em, owner)
         {
             texture = "Coin";
-            trail = new Trail(20, sb, texture);
+            trail = new Trail(sb, texture,20,0.01f);
             this.speed = speed;
             size = ResourceManager.textures[texture].Height/2;
         }
@@ -24,7 +24,7 @@ namespace Seihou
         public override void Update(GameTime gt)
         {
             rotation += (float)gt.ElapsedGameTime.TotalSeconds;
-            trail.AddSection(pos, rotation);
+            trail.Update(pos,gt, rotation);
 
             base.Update(gt);
         }

@@ -41,6 +41,19 @@ namespace Seihou
                     buttons.Add(new Button(new Vector2(pos.X + key * xSpacing, pos.Y + (row + 1) * ySpacing), new Vector2(xSpacing, ySpacing), sb, Pressed, keys[row, key].ToString(), Button.Align.center) { background = Color.Gray});
                 }
             }
+
+			foreach (var b in buttons)
+			{
+				switch(b.text)
+				{
+					case "OK":
+						b.textColor = Color.Green;
+						break;
+					case "<":
+						b.textColor = Color.Red;
+						break;
+				}
+			}
         }
 
         public override void Draw(GameTime gt)
@@ -59,7 +72,7 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
-				foreach (var b in buttons) b.Update(gt);
+			foreach (var b in buttons) b.Update(gt);
         }
 
         public void BackSpace()

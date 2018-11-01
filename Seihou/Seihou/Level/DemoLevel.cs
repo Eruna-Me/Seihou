@@ -19,7 +19,8 @@ namespace Seihou
 			Sleep(3f);
 
             Spawn(new ManekiNeko(sb, em));
-            WaitUntilClear();
+		
+			WaitUntilClear();
 
 			//part 1 rise of the samurai
 			for (int i = 0; i < 5; i++)

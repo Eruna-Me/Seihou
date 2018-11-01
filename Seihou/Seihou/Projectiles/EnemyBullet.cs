@@ -16,7 +16,7 @@ namespace Seihou
 		public EnemyBullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed, String texture = "EnemyBullet") : base(pos, sb, em, owner)
 		{
 			this.texture = texture;
-            trail = new Trail(1,sb,texture);
+            trail = new Trail(sb,texture,1,0.01f);
 			size = texture.Length/2;
 			this.speed = speed;
 		}
@@ -24,7 +24,7 @@ namespace Seihou
 		public override void Update(GameTime gt)
 		{
             base.Update(gt);
-            trail.AddSection(pos);
+            trail.Update(pos,gt);
 		}
 
 		public override void Draw(GameTime gt)
