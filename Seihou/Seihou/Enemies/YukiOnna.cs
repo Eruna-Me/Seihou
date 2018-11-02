@@ -28,13 +28,13 @@ namespace Seihou
 			size = 10;
 			speed.Y = fallSpeed;
 			hp = 15;
-			if (Settings.difficulty == Settings.Difficulty.easy)
+			if (Settings.GetDifficulty() == Settings.Difficulty.easy)
 			{
 				ammo = 3;
 				bulletsPerShot = 3;
 			}
 
-			if (Settings.difficulty == Settings.Difficulty.usagi)
+			if (Settings.GetDifficulty() == Settings.Difficulty.usagi)
 			{
 				ammo = 7;
 			}

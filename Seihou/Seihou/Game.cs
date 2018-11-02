@@ -15,6 +15,9 @@ namespace Seihou
         {
 			this.IsMouseVisible = true;
 
+			//Load settings
+			Settings.ImportSettings();
+
             //Graphics options
             graphics = new GraphicsDeviceManager(this);
 			graphics.PreferredBackBufferWidth = Global.screenWidth;
@@ -42,11 +45,6 @@ namespace Seihou
 
 			stateManager.ChangeState(new MenuState(stateManager, Content, spriteBatch, graphics));
 		}
-
-        protected override void UnloadContent()
-        {
-            // TODO: Unload any non ContentManager content here
-        }
 
         protected override void Update(GameTime gameTime)
         {

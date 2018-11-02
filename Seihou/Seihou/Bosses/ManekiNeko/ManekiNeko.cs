@@ -36,7 +36,7 @@ namespace Seihou
 			patterns[Stages.high].Add(new CoinCircle(this, em, 1f, 12));
 			patterns[Stages.high].Add(new CoinThrow(this, em, 1.3f));
 
-			patterns[Stages.mid].Add(new CoinThrow(this, em, (4 - (float)Settings.difficulty) / 2.0f));
+			patterns[Stages.mid].Add(new CoinThrow(this, em, (4 - (float)Settings.GetDifficulty()) / 2.0f));
 			patterns[Stages.mid].Add(new CoinDirectional(this, em, 1.3f, 25));
 
 			patterns[Stages.low].Add(new CoinThrow(this, em, 0.5f));
@@ -47,7 +47,7 @@ namespace Seihou
 			//Adjust all adjust them all acording to difficulty 
 			//Leave above if its the same in all dificulties.
 
-			switch (Settings.difficulty)
+			switch (Settings.GetDifficulty())
 			{
 				case Settings.Difficulty.easy:
 					break;

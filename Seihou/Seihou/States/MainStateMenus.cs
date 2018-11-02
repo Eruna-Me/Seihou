@@ -57,7 +57,7 @@ namespace Seihou
 
         public void OnClickedContinue(object sender)
         {
-            Global.player.lives = Settings.startingLives;
+            Global.player.lives = Settings.GetInt("startingLives");
             death = false;
         }
 
@@ -78,7 +78,7 @@ namespace Seihou
 
 		public void OnClickedMenuScore(object sender)
 		{
-			sm.ChangeState(new QuestionState(sm, cm, sb, gdm, Math.Round(Global.player.score), Enum.GetName(typeof(Settings.Difficulty), Settings.difficulty)));
+			sm.ChangeState(new QuestionState(sm, cm, sb, gdm, Math.Round(Global.player.score), Enum.GetName(typeof(Settings.Difficulty), Settings.GetDifficulty())));
 		}
 	}
 }

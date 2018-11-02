@@ -25,7 +25,8 @@ namespace Seihou
         public Color selectedTextColor = Color.White;
         public Color background3D = Color.Transparent;
         public Vector2 background3DOffset = new Vector2(4, 4);
-        public ButtonCallBack bcb;
+        public ButtonCallBack onClicked;
+		public ButtonCallBack onHover;
 
 		Vector2 pos, size;
 		public string text;
@@ -33,12 +34,12 @@ namespace Seihou
         bool hovering = false;
         Align align;
 
-		public Button(Vector2 pos, Vector2 size, SpriteBatch sb, ButtonCallBack bcb, string text, Align align = Align.left, string font = "DefaultFont") : base(sb)
+		public Button(Vector2 pos, Vector2 size, SpriteBatch sb, ButtonCallBack onClicked, string text, Align align = Align.left, string font = "DefaultFont") : base(sb)
 		{
 			textColor = new Color(100, 100, 100);
             this.font = font;
             this.align = align;
-            this.bcb = bcb;
+            this.onClicked = onClicked;
             this.pos = pos - size / 2;
 			this.size = size;
 			this.sb = sb;
@@ -90,10 +91,13 @@ namespace Seihou
             
             if (hovering)
             {
-                if (Cursor.IsMouseLeftPressed())
-                    bcb(this);
+				onHover?.Invoke(this);
+				if (Cursor.IsMouseLeftPressed())
+                    onClicked?.Invoke(this);
             }
         }
+
+		public void EmptyCall(object sender) { }
 
 		private bool MouseOnButton()
 		{

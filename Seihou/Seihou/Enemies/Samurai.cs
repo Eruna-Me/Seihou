@@ -25,7 +25,7 @@ namespace Seihou
 			speed.Y = fallSpeed;
 			hp = 3;
 
-			if (fireDelay <= 0 && Settings.difficulty == Settings.Difficulty.usagi)
+			if (fireDelay <= 0 && Settings.GetDifficulty() == Settings.Difficulty.usagi)
 				maxFireDelay = 1.25f;
 		}
 
@@ -35,7 +35,7 @@ namespace Seihou
 
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
-			if (fireDelay <= 0 && Settings.difficulty >= Settings.Difficulty.hard)
+			if (fireDelay <= 0 && Settings.GetDifficulty() >= Settings.Difficulty.hard)
 			{
 				em.AddEntity(new EnemyBullet(pos, sb, em, this, Global.Normalize(em.GetPlayer().pos - pos) * bulletSpeed));
 				fireDelay = maxFireDelay;

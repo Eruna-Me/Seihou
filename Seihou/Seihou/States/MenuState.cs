@@ -27,7 +27,7 @@ namespace Seihou
 
         void OnClickedSettings(object sender)
         {
-
+			sm.ChangeState(new SettingsState(sm, cm, sb, gdm));
         }
 
         void  OnClickedExit(object sender)

@@ -41,7 +41,7 @@ namespace Seihou
 			if (spawnTimer > spawnTime)
 			{
 				spawnTimer = 0;
-				if (Settings.SimpleGraphics) return;
+				if (Settings.GetBool("simpleGraphics")) return;
 				sections.Add(new Section() { pos = v, rotation = rotation });
 
 				if (sections.Count > amount)
@@ -53,7 +53,7 @@ namespace Seihou
 
         public void Draw(GameTime gt)
         {
-            if (Settings.SimpleGraphics) return;
+            if (Settings.GetBool("simpleGraphics")) return;
             for (int i = 0; i < sections.Count; i++)
             {
                 float alpha = 0.1f;

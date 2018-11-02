@@ -18,25 +18,25 @@ namespace Seihou
 
         void OnClickedEasy(object sender)
         {
-			Settings.difficulty = Settings.Difficulty.easy;
+			Settings.SetDifficulty(Settings.Difficulty.easy);
 				sm.ChangeState(new MainState(sm, cm, sb, gdm));
 		}
 
         void OnClickedMedium(object sender)
         {
-			Settings.difficulty = Settings.Difficulty.normal;
+			Settings.SetDifficulty(Settings.Difficulty.normal);
 				sm.ChangeState(new MainState(sm, cm, sb, gdm));
 		}
 
         void OnClickedHard(object sender)
         {
-			Settings.difficulty = Settings.Difficulty.hard;
+			Settings.SetDifficulty(Settings.Difficulty.hard);
 				sm.ChangeState(new MainState(sm, cm, sb, gdm));
 		}
 
         void OnClickedUsagi(object sender)
         {
-			Settings.difficulty = Settings.Difficulty.usagi;
+			Settings.SetDifficulty(Settings.Difficulty.usagi);
 				sm.ChangeState(new MainState(sm, cm, sb, gdm));
 		}
 

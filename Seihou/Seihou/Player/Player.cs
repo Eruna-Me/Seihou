@@ -58,8 +58,8 @@ namespace Seihou
 			ResetPosition();
 			trail = new Trail(sb, texture,5,0.01f);
 			size = 5;
-			lives = Settings.startingLives;
-			bombs = Settings.startingBombs;
+			lives = Settings.GetInt("startingLives");
+			bombs = Settings.GetInt("startingBombs");
 			ec = EntityManager.EntityClass.player;
 		}
 
@@ -69,14 +69,14 @@ namespace Seihou
 			trail.Update(pos,gt);
 			KeyboardState kb = Keyboard.GetState();
 
-			bool u = kb.IsKeyDown(Settings.upKey);
-			bool r = kb.IsKeyDown(Settings.rightKey);
-			bool d = kb.IsKeyDown(Settings.downKey);
-			bool l = kb.IsKeyDown(Settings.leftKey);
-			bool slowMode = kb.IsKeyDown(Settings.slowKey);
+			bool u = kb.IsKeyDown(Settings.GetKey("upKey"));
+			bool r = kb.IsKeyDown(Settings.GetKey("rightKey"));
+			bool d = kb.IsKeyDown(Settings.GetKey("downKey"));
+			bool l = kb.IsKeyDown(Settings.GetKey("leftKey"));
+			bool slowMode = kb.IsKeyDown(Settings.GetKey("slowKey"));
 
-			bool s = kb.IsKeyDown(Settings.shootKey);
-			bool b = kb.IsKeyDown(Settings.bombKey);
+			bool s = kb.IsKeyDown(Settings.GetKey("shootKey"));
+			bool b = kb.IsKeyDown(Settings.GetKey("bombKey"));
 
 			//Movement
 			speed.X = (Convert.ToInt32(r) - Convert.ToInt32(l)) * (slowMode ? slowSpeed : normalSpeed);
@@ -134,7 +134,7 @@ namespace Seihou
 					((MainState)sm.GetCurrentState()).OnPlayerDeath();
 
 				lives--;
-				bombs = Settings.startingBombs;
+				bombs = Settings.GetInt("startingBombs");
 			}
 		}
 
