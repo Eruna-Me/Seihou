@@ -14,9 +14,11 @@ namespace Seihou
 		Keys Key;
 		public string keyName;
 		Button button;
+		string text;
 
-		public KeyPicker(Vector2 pos, Vector2 size, SpriteBatch sb, string keyName,Keys startWith) : base(sb)
+		public KeyPicker(Vector2 pos, Vector2 size, SpriteBatch sb, string text, string keyName,Keys startWith) : base(sb)
 		{
+			this.text = text;
 			this.Key = startWith;
 			this.keyName = keyName;
 			button = new Button(pos, size, sb, null, keyName, Button.Align.left);
@@ -40,7 +42,7 @@ namespace Seihou
 
 		public override void Update(GameTime gt)
 		{
-			button.text = $"{keyName}:  {Key.ToString()}";
+			button.text = $"{text}:  {Key.ToString()}";
 			button.Update(gt);
 		}
 	}

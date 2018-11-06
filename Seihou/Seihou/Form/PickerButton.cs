@@ -15,12 +15,14 @@ namespace Seihou
 		readonly string[] answers;
 		public string question;
 		Button button;
+		string text;
 
-		public PickerButton(Vector2 pos, Vector2 size, SpriteBatch sb, string question, string startsWith,params string[] answers) : base(sb)
+		public PickerButton(Vector2 pos, Vector2 size, SpriteBatch sb, string text, string question, string startsWith,params string[] answers) : base(sb)
 		{
 			for (int i = 0; i < answers.Length; ++i) selected = answers[i] == startsWith ? i : selected;
 			this.question = question;
 			this.answers = answers;
+			this.text = text;
 			button = new Button(pos, size, sb, OnClicked, question, Button.Align.left);
 			this.sb = sb;
 		}
@@ -41,7 +43,7 @@ namespace Seihou
 
 		public override void Update(GameTime gt)
 		{
-			button.text = $"{question}:  {answers[selected]}";
+			button.text = $"{text}:  {answers[selected]}";
 			button.Update(gt);
 		}
 	}
