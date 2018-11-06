@@ -46,6 +46,7 @@ namespace Seihou
 			textures.Add("MeanMan",          cm.Load<Texture2D>("Enemies/Meanman"));
             textures.Add("KawaiiMan",        cm.Load<Texture2D>("Enemies/KawaiiMan"));
 			textures.Add("JSF",				 cm.Load<Texture2D>("Enemies/JSF"));
+			textures.Add("Kitsune",          cm.Load<Texture2D>("Enemies/Kitsune"));
 
 			//Powerups
 			textures.Add("Point",            cm.Load<Texture2D>("Powerups/Point"));
