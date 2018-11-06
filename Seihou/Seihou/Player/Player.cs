@@ -135,6 +135,8 @@ namespace Seihou
 
 				lives--;
 				bombs = Settings.GetInt("startingBombs");
+				collectedPowerUps = 0;
+				//decrease powah?
 			}
 		}
 
@@ -186,6 +188,12 @@ namespace Seihou
 				em.AddEntity(new PlayerBullet(pos, sb, em, owner, new Vector2((float)Math.Cos(direction - Math.PI / (spread / i)) * bulletSpeed, (float)Math.Sin(direction - Math.PI / (spread / i)) * bulletSpeed), texture));
 				em.AddEntity(new PlayerBullet(pos, sb, em, owner, new Vector2((float)Math.Cos(direction + Math.PI / (spread / i)) * bulletSpeed, (float)Math.Sin(direction + Math.PI / (spread / i)) * bulletSpeed), texture));
 			}
+		}
+
+		public void Continue()
+		{
+			lives = Settings.GetInt("startingLives");
+			score = 0;
 		}
 	}
 }

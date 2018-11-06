@@ -57,7 +57,7 @@ namespace Seihou
 
         public void OnClickedContinue(object sender)
         {
-            Global.player.lives = Settings.GetInt("startingLives");
+			Global.player.Continue();
             death = false;
         }
 
