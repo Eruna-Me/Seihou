@@ -38,7 +38,7 @@ namespace Seihou
 			iPos += new Vector2(0, spacing);
 			buttons.Add(new KeyPicker(iPos, ButtonSize, sb, "Precision Mode", "slowKey", Settings.GetKey("slowKey")));
 			iPos += new Vector2(0, spacing);
-			buttons.Add(new KeyPicker(iPos, ButtonSize, sb, "Shoot", "shootKey", Settings.GetKey("shootKey")));
+			buttons.Add(new KeyPicker(iPos, ButtonSize, sb, "Fire", "shootKey", Settings.GetKey("shootKey")));
 			iPos += new Vector2(0, spacing);
 			buttons.Add(new KeyPicker(iPos, ButtonSize, sb, "Bomb", "bombKey", Settings.GetKey("bombKey")));
 
