@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
-//xxx69 #FrankWasHere
 
 namespace Seihou
 {
@@ -27,6 +27,8 @@ namespace Seihou
 
         private float alpha = 0f;
         private float maxAlpha;
+		public static bool waitForButtonPress = false;
+		public bool waitForButtonPressOn = false;
 
         public MessageBox(Vector2 pos, SpriteBatch sb,EntityManager em,string text, float life = 2.0f,float fadeIn = 2.0f,float fadeOut = 2.0f,string fontName = "DefaultFontBig",float maxAlpha = 1.0f) : base(pos, sb, em)
         {
@@ -54,31 +56,42 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
-            if (fadeIn < 0)
-            {
-                if (life < 0)
-                {
-                    if (fadeOut > 0)
-                    {
-                        fadeOut -= (float)gt.ElapsedGameTime.TotalSeconds;
-                        alpha = fadeOut / maxFadeOut - (1 - maxAlpha);
-                    }
-                    else
-                    {
-                        em.RemoveEntity(this);
-                    }
-                }
-                else
-                {
-                    life -= (float)gt.ElapsedGameTime.TotalSeconds;
-                }
-            }
-            else
-            {
-                fadeIn -= (float)gt.ElapsedGameTime.TotalSeconds;
-                alpha = 1 - fadeIn / maxFadeIn - (1 - maxAlpha);
-            }
-            
+			if (waitForButtonPressOn) waitForButtonPress = true; waitForButtonPressOn = false;
+			if (fadeIn < 0)
+			{
+				if (waitForButtonPress)
+				{
+					if (Keyboard.GetState().IsKeyDown(Settings.GetKey("shootKey")))
+					{
+						waitForButtonPress = false;
+					}
+				}
+				else
+				{
+					if (life < 0)
+					{
+						if (fadeOut > 0)
+						{
+							fadeOut -= (float)gt.ElapsedGameTime.TotalSeconds;
+							alpha = fadeOut / maxFadeOut - (1 - maxAlpha);
+						}
+						else
+						{
+							em.RemoveEntity(this);
+						}
+					}
+					else
+					{
+						life -= (float)gt.ElapsedGameTime.TotalSeconds;
+					}
+				}
+				
+			}
+			else
+			{
+				fadeIn -= (float)gt.ElapsedGameTime.TotalSeconds;
+				alpha = 1 - fadeIn / maxFadeIn - (1 - maxAlpha);
+			}
         }
     }
 }

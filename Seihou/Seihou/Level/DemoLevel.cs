@@ -14,6 +14,18 @@ namespace Seihou
 		public DemoLevel (SpriteBatch sb, EntityManager em) : base(sb, em)
 		{
 			CloudManager.FillScreen(sb, em);
+			
+			Spawn(new MessageBox(Global.Center, sb, em, "Press Button") { waitForButtonPressOn = true});
+
+			//part 0 rise of the unsamurai
+			for (int i = 0; i < 5; i++)
+			{
+				Spawn(new Kitsune(GetSpawn(45), sb, em));
+				Spawn(new Kitsune(GetSpawn(55), sb, em));
+
+				Sleep(0.75f);
+			}
+			Sleep(3f);
 
 			Spawn(new MessageBox(Global.Center, sb, em, "Demo Level"));
 			Sleep(3f);

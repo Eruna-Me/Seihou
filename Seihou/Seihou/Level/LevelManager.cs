@@ -78,7 +78,9 @@ namespace Seihou
 
             if (pause) return;
 
-            while (timer <= gt.ElapsedGameTime.TotalSeconds)
+			if (MessageBox.waitForButtonPress) return;
+
+			while (timer <= gt.ElapsedGameTime.TotalSeconds)
             {
                 if (spawner.Count < 1) return;
 
