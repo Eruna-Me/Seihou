@@ -48,7 +48,7 @@ namespace Seihou
             deathMenu[2] = new Button(new Vector2(Global.Center.X,Global.Center.Y + buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedExit, "Exit", Button.Align.center);
 
             pauseMenu[0] = new Button(new Vector2(Global.Center.X,Global.Center.Y - buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedResume, "Resume", Button.Align.center);
-            pauseMenu[1] = new Button(new Vector2(Global.Center.X,Global.Center.Y), new Vector2(width, buttonSpacing), sb, OnClickedMenu, "Menu", Button.Align.center);
+            pauseMenu[1] = new Button(new Vector2(Global.Center.X,Global.Center.Y), new Vector2(width, buttonSpacing), sb, OnClickedMenuScore, "Menu/Save score", Button.Align.center);
             pauseMenu[2] = new Button(new Vector2(Global.Center.X,Global.Center.Y + buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedExit, "Exit", Button.Align.center);
 
             foreach (var b in deathMenu) { b.background = new Color(60, 60, 60); b.background3D = Color.Black; }
@@ -69,11 +69,6 @@ namespace Seihou
         public void OnClickedExit(object sender)
         {
             sm.abort = true;
-        }
-
-        public void OnClickedMenu(object sender)
-        {
-			sm.ChangeState(new MenuState(sm, cm, sb, gdm));
         }
 
 		public void OnClickedMenuScore(object sender)
