@@ -12,9 +12,9 @@ namespace Seihou
     class Airmine : Enemy
     {
         private const float fallSpeed = 40.0f;
-        private const float maxBulletSpeed = 200.0f;
-		private const float minBulletSpeed = 50.0f;
-		private const int bullets = 1000;
+        private const float maxBulletSpeed = 100.0f;
+		private const float minBulletSpeed = 100.0f;
+		private const int bullets = 10;
 
         public Airmine(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {

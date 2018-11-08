@@ -22,12 +22,132 @@ namespace Seihou
 				"press " + Settings.GetKey("slowKey").ToString() + " to move slower\n \n" +
 				"press fire to continue") { waitForButtonPressOn = true});
 
-
-			//Part1
-
 			Sleep(1);
 
+			WaitUntilClear();
+			//Part 0 the last samurai
 
+			Spawn(new Samurai(GetSpawn(50), sb, em));
+
+			Sleep(3);
+
+			//Part 0.5 the vengeful brothers
+
+			Spawn(new Samurai(GetSpawn(40), sb, em));
+			Spawn(new Samurai(GetSpawn(60), sb, em));
+
+			Sleep(3);
+
+			//Part 1 easy grind
+
+			for (int i = 0; i < 5; i++)
+			{
+				Spawn(new Samurai(GetSpawn(10 + i * 5), sb, em));
+				Sleep(0.75f);
+			}
+
+			Sleep(4);
+
+			for (int i = 0; i < 5; i++)
+			{
+				Spawn(new Samurai(GetSpawn(90 - i * 5), sb, em));
+				Sleep(0.75f);
+			}
+
+			Sleep(4);
+
+			//part 2 medium grind
+
+			for (int i = 0; i < 10; i++)
+			{
+				Spawn(new Samurai(GetSpawn(95 - i * 3), sb, em));
+				Spawn(new Samurai(GetSpawn(5 + i * 3), sb, em));
+				Sleep(1f);
+			}
+
+			Sleep(4);
+
+			for (int i = 0; i < 10; i++)
+			{
+				Spawn(new Samurai(GetSpawn(50 - i * 3), sb, em));
+				Spawn(new Samurai(GetSpawn(50 + i * 3), sb, em));
+				Sleep(0.75f);
+			}
+
+			Sleep(4);
+
+			//part 3 INTENSE grind
+
+			for (int i = 0; i < 10; i++)
+			{
+				Spawn(new Samurai(GetSpawn(10), sb, em));
+				Spawn(new Samurai(GetSpawn(20), sb, em));
+
+				Sleep(0.5f);
+			}
+			Sleep(5f);
+
+			for (int i = 0; i < 10; i++)
+			{
+				Spawn(new Samurai(GetSpawn(90), sb, em));
+				Spawn(new Samurai(GetSpawn(80), sb, em));
+
+				Sleep(0.5f);
+			}
+			Sleep(5f);
+
+			//Part 4 Kitsune desu
+
+			Spawn(new Kitsune(GetSpawn(50), sb, em, false));
+
+			for (int i = 0; i < 8; i++)
+			{
+				Spawn(new Samurai(GetSpawn(55 - i * 5), sb, em));
+				Spawn(new Samurai(GetSpawn(55 + i * 5), sb, em));
+				Sleep(1.5f);
+			}
+
+			Sleep(5f);
+
+			//Part 5 rain of bombs
+
+
+			for (int i = 0; i < 50; i++)
+			{
+				Spawn(new Airmine(GetSpawn(Global.random.Next(0, 100)), sb, em));
+				Sleep(0.25f);
+			}
+
+			Sleep(3f);
+
+			//Part 6 operation snowstorm
+
+			Spawn(new YukiOnna(GetSpawn(20), sb, em));
+			Spawn(new YukiOnna(GetSpawn(80), sb, em));
+
+			Sleep(5f);
+
+			Spawn(new YukiOnna(GetSpawn(30), sb, em));
+
+			Sleep(1f);
+
+			Spawn(new YukiOnna(GetSpawn(50), sb, em));
+			Spawn(new YukiOnna(GetSpawn(70), sb, em));
+
+			//grand finals
+
+			WaitUntilClear();
+
+			Sleep(2f);
+
+			Spawn(new ManekiNeko(sb, em));
+
+			WaitUntilClear();
+
+			//level 2
+
+
+			/*
 			for (int i = 1; i < 10; i++)
 			{
 				Spawn(new Samurai(GetSpawn(50 - i*5), sb, em));
@@ -79,7 +199,7 @@ namespace Seihou
 
 			Spawn(new Shooter(GetSpawn(60), sb, em));
 			Sleep(0.5f);
-
+			*/
 		}
 	}
 }
