@@ -23,6 +23,7 @@ namespace Seihou
 
         void OnClickedAbout(object sender)
         {
+			sm.ChangeState(new AboutState(sm, cm, sb, gdm));
         }
 
         void OnClickedSettings(object sender)

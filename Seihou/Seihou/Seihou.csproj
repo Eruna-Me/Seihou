@@ -79,6 +79,7 @@
     <Compile Include="Projectiles\PlayerProjectile.cs" />
     <Compile Include="Projectiles\PlayerBullet.cs" />
     <Compile Include="Form\Button.cs" />
+    <Compile Include="States\AboutState.cs" />
     <Compile Include="States\HighscoreState.cs" />
     <Compile Include="States\MainState.cs" />
     <Compile Include="States\DifficultySelectionState.cs" />
