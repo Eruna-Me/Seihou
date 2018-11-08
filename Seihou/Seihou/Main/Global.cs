@@ -30,7 +30,7 @@ namespace Seihou
         public static Random random = new Random();
 		public static Player player = null;
 		public const bool drawCollisionBoxes = false;
-        public static Color gameBackgroundColor = Color.BlanchedAlmond;
+        public static Color gameBackgroundColor = new Color(100,200,250);
 
         public static float Choose(float[] floats) => floats[random.Next(0, floats.Length)];
 
