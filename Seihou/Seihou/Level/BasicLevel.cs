@@ -68,6 +68,17 @@ namespace Seihou
 			Spawn(new Samurai(GetSpawn(40), sb, em));
 			Spawn(new Samurai(GetSpawn(60), sb, em));
 
+			WaitUntilClear();
+
+			Spawn(new Shooter(GetSpawn(50), sb, em));
+			Sleep(0.5f);
+
+
+			Spawn(new Shooter(GetSpawn(40), sb, em));
+			Sleep(0.5f);
+
+			Spawn(new Shooter(GetSpawn(60), sb, em));
+			Sleep(0.5f);
 
 		}
 	}
