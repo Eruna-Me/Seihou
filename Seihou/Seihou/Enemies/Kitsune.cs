@@ -12,18 +12,23 @@ namespace Seihou
 {
     class Kitsune : Enemy
     {
-        private const float fallSpeed = 50.0f;
-		private const float bulletSpeed = 350.0f;
-		private float fireDelay = 0.5f;
-		private float maxFireDelay = 2.0f;
+        private const float fallSpeed = 10.0f;
+		private const float bulletSpeed = 100.0f;
+		private float fireDelay = 1.5f;
+		private float maxFireDelay = 0.5f;
+		private int bulletsPerShot = 21;
+		private const string bulletTexture = "EnemyBullet";
+		private double direction = 0;
+		private bool clockwiseRotation;
 
-		public Kitsune(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
+		public Kitsune(Vector2 pos, SpriteBatch sb, EntityManager em, bool clockwiseRotation = true) : base(pos, sb, em)
 		{
 			texture = "Kitsune";
 			ec = EntityManager.EntityClass.enemy;
 			size = 24;
 			speed.Y = fallSpeed;
 			hp = 3;
+			this.clockwiseRotation = clockwiseRotation;
 		}
 
         public override void Update(GameTime gt)
@@ -34,11 +39,22 @@ namespace Seihou
 
 			if (fireDelay <= 0)
 			{
-				em.AddEntity(new EnemyBullet(pos, sb, em, this, Global.Normalize(em.GetPlayer().pos - pos) * bulletSpeed));
+				float spread = (float)bulletsPerShot / 2.0f;
+
+				Global.SpreadShot(pos, sb, em, this, bulletSpeed, bulletTexture, (float)direction, spread, bulletsPerShot);
+
 				fireDelay = maxFireDelay;
 			}
 
-			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
+			fireDelay -= (float)gt.ElapsedGameTime.TotalSeconds;
+			if (clockwiseRotation)
+			{
+				direction += Math.PI / 20 * gt.ElapsedGameTime.TotalSeconds;
+			}
+			else
+			{
+				direction -= Math.PI / 20 * gt.ElapsedGameTime.TotalSeconds;
+			}
 		}
     }
 }
