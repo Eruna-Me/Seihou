@@ -41,6 +41,7 @@ namespace Seihou
 
 			hp = 0;
 			em.RemoveEntity(this);
+			Global.player.score += scoreOnKilled;
 		}
 
 		public override void Update(GameTime gt)

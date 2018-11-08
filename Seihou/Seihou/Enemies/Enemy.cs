@@ -14,6 +14,7 @@ namespace Seihou
 		protected int scoreDropChance = 50;
 		protected int powerDropChance = 30;
         protected int explosionParticles = 5;
+		protected int scoreOnKilled = 100;
 
         protected Enemy(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
@@ -42,6 +43,7 @@ namespace Seihou
 				}
 				
 				em.RemoveEntity(this);
+				Global.player.score += scoreOnKilled;
 			}
         }
 
