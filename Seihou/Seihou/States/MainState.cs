@@ -71,7 +71,7 @@ namespace Seihou
         public override void OnStart()
         {
             em.AddEntity(player);
-            lm.LoadLevel(new DemoLevel(sb, em));
+            lm.LoadLevel(new BasicLevel(sb, em));
         }
 
         //When the state exits

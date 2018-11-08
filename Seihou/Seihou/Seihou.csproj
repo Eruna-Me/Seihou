@@ -65,6 +65,7 @@
     <Compile Include="Graphics\Cloud.cs" />
     <Compile Include="Graphics\CloudManager.cs" />
     <Compile Include="Level\DemoLevel.cs" />
+    <Compile Include="Level\BasicLevel.cs" />
     <Compile Include="Level\LevelManager.cs" />
     <Compile Include="Graphics\UI.cs" />
     <Compile Include="Player\LenovoDenovoMan.cs" />
