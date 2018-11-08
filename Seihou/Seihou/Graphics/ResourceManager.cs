@@ -36,11 +36,13 @@ namespace Seihou
 			textures.Add("EnergyBall",       cm.Load<Texture2D>("Projectiles/EnergyBall"));
             textures.Add("Coin",             cm.Load<Texture2D>("Projectiles/Coin"));
 			textures.Add("Tanto",			 cm.Load<Texture2D>("Projectiles/Tanto"));
+			textures.Add("Shuriken",         cm.Load<Texture2D>("Projectiles/Shuriken"));
 
 			//Bosses
 			textures.Add("ManekiNeko",		 cm.Load<Texture2D>("Bosses/ManekiNeko"));
 
 			//Enemies
+			textures.Add("Ninja",	         cm.Load<Texture2D>("Enemies/Ninja"));
 			textures.Add("Mine",             cm.Load<Texture2D>("Enemies/Mine"));
             textures.Add("YukiOnna",		 cm.Load<Texture2D>("Enemies/YukiOnna"));
 			textures.Add("Samurai",			 cm.Load<Texture2D>("Enemies/Samurai"));

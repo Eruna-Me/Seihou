@@ -52,6 +52,7 @@
     <Compile Include="Bosses\Patterns\Nothing.cs" />
     <Compile Include="Enemies\Kitsune.cs" />
     <Compile Include="Enemies\Airmine.cs" />
+    <Compile Include="Enemies\Ninja.cs" />
     <Compile Include="Enemies\YukiOnna.cs" />
     <Compile Include="Enemies\Samurai.cs" />
     <Compile Include="Enemies\Shooter.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Powerups\Point.cs" />
     <Compile Include="Powerups\Power.cs" />
     <Compile Include="Powerups\Powerup.cs" />
+    <Compile Include="Projectiles\Shuriken.cs" />
     <Compile Include="Projectiles\EnemyBullet.cs" />
     <Compile Include="Projectiles\Coin.cs" />
     <Compile Include="Projectiles\EnergyBall.cs" />
