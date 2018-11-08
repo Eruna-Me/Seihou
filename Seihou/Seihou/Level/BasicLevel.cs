@@ -14,10 +14,10 @@ namespace Seihou
 		public BasicLevel (SpriteBatch sb, EntityManager em) : base(sb, em)
 		{
 			CloudManager.FillScreen(sb, em);
-			
+
 			Spawn(new MessageBox(Global.Center, sb, em, "          Level 1 \n" +
 				"Use " + Settings.GetKey("upKey").ToString() + " " + Settings.GetKey("leftKey").ToString() + " " + Settings.GetKey("downKey").ToString() + " " + Settings.GetKey("rightKey").ToString() + " to move\n" +
-				"press " + Settings.GetKey("shootKey").ToString() + " to shoot \n" +
+				"press " + Settings.GetKey("shootKey").ToString() + " to fire \n" +
 				"press " + Settings.GetKey("bombKey").ToString() + " to drop a bomb \n" +
 				"press " + Settings.GetKey("slowKey").ToString() + " to move slower\n \n" +
 				"press fire to continue") { waitForButtonPressOn = true});
@@ -146,6 +146,11 @@ namespace Seihou
 
 			//level 2
 
+			Spawn(new MessageBox(Global.Center, sb, em, "        Level 2 \n" +
+				"press fire to continue")
+			{ waitForButtonPressOn = true });
+
+			Sleep(1f);
 
 			/*
 			for (int i = 1; i < 10; i++)
