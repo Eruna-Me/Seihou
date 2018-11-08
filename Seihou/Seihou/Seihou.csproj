@@ -51,6 +51,7 @@
     <Compile Include="Bosses\Pattern.cs" />
     <Compile Include="Bosses\Patterns\Nothing.cs" />
     <Compile Include="Enemies\Kitsune.cs" />
+    <Compile Include="Enemies\Airmine.cs" />
     <Compile Include="Enemies\YukiOnna.cs" />
     <Compile Include="Enemies\Samurai.cs" />
     <Compile Include="Enemies\Shooter.cs" />

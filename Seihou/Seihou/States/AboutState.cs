@@ -22,7 +22,7 @@ namespace Seihou
 		public override void Draw(GameTime gt)
 		{
 			var f = ResourceManager.fonts["DefaultFont"];
-			var text = "SEIHOU\n Made in C# \n\nThis game was made by \nDennis & Hidde\nFor Fritz B\n.";
+			var text = "SEIHOU\nMade in C# \n\nThis game was made by \nDennis & Hidde\nFor Fritz B\n.";
 			sb.DrawString(f,text, new Vector2(Global.screenWidth / 2, 200), Color.White, 0, f.MeasureString(text)/2, 1, SpriteEffects.None, 0);
         }
 

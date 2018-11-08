@@ -40,7 +40,8 @@ namespace Seihou
 			//Bosses
 			textures.Add("ManekiNeko",		 cm.Load<Texture2D>("Bosses/ManekiNeko"));
 
-            //Enemies
+			//Enemies
+			textures.Add("Mine",             cm.Load<Texture2D>("Enemies/Mine"));
             textures.Add("YukiOnna",		 cm.Load<Texture2D>("Enemies/YukiOnna"));
 			textures.Add("Samurai",			 cm.Load<Texture2D>("Enemies/Samurai"));
 			textures.Add("MeanMan",          cm.Load<Texture2D>("Enemies/Meanman"));
