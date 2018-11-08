@@ -27,10 +27,9 @@ namespace Seihou
 			ec = EntityManager.EntityClass.enemy;
 			size = 24;
 			speed.Y = fallSpeed;
-			hp = 3;
+			hp = 30;
 			this.clockwiseRotation = clockwiseRotation;
 		}
-
         public override void Update(GameTime gt)
         {
             base.Update(gt);

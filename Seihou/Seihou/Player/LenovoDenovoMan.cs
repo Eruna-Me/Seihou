@@ -11,8 +11,8 @@ namespace Seihou
 {
 	class LenovoDenovoMan : Player
 	{
-		private const int powerStage1 = 5;
-		private const int powerStage2 = 10;
+		private const int powerStage1 = 20;
+		private const int powerStage2 = 60;
 		private const float bulletSpeed = 500.0f;
 		private int bulletsPerShot = 5;
 		private const float baseBulletSpread = 40.0f;
@@ -23,7 +23,7 @@ namespace Seihou
 		public LenovoDenovoMan(SpriteBatch sb, EntityManager em, StateManager sm, State state) : base(sb, em, sm, state)
 		{
 			texture = "Lenovo-DenovoMan";
-			fullPower =  20;
+			fullPower =  100;
 		}
 
 		public override void Fire(bool slowMode)
