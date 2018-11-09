@@ -16,13 +16,14 @@ namespace Seihou
         private const float bulletSpeed = 200.0f;
         private float fireDelay = 0;
         private readonly int bullets;
-		private float startDir = 0;
 
-        public Ninja(Vector2 pos, SpriteBatch sb, EntityManager em,int bullets = 4,float maxFireDelay = 0.2f) : base(pos, sb, em)
+        public Ninja(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
+			bullets = 2 * (1+(int)Settings.GetDifficulty());
+			maxFireDelay = (5 - (float)Settings.GetDifficulty()) * 0.2f;
+
+
             texture = "Ninja";
-            this.maxFireDelay = maxFireDelay;
-            this.bullets = bullets;
             ec = EntityManager.EntityClass.enemy;
             size = 40; 
             speed.Y = fallSpeed;
@@ -32,14 +33,13 @@ namespace Seihou
         public override void Update(GameTime gt)
         {
             fireDelay -= (float)gt.ElapsedGameTime.TotalSeconds;
-			startDir += (float)gt.ElapsedGameTime.TotalSeconds;
 
 			if (fireDelay < 0)
             {
                 for (int i = 0; i < bullets; i++)
                 {
-                    float dir = startDir + ( (i + 1) * (float)((Math.PI * 2) / bullets));
-                    em.AddEntity(new Shuriken(pos, sb, em, this, new Vector2((float)Math.Cos(dir),(float)Math.Sin(dir)) * bulletSpeed));
+                    float dir = ( (i + 1) * (float)((Math.PI * 2) / bullets));
+                    em.AddEntity(new Shuriken(pos, sb, em, this, new Vector2((float)Math.Cos(dir),(float)Math.Sin(dir)) * bulletSpeed,speed));
                 }
                 fireDelay = maxFireDelay;
             }
