@@ -17,7 +17,7 @@ namespace Seihou
 		float timerUntilPause = 0;
 		float timeUntilPause = 0.2f;
 		float timerPause = 0;
-		float timePause = 1.0f;
+		float timePause = 0.01f;
 		bool pause = false;
 		bool resume = false;
 		float resumeSpeed = 300;
@@ -74,11 +74,6 @@ namespace Seihou
         {
             trail.Draw(gt);
             sb.Draw(ResourceManager.textures[texture], pos, null, Color.White,(rotation * (float)Math.PI),ResourceManager.Center(texture), 1.0f, SpriteEffects.None, 0f);
-
-			if (pause)
-				MonoGame.Primitives2D.DrawLine(sb, pos, Global.player.pos, Color.Red);
-			if (resume)
-				MonoGame.Primitives2D.DrawLine(sb, pos, pos + speed*1000, Color.Red);
 		}
 
     }
