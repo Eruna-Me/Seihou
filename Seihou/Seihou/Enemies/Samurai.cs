@@ -35,7 +35,7 @@ namespace Seihou
 
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
-			if (fireDelay <= 0 && Settings.GetDifficulty() >= Settings.Difficulty.hard)
+			if (fireDelay <= 0 && Settings.GetDifficulty() >= Settings.Difficulty.hard && Global.OnScreen(pos))
 			{
 				em.AddEntity(new EnemyBullet(pos, sb, em, this, Global.Normalize(em.GetPlayer().pos - pos) * bulletSpeed));
 				fireDelay = maxFireDelay;

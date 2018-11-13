@@ -58,5 +58,14 @@ namespace Seihou
 				em.AddEntity(new EnemyBullet(pos, sb, em, owner, new Vector2((float)Math.Cos(direction + Math.PI / (spread / i)) * bulletSpeed, (float)Math.Sin(direction + Math.PI / (spread / i)) * bulletSpeed), texture));
 			}
 		}
+
+		public static bool OnScreen(Vector2 pos)
+		{
+			if (pos.Y < 0 || pos.Y > screenHeight || pos.X < 0 || pos.X > playingFieldWidth)
+			{
+				return false;
+			}
+			return true;
+		}
 	}
 }

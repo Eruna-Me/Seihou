@@ -27,18 +27,20 @@ namespace Seihou
 
 		public override void OnDamaged(Entity by, int damage)
 		{
-			
-			for (int i = 0; i < bullets; i++)
+
+			if (Global.OnScreen(pos))
 			{
-				float s = (float)(Global.random.NextDouble() * (maxBulletSpeed - minBulletSpeed) + minBulletSpeed);
+				for (int i = 0; i < bullets; i++)
+				{
+					float s = (float)(Global.random.NextDouble() * (maxBulletSpeed - minBulletSpeed) + minBulletSpeed);
 
-				float d = (float)(Global.random.NextDouble() * Math.PI * 2);
+					float d = (float)(Global.random.NextDouble() * Math.PI * 2);
 
-				Vector2 bSpeed = new Vector2((float)Math.Cos(d) * s,(float)Math.Sin(d) * s);
+					Vector2 bSpeed = new Vector2((float)Math.Cos(d) * s, (float)Math.Sin(d) * s);
 
-				em.AddEntity(new EnemyBullet(pos, sb, em, this, bSpeed));
+					em.AddEntity(new EnemyBullet(pos, sb, em, this, bSpeed));
+				}
 			}
-
 			hp = 0;
 			em.RemoveEntity(this);
 			Global.player.score += scoreOnKilled;

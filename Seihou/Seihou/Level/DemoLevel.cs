@@ -22,9 +22,10 @@ namespace Seihou
 				"press " + Settings.GetKey("slowKey").ToString() + " to move slower\n \n" +
 				"press fire to continue") { waitForButtonPressOn = true});
 
-			WaitUntilClear();
+			Sleep(0.5f);
 
 			//part 0 rise of the unsamurai
+			/*
 			for (int i = 0; i < 5; i++)
 			{
 				Spawn(new Kitsune(GetSpawn(45), sb, em));
@@ -45,7 +46,9 @@ namespace Seihou
 				Sleep(2f);
 			}
 			Sleep(3f);
-
+			*/
+			Spawn(new Kitsune(GetSpawn(15), sb, em));
+			Spawn(new Kitsune(GetSpawn(85), sb, em, false));
 			WaitUntilClear();
 
             Spawn(new ManekiNeko(sb, em));

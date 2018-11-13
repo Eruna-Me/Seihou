@@ -44,7 +44,7 @@ namespace Seihou
 		{
 			base.Update(gt);
 			pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
-			if (fireDelay <= 0 && ammo > 0 && fireTimer <= 0)
+			if (fireDelay <= 0 && ammo > 0 && fireTimer <= 0 && Global.OnScreen(pos))
 			{
 				if (!targetSet)
 				{

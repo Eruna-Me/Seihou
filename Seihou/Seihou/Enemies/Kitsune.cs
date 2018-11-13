@@ -36,7 +36,7 @@ namespace Seihou
 
             pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
 
-			if (fireDelay <= 0)
+			if (fireDelay <= 0 && Global.OnScreen(pos))
 			{
 				float spread = (float)bulletsPerShot / 2.0f;
 

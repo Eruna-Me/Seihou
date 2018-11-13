@@ -34,7 +34,7 @@ namespace Seihou
         {
             fireDelay -= (float)gt.ElapsedGameTime.TotalSeconds;
 
-			if (fireDelay < 0)
+			if (fireDelay < 0 && Global.OnScreen(pos))
             {
                 for (int i = 0; i < bullets; i++)
                 {
