@@ -14,7 +14,7 @@ namespace Seihou
         private const float fallSpeed = 40.0f;
         private const float maxBulletSpeed = 100.0f;
 		private const float minBulletSpeed = 100.0f;
-		private const int bullets = 10;
+		private int bullets = 10;
 
         public Airmine(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
@@ -23,7 +23,11 @@ namespace Seihou
             size = 40; 
             speed.Y = fallSpeed;
 			hp = 1;
-        }
+			if (Settings.GetDifficulty() == Settings.Difficulty.easy)	bullets = 3;
+			if (Settings.GetDifficulty() == Settings.Difficulty.normal) bullets = 6;
+			if (Settings.GetDifficulty() == Settings.Difficulty.usagi)	bullets = 20;
+
+		}
 
 		public override void OnDamaged(Entity by, int damage)
 		{

@@ -29,6 +29,9 @@ namespace Seihou
 			speed.Y = fallSpeed;
 			hp = 30;
 			this.clockwiseRotation = clockwiseRotation;
+			if (Settings.GetDifficulty() == Settings.Difficulty.easy)	maxFireDelay = 1.5f;
+			if (Settings.GetDifficulty() == Settings.Difficulty.normal) maxFireDelay = 0.75f;
+			if (Settings.GetDifficulty() == Settings.Difficulty.usagi)	maxFireDelay = 0.4f;
 		}
         public override void Update(GameTime gt)
         {

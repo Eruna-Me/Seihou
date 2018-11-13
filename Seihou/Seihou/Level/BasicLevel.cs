@@ -29,14 +29,14 @@ namespace Seihou
 
 			Spawn(new Samurai(GetSpawn(50), sb, em));
 
-			Sleep(3);
+			Sleep(2);
 
 			//Part 0.5 the vengeful brothers
 
 			Spawn(new Samurai(GetSpawn(40), sb, em));
 			Spawn(new Samurai(GetSpawn(60), sb, em));
 
-			Sleep(3);
+			Sleep(2);
 
 			//Part 1 easy grind
 
@@ -46,7 +46,7 @@ namespace Seihou
 				Sleep(0.75f);
 			}
 
-			Sleep(4);
+			Sleep(3);
 
 			for (int i = 0; i < 5; i++)
 			{
@@ -54,7 +54,7 @@ namespace Seihou
 				Sleep(0.75f);
 			}
 
-			Sleep(4);
+			Sleep(3);
 
 			//part 2 medium grind
 
@@ -62,7 +62,7 @@ namespace Seihou
 			{
 				Spawn(new Samurai(GetSpawn(95 - i * 3), sb, em));
 				Spawn(new Samurai(GetSpawn(5 + i * 3), sb, em));
-				Sleep(1f);
+				Sleep(1.5f);
 			}
 
 			Sleep(4);
@@ -71,7 +71,7 @@ namespace Seihou
 			{
 				Spawn(new Samurai(GetSpawn(50 - i * 3), sb, em));
 				Spawn(new Samurai(GetSpawn(50 + i * 3), sb, em));
-				Sleep(0.75f);
+				Sleep(1f);
 			}
 
 			Sleep(4);
@@ -83,7 +83,7 @@ namespace Seihou
 				Spawn(new Samurai(GetSpawn(10), sb, em));
 				Spawn(new Samurai(GetSpawn(20), sb, em));
 
-				Sleep(0.5f);
+				Sleep(0.6f);
 			}
 			Sleep(5f);
 
@@ -92,13 +92,15 @@ namespace Seihou
 				Spawn(new Samurai(GetSpawn(90), sb, em));
 				Spawn(new Samurai(GetSpawn(80), sb, em));
 
-				Sleep(0.5f);
+				Sleep(0.6f);
 			}
 			Sleep(5f);
 
 			//Part 4 Kitsune desu
 
 			Spawn(new Kitsune(GetSpawn(50), sb, em, false));
+
+			Sleep(2f);
 
 			for (int i = 0; i < 8; i++)
 			{

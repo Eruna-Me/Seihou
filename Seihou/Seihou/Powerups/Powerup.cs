@@ -23,7 +23,7 @@ namespace Seihou
 
 		public Powerup(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
 		{
-			size = 12;
+			size = 16;
 			speed.Y = -50;
 			speed.X = Global.random.Next(-deltaXspeed, deltaXspeed);
 		}
