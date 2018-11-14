@@ -16,7 +16,7 @@ namespace Seihou
         public readonly GraphicsDeviceManager gdm;
         public readonly SpriteBatch sb;
         public readonly ContentManager cm;
-
+   
         public State(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm)
         {
             this.sm = sm;
@@ -43,16 +43,30 @@ namespace Seihou
 
         //FPS
         private readonly Queue<float> fpsMeasure = new Queue<float>();
-        private const int fpsSampleSize = 20;
+        private float averageFps = 0f;
+        private const float updateFpsInterval = 0.3f;
+        private float updateFpsTimer = 0f;
+        private const int maxSampleSize = 1000;
 
         public State GetCurrentState() => currentState;
 
-        public float GetFps() => fpsMeasure.Average();
+        public float GetFps() => averageFps;
 
         public void ChangeState(State s) => pollState = s;
 
         public void Update(GameTime gt)
         {
+            float addFrame = (float)(1.0 / gt.ElapsedGameTime.TotalSeconds);
+            fpsMeasure.Enqueue(float.IsInfinity(addFrame) ? 0 : addFrame);
+            if (fpsMeasure.Count >= maxSampleSize) fpsMeasure.Dequeue();
+
+            updateFpsTimer += (float)gt.ElapsedGameTime.TotalSeconds;
+            if (updateFpsTimer > updateFpsInterval)
+            {
+                averageFps = (float)Math.Round(fpsMeasure.Average(),1);
+                updateFpsTimer = 0;
+            }
+
             if (pollState != null)
             {
                 //Let the old state know he is about to die
@@ -69,10 +83,7 @@ namespace Seihou
         }
 
         public void Draw(GameTime gt)
-        {
-            fpsMeasure.Enqueue((float)(1.0 / gt.ElapsedGameTime.TotalSeconds));
-            if (fpsMeasure.Count >= fpsSampleSize) fpsMeasure.Dequeue();
-
+        { 
             currentState.Draw(gt);
         }
     }

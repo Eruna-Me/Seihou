@@ -37,12 +37,9 @@ namespace Seihou
         //Normalize vector
         public static Vector2 Normalize(Vector2 vec)
         {
-            //TODO: find a cleaner way to do this
-            if (vec.X == 0)
-                return new Vector2(0, Math.Sign(vec.Y));
-
             float mag = (float)Math.Sqrt(vec.X * vec.X + vec.Y * vec.Y);
-                return new Vector2(vec.X/mag,vec.Y/mag);
+            if (mag == 0) return new Vector2(0, 0); 
+            return new Vector2(vec.X != 0 ? vec.X/mag : 0,vec.Y != 0 ? vec.Y/mag : 0);
         }
 
 		public static float VtoD(Vector2 vector) => (float)Math.Atan2(vector.Y, vector.X);
