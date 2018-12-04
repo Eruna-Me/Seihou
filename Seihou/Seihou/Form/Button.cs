@@ -56,12 +56,13 @@ namespace Seihou
 		{
             MonoGame.Primitives2D.FillRectangle(sb, pos + background3DOffset, size, background3D, 0);
             MonoGame.Primitives2D.FillRectangle(sb, pos, size, background, 0);
-            
 
-            if (Global.drawCollisionBoxes)
-                MonoGame.Primitives2D.DrawRectangle(sb, pos, size, Color.Red);
 
-            Vector2 orgin = new Vector2(0,0);
+			#if DRAWCOLBOX
+			MonoGame.Primitives2D.DrawRectangle(sb, pos, size, Color.Red);
+			#endif
+
+			Vector2 orgin = new Vector2(0,0);
             Vector2 place = new Vector2(0, 0);
             orgin.Y = ResourceManager.fonts[font].MeasureString(text).Y / 2;
             place.Y = size.Y / 2;

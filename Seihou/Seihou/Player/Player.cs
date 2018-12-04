@@ -113,8 +113,10 @@ namespace Seihou
 				int SpriteSize = ResourceManager.textures[texture].Height / 2;
 				trail.Draw(gt);
 				sb.Draw(ResourceManager.textures[texture], pos - ResourceManager.Center(texture), Color.White);
-				if (Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, size, 100, Color.Red, 5);
-				if (Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, grazeDistance, 10, Color.White, 1);
+				#if DRAWCOLBOX
+				MonoGame.Primitives2D.DrawCircle(sb, pos, size, 100, Color.Red, 5);
+				MonoGame.Primitives2D.DrawCircle(sb, pos, grazeDistance, 10, Color.White, 1);
+				#endif
 			}
 		}
 

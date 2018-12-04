@@ -54,7 +54,9 @@ namespace Seihou
 		public override void Draw(GameTime gt)
 		{
 			ResourceManager.DrawAngledTexture(sb, texture, pos, speed);
-			if (Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, size, 10, Color.White, 1);
+			#if DRAWCOLBOX 
+			MonoGame.Primitives2D.DrawCircle(sb, pos, size, 10, Color.White, 1);
+			#endif
 		}
 	}
 }

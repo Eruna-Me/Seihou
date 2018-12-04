@@ -58,7 +58,7 @@ namespace Seihou
 					}
 				}
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
 				Console.WriteLine("!!! [WARNING] COULD NOT IMPORT SETTINGS");
 			}
@@ -90,7 +90,7 @@ namespace Seihou
 					}
 				}
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
 				Console.WriteLine("!!! [WARNING] COULD NOT EXPORT SETTINGS");
 			}

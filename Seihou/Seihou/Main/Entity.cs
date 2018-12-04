@@ -33,8 +33,10 @@ namespace Seihou
 		public virtual void Draw(GameTime gt)
 		{
 			sb.Draw(ResourceManager.textures[texture], pos - ResourceManager.Center(texture), Color.White);
-			if (Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, size, 10, Color.White, 1);
+			#if DRAWCOLBOX
+			MonoGame.Primitives2D.DrawCircle(sb, pos, size, 10, Color.White, 1);
+			#endif
 		}
-        public abstract void Update(GameTime gt);
+		public abstract void Update(GameTime gt);
     }
 }

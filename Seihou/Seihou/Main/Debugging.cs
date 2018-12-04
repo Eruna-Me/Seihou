@@ -12,8 +12,7 @@ namespace Seihou
 {
     class Debugging
     {
-
-        [Conditional("DEBUG")]
+		[Conditional("DEBUG")]
         public static void Write(object sender,string message) => Console.WriteLine($"{sender} : {message}");
 
         [Conditional("DEBUG")]

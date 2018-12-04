@@ -12,9 +12,9 @@ namespace Seihou
     class HomingBullet : PlayerProjectile
     {
         protected Entity target;
-        private float bulletSpeed;
-        private float mooiBoogjeLevel = 5;
-        private float minimumBulletSpeed;
+        private readonly float bulletSpeed;
+        private const float mooiBoogjeLevel = 5;
+        private readonly float minimumBulletSpeed;
         private float homingTime;
 
         public HomingBullet(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner,Vector2 speed) : base(pos, sb, em, owner)
@@ -97,7 +97,9 @@ namespace Seihou
         public override void Draw(GameTime gt)
         {
             ResourceManager.DrawAngledTexture(sb, texture, pos, speed);
-            if (Global.drawCollisionBoxes) MonoGame.Primitives2D.DrawCircle(sb, pos, size, 10, Color.White, 1);
-        }
-    }
+			#if DRAWCOLBOX
+			MonoGame.Primitives2D.DrawCircle(sb, pos, size, 10, Color.White, 1);
+			#endif
+		}
+	}
 }

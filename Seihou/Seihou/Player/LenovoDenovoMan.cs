@@ -17,7 +17,7 @@ namespace Seihou
 		private int bulletsPerShot = 5;
 		private const float baseBulletSpread = 40.0f;
 		private const float preciseBulletSpread = 80.0f;
-		private string bulletTexture = "Dart1";
+		private const string bulletTexture = "Dart1";
 		private float spread;
 
 		public LenovoDenovoMan(SpriteBatch sb, EntityManager em, StateManager sm, State state) : base(sb, em, sm, state)
