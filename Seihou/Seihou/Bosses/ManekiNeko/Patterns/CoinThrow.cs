@@ -12,9 +12,10 @@ namespace Seihou
 {
     class CoinThrow : Pattern
     {
-        float spawnRate;
+		readonly float spawnRate;
         float spawnTimer = 0;
-        const float bulletSpeed = 300;
+        const float bulletSpeed = 250;
+		const float spread = 50;
 
         public CoinThrow(Boss daddy,EntityManager em,float spawnRate) : base(2,em,daddy)
         {
@@ -29,10 +30,10 @@ namespace Seihou
             {
                 spawnTimer = 0;
                 em.AddEntity(new Coin(daddy.pos,daddy.sb, em, daddy, new Vector2(0,    bulletSpeed)));
-                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(40,  bulletSpeed)));
-                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(-40, bulletSpeed)));
-                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(80, bulletSpeed)));
-                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(-80, bulletSpeed)));
+                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(spread,  bulletSpeed)));
+                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(-spread, bulletSpeed)));
+                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(spread * 2, bulletSpeed)));
+                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(-spread * 2, bulletSpeed)));
             }
 
             base.Update(gt);

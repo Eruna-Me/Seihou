@@ -18,12 +18,14 @@ namespace Seihou
 			//Load settings
 			Settings.ImportSettings();
 
-            //Graphics options
-            graphics = new GraphicsDeviceManager(this);
-			graphics.PreferredBackBufferWidth = Global.screenWidth;
-			graphics.PreferredBackBufferHeight = Global.screenHeight;
-            graphics.SynchronizeWithVerticalRetrace = true;
-            graphics.ApplyChanges();
+			//Graphics options
+			graphics = new GraphicsDeviceManager(this)
+			{
+				PreferredBackBufferWidth = Global.screenWidth,
+				PreferredBackBufferHeight = Global.screenHeight,
+				SynchronizeWithVerticalRetrace = true
+			};
+			graphics.ApplyChanges();
             IsFixedTimeStep = false;
 
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);

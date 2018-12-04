@@ -12,10 +12,10 @@ namespace Seihou
 {
     class CoinDirectional : Pattern
     {
-        float spawnRate;
+		readonly float spawnRate;
         float spawnTimer = 0;
         const float bulletSpeed = 300;
-        int amount;
+		readonly int amount;
 
         public CoinDirectional(Boss daddy,EntityManager em,float spawnRate,int amount) : base(2,em,daddy)
         {

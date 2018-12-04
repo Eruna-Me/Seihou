@@ -26,8 +26,8 @@ namespace Seihou
         List<Button> buttons = new List<Button>();
 		readonly ButtonCallBack onSubmit;
 
-        int xSpacing = 40;
-        int ySpacing = 40;
+        const int xSpacing = 40;
+		const int ySpacing = 40;
 
         public Textbox(Vector2 pos, SpriteBatch sb,ButtonCallBack onSubmit) : base(sb)
         {

@@ -14,7 +14,7 @@ namespace Seihou
 		Keys Key;
 		public string keyName;
 		Button button;
-		string text;
+		readonly string text;
 
 		public KeyPicker(Vector2 pos, Vector2 size, SpriteBatch sb, string text, string keyName,Keys startWith, int index) : base(sb)
 		{

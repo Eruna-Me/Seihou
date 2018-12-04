@@ -11,9 +11,9 @@ namespace Seihou
 {
     class Spray : Pattern
     {
-        float spawnRate;
+		readonly float spawnRate;
         float spawnTimer = 0;
-        float spread = 20;
+		const float spread = 20;
         const float bulletSpeed = 300;
 
         public Spray(Boss daddy, EntityManager em, float spawnRate) : base(2, em, daddy)

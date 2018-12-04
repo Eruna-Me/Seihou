@@ -30,10 +30,10 @@ namespace Seihou
 
 		Vector2 pos, size;
 		public string text;
-        string font;	
+		readonly string font;	
         bool hovering = false;
-        Align align;
-		int index;
+		readonly Align align;
+		readonly int index;
 		bool selected = false;
 		static bool pressed = false;
 		static float buttonPressDelay;

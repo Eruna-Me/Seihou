@@ -15,7 +15,7 @@ namespace Seihou
 		readonly string[] answers;
 		public string question;
 		Button button;
-		string text;
+		readonly string text;
 
 		public PickerButton(Vector2 pos, Vector2 size, SpriteBatch sb, string text, string question, string startsWith, int index, params string[] answers) : base(sb)
 		{

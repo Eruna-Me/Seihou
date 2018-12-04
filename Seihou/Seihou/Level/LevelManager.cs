@@ -26,8 +26,8 @@ namespace Seihou
 
     abstract class Level
     {
-        SpriteBatch sb;
-        EntityManager em;
+		readonly SpriteBatch sb;
+		readonly EntityManager em;
 
         protected static Vector2 GetSpawn(float location) => new Vector2(Global.playingFieldWidth * (location / 100.0f), Global.spawnHeight);
 

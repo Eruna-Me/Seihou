@@ -12,8 +12,8 @@ namespace Seihou
 	
 	class QuestionState : State
 	{
-		double score;
-		string mode;
+		readonly double score;
+		readonly string mode;
 
 		Vector2 buttonSize = new Vector2(400, 60);
 		Control[] controls;

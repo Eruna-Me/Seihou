@@ -43,9 +43,11 @@ namespace Seihou
 					data.Clear();
 					con.Open();
 
-					var c = new SqlCommand($"SELECT * FROM Settings");
-					c.Connection = con;
-					c.CommandTimeout = 1;
+					var c = new SqlCommand($"SELECT * FROM Settings")
+					{
+						Connection = con,
+						CommandTimeout = 1
+					};
 
 					using (SqlDataReader reader = c.ExecuteReader())
 					{
@@ -70,16 +72,20 @@ namespace Seihou
 				{
 					con.Open();
 
-					var deleteAll = new SqlCommand("DELETE FROM Settings");
-					deleteAll.Connection = con;
-					deleteAll.CommandTimeout = 1;
+					var deleteAll = new SqlCommand("DELETE FROM Settings")
+					{
+						Connection = con,
+						CommandTimeout = 1
+					};
 					deleteAll.ExecuteNonQuery();
 
 					foreach (var kp in data)
 					{
-						var c = new SqlCommand($"INSERT INTO Settings ([Setting],[Value]) VALUES('{kp.Key}','{kp.Value}')");
-						c.Connection = con;
-						c.CommandTimeout = 1;
+						var c = new SqlCommand($"INSERT INTO Settings ([Setting],[Value]) VALUES('{kp.Key}','{kp.Value}')")
+						{
+							Connection = con,
+							CommandTimeout = 1
+						};
 						c.ExecuteNonQuery();
 					}
 				}

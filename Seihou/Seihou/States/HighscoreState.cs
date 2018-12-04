@@ -16,7 +16,7 @@ namespace Seihou
 		readonly string conStr = $"Connection Timeout=30;Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={System.IO.Directory.GetCurrentDirectory()}\\GameData.mdf;Integrated Security=True;";
 
 		double playedScore;
-		string playedMode;
+		readonly string playedMode;
 
 		string selectedMode = "";
 
@@ -27,12 +27,14 @@ namespace Seihou
 
         public HighscoreState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm,double score,string mode) : base(sm, cm, sb, gdm)
         {
-			this.playedMode = mode;
-			this.playedScore = score;
+			playedMode = mode;
+			playedScore = score;
 			selectedMode = playedMode;
 
-            scoreDisplay = new ScoreDisplay(new Vector2(500, 100), new Vector2(650,395),this.sb,conStr);
-            scoreDisplay.background = new Color(0, 0, 0);
+			scoreDisplay = new ScoreDisplay(new Vector2(500, 100), new Vector2(650, 395), this.sb, conStr)
+			{
+				background = new Color(0, 0, 0)
+			};
 			scoreDisplay.SetModeFilter(playedMode);
 
 			textBox1 = new Textbox(new Vector2(100, 550), sb,OnSubmit);

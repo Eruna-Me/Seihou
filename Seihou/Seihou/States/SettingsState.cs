@@ -40,16 +40,14 @@ namespace Seihou
 		{
 			foreach (object b in buttons)
 			{
-				if (b is PickerButton)
+				if (b is PickerButton pkb)
 				{
-					var pkb = (PickerButton)b;
 					Settings.Set(pkb.question, pkb.GetAnswer());
 					continue;
 				}
 
-				if (b is KeyPicker)
+				if (b is KeyPicker kp)
 				{
-					var kp = (KeyPicker)b;
 					Settings.Set(kp.keyName, kp.GetKey());
 					continue;
 				}
