@@ -20,6 +20,7 @@ namespace Seihou
 
         public void UpdateDeathMenu(GameTime gt)
         {
+			Global.buttonCount = deathMenu.Length;
             foreach (var b in deathMenu) b.Update(gt);
         }
 
@@ -31,7 +32,8 @@ namespace Seihou
 
         public void UpdatePauseMenu(GameTime gt)
         {
-            foreach (var b in pauseMenu) b.Update(gt);
+			Global.buttonCount = pauseMenu.Length;
+			foreach (var b in pauseMenu) b.Update(gt);
         }
 
         public void DrawPauseMenu(GameTime gt)
@@ -43,13 +45,13 @@ namespace Seihou
         public void BuildMenus()
         {
 			int width = 500;
-            deathMenu[0] = new Button(new Vector2(Global.Center.X,Global.Center.Y - buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedContinue, "Continue", Button.Align.center);
-            deathMenu[1] = new Button(new Vector2(Global.Center.X,Global.Center.Y), new Vector2(width, buttonSpacing), sb, OnClickedMenuScore, "Menu/Save score", Button.Align.center);
-            deathMenu[2] = new Button(new Vector2(Global.Center.X,Global.Center.Y + buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedExit, "Exit", Button.Align.center);
+            deathMenu[0] = new Button(new Vector2(Global.Center.X,Global.Center.Y - buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedContinue, "Continue", 0, Button.Align.center);
+            deathMenu[1] = new Button(new Vector2(Global.Center.X,Global.Center.Y), new Vector2(width, buttonSpacing), sb, OnClickedMenuScore, "Menu/Save score", 1, Button.Align.center);
+            deathMenu[2] = new Button(new Vector2(Global.Center.X,Global.Center.Y + buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedExit, "Exit", 2, Button.Align.center);
 
-            pauseMenu[0] = new Button(new Vector2(Global.Center.X,Global.Center.Y - buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedResume, "Resume", Button.Align.center);
-            pauseMenu[1] = new Button(new Vector2(Global.Center.X,Global.Center.Y), new Vector2(width, buttonSpacing), sb, OnClickedMenuScore, "Menu/Save score", Button.Align.center);
-            pauseMenu[2] = new Button(new Vector2(Global.Center.X,Global.Center.Y + buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedExit, "Exit", Button.Align.center);
+            pauseMenu[0] = new Button(new Vector2(Global.Center.X,Global.Center.Y - buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedResume, "Resume", 0, Button.Align.center);
+            pauseMenu[1] = new Button(new Vector2(Global.Center.X,Global.Center.Y), new Vector2(width, buttonSpacing), sb, OnClickedMenuScore, "Menu/Save score", 1, Button.Align.center);
+            pauseMenu[2] = new Button(new Vector2(Global.Center.X,Global.Center.Y + buttonSpacing*2), new Vector2(width, buttonSpacing), sb, OnClickedExit, "Exit", 2, Button.Align.center);
 
             foreach (var b in deathMenu) { b.background = new Color(60, 60, 60); b.background3D = Color.Black; }
             foreach (var b in pauseMenu) { b.background = new Color(60, 60, 60); b.background3D = Color.Black; }

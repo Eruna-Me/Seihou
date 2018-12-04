@@ -63,7 +63,8 @@ namespace Seihou
 
             if (pause) UpdatePauseMenu(gt);
             if (death) UpdateDeathMenu(gt);
-        }
+			Button.ButtonKeyControl(gt);
+		}
 
         public void OnPlayerDeath() => death = true;
 

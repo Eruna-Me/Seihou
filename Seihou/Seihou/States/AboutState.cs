@@ -16,7 +16,7 @@ namespace Seihou
 
 		public AboutState (StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
         {
-			button = new Button(new Vector2(150,300), new Vector2(300, 50), sb, OnClickedExit, "Back", Button.Align.center);
+			button = new Button(new Vector2(150,300), new Vector2(300, 50), sb, OnClickedExit, "Back", 0, Button.Align.center);
 		}
 
 		private void OnClickedExit(object sender)
@@ -34,6 +34,8 @@ namespace Seihou
 
 		public override void Update(GameTime gt)
 		{
+			Global.buttonCount = 1;
+			Button.ButtonKeyControl(gt);
 			button.Update(gt);
 		}
 	}

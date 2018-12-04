@@ -27,7 +27,9 @@ namespace Seihou
 		public static Keys PauseKey2 = Keys.Escape;
 
 		//	VARIOUS
-        public static Random random = new Random();
+		public static int selectedButton = 0;
+		public static int buttonCount = 0;
+		public static Random random = new Random();
 		public static Player player = null;
 		public const bool drawCollisionBoxes = false;
         public static Color gameBackgroundColor = new Color(100,200,250);

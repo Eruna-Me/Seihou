@@ -12,7 +12,7 @@ namespace Seihou
 {
 	class DifficultySelectionState : State
 	{
-		const int firstButtonHeight = 30;
+		const int firstButtonHeight = 130;
         const int buttonsX = Global.screenWidth/2;
         Button[] buttons = new Button[5];
 
@@ -48,15 +48,15 @@ namespace Seihou
 
 		public DifficultySelectionState (StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
         {
-            int s = 100; //Spacing
+			int spacing = 100;
             int i = 0;
 
 
-            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(1000, 90), sb, OnClickedEasy,  "EASY \n    Eh? Easy modo? How lame! Only kids play on easy modo!!");
-            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(1000, 90), sb, OnClickedMedium, "MEDIUM \n    Why don't you at least challenge as much as normal mode \n     once in your life.");
-            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(1000, 90), sb, OnClickedHard, "HARD \n    The only proper difficulty setting.");
-            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(1000, 90), sb, OnClickedUsagi, "USAGI \n    Rabbits are scary animals.");
-            buttons[i++] = new Button(new Vector2(150,firstButtonHeight + s * i + firstButtonHeight), new Vector2(300, 50), sb, OnClickedExit, "Back",Button.Align.center);
+            buttons[i] = new Button(new Vector2(buttonsX,firstButtonHeight + spacing * i), new Vector2(1000, 90), sb, OnClickedEasy,  "EASY \n    Eh? Easy modo? How lame! Only kids play on easy modo!!", i++);
+            buttons[i] = new Button(new Vector2(buttonsX,firstButtonHeight + spacing * i), new Vector2(1000, 90), sb, OnClickedMedium, "MEDIUM \n    Why don't you at least challenge as much as normal mode \n     once in your life.", i++);
+            buttons[i] = new Button(new Vector2(buttonsX,firstButtonHeight + spacing * i), new Vector2(1000, 90), sb, OnClickedHard, "HARD \n    The only proper difficulty setting.", i++);
+            buttons[i] = new Button(new Vector2(buttonsX,firstButtonHeight + spacing * i), new Vector2(1000, 90), sb, OnClickedUsagi, "USAGI \n    Rabbits are scary animals.",i++);
+            buttons[i] = new Button(new Vector2(150,firstButtonHeight + spacing * i + firstButtonHeight), new Vector2(300, 50), sb, OnClickedExit, "Back", i++, Button.Align.center);
 
 			buttons[0].textColor = Color.Green;
 			buttons[1].textColor = Color.Yellow;
@@ -74,7 +74,9 @@ namespace Seihou
 
 		public override void Update(GameTime gt)
 		{
-            foreach (Button b in buttons) b.Update(gt);
+			Global.buttonCount = buttons.Length;
+			Button.ButtonKeyControl(gt);
+			foreach (Button b in buttons) b.Update(gt);
 		}
 	}
 }

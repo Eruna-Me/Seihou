@@ -12,9 +12,9 @@ namespace Seihou
 {
 	class MenuState : State
 	{
-		const int firstButtonHeight = 30;
+		const int firstButtonHeight = 110;
         const int buttonsX = Global.screenWidth - 200;
-        Button[] buttons = new Button[4];
+        readonly Button[] buttons = new Button[4];
 
         void OnClickedStart(object sender)
         {
@@ -36,27 +36,28 @@ namespace Seihou
             sm.abort = true;
         }
 
-
 		public MenuState (StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
         {
-            int s = 80; //Spacing
+            const int spacing = 80;
             int i = 0;
 
-            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedStart,    "Start");
-            buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedSettings, "Settings");
-			buttons[i++] = new Button(new Vector2(buttonsX, firstButtonHeight + s * i), new Vector2(300, 50), sb,OnClickedAbout,    "About");
-			buttons[i++] = new Button(new Vector2(buttonsX,firstButtonHeight + s * i), new Vector2(300, 50), sb, OnClickedExit,     "Exit");
+            buttons[i] = new Button(new Vector2(buttonsX,firstButtonHeight + spacing * i), new Vector2(300, 50), sb, OnClickedStart,    "Start", i++);
+            buttons[i] = new Button(new Vector2(buttonsX,firstButtonHeight + spacing * i), new Vector2(300, 50), sb, OnClickedSettings, "Settings", i++);
+			buttons[i] = new Button(new Vector2(buttonsX, firstButtonHeight + spacing * i), new Vector2(300, 50), sb,OnClickedAbout,    "About", i++);
+			buttons[i] = new Button(new Vector2(buttonsX,firstButtonHeight + spacing * i), new Vector2(300, 50), sb, OnClickedExit,     "Exit", i++);
 		}
 
 		public override void Draw(GameTime gt)
 		{
             foreach (Button b in buttons) b.Draw(gt);
-            sb.DrawString(ResourceManager.fonts["DefaultFont"], "O hi mark. you tearing me apart lisa", new Vector2(30,30), new Color(4, 4, 4));
+            sb.DrawString(ResourceManager.fonts["DefaultFont"], "O hi mark. You're tearing me apart Lisa", new Vector2(30,30), new Color(4, 4, 4));
             sb.Draw(ResourceManager.textures["Logo"], new Vector2(200, 200), Color.White);
         }
 
 		public override void Update(GameTime gt)
 		{
+			Global.buttonCount = buttons.Length;
+			Button.ButtonKeyControl(gt);
             foreach (Button b in buttons) b.Update(gt);
 		}
 	}

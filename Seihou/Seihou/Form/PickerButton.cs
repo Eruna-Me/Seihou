@@ -23,7 +23,7 @@ namespace Seihou
 			this.question = question;
 			this.answers = answers;
 			this.text = text;
-			button = new Button(pos, size, sb, OnClicked, question, Button.Align.left);
+			button = new Button(pos, size, sb, OnClicked, question, 0, Button.Align.left);
 			this.sb = sb;
 		}
 

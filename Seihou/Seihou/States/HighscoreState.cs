@@ -38,9 +38,9 @@ namespace Seihou
 
 			var enumVals = Enum.GetValues(typeof(Settings.Difficulty));
 			for (int i = 0; i < enumVals.Length; i++)
-				controls.Add(new Button(new Vector2(200,200 + i * 50), new Vector2(200, 50), sb, FilterButtonPressed,Enum.GetName(typeof(Settings.Difficulty),enumVals.GetValue(i)), Button.Align.center));
+				controls.Add(new Button(new Vector2(200,200 + i * 50), new Vector2(200, 50), sb, FilterButtonPressed,Enum.GetName(typeof(Settings.Difficulty),enumVals.GetValue(i)), i,Button.Align.center));
 
-			controls.Add(new Button(new Vector2(80, 690), new Vector2(100, 25), sb, GoHome, "Back", Button.Align.center));
+			controls.Add(new Button(new Vector2(80, 690), new Vector2(100, 25), sb, GoHome, "Back", enumVals.Length, Button.Align.center));
 
 			controls.Add(scoreDisplay);
             controls.Add(textBox1);
@@ -61,7 +61,9 @@ namespace Seihou
         
         public override void Update(GameTime gt)
         {
-            foreach (var c in controls) c.Update(gt);
+			Global.buttonCount = controls.Count - 2;
+			Button.ButtonKeyControl(gt);
+			foreach (var c in controls) c.Update(gt);
         }
 
 		public void GoHome(object sender)

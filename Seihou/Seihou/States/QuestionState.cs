@@ -25,8 +25,8 @@ namespace Seihou
 
 			controls = new Control[2]
 			{
-				new Button(new Vector2(Global.screenWidth/2,Global.screenHeight/2-80),buttonSize,sb,Yes,"Yes please",Button.Align.center),
-				new Button(new Vector2(Global.screenWidth/2,Global.screenHeight/2+80),buttonSize,sb,No,"NO TAKE ME TO MENU",Button.Align.center),
+				new Button(new Vector2(Global.screenWidth/2,Global.screenHeight/2-80),buttonSize,sb,Yes,"Yes please", 0, Button.Align.center),
+				new Button(new Vector2(Global.screenWidth/2,Global.screenHeight/2+80),buttonSize,sb,No,"NO TAKE ME TO MENU", 1, Button.Align.center),
 			};
 		}
 
@@ -49,6 +49,8 @@ namespace Seihou
 
 		public override void Update(GameTime gt)
 		{
+			Global.buttonCount = controls.Length;
+			Button.ButtonKeyControl(gt);
 			foreach (var c in controls) c.Update(gt);
 		}
 	}

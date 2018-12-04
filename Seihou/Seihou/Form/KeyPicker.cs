@@ -21,7 +21,7 @@ namespace Seihou
 			this.text = text;
 			this.Key = startWith;
 			this.keyName = keyName;
-			button = new Button(pos, size, sb, null, keyName, Button.Align.left);
+			button = new Button(pos, size, sb, null, keyName, 0, Button.Align.left);
 			button.onHover += OnHover;
 			this.sb = sb;
 		}

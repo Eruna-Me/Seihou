@@ -25,6 +25,7 @@ namespace Seihou
 			Sleep(1);
 
 			WaitUntilClear();
+
 			//Part 0 the last samurai
 
 			Spawn(new Samurai(GetSpawn(50), sb, em));

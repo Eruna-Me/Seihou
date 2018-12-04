@@ -38,7 +38,7 @@ namespace Seihou
             {
                 for (int key = 0; key < keys.GetLength(1); key++)
                 {
-                    buttons.Add(new Button(new Vector2(pos.X + key * xSpacing, pos.Y + (row + 1) * ySpacing), new Vector2(xSpacing, ySpacing), sb, Pressed, keys[row, key].ToString(), Button.Align.center) { background = Color.Gray});
+                    buttons.Add(new Button(new Vector2(pos.X + key * xSpacing, pos.Y + (row + 1) * ySpacing), new Vector2(xSpacing, ySpacing), sb, Pressed, keys[row, key].ToString(), 0, Button.Align.center) { background = Color.Gray});
                 }
             }
 

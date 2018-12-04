@@ -33,8 +33,13 @@ namespace Seihou
         string font;	
         bool hovering = false;
         Align align;
+		int index;
+		bool selected = false;
+		static bool pressed = false;
+		static float buttonPressDelay;
+		const float maxButtonPressDelay = 0.3f;
 
-		public Button(Vector2 pos, Vector2 size, SpriteBatch sb, ButtonCallBack onClicked, string text, Align align = Align.left, string font = "DefaultFont") : base(sb)
+		public Button(Vector2 pos, Vector2 size, SpriteBatch sb, ButtonCallBack onClicked, string text, int index = 0, Align align = Align.left, string font = "DefaultFont") : base(sb)
 		{
 			textColor = new Color(100, 100, 100);
             this.font = font;
@@ -44,6 +49,7 @@ namespace Seihou
 			this.size = size;
 			this.sb = sb;
 			this.text = text;
+			this.index = index;
 		}
 
 		public override void Draw(GameTime gt)
@@ -80,8 +86,16 @@ namespace Seihou
                     place.X = size.X;
                     break;
             }
-
-            sb.DrawString(cf, text,pos + place, hovering ? selectedTextColor : textColor,0,orgin,1,SpriteEffects.None,0);
+			if(Global.selectedButton == index)
+			{
+				selected = true;
+			}
+			else
+			{
+				selected = false;
+			}
+				
+            sb.DrawString(cf, text,pos + place, selected ? selectedTextColor : textColor,0,orgin,1,SpriteEffects.None,0);
 		}
 
 		public override void Update(GameTime gt)
@@ -91,10 +105,16 @@ namespace Seihou
             
             if (hovering)
             {
+				Global.selectedButton = index;
 				onHover?.Invoke(this);
 				if (Cursor.IsMouseLeftPressed())
                     onClicked?.Invoke(this);
             }
+
+			if (pressed && (Global.selectedButton == index))
+			{
+				onClicked?.Invoke(this);
+			}
         }
 
 		public void EmptyCall(object sender) { }
@@ -103,6 +123,36 @@ namespace Seihou
 		{
 			MouseState mouseState = Mouse.GetState();
             return (((mouseState.X > pos.X) && (mouseState.X < pos.X + size.X)) && ((mouseState.Y > pos.Y) && (mouseState.Y < pos.Y + size.Y)));
+		}
+
+		public static void ButtonKeyControl(GameTime gameTime)
+		{
+			KeyboardState kb = Keyboard.GetState();
+
+			bool up = kb.IsKeyDown(Settings.GetKey("upKey"));
+			bool down = kb.IsKeyDown(Settings.GetKey("downKey"));
+			bool press = kb.IsKeyDown(Settings.GetKey("shootKey"));
+			pressed = false;
+
+			if(down && buttonPressDelay < 0)
+			{
+				Global.selectedButton++;
+				buttonPressDelay = maxButtonPressDelay;
+			}
+			if (up && buttonPressDelay < 0)
+			{
+				Global.selectedButton--;
+				buttonPressDelay = maxButtonPressDelay;
+			}
+			if (press && buttonPressDelay < 0)
+			{
+				pressed = true;
+				buttonPressDelay = maxButtonPressDelay;
+			}
+			buttonPressDelay -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+			if (Global.selectedButton < 0) Global.selectedButton = 0;
+			if (Global.selectedButton >= Global.buttonCount) Global.selectedButton = Global.buttonCount -1;
 		}
 	}
 }
