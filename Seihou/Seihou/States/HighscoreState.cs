@@ -34,6 +34,7 @@ namespace Seihou
             scoreDisplay = new ScoreDisplay(new Vector2(500, 100), new Vector2(650,395),this.sb,conStr);
             scoreDisplay.background = new Color(0, 0, 0);
 			scoreDisplay.SetModeFilter(playedMode);
+
 			textBox1 = new Textbox(new Vector2(100, 550), sb,OnSubmit);
 
 			var enumVals = Enum.GetValues(typeof(Settings.Difficulty));

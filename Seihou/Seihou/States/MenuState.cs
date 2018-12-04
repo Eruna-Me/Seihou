@@ -14,7 +14,7 @@ namespace Seihou
 	{
 		const int firstButtonHeight = 110;
         const int buttonsX = Global.screenWidth - 200;
-        readonly Button[] buttons = new Button[4];
+        readonly Button[] buttons = new Button[5];
 
         void OnClickedStart(object sender)
         {
@@ -31,7 +31,12 @@ namespace Seihou
 			sm.ChangeState(new SettingsState(sm, cm, sb, gdm));
         }
 
-        void  OnClickedExit(object sender)
+		void OnClickedHighscores(object sender)
+		{
+			sm.ChangeState(new HighscoreState(sm, cm, sb, gdm, 0, "none"));
+		}
+
+		void  OnClickedExit(object sender)
         {
             sm.abort = true;
         }
@@ -42,7 +47,8 @@ namespace Seihou
             int i = 0;
 
             buttons[i] = new Button(new Vector2(buttonsX,firstButtonHeight + spacing * i), new Vector2(300, 50), sb, OnClickedStart,    "Start", i++);
-            buttons[i] = new Button(new Vector2(buttonsX,firstButtonHeight + spacing * i), new Vector2(300, 50), sb, OnClickedSettings, "Settings", i++);
+			buttons[i] = new Button(new Vector2(buttonsX, firstButtonHeight + spacing * i), new Vector2(300, 50), sb, OnClickedHighscores, "Highscores", i++);
+			buttons[i] = new Button(new Vector2(buttonsX,firstButtonHeight + spacing * i), new Vector2(300, 50), sb, OnClickedSettings, "Settings", i++);
 			buttons[i] = new Button(new Vector2(buttonsX, firstButtonHeight + spacing * i), new Vector2(300, 50), sb,OnClickedAbout,    "About", i++);
 			buttons[i] = new Button(new Vector2(buttonsX,firstButtonHeight + spacing * i), new Vector2(300, 50), sb, OnClickedExit,     "Exit", i++);
 		}
