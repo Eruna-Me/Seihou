@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
@@ -13,21 +8,19 @@ namespace Seihou
     {
         Trail trail;
         float rotation = 0;
-		float acceleration = 1.005f;
+		const float acceleration = 1.005f;
 		float timerUntilPause = 0;
-		float timeUntilPause = 0.2f;
+		const float timeUntilPause = 0.2f;
 		float timerPause = 0;
-		float timePause = 0.01f;
+		const float timePause = 0.01f;
 		bool pause = false;
 		bool resume = false;
-		float resumeSpeed = 300;
+		const float resumeSpeed = 300;
 
 		Vector2 pauseSpeed;
 		
         public Shuriken(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed,Vector2 pauseSpeed) : base(pos, sb, em, owner)
         {
-
-
 			this.pauseSpeed = pauseSpeed;
             texture = "Shuriken";
             trail = new Trail(sb, texture,20,0.01f);

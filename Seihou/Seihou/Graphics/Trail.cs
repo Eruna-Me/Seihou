@@ -1,15 +1,11 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
-    class Trail
+	class Trail
     {
         struct Section
         {
@@ -23,7 +19,7 @@ namespace Seihou
 		float spawnTimer = 0;
 
         List<Section> sections = new List<Section>();
-        string texture;
+        readonly string texture;
         SpriteBatch sb;
 
         public Trail(SpriteBatch sb,string texture,int amount,float spawnTime)

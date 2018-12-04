@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 //standard faller
 namespace Seihou
 {
-    class Samurai : Enemy
+	class Samurai : Enemy
     {
         private const float fallSpeed = 90.0f;
 		private const float bulletSpeed = 400.0f;
 		private float fireDelay = 2.0f;
-		private float maxFireDelay = 2.0f;
+		private readonly float maxFireDelay = 2.0f;
 
 		public Samurai(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
 		{

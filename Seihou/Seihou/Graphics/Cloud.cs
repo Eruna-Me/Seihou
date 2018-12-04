@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Seihou
 {
 	class Cloud : Entity
 	{
-		private float alpha;
-		private float deltaSpeed;
+		private readonly float alpha;
+		private readonly float deltaSpeed;
 
 		public Cloud(Vector2 pos, SpriteBatch sb, EntityManager em, String texture, float alpha, float deltaSpeed) : base(pos, sb, em)
 		{

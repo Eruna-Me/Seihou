@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
@@ -13,7 +8,7 @@ namespace Seihou
 	{
 		Trail trail;
 		float rotation = 0;
-		float bombScore = 100.0f;
+		const float bombScore = 100.0f;
 		public FlowerBombShrapnel(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em)
 		{
 			texture = "EnergyBall";

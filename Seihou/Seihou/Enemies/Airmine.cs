@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Seihou
 {
-    class Airmine : Enemy
+	class Airmine : Enemy
     {
         private const float fallSpeed = 40.0f;
         private const float maxBulletSpeed = 100.0f;
 		private const float minBulletSpeed = 100.0f;
-		private int bullets = 10;
+		private readonly int bullets = 10;
 
         public Airmine(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {

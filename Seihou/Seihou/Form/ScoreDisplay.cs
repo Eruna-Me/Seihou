@@ -1,17 +1,13 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 
 namespace Seihou
 {
-    class ScoreDisplay : Control
+	class ScoreDisplay : Control
     {
 		string filterMode = "easy";
 
@@ -45,9 +41,11 @@ namespace Seihou
 				{
 					con.Open();
 
-					var c = new SqlCommand($"INSERT INTO [Highscores] (Score,Name,Mode) VALUES ({score},'{name}','{mode}')");
-					c.Connection = con; 
-					c.CommandTimeout = 1;
+					var c = new SqlCommand($"INSERT INTO [Highscores] (Score,Name,Mode) VALUES ({score},'{name}','{mode}')")
+					{
+						Connection = con,
+						CommandTimeout = 1
+					};
 
 					using (SqlDataReader reader = c.ExecuteReader())
 					{
@@ -80,9 +78,11 @@ namespace Seihou
 				{
 					con.Open();
 
-					var c = new SqlCommand("SELECT * FROM [Highscores] ORDER BY [score] DESC");
-					c.Connection = con;
-					c.CommandTimeout = 1;
+					var c = new SqlCommand("SELECT * FROM [Highscores] ORDER BY [score] DESC")
+					{
+						Connection = con,
+						CommandTimeout = 1
+					};
 
 					using (SqlDataReader reader = c.ExecuteReader())
 					{

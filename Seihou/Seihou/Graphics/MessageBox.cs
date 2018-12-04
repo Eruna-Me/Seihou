@@ -1,32 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 
 namespace Seihou
 {
-    class MessageBox : Entity
+	class MessageBox : Entity
     {
         public Color color = Color.White;
 
-        private float maxLife;
-        private float maxFadeIn;
-        private float maxFadeOut;
+        private readonly float maxLife;
+        private readonly float maxFadeIn;
+        private readonly float maxFadeOut;
 
         private float life;
         private float fadeIn;
         private float fadeOut;
 
-        private string text;
-        private string fontName;
+        private readonly string text;
+        private readonly string fontName;
 
         private float alpha = 0f;
-        private float maxAlpha;
+        private readonly float maxAlpha;
 		public static bool waitForButtonPress = false;
 		public bool waitForButtonPressOn = false;
 

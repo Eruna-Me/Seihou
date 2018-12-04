@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
-    class Particle : Entity
+	class Particle : Entity
     {
 
-        private float gravity = 30.0f;
+        private const float gravity = 30.0f;
         private readonly float maxLife = 100.0f;
-        private float maxSpeed = 10.0f;
+        private const float maxSpeed = 10.0f;
         private float alpha = 1.0f;
         private float life;
 

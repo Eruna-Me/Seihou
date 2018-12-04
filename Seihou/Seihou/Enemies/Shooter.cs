@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Seihou
 {
-    class Shooter : Enemy
+	class Shooter : Enemy
     {
         private const float fallSpeed = 40.0f;
         private readonly float maxFireDelay;

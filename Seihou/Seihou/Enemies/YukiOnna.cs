@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Seihou
@@ -16,7 +11,7 @@ namespace Seihou
 		private float fireDelay = 0f;
 		private const float maxFireDelay = 0.1f;
 		private int ammo = 5;
-		private int bulletsPerShot = 5;
+		private readonly int bulletsPerShot = 5;
 		private const string bulletTexture = "Snowflake";
 		private bool targetSet = false;
 		private Vector2 target;

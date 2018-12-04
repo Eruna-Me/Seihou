@@ -1,25 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using System;
 
 //standard faller
 namespace Seihou
 {
-    class Kitsune : Enemy
+	class Kitsune : Enemy
     {
         private const float fallSpeed = 10.0f;
 		private const float bulletSpeed = 100.0f;
 		private float fireDelay = 1.5f;
-		private float maxFireDelay = 0.5f;
-		private int bulletsPerShot = 21;
+		private readonly float maxFireDelay = 0.5f;
+		private const int bulletsPerShot = 21;
 		private const string bulletTexture = "EnemyBullet";
 		private double direction = 0;
-		private bool clockwiseRotation;
+		private readonly bool clockwiseRotation;
 
 		public Kitsune(Vector2 pos, SpriteBatch sb, EntityManager em, bool clockwiseRotation = true) : base(pos, sb, em)
 		{

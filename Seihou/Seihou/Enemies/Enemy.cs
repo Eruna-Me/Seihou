@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
 namespace Seihou
 {
-    abstract class Enemy : Entity 
+	abstract class Enemy : Entity 
     {
 		protected int scoreDropChance = 50;
 		protected int powerDropChance = 30;
