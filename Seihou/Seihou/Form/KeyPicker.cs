@@ -16,12 +16,12 @@ namespace Seihou
 		Button button;
 		string text;
 
-		public KeyPicker(Vector2 pos, Vector2 size, SpriteBatch sb, string text, string keyName,Keys startWith) : base(sb)
+		public KeyPicker(Vector2 pos, Vector2 size, SpriteBatch sb, string text, string keyName,Keys startWith, int index) : base(sb)
 		{
 			this.text = text;
 			this.Key = startWith;
 			this.keyName = keyName;
-			button = new Button(pos, size, sb, null, keyName, 0, Button.Align.left);
+			button = new Button(pos, size, sb, null, keyName, index, Button.Align.left);
 			button.onHover += OnHover;
 			this.sb = sb;
 		}
@@ -29,7 +29,7 @@ namespace Seihou
 		private void OnHover(object sender)
 		{
 			Keys[] getKeys = Keyboard.GetState().GetPressedKeys();
-			if (getKeys.Length > 0)
+			if (getKeys.Length > 0 && getKeys[0] != Keys.OemAuto)
 				Key = getKeys[0];
 		}
 

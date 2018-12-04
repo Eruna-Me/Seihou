@@ -17,13 +17,13 @@ namespace Seihou
 		Button button;
 		string text;
 
-		public PickerButton(Vector2 pos, Vector2 size, SpriteBatch sb, string text, string question, string startsWith,params string[] answers) : base(sb)
+		public PickerButton(Vector2 pos, Vector2 size, SpriteBatch sb, string text, string question, string startsWith, int index, params string[] answers) : base(sb)
 		{
 			for (int i = 0; i < answers.Length; ++i) selected = answers[i] == startsWith ? i : selected;
 			this.question = question;
 			this.answers = answers;
 			this.text = text;
-			button = new Button(pos, size, sb, OnClicked, question, 0, Button.Align.left);
+			button = new Button(pos, size, sb, OnClicked, question, index, Button.Align.left);
 			this.sb = sb;
 		}
 
