@@ -30,7 +30,7 @@ namespace Seihou
 		bool selected = false;
 		static bool pressed = false;
 		static float buttonPressDelay;
-		const float maxButtonPressDelay = 0.3f;
+		const float maxButtonPressDelay = 0.25f;
 
 		public Button(Vector2 pos, Vector2 size, SpriteBatch sb, ButtonCallBack onClicked, string text, int index = 0, Align align = Align.left, string font = "DefaultFont") : base(sb)
 		{
@@ -97,7 +97,7 @@ namespace Seihou
             MouseState mouseState = Mouse.GetState();
             hovering = MouseOnButton();
             
-            if (hovering)
+            if (hovering && !Global.keyMode)
             {
 				Global.selectedButton = index;
 				onHover?.Invoke(this);
@@ -132,16 +132,19 @@ namespace Seihou
 			{
 				Global.selectedButton++;
 				buttonPressDelay = maxButtonPressDelay;
+				Global.keyMode = true;
 			}
 			if (up && buttonPressDelay < 0)
 			{
 				Global.selectedButton--;
 				buttonPressDelay = maxButtonPressDelay;
+				Global.keyMode = true;
 			}
 			if (press && buttonPressDelay < 0)
 			{
 				pressed = true;
 				buttonPressDelay = maxButtonPressDelay;
+				Global.keyMode = true;
 			}
 			buttonPressDelay -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 

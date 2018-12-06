@@ -57,6 +57,7 @@ namespace Seihou
 
             if (pause) UpdatePauseMenu(gt);
             if (death) UpdateDeathMenu(gt);
+			Cursor.Moved();
 			Button.ButtonKeyControl(gt);
 		}
 

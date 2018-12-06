@@ -23,6 +23,7 @@ namespace Seihou
 		public static Keys PauseKey2 = Keys.Escape;
 
 		//	VARIOUS
+		public static bool keyMode = true;
 		public static int selectedButton = 0;
 		public static int buttonCount = 0;
 		public static Random random = new Random();

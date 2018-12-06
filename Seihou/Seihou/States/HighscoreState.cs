@@ -59,6 +59,7 @@ namespace Seihou
         
         public override void Update(GameTime gt)
         {
+			Cursor.Moved();
 			Global.buttonCount = controls.Count - 2;
 			Button.ButtonKeyControl(gt);
 			foreach (var c in controls) c.Update(gt);
