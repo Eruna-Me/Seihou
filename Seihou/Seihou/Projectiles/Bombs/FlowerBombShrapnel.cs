@@ -22,19 +22,27 @@ namespace Seihou
 			pos += speed /4 * (float)gt.ElapsedGameTime.TotalSeconds;
 			rotation += (float)gt.ElapsedGameTime.TotalSeconds;
 			trail.Update(pos,gt, rotation);
-			Bob:;
-			Entity c = em.Touching(this, EntityManager.EntityClass.enemy);
+
+			Entity lastCollidedEntity = null;
+
+			CollisionCheckStart:;
+
+			Entity c = em.Touching(this, EntityManager.EntityClass.enemy, lastCollidedEntity);
 
 			if (c is Boss) c = null;
-			if (c == null) c = em.Touching(this, EntityManager.EntityClass.enemyProjectile);
+			if (c == null) c = em.Touching(this, EntityManager.EntityClass.enemyProjectile, lastCollidedEntity);
 
-			if (c != null && c.hp > 0)
+			if (c != null)
 			{
-				c.OnDamaged(this, 10000);
-				float scoreGain = bombScore;
-				Global.player.score += scoreGain;
-				em.AddEntity(new MessageBox(pos + new Vector2(0, -50), sb, em, scoreGain.ToString(), 2.5f, 0, 1, "DefaultFont", 1f) { color = Color.Blue });
-				goto Bob;
+				lastCollidedEntity = c;
+				if (c.hp > 0)
+				{
+					c.OnDamaged(this, 10000);
+					float scoreGain = bombScore;
+					Global.player.score += scoreGain;
+					em.AddEntity(new MessageBox(pos + new Vector2(0, -50), sb, em, scoreGain.ToString(), 2.5f, 0, 1, "DefaultFont", 1f) { color = Color.Blue });
+				}
+				goto CollisionCheckStart;
 			}
 
 			if (pos.Y + Global.outOfScreenMargin < 0 || pos.Y > Global.screenHeight + Global.outOfScreenMargin || pos.X + Global.outOfScreenMargin < 0 || pos.X > Global.playingFieldWidth + Global.outOfScreenMargin)

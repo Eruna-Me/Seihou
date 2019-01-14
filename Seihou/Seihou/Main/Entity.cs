@@ -18,7 +18,10 @@ namespace Seihou
 		public int size = 1;
 		public EntityManager.EntityClass ec = EntityManager.EntityClass.nonSolid;
 
-		public virtual void OnDamaged(Entity by, int damage) { }
+		public virtual void OnDamaged(Entity by, int damage)
+		{
+			hp -= damage;
+		}
 
 		protected Entity(Vector2 pos, SpriteBatch sb, EntityManager em)
 		{

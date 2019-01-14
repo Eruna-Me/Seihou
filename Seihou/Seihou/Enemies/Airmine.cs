@@ -40,7 +40,7 @@ namespace Seihou
 					em.AddEntity(new EnemyBullet(pos, sb, em, this, bSpeed));
 				}
 			}
-			hp = 0;
+			hp -= damage;
 			em.RemoveEntity(this);
 			Global.player.score += scoreOnKilled;
 		}

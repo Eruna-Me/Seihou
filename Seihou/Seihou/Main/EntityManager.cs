@@ -57,7 +57,28 @@ namespace Seihou
             return null;
         }
 
-        public Entity Touching(Vector2 pos, int size, EntityClass ec)
+		public Entity Touching(Entity ent, EntityClass ec, Entity lastEntity)
+		{
+			bool alreadySearched = true;
+
+			if (lastEntity == null) alreadySearched = false;
+
+			for ( int i = 0; i < EntityCollections[Collections.Entities][ec].Count; i++)
+			{
+				if (!alreadySearched)
+				{
+					if (EntityCollections[Collections.Entities][ec][i].id == ent.id) continue;
+					if (Collision.Circle(ent, EntityCollections[Collections.Entities][ec][i])) return EntityCollections[Collections.Entities][ec][i];
+				}
+				else if (EntityCollections[Collections.Entities][ec][i].id == lastEntity.id && alreadySearched)
+				{
+					alreadySearched = false;
+				}
+			}
+			return null;
+		}
+
+		public Entity Touching(Vector2 pos, int size, EntityClass ec)
         {
             foreach (Entity e in EntityCollections[Collections.Entities][ec])
                 if (Collision.Circle(e,pos,size)) return e;

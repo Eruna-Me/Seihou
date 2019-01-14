@@ -43,7 +43,7 @@ namespace Seihou
         private float averageFps = 0f;
         private const float updateFpsInterval = 0.3f;
         private float updateFpsTimer = 0f;
-        private const int maxSampleSize = 1000;
+        private const int maxSampleSize = 10;
 
         public State GetCurrentState() => currentState;
 

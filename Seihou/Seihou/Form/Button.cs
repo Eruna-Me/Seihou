@@ -50,7 +50,6 @@ namespace Seihou
             MonoGame.Primitives2D.FillRectangle(sb, pos + background3DOffset, size, background3D, 0);
             MonoGame.Primitives2D.FillRectangle(sb, pos, size, background, 0);
 
-
 			#if DRAWCOLBOX
 			MonoGame.Primitives2D.DrawRectangle(sb, pos, size, Color.Red);
 			#endif
