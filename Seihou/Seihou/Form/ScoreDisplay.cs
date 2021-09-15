@@ -37,29 +37,31 @@ namespace Seihou
 			//Load data from MDF
 			try
 			{
-				using (SqlConnection con = new SqlConnection(connectionString))
-				{
-					con.Open();
+				//TODO: rebuild this without a msql db. D:
 
-					var c = new SqlCommand($"INSERT INTO [Highscores] (Score,Name,Mode) VALUES ({score},'{name}','{mode}')")
-					{
-						Connection = con,
-						CommandTimeout = 1
-					};
-
-					using (SqlDataReader reader = c.ExecuteReader())
-					{
-						while (reader.Read())
-						{
-							scores.Add(new Score()
-							{
-								score = reader[0].ToString(),
-								name = reader[1].ToString(),
-								mode = reader[2].ToString()
-							});
-						}
-					}
-				}
+				//using (SqlConnection con = new SqlConnection(connectionString))
+				//{
+				//	con.Open();
+				//
+				//	var c = new SqlCommand($"INSERT INTO [Highscores] (Score,Name,Mode) VALUES ({score},'{name}','{mode}')")
+				//	{
+				//		Connection = con,
+				//		CommandTimeout = 1
+				//	};
+				//
+				//	using (SqlDataReader reader = c.ExecuteReader())
+				//	{
+				//		while (reader.Read())
+				//		{
+				//			scores.Add(new Score()
+				//			{
+				//				score = reader[0].ToString(),
+				//				name = reader[1].ToString(),
+				//				mode = reader[2].ToString()
+				//			});
+				//		}
+				//	}
+				//}
 			}
 			catch (Exception e)
 			{
@@ -74,29 +76,29 @@ namespace Seihou
 			scores.Clear();
 			try
 			{
-				using (SqlConnection con = new SqlConnection(connectionString))
-				{
-					con.Open();
-
-					var c = new SqlCommand("SELECT * FROM [Highscores] ORDER BY [score] DESC")
-					{
-						Connection = con,
-						CommandTimeout = 1
-					};
-
-					using (SqlDataReader reader = c.ExecuteReader())
-					{
-						while (reader.Read())
-						{
-							scores.Add(new Score()
-							{
-								score = reader[0].ToString(),
-								name = reader[1].ToString(),
-								mode = reader[2].ToString()
-							});
-						}
-					}
-				}
+				//using (SqlConnection con = new SqlConnection(connectionString))
+				//{
+				//	con.Open();
+				//
+				//	var c = new SqlCommand("SELECT * FROM [Highscores] ORDER BY [score] DESC")
+				//	{
+				//		Connection = con,
+				//		CommandTimeout = 1
+				//	};
+				//
+				//	using (SqlDataReader reader = c.ExecuteReader())
+				//	{
+				//		while (reader.Read())
+				//		{
+				//			scores.Add(new Score()
+				//			{
+				//				score = reader[0].ToString(),
+				//				name = reader[1].ToString(),
+				//				mode = reader[2].ToString()
+				//			});
+				//		}
+				//	}
+				//}
 			}
 			catch (Exception e)
 			{

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using System.Collections.Generic;
 
 namespace Seihou
 {
@@ -11,17 +12,19 @@ namespace Seihou
 		readonly string mode;
 
 		Vector2 buttonSize = new Vector2(400, 60);
-		Control[] controls;
+        readonly List<Control> controls;
 
 		public QuestionState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm,double score,string mode) : base(sm, cm,sb,gdm)
 		{
 			this.score = score;
 			this.mode = mode;
 
-			controls = new Control[2]
+			controls = new List<Control>
 			{
-				new Button(new Vector2(Global.screenWidth/2,Global.screenHeight/2-80),buttonSize,sb,Yes,"Yes please", 0, Button.Align.center),
-				new Button(new Vector2(Global.screenWidth/2,Global.screenHeight/2+80),buttonSize,sb,No,"NO TAKE ME TO MENU", 1, Button.Align.center),
+				//new Button(new Vector2(Global.screenWidth/2,Global.screenHeight/2-80),buttonSize,sb,Yes,"Yes please", 0, Button.Align.center),
+				//new Button(new Vector2(Global.screenWidth/2,Global.screenHeight/2+80),buttonSize,sb,No,"NO TAKE ME TO MENU", 1, Button.Align.center),
+
+				new Button(new Vector2(Global.screenWidth/2,Global.screenHeight/2+80),buttonSize,sb,No,"NO TAKE ME TO MENU", 0, Button.Align.center),
 			};
 		}
 
@@ -45,7 +48,7 @@ namespace Seihou
 		public override void Update(GameTime gt)
 		{
 			Cursor.Moved();
-			Global.buttonCount = controls.Length;
+			Global.buttonCount = controls.Count;
 			Button.ButtonKeyControl(gt);
 			foreach (var c in controls) c.Update(gt);
 		}
