@@ -14,7 +14,7 @@ namespace Seihou
 			const int uiLineHeight = 30;
 
 			sb.Draw(ResourceManager.textures["backgroundUI"], new Vector2(Global.playingFieldWidth, 0), Color.White);
-			sb.Draw(ResourceManager.textures["SeihouText1"], new Vector2(Global.uiWidth, 400), Color.White);
+			sb.Draw(ResourceManager.textures["SeihouText1"], new Vector2(Global.playingFieldWidth, 400), Color.White);
             
 
             int y = 0;
@@ -30,7 +30,7 @@ namespace Seihou
  
 			for (int i = 0; i < Global.player.lives; i++)
 			{
-				sb.Draw(ResourceManager.textures["Heart"], new Vector2(Global.uiWidth + 120 + i * (ResourceManager.textures["Heart"].Width + 10), y), Color.White);
+				sb.Draw(ResourceManager.textures["Heart"], new Vector2(Global.playingFieldWidth + 120 + i * (ResourceManager.textures["Heart"].Width + 10), y), Color.White);
 			}
 
             y += uiLineHeight; //New line
@@ -40,7 +40,7 @@ namespace Seihou
 
 			for (int i = 0; i < Global.player.bombs; i++)
 			{
-				sb.Draw(ResourceManager.textures["Bomb"], new Vector2(Global.uiWidth + 120 + i * (ResourceManager.textures["Bomb"].Width + 10), y), Color.White);
+				sb.Draw(ResourceManager.textures["Bomb"], new Vector2(Global.playingFieldWidth + 120 + i * (ResourceManager.textures["Bomb"].Width + 10), y), Color.White);
 			}
 
 			y += uiLineHeight; //New line
