@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
-    <ApplicationIcon />
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
     <StartupObject />
   </PropertyGroup>
 
