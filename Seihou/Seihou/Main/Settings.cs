@@ -25,14 +25,13 @@ namespace Seihou
 		public static string Get(string setting) => data["test"][setting];
 		public static int GetInt(string setting) => Convert.ToInt32(data["test"][setting]);
 		public static bool GetBool(string setting) => Convert.ToBoolean(data["test"][setting]);
-		public static Keys GetKey(string setting) => (Keys)Convert.ToInt32(data["test"][setting]);
+		public static Keys GetKey(string setting) => Enum.Parse<Keys>(data["test"][setting]);
 		public static Difficulty GetDifficulty() => difficulty;
 		public static void Set(string setting, string value) => data["test"][setting] = value;
 		public static void SetDifficulty(Difficulty value) => difficulty = value;
 
 		public static void ImportSettings()
 		{
-
 			var parser = new FileIniDataParser();
 			data.Merge(parser.ReadFile("Configuration.ini"));
 		}
