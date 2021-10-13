@@ -21,6 +21,8 @@ namespace Seihou
         public ButtonCallBack onClicked;
 		public ButtonCallBack onHover;
 
+		private static KeyboardState oldKeyboardState;
+
 		Vector2 pos, size;
 		public string text;
 		readonly string font;	
@@ -29,8 +31,6 @@ namespace Seihou
 		readonly int index;
 		bool selected = false;
 		static bool pressed = false;
-		static float buttonPressDelay;
-		const float maxButtonPressDelay = 0.25f;
 
 		public Button(Vector2 pos, Vector2 size, SpriteBatch sb, ButtonCallBack onClicked, string text, int index = 0, Align align = Align.left, string font = "DefaultFont") : base(sb)
 		{
@@ -110,8 +110,6 @@ namespace Seihou
 			}
         }
 
-		public void EmptyCall(object sender) { }
-
 		private bool MouseOnButton()
 		{
 			MouseState mouseState = Mouse.GetState();
@@ -122,33 +120,36 @@ namespace Seihou
 		{
 			KeyboardState kb = Keyboard.GetState();
 
-			bool up = kb.IsKeyDown(Settings.GetKey("upKey"));
-			bool down = kb.IsKeyDown(Settings.GetKey("downKey"));
-			bool press = kb.IsKeyDown(Settings.GetKey("shootKey"));
+			bool upWasDown = oldKeyboardState.IsKeyDown(Settings.GetKey("upKey"));
+			bool downWasDown = oldKeyboardState.IsKeyDown(Settings.GetKey("downKey"));
+			bool pressWasDown = oldKeyboardState.IsKeyDown(Settings.GetKey("shootKey"));
+
+			bool upUp = kb.IsKeyUp(Settings.GetKey("upKey"));
+			bool downUp = kb.IsKeyUp(Settings.GetKey("downKey"));
+			bool pressUp = kb.IsKeyUp(Settings.GetKey("shootKey"));
+
 			pressed = false;
 
-			if(down && buttonPressDelay < 0)
+			if(downWasDown && downUp)
 			{
 				Global.selectedButton++;
-				buttonPressDelay = maxButtonPressDelay;
 				Global.keyMode = true;
 			}
-			if (up && buttonPressDelay < 0)
+			if (upWasDown && upUp)
 			{
 				Global.selectedButton--;
-				buttonPressDelay = maxButtonPressDelay;
 				Global.keyMode = true;
 			}
-			if (press && buttonPressDelay < 0)
+			if (pressWasDown && pressUp)
 			{
 				pressed = true;
-				buttonPressDelay = maxButtonPressDelay;
 				Global.keyMode = true;
 			}
-			buttonPressDelay -= (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 			if (Global.selectedButton < 0) Global.selectedButton = 0;
 			if (Global.selectedButton >= Global.buttonCount) Global.selectedButton = Global.buttonCount -1;
+
+			oldKeyboardState = kb;
 		}
 	}
 }
