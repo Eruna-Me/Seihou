@@ -12,29 +12,29 @@ namespace Seihou
 
         public Game()
         {
-			this.IsMouseVisible = true;
+            this.IsMouseVisible = true;
 
-			//Load settings
-			Settings.ImportSettings();
+            //Load settings
+            Settings.ImportSettings();
 
-			//Graphics options
-			graphics = new GraphicsDeviceManager(this)
-			{
-				PreferredBackBufferWidth = Global.screenWidth,
-				PreferredBackBufferHeight = Global.screenHeight,
-				SynchronizeWithVerticalRetrace = true
-			};
-			graphics.ApplyChanges();
+            //Graphics options
+            graphics = new GraphicsDeviceManager(this)
+            {
+                PreferredBackBufferWidth = Global.screenWidth,
+                PreferredBackBufferHeight = Global.screenHeight,
+                SynchronizeWithVerticalRetrace = true
+            };
+            graphics.ApplyChanges();
             IsFixedTimeStep = false;
 
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
 
             //Set content directory
             Content.RootDirectory = "Content";
-           
+
             stateManager = new StateManager();
         }
-		
+
         protected override void Initialize()
         {
             base.Initialize();
@@ -44,23 +44,23 @@ namespace Seihou
         {
             ResourceManager.Load(Content);
 
-			stateManager.ChangeState(new MenuState(stateManager, Content, spriteBatch, graphics));
-		}
+            stateManager.ChangeState(new MenuState(stateManager, Content, spriteBatch, graphics));
+        }
 
         protected override void Update(GameTime gameTime)
         {
-			if (Keyboard.GetState().IsKeyDown(Keys.F11) || (Keyboard.GetState().IsKeyDown(Keys.LeftAlt) && Keyboard.GetState().IsKeyDown(Keys.Enter)))
-			{
-				graphics.ToggleFullScreen();
-				graphics.SynchronizeWithVerticalRetrace = true;
-				graphics.ApplyChanges();
-			}
+            if (Keyboard.GetState().IsKeyDown(Keys.F11) || (Keyboard.GetState().IsKeyDown(Keys.LeftAlt) && Keyboard.GetState().IsKeyDown(Keys.Enter)))
+            {
+                graphics.ToggleFullScreen();
+                graphics.SynchronizeWithVerticalRetrace = true;
+                graphics.ApplyChanges();
+            }
 
             stateManager.Update(gameTime);
 
             if (stateManager.abort) Exit();
 
-			base.Update(gameTime);
+            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)

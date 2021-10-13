@@ -1,20 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2003
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seihou", "Seihou\Seihou.csproj", "{691E310C-9DEE-428D-960D-43EA42ECC205}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Seihou", "Seihou\Seihou.csproj", "{148DEC4C-E17B-401B-91C4-00C792DD629B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x86 = Debug|x86
-		Release|x86 = Release|x86
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{691E310C-9DEE-428D-960D-43EA42ECC205}.Debug|x86.ActiveCfg = Debug|x86
-		{691E310C-9DEE-428D-960D-43EA42ECC205}.Debug|x86.Build.0 = Debug|x86
-		{691E310C-9DEE-428D-960D-43EA42ECC205}.Release|x86.ActiveCfg = Release|x86
-		{691E310C-9DEE-428D-960D-43EA42ECC205}.Release|x86.Build.0 = Release|x86
+		{148DEC4C-E17B-401B-91C4-00C792DD629B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{148DEC4C-E17B-401B-91C4-00C792DD629B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{148DEC4C-E17B-401B-91C4-00C792DD629B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{148DEC4C-E17B-401B-91C4-00C792DD629B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
