@@ -28,6 +28,7 @@ namespace Seihou
 		public static Keys GetKey(string setting) => Enum.Parse<Keys>(data["test"][setting]);
 		public static Difficulty GetDifficulty() => difficulty;
 		public static void Set(string setting, string value) => data["test"][setting] = value;
+		public static void Set(string setting, Keys key) => data["test"][setting] = key.ToString();
 		public static void SetDifficulty(Difficulty value) => difficulty = value;
 
 		public static void ImportSettings()
