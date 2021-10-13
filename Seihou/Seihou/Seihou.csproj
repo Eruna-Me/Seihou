@@ -8,19 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="GameData.mdf" />
     <None Remove="GameData_log.ldf" />
     <None Remove="Icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="GameData.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="GameData_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>GameData.mdf</DependentUpon>
-    </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
 
@@ -30,17 +29,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Configuration.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="cd $(ProjectDir)Content&amp;&#xD;&#xA;cmd mgcb /r /c /b Content.mgcb /outputDir:$(ProjectDir)$(OutDir)Content /intermediateDir:$(ProjectDir)obj&amp;&#xD;&#xA;EXIT 0" />
+    <Exec Command="mgcb /r /c Content\Content.mgcb" />
   </Target>
 
 </Project>

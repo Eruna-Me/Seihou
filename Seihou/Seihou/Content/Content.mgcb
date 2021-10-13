@@ -1,6 +1,8 @@
 
 #----------------------------- Global Properties ----------------------------#
 
+/outputDir:../bin/$(Platform)/Content
+/intermediateDir:../bin/$(Platform)/Content
 /platform:Windows
 /config:
 /profile:Reach
