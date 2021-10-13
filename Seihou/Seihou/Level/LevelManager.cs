@@ -1,102 +1,106 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Seihou
 {
-    class SpawnTask
+    internal class LevelManager
     {
-        public bool waitUntilClear = false;
-        public readonly float sleep = 0;
-        public readonly Entity spawn;
+        public Vector2 PlayerSpawn { get; private set; }
 
-        public SpawnTask(Entity spawn, float sleep,bool waitUntilClear)
+        public float CurrentHeight { get; private set; } = -1f;
+        public float SpawnAtY { get; set; } = -100.0f;
+        public float LevelSpeed { get; set; } = 40.0f;
+        public bool Paused { get; set; } = false;
+
+        private Queue<SpawnTask> _tasks;
+
+        private readonly EntityFactory _factory;
+        private readonly EntityManager _entityManager;
+
+		public LevelManager(EntityManager entityManager, SpriteBatch spriteBatch)
         {
-            this.waitUntilClear = waitUntilClear;
-            this.sleep = sleep;
-            this.spawn = spawn;
-        }
-    }
+            _factory = new EntityFactory(spriteBatch, entityManager);
+            _entityManager = entityManager;
+		}
 
-    abstract class Level
-    {
-		readonly SpriteBatch sb;
-		readonly EntityManager em;
-
-        protected static Vector2 GetSpawn(float location) => new Vector2(Global.playingFieldWidth * (location / 100.0f), Global.spawnHeight);
-
-        public Level(SpriteBatch sb, EntityManager em)
+        public void LoadLevel(string name)
         {
-            this.sb = sb;
-            this.em = em;
-        }
-
-        public readonly Queue<SpawnTask> spawner = new Queue<SpawnTask>();
-
-        protected void Spawn(Entity e) => spawner.Enqueue(new SpawnTask(e, 0,false));
-        protected void Spawn(Entity e, float t) => spawner.Enqueue(new SpawnTask(e, t,false));
-        protected void Sleep(float t) => spawner.Enqueue(new SpawnTask(null,t,false));
-        protected void WaitUntilClear() => spawner.Enqueue(new SpawnTask(null, 0, true));
-    }
-
-    class LevelManager
-    {
-        public bool waitUntilClear = false;
-        private Queue<SpawnTask> spawner = new Queue<SpawnTask>();
-        private EntityManager em;
-        private float timer = 0.0f;
-        public bool pause = false;
-
-        public LevelManager(EntityManager em)
-        {
-            this.em = em;
+            var level = File.ReadAllText(Path.Join("Content", "Levels", name + ".json"));
+            var objects = ParseObjects(level);
+            LoadObjects(objects);
         }
 
-        public void LoadLevel(Level l)
+        private static JArray ParseObjects(string json)
         {
-            spawner = new Queue<SpawnTask>(l.spawner);
+            var jobj = JObject.Parse(json);
+            var layer = jobj["layers"]
+                .Children()
+                .First(l => (string)l["type"] == "objectgroup");
+
+            return (JArray)layer["objects"];
         }
 
+        private void LoadObjects(JArray objects)
+        {
+            List<SpawnTask> tasks = new();
+            foreach(JObject obj in objects)
+            {
+                var type = (string)obj["type"];
+                switch (type)
+                {
+                    case "Spawner":
+                        tasks.Add(ParseSpawner(obj));
+                        break;
+
+                    //Ignore types used only in editor
+                    case "Screen":
+                    case "Barrier":
+                        break;
+
+                    default:
+                        throw new JsonReaderException($"Unknown type '{type}'");
+                }
+			}
+
+            _tasks = new Queue<SpawnTask>(tasks.OrderByDescending(t => t.WorldPosition.Y));
+            _factory.Index();
+        }
+
+        private static SpawnTask ParseSpawner(JObject spawner)
+        {
+            var properties = spawner["properties"].ToDictionary(k => (string)k["name"], v => v["value"]);
+
+            return new SpawnTask
+            {
+                EntityName = (string)properties["name"],
+                WorldPosition = new Vector2(
+                    (float)spawner["x"],
+                    (float)spawner["y"]
+                ),
+                Size = new Vector2(
+                    (float)spawner["width"],
+                    (float)spawner["height"]
+                )
+            };
+		}
+        
         public void Update(GameTime gt)
         {
-            if (waitUntilClear)
+            CurrentHeight -= LevelSpeed * (float)gt.ElapsedGameTime.TotalSeconds;
+
+            while (_tasks.Any() && _tasks.Peek().WorldPosition.Y > CurrentHeight)
             {
-                waitUntilClear = em.GetEntityCount(EntityManager.EntityClass.enemy) != 0;
-                if (!waitUntilClear)
-                {
-                    Debugging.Write(this, "Field cleared!");
-                }
-
-                return;
-            }
-
-            if (pause) return;
-
-			if (MessageBox.waitForButtonPress) return;
-
-			while (timer <= gt.ElapsedGameTime.TotalSeconds)
-            {
-                if (spawner.Count < 1) return;
-
-                SpawnTask st = spawner.Dequeue();
-
-                
-                timer += st.sleep;
-                if (st.spawn != null)
-                {
-                    Debugging.Write(this, $"Spawning {st.spawn}...");
-                    em.AddEntity(st.spawn);
-                }
-
-                if (st.waitUntilClear)
-                {
-                    Debugging.Write(this, "Waiting until clear...");
-                    waitUntilClear = st.waitUntilClear;
-                    return;
-                }
-
-            }
-            timer -= (float)gt.ElapsedGameTime.TotalSeconds;
+                var task = _tasks.Dequeue();
+                var spawnAt = new Vector2(task.CenterWorld.X, SpawnAtY);
+                var entity = _factory.Create(spawnAt, task.EntityName);
+                _entityManager.AddEntity(entity);
+			}
         }
     }
 }

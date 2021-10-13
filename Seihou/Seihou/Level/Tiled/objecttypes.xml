@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objecttypes>
+ <objecttype name="Barrier" color="#000000"/>
+ <objecttype name="Screen" color="#ff0206"/>
+ <objecttype name="Spawner" color="#0051ff">
+  <property name="name" type="string" default=""/>
+ </objecttype>
+ <objecttype name="Start" color="#22ff00"/>
+</objecttypes>

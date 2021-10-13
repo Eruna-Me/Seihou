@@ -36,7 +36,7 @@ namespace Seihou
 
 			if (fireDelay <= 0 && Global.OnScreen(pos))
 			{
-				float spread = (float)bulletsPerShot / 2.0f;
+				float spread = bulletsPerShot / 2.0f;
 
 				Global.SpreadShot(pos, sb, em, this, bulletSpeed, bulletTexture, (float)direction, spread, bulletsPerShot);
 
