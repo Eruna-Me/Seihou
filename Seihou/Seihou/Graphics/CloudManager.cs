@@ -3,42 +3,73 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Seihou
 {
-	static class CloudManager
+	class CloudManager
 	{
-		static public Color color = Color.White;
-		static public float speed = 50.0f;
-		static public float minAlpha = 0.0f;
-		static public float maxAlpha = 0.8f;
-		static public float spawnDelay = 0.0f;
-		static public float maxSpawnDelay = 0.2f;
-		static public float deltaSpawnDelay = 0.3f;
-		static public float deltaSpeedVariance = 10.0f;
+		public static CloudManager Instance { get; private set; }
 
-		public static void Update(GameTime gt, SpriteBatch sb, EntityManager em)
-		{	
-			while (spawnDelay < gt.ElapsedGameTime.TotalSeconds)
-			{
-				float alpha = (float)Global.random.NextDouble() * (maxAlpha - minAlpha) - minAlpha;
-				float deltaSpeed = (float)Global.random.NextDouble() * deltaSpeedVariance;
-				Vector2 pos = new Vector2(Global.random.Next(-Global.outOfScreenMargin, Global.playingFieldWidth + Global.outOfScreenMargin), Global.spawnHeight);
-				em.AddEntity(new Cloud(pos, sb, em, "Cloud1", alpha, deltaSpeed));
-				spawnDelay += maxSpawnDelay + (float)Global.random.NextDouble() * deltaSpawnDelay;
-			}
+		private const int AMOUNT_CLOUD_TEXTURES = 4;
+		private const float SPEED = 50.0f;
+		private const float MIN_ALPHA = 0.0f;
+		private const float MAX_ALPHA = 0.8f;
+		private const float SPEED_VARIANCE = 100.0f;
+		private const float SPAWN_INTERVAL = 0.2f;
 
-			spawnDelay -= 1 * gt.Time();
+		private readonly SpriteBatch _spriteBatch;
+		private readonly EntityManager _entityManager;
+
+		private float _spawnTimer = 0;
+
+		public static void Initialize(SpriteBatch sb, EntityManager em)
+		{
+			Instance = new CloudManager(sb, em);
+			Instance.FillScreen();
 		}
 
-		public static void FillScreen(SpriteBatch sb, EntityManager em)
+		private CloudManager(SpriteBatch spriteBatch, EntityManager entityManager)
 		{
-			float y = Global.spawnHeight;
-			while (y < Global.screenHeight + Global.outOfScreenMargin)
+			_spriteBatch = spriteBatch;
+			_entityManager = entityManager;
+		}
+
+		public void Update(GameTime gt)
+		{	
+			while (_spawnTimer > SPAWN_INTERVAL)
 			{
-				float alpha = (float)Global.random.NextDouble() * (maxAlpha - minAlpha) - minAlpha;
-				float deltaSpeed = (float)Global.random.NextDouble() * deltaSpeedVariance;
-				Vector2 pos = new Vector2(Global.random.Next(-Global.outOfScreenMargin, Global.playingFieldWidth + Global.outOfScreenMargin), y);
-				em.AddEntity(new Cloud(pos, sb, em, "Cloud1", alpha, deltaSpeed));
-				y += maxSpawnDelay + (float)Global.random.NextDouble() * deltaSpawnDelay * (speed + (float)Global.random.NextDouble() * deltaSpeedVariance);
+				_spawnTimer -= _spawnTimer;
+				SpawnCloud(-Cloud.SPAWN_MARGIN);
 			}
+
+			_spawnTimer += gt.Time();
+		}
+
+		public void FillScreen()
+		{
+			float y = -Cloud.SPAWN_MARGIN;
+			while (y < Global.screenHeight + Cloud.SPAWN_MARGIN)
+			{
+				y += SPAWN_INTERVAL * GetSpeed();
+				SpawnCloud(y);
+			}
+		}
+
+		private void SpawnCloud(float y)
+		{
+			float x = Global.random.Next(-Global.outOfScreenMargin, Global.playingFieldWidth + Global.outOfScreenMargin);
+			float alpha = (float)Global.random.NextDouble() * (MAX_ALPHA - MIN_ALPHA) - MIN_ALPHA;
+			float speed = GetSpeed();
+			bool mirror = Global.random.NextDouble() > .5;
+
+			_entityManager.AddEntity(new Cloud(new Vector2(x, y), _spriteBatch, _entityManager, RandomCloudTexture(), alpha, speed, mirror));
+		}
+
+		private static float GetSpeed()
+		{
+			return SPEED + ((float)Global.random.NextDouble() * SPEED_VARIANCE);
+		}
+
+		private static string RandomCloudTexture()
+		{
+			return $"Cloud{Global.random.Next(1, AMOUNT_CLOUD_TEXTURES + 1)}";
 		}
 	}
 }

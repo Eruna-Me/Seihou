@@ -52,7 +52,7 @@ namespace Seihou
             {
                 lm.Update(gt);
                 em.Update(gt);
-				CloudManager.Update(gt, sb, em);
+				CloudManager.Instance.Update(gt);
             }
 
             if (pause) UpdatePauseMenu(gt);
@@ -67,6 +67,7 @@ namespace Seihou
         public override void OnStart()
         {
             lm.LoadLevel("Basiclevel");
+            CloudManager.Initialize(sb, em);
             em.AddEntity(player);
         }
 

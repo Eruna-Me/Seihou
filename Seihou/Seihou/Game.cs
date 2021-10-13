@@ -66,7 +66,7 @@ namespace Seihou
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied);
+            spriteBatch.Begin(SpriteSortMode.Immediate);
             stateManager.Draw(gameTime);
             spriteBatch.End();
 

@@ -71,7 +71,9 @@ namespace Seihou
 
 			//Clouds
 			textures.Add("Cloud1",			 cm.Load<Texture2D>("Clouds/Cloud1"));
-
+			textures.Add("Cloud2",			 cm.Load<Texture2D>("Clouds/Cloud2"));
+			textures.Add("Cloud3",			 cm.Load<Texture2D>("Clouds/Cloud3"));
+			textures.Add("Cloud4",			 cm.Load<Texture2D>("Clouds/Cloud4"));
         }
 
 		public static Vector2 Center(string texture) => new Vector2(textures[texture].Width / 2, textures[texture].Height / 2);
