@@ -78,7 +78,7 @@ namespace Seihou
 			speed.X = (Convert.ToInt32(r) - Convert.ToInt32(l)) * (slowMode ? slowSpeed : normalSpeed);
 			speed.Y = (Convert.ToInt32(d) - Convert.ToInt32(u)) * (slowMode ? slowSpeed : normalSpeed);
 
-			pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
+			pos += speed * gt.Time();
 
 			if (pos.X + borderCollisionDistance > Global.playingFieldWidth) pos.X = Global.playingFieldWidth - borderCollisionDistance;
 			if (pos.X - borderCollisionDistance < 0) pos.X = 0 + borderCollisionDistance;
@@ -97,9 +97,9 @@ namespace Seihou
 				bombDelay = maxBombDelay;
 				bombs--;
 			}
-			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
-			bombDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
-			invincibilityTimer -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
+			fireDelay -= 1 * gt.Time();
+			bombDelay -= 1 * gt.Time();
+			invincibilityTimer -= 1 * gt.Time();
 		}
 
 		public override void Draw(GameTime gt)
@@ -145,8 +145,8 @@ namespace Seihou
 		{
 			if (invincibilityTimer <= 0)
 			{
-				graze += (float)gt.ElapsedGameTime.TotalSeconds;
-				score += grazeScore * (float)gt.ElapsedGameTime.TotalSeconds;
+				graze += gt.Time();
+				score += grazeScore * gt.Time();
 			}
 		}
 

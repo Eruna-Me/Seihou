@@ -38,7 +38,7 @@ namespace Seihou
 		public override void Update(GameTime gt)
 		{
 			base.Update(gt);
-			pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
+			pos += speed * gt.Time();
 			if (fireDelay <= 0 && ammo > 0 && fireTimer <= 0 && Global.OnScreen(pos))
 			{
 				if (!targetSet)
@@ -54,8 +54,8 @@ namespace Seihou
 				ammo--;
 			}
 
-			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
-			fireTimer -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
+			fireDelay -= 1 * gt.Time();
+			fireTimer -= 1 * gt.Time();
 		}
 	}
 }

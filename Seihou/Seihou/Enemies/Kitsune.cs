@@ -32,7 +32,7 @@ namespace Seihou
         {
             base.Update(gt);
 
-            pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
+            pos += speed * gt.Time();
 
 			if (fireDelay <= 0 && Global.OnScreen(pos))
 			{
@@ -43,7 +43,7 @@ namespace Seihou
 				fireDelay = maxFireDelay;
 			}
 
-			fireDelay -= (float)gt.ElapsedGameTime.TotalSeconds;
+			fireDelay -= gt.Time();
 			if (clockwiseRotation)
 			{
 				direction += Math.PI / 20 * gt.ElapsedGameTime.TotalSeconds;

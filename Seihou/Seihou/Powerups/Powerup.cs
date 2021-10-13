@@ -31,15 +31,15 @@ namespace Seihou
 			}
 			else
 			{ 
-				speed.Y += acceleration * (float)gt.ElapsedGameTime.TotalSeconds;
+				speed.Y += acceleration * gt.Time();
 
-				if (speed.X > 0) speed.X -= (speed.X > xDeceleration2Margin ? xDeceleration2 : xDeceleration1) * (float)gt.ElapsedGameTime.TotalSeconds;
-				if (speed.X < 0) speed.X += (speed.X < xDeceleration2Margin ? xDeceleration2 : xDeceleration1) * (float)gt.ElapsedGameTime.TotalSeconds;
+				if (speed.X > 0) speed.X -= (speed.X > xDeceleration2Margin ? xDeceleration2 : xDeceleration1) * gt.Time();
+				if (speed.X < 0) speed.X += (speed.X < xDeceleration2Margin ? xDeceleration2 : xDeceleration1) * gt.Time();
 			}
 
 			if (speed.Y > maxSpeed) speed.Y = maxSpeed;
 
-			pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
+			pos += speed * gt.Time();
 
 			if (pos.X > Global.playingFieldWidth) pos.X = Global.playingFieldWidth;
 			if (pos.X < 0) pos.X = 0;

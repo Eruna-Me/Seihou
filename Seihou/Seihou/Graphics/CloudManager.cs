@@ -25,7 +25,7 @@ namespace Seihou
 				spawnDelay += maxSpawnDelay + (float)Global.random.NextDouble() * deltaSpawnDelay;
 			}
 
-			spawnDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
+			spawnDelay -= 1 * gt.Time();
 		}
 
 		public static void FillScreen(SpriteBatch sb, EntityManager em)

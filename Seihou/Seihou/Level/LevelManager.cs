@@ -92,7 +92,7 @@ namespace Seihou
         
         public void Update(GameTime gt)
         {
-            CurrentHeight -= LevelSpeed * (float)gt.ElapsedGameTime.TotalSeconds;
+            CurrentHeight -= LevelSpeed * gt.Time();
 
             while (_tasks.Any() && _tasks.Peek().WorldPosition.Y > CurrentHeight)
             {

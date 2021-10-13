@@ -18,7 +18,7 @@ namespace Seihou
 
 		public override void Update(GameTime gt)
 		{
-			pos.Y += (CloudManager.speed + deltaSpeed) * (float)gt.ElapsedGameTime.TotalSeconds;
+			pos.Y += (CloudManager.speed + deltaSpeed) * gt.Time();
 
 			if (pos.Y > Global.screenHeight + Global.outOfScreenMargin)
 			{

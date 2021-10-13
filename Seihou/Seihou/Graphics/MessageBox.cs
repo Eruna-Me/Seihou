@@ -67,7 +67,7 @@ namespace Seihou
 					{
 						if (fadeOut > 0)
 						{
-							fadeOut -= (float)gt.ElapsedGameTime.TotalSeconds;
+							fadeOut -= gt.Time();
 							alpha = fadeOut / maxFadeOut - (1 - maxAlpha);
 						}
 						else
@@ -77,14 +77,14 @@ namespace Seihou
 					}
 					else
 					{
-						life -= (float)gt.ElapsedGameTime.TotalSeconds;
+						life -= gt.Time();
 					}
 				}
 				
 			}
 			else
 			{
-				fadeIn -= (float)gt.ElapsedGameTime.TotalSeconds;
+				fadeIn -= gt.Time();
 				alpha = 1 - fadeIn / maxFadeIn - (1 - maxAlpha);
 			}
         }

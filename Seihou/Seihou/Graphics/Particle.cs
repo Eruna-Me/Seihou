@@ -21,7 +21,7 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
-            speed.Y += gravity * (float)gt.ElapsedGameTime.TotalSeconds;
+            speed.Y += gravity * gt.Time();
 
             life -= 1;
             alpha = life / maxLife;

@@ -32,7 +32,7 @@ namespace Seihou
 
         public void Update(Vector2 v,GameTime gt,float rotation = 0)
         {
-			spawnTimer += (float)gt.ElapsedGameTime.TotalSeconds;
+			spawnTimer += gt.Time();
 
 			if (spawnTimer > spawnTime)
 			{
