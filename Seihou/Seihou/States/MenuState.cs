@@ -28,7 +28,7 @@ namespace Seihou
 
 		void OnClickedHighscores(object sender)
 		{
-			sm.ChangeState(new HighscoreState(sm, cm, sb, gdm, 0, "none"));
+			sm.ChangeState(new HighscoreState(sm, cm, sb, gdm, null));
 		}
 
 		void  OnClickedExit(object sender)
@@ -42,7 +42,7 @@ namespace Seihou
             int i = 0;
 
             buttons.Add( new Button(new Vector2(buttonsX,firstButtonHeight + spacing * i), new Vector2(300, 50), sb, OnClickedStart,    "Start", i++));
-			//buttons.Add( new Button(new Vector2(buttonsX, firstButtonHeight + spacing * i), new Vector2(300, 50), sb, OnClickedHighscores, "Highscores", i++));
+			buttons.Add( new Button(new Vector2(buttonsX, firstButtonHeight + spacing * i), new Vector2(300, 50), sb, OnClickedHighscores, "Highscores", i++));
 			buttons.Add( new Button(new Vector2(buttonsX,firstButtonHeight + spacing * i), new Vector2(300, 50), sb, OnClickedSettings, "Settings", i++));
 			buttons.Add( new Button(new Vector2(buttonsX, firstButtonHeight + spacing * i), new Vector2(300, 50), sb,OnClickedAbout,    "About", i++));
 			buttons.Add( new Button(new Vector2(buttonsX,firstButtonHeight + spacing * i), new Vector2(300, 50), sb, OnClickedExit,     "Exit", i++));

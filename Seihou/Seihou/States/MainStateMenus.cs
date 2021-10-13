@@ -67,7 +67,7 @@ namespace Seihou
 
 		public void OnClickedMenuScore(object sender)
 		{
-			sm.ChangeState(new QuestionState(sm, cm, sb, gdm, Math.Round(Global.player.score), Enum.GetName(typeof(Settings.Difficulty), Settings.GetDifficulty())));
+			sm.ChangeState(new QuestionState(sm, cm, sb, gdm, Math.Round(Global.player.score), Settings.GetDifficulty()));
 		}
 	}
 }
