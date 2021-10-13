@@ -26,6 +26,7 @@
   <ItemGroup>
     <PackageReference Include="ini-parser-netstandard" Version="2.5.2" />
     <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.0.1641" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,7 +36,7 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="mgcb /r /c Content\Content.mgcb&#xD;&#xA;move $(ProjectDir)\bin\content $(ProjectDir)$(OutDir)" />
+    <Exec Command="mgcb /r /c Content\Content.mgcb&#xD;&#xA;mkdir $(ProjectDir)$(OutDir)content&#xD;&#xA;xcopy $(ProjectDir)bin\content $(ProjectDir)$(OutDir)content /y /s" />
   </Target>
 
 </Project>
