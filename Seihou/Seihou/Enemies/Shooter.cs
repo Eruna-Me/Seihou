@@ -26,7 +26,7 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
-            fireDelay -= (float)gt.ElapsedGameTime.TotalSeconds;
+            fireDelay -= gt.Time();
 
             if (fireDelay < 0 && Global.OnScreen(pos))
             {
@@ -38,7 +38,7 @@ namespace Seihou
                 fireDelay = maxFireDelay;
             }
 
-            pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
+            pos += speed * gt.Time();
 
             base.Update(gt);
         }

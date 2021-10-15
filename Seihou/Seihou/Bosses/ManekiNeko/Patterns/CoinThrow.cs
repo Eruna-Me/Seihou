@@ -16,7 +16,7 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
-            spawnTimer += (float)gt.ElapsedGameTime.TotalSeconds;
+            spawnTimer += gt.Time();
 
             if (spawnTimer > spawnRate)
             {

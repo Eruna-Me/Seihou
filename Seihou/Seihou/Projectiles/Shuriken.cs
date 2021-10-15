@@ -30,13 +30,13 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
-            rotation += (float)gt.ElapsedGameTime.TotalSeconds;
+            rotation += gt.Time();
             trail.Update(pos,gt, rotation);
 
 			if (pause)
 			{
 				speed = pauseSpeed;
-				timerPause += (float)gt.ElapsedGameTime.TotalSeconds;
+				timerPause += gt.Time();
 				if (timerPause >= timePause)
 				{
 					resume = true;
@@ -48,7 +48,7 @@ namespace Seihou
 			{
 				speed *= acceleration;
 
-				timerUntilPause += (float)gt.ElapsedGameTime.TotalSeconds;
+				timerUntilPause += gt.Time();
 				if (timerUntilPause >= timeUntilPause)
 				{
 					pause = true;

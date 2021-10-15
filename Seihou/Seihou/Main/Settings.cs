@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using Microsoft.Xna.Framework.Input;
+using IniParser;
+using IniParser.Model;
 
 
 namespace Seihou
@@ -18,77 +20,27 @@ namespace Seihou
 
 		static Difficulty difficulty;
 
-		readonly static string connectionString = $"Connection Timeout=30;Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename={System.IO.Directory.GetCurrentDirectory()}\\GameData.mdf;Integrated Security=True;";
-		static readonly Dictionary<string, string> data = new Dictionary<string, string>();
+		static readonly IniData data = new IniData();
 
-		public static string Get(string setting) => data[setting];
-		public static int GetInt(string setting) => Convert.ToInt32(data[setting]);
-		public static bool GetBool(string setting) => Convert.ToBoolean(data[setting]);
-		public static Keys GetKey(string setting) => (Keys)Convert.ToInt32(data[setting]);
+		public static string Get(string setting) => data["test"][setting];
+		public static int GetInt(string setting) => Convert.ToInt32(data["test"][setting]);
+		public static bool GetBool(string setting) => Convert.ToBoolean(data["test"][setting]);
+		public static Keys GetKey(string setting) => Enum.Parse<Keys>(data["test"][setting]);
 		public static Difficulty GetDifficulty() => difficulty;
-		public static void Set(string setting, string value) => data[setting] = value;
+		public static void Set(string setting, string value) => data["test"][setting] = value;
+		public static void Set(string setting, Keys key) => data["test"][setting] = key.ToString();
 		public static void SetDifficulty(Difficulty value) => difficulty = value;
 
 		public static void ImportSettings()
 		{
-			try
-			{
-				using (SqlConnection con = new SqlConnection(connectionString))
-				{
-					data.Clear();
-					con.Open();
-
-					var c = new SqlCommand($"SELECT * FROM Settings")
-					{
-						Connection = con,
-						CommandTimeout = 1
-					};
-
-					using (SqlDataReader reader = c.ExecuteReader())
-					{
-						while (reader.Read())
-						{
-							data.Add($"{reader[0]}",$"{reader[1]}");
-						}
-					}
-				}
-			}
-			catch (Exception)
-			{
-				Console.WriteLine("!!! [WARNING] COULD NOT IMPORT SETTINGS");
-			}
+			var parser = new FileIniDataParser();
+			data.Merge(parser.ReadFile("Configuration.ini"));
 		}
 
 		public static void ExportSettings()
 		{
-			try
-			{
-				using (SqlConnection con = new SqlConnection(connectionString))
-				{
-					con.Open();
-
-					var deleteAll = new SqlCommand("DELETE FROM Settings")
-					{
-						Connection = con,
-						CommandTimeout = 1
-					};
-					deleteAll.ExecuteNonQuery();
-
-					foreach (var kp in data)
-					{
-						var c = new SqlCommand($"INSERT INTO Settings ([Setting],[Value]) VALUES('{kp.Key}','{kp.Value}')")
-						{
-							Connection = con,
-							CommandTimeout = 1
-						};
-						c.ExecuteNonQuery();
-					}
-				}
-			}
-			catch (Exception)
-			{
-				Console.WriteLine("!!! [WARNING] COULD NOT EXPORT SETTINGS");
-			}
+			var parser = new FileIniDataParser();
+			parser.WriteFile("Configuration.ini", data);
 		}
 	}
 }

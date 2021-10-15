@@ -18,7 +18,7 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
-            rotation += (float)gt.ElapsedGameTime.TotalSeconds;
+            rotation += gt.Time();
             trail.Update(pos,gt, rotation);
 
             base.Update(gt);

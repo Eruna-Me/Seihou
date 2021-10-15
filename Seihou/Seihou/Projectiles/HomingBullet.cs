@@ -47,7 +47,7 @@ namespace Seihou
                 speed *= (minimumBulletSpeed / speed.Length());
             }
 
-            pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
+            pos += speed * gt.Time();
 
             if (pos.Y + Global.outOfScreenMargin < 0 || pos.Y > Global.screenHeight + Global.outOfScreenMargin || pos.X + Global.outOfScreenMargin < 0 || pos.X > Global.playingFieldWidth + Global.outOfScreenMargin)
             {
@@ -60,7 +60,7 @@ namespace Seihou
             }
             else
             {
-                homingTime -= (float)gt.ElapsedGameTime.TotalSeconds;
+                homingTime -= gt.Time();
             }
 
             if (target == null || target.hp < 1)

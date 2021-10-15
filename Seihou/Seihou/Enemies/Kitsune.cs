@@ -32,18 +32,18 @@ namespace Seihou
         {
             base.Update(gt);
 
-            pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
+            pos += speed * gt.Time();
 
 			if (fireDelay <= 0 && Global.OnScreen(pos))
 			{
-				float spread = (float)bulletsPerShot / 2.0f;
+				float spread = bulletsPerShot / 2.0f;
 
 				Global.SpreadShot(pos, sb, em, this, bulletSpeed, bulletTexture, (float)direction, spread, bulletsPerShot);
 
 				fireDelay = maxFireDelay;
 			}
 
-			fireDelay -= (float)gt.ElapsedGameTime.TotalSeconds;
+			fireDelay -= gt.Time();
 			if (clockwiseRotation)
 			{
 				direction += Math.PI / 20 * gt.ElapsedGameTime.TotalSeconds;

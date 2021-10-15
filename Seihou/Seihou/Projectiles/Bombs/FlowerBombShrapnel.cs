@@ -19,8 +19,8 @@ namespace Seihou
 
 		public override void Update(GameTime gt)
 		{
-			pos += speed /4 * (float)gt.ElapsedGameTime.TotalSeconds;
-			rotation += (float)gt.ElapsedGameTime.TotalSeconds;
+			pos += speed /4 * gt.Time();
+			rotation += gt.Time();
 			trail.Update(pos,gt, rotation);
 
 			Entity lastCollidedEntity = null;

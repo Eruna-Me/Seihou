@@ -1,154 +1,42 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{691E310C-9DEE-428D-960D-43EA42ECC205}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Seihou</RootNamespace>
-    <AssemblyName>Seihou</AssemblyName>
-    <FileAlignment>512</FileAlignment>
-    <MonoGamePlatform>Windows</MonoGamePlatform>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\$(MonoGamePlatform)\$(Platform)\$(Configuration)\</OutputPath>
-    <DefineConstants>TRACE;WINDOWS</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <StartupObject />
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="Bosses\Boss.cs" />
-    <Compile Include="Bosses\ManekiNeko\ManekiNeko.cs" />
-    <Compile Include="Bosses\ManekiNeko\Patterns\CoinDirectional.cs" />
-    <Compile Include="Bosses\ManekiNeko\Patterns\CoinCircle.cs" />
-    <Compile Include="Bosses\ManekiNeko\Patterns\CoinThrow.cs" />
-    <Compile Include="Bosses\Patterns\Spray.cs" />
-    <Compile Include="Bosses\Pattern.cs" />
-    <Compile Include="Bosses\Patterns\Nothing.cs" />
-    <Compile Include="Enemies\Kitsune.cs" />
-    <Compile Include="Enemies\Airmine.cs" />
-    <Compile Include="Enemies\Ninja.cs" />
-    <Compile Include="Enemies\YukiOnna.cs" />
-    <Compile Include="Enemies\Samurai.cs" />
-    <Compile Include="Enemies\Shooter.cs" />
-    <Compile Include="Form\Control.cs" />
-    <Compile Include="Form\ListBox.cs" />
-    <Compile Include="Form\Cursor.cs" />
-    <Compile Include="Form\KeyPicker.cs" />
-    <Compile Include="Form\PickerButton.cs" />
-    <Compile Include="Form\ScoreDisplay.cs" />
-    <Compile Include="Form\Textbox.cs" />
-    <Compile Include="Graphics\Cloud.cs" />
-    <Compile Include="Graphics\CloudManager.cs" />
-    <Compile Include="Level\DemoLevel.cs" />
-    <Compile Include="Level\BasicLevel.cs" />
-    <Compile Include="Level\LevelManager.cs" />
-    <Compile Include="Graphics\UI.cs" />
-    <Compile Include="Player\LenovoDenovoMan.cs" />
-    <Compile Include="Powerups\LiveUp.cs" />
-    <Compile Include="Powerups\Point.cs" />
-    <Compile Include="Powerups\Power.cs" />
-    <Compile Include="Powerups\Powerup.cs" />
-    <Compile Include="Projectiles\Shuriken.cs" />
-    <Compile Include="Projectiles\EnemyBullet.cs" />
-    <Compile Include="Projectiles\Coin.cs" />
-    <Compile Include="Projectiles\EnergyBall.cs" />
-    <Compile Include="Projectiles\Bombs\FlowerBombShrapnel.cs" />
-    <Compile Include="Projectiles\HomingBullet.cs" />
-    <Compile Include="Projectiles\PlayerProjectile.cs" />
-    <Compile Include="Projectiles\PlayerBullet.cs" />
-    <Compile Include="Form\Button.cs" />
-    <Compile Include="States\AboutState.cs" />
-    <Compile Include="States\HighscoreState.cs" />
-    <Compile Include="States\MainState.cs" />
-    <Compile Include="States\DifficultySelectionState.cs" />
-    <Compile Include="States\MainStateMenus.cs" />
-    <Compile Include="States\MenuState.cs" />
-    <Compile Include="States\QuestionState.cs" />
-    <Compile Include="States\SettingsState.cs" />
-    <Compile Include="States\StateManager.cs" />
-    <Compile Include="Main\Debugging.cs" />
-    <Compile Include="Graphics\MessageBox.cs" />
-    <Compile Include="Graphics\Particle.cs" />
-    <Compile Include="Enemies\Enemy.cs" />
-    <Compile Include="Main\Collision.cs" />
-    <Compile Include="Main\Entity.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="Main\EntityManager.cs" />
-    <Compile Include="Main\Global.cs" />
-    <Compile Include="Player\Player.cs" />
-    <Compile Include="Main\Settings.cs" />
-    <Compile Include="Graphics\ResourceManager.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Projectiles\EnemyProjectile.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Graphics\Trail.cs" />
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
   </ItemGroup>
+
   <ItemGroup>
-    <Reference Include="MonoGame.Framework">
-      <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\Windows\MonoGame.Framework.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Primitives2D">
-      <HintPath>.\MonoGame.Primitives2D.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml" />
+    <None Remove="GameData.mdf" />
+    <None Remove="GameData_log.ldf" />
+    <None Remove="Icon.ico" />
   </ItemGroup>
+
   <ItemGroup>
-    <Content Include="GameData.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="GameData_log.ldf">
-      <DependentUpon>GameData.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Icon.ico" />
   </ItemGroup>
+
   <ItemGroup>
-    <MonoGameContentReference Include="Content\Content.mgcb" />
-    <None Include="app.manifest" />
-    <None Include="ClassDiagram.cd" />
+    <PackageReference Include="ini-parser-netstandard" Version="2.5.2" />
+    <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.0.1641" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
+
   <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
+    <None Update="Configuration.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="mgcb /r /c Content\Content.mgcb&#xD;&#xA;mkdir $(ProjectDir)$(OutDir)content&#xD;&#xA;xcopy $(ProjectDir)bin\content $(ProjectDir)$(OutDir)content /y /s" />
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

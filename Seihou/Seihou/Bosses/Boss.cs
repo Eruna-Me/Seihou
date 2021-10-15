@@ -38,7 +38,7 @@ namespace Seihou
 
         public override void Update(GameTime gt)
         {
-			skipTimer += (float)gt.ElapsedGameTime.TotalSeconds;
+			skipTimer += gt.Time();
 
 			if (skipTimer > timeUntilSkipStage)
 			{

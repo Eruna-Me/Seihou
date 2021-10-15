@@ -22,7 +22,7 @@ namespace Seihou
         public MainState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
         {
             BuildMenus();
-            lm = new LevelManager(em);
+            lm = new LevelManager(em, sb);
             font1 = ResourceManager.fonts["DefaultFont"];
             player = new LenovoDenovoMan(sb, em, this.sm, this);
             Global.player = player;
@@ -52,7 +52,7 @@ namespace Seihou
             {
                 lm.Update(gt);
                 em.Update(gt);
-				CloudManager.Update(gt, sb, em);
+				CloudManager.Instance.Update(gt);
             }
 
             if (pause) UpdatePauseMenu(gt);
@@ -66,8 +66,9 @@ namespace Seihou
         //When the state starts
         public override void OnStart()
         {
+            lm.LoadLevel("Basiclevel");
+            CloudManager.Initialize(sb, em);
             em.AddEntity(player);
-            lm.LoadLevel(new BasicLevel(sb, em));
         }
 
         //When the state exits

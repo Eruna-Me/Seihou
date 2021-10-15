@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
@@ -42,7 +43,7 @@ namespace Seihou
 
 				if (b is KeyPicker kp)
 				{
-					Settings.Set(kp.keyName, kp.GetKey());
+					Settings.Set(kp.keyName, (Keys)int.Parse(kp.GetKey()));
 					continue;
 				}
 			}

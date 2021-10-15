@@ -57,7 +57,7 @@ namespace Seihou
             fpsMeasure.Enqueue(float.IsInfinity(addFrame) ? 0 : addFrame);
             if (fpsMeasure.Count >= maxSampleSize) fpsMeasure.Dequeue();
 
-            updateFpsTimer += (float)gt.ElapsedGameTime.TotalSeconds;
+            updateFpsTimer += gt.Time();
             if (updateFpsTimer > updateFpsInterval)
             {
                 averageFps = (float)Math.Round(fpsMeasure.Average(),1);

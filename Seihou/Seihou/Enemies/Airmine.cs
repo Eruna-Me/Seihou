@@ -47,7 +47,7 @@ namespace Seihou
 
 		public override void Update(GameTime gt)
         {
-            pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
+            pos += speed * gt.Time();
 
             base.Update(gt);
         }

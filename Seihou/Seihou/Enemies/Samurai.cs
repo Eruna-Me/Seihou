@@ -27,7 +27,7 @@ namespace Seihou
         {
             base.Update(gt);
 
-            pos += speed * (float)gt.ElapsedGameTime.TotalSeconds;
+            pos += speed * gt.Time();
 
 			if (fireDelay <= 0 && Settings.GetDifficulty() >= Settings.Difficulty.hard && Global.OnScreen(pos))
 			{
@@ -35,7 +35,7 @@ namespace Seihou
 				fireDelay = maxFireDelay;
 			}
 
-			fireDelay -= 1 * (float)gt.ElapsedGameTime.TotalSeconds;
+			fireDelay -= 1 * gt.Time();
 		}
     }
 }

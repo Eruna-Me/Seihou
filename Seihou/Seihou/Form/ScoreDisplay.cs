@@ -3,157 +3,79 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-
+using System.Linq;
 
 namespace Seihou
 {
 	class ScoreDisplay : Control
     {
-		string filterMode = "easy";
+		public IReadOnlyList<string> ScoreText { get; private set; }
 
-		List<Score> scores = new List<Score>();
+		private readonly ScoreRepository _scoreRepository = new();
 
-		public Vector2 pos;
-		public Vector2 size;
-		const string font = "DefaultFont";
-		const int maxLength = 10;
-        const int ySpacing = 40;
+		private const string FONT = "DefaultFont";
+		private const int MAX_RECORDS_DISPLAY = 10;
+        private const int Y_SPACING = 40;
 
-		readonly string connectionString;
+		private Settings.Difficulty _filter = Settings.Difficulty.easy;
+		private Vector2 _position;
+		private Vector2 _size;
 
-		string[] displayText;
-
-		public ScoreDisplay(Vector2 pos,Vector2 size,SpriteBatch sb, string connectionString) : base(sb)
+		public ScoreDisplay(Vector2 pos, Vector2 size, SpriteBatch sb) : base(sb)
         {
-			this.connectionString = connectionString;
-			this.size = size;
-			this.pos = pos;
-
-			RefreshAll();
+			_size = size;
+			_position = pos;
 		}
 
-		public void InsertInto(string score,string name,string mode)
+		public void Load()
 		{
-			//Load data from MDF
-			try
-			{
-				using (SqlConnection con = new SqlConnection(connectionString))
-				{
-					con.Open();
-
-					var c = new SqlCommand($"INSERT INTO [Highscores] (Score,Name,Mode) VALUES ({score},'{name}','{mode}')")
-					{
-						Connection = con,
-						CommandTimeout = 1
-					};
-
-					using (SqlDataReader reader = c.ExecuteReader())
-					{
-						while (reader.Read())
-						{
-							scores.Add(new Score()
-							{
-								score = reader[0].ToString(),
-								name = reader[1].ToString(),
-								mode = reader[2].ToString()
-							});
-						}
-					}
-				}
-			}
-			catch (Exception e)
-			{
-				Debugging.Write(this,"Could not insert score : " + e.Message);
-			}
-			RefreshAll();
+			_scoreRepository.Load();
+			UpdateScoreText();
 		}
 
-		public void RefreshAll()
+		public void SubmitScore(ScoreRecord record)
 		{
-			//Load data from MDF
-			scores.Clear();
-			try
-			{
-				using (SqlConnection con = new SqlConnection(connectionString))
-				{
-					con.Open();
-
-					var c = new SqlCommand("SELECT * FROM [Highscores] ORDER BY [score] DESC")
-					{
-						Connection = con,
-						CommandTimeout = 1
-					};
-
-					using (SqlDataReader reader = c.ExecuteReader())
-					{
-						while (reader.Read())
-						{
-							scores.Add(new Score()
-							{
-								score = reader[0].ToString(),
-								name = reader[1].ToString(),
-								mode = reader[2].ToString()
-							});
-						}
-					}
-				}
-			}
-			catch (Exception e)
-			{
-				Debugging.Write(this, e.Message);
-				scores.Add(new Score() { name = "Error." });
-			}
-
-			UpdateDisplayText();
+			_scoreRepository.Write(record);
+			_scoreRepository.Save();
+			UpdateScoreText();
 		}
 
         public override void Draw(GameTime gt)
         {
-			MonoGame.Primitives2D.FillRectangle(sb, pos, size, background, 0);
+			MonoGame.Primitives2D.FillRectangle(sb, _position, _size, background, 0);
 
-			for (int i = 0; i < displayText.Length; i++)
+			for (int i = 0; i < ScoreText.Count; i++)
 			{
-				sb.DrawString(ResourceManager.fonts[font], displayText[i] ?? "Empty", new Vector2(pos.X, pos.Y + (i * ySpacing)), textColor);
+				sb.DrawString(ResourceManager.fonts[FONT], ScoreText[i] ?? "Empty", new Vector2(_position.X, _position.Y + (i * Y_SPACING)), textColor);
 			}			
         }
 
-        public override void Update(GameTime gt)
-        {
-
-        }
-
-		public void SetModeFilter(string mode)
+		public void SetModeFilter(Settings.Difficulty difficulty)
 		{
-			filterMode = mode;
-			UpdateDisplayText();
+			_filter = difficulty;
+			UpdateScoreText();
 		}
 
-		private void UpdateDisplayText()
+		private void UpdateScoreText()
 		{
-			displayText = new string[maxLength]; 
-			int index = 0;
-			foreach (Score s in scores)
+			List<string> scoreText = new();
+			var records = _scoreRepository.GetScoreRecords(_filter)
+				.Take(MAX_RECORDS_DISPLAY)
+				.ToArray();
+
+			var numberLength = MAX_RECORDS_DISPLAY.ToString().Length + 2;
+
+			for (int i = 0; i < records.Length; i++)
 			{
-				if (filterMode == s.mode) 
-				{
-					displayText[index] = Clip($"#{index+1}",4) + s.ToString();
+				var name = records[i].Name.ToString();
+				var score = records[i].Score.ToString();
 
-					index++;
-					if (index >= maxLength) break;
-				}
+				scoreText.Add(
+					Clip($"#{i + 1}", numberLength) + $"{Clip(name, 20)} | {Clip(score, 20)}"
+				);
 			}
-		}
 
-		private class Score
-		{
-			public string name;
-			public string mode;
-			public string score;
-
-			public override string ToString()
-			{
-				return $"{Clip(name, 20)} | {Clip(score, 20)}";
-			}
+			ScoreText = scoreText;
 		}
 
 		private static string Clip(string str, int length)
@@ -165,6 +87,11 @@ namespace Seihou
 				return str + new string(' ', length - str.Length);
 
 			return str;
+		}
+
+		public override void Update(GameTime gt)
+		{
+
 		}
 	}
 }

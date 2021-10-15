@@ -1,24 +1,25 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using System.Collections.Generic;
 
 namespace Seihou
 {
 	
 	class QuestionState : State
 	{
-		readonly double score;
-		readonly string mode;
+		private readonly double _score;
+		private readonly Settings.Difficulty _difficulty;
 
 		Vector2 buttonSize = new Vector2(400, 60);
-		Control[] controls;
+        readonly List<Control> controls;
 
-		public QuestionState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm,double score,string mode) : base(sm, cm,sb,gdm)
+		public QuestionState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm,double score, Settings.Difficulty difficulty) : base(sm, cm,sb,gdm)
 		{
-			this.score = score;
-			this.mode = mode;
+			_difficulty = difficulty;
+			_score = score;
 
-			controls = new Control[2]
+			controls = new List<Control>
 			{
 				new Button(new Vector2(Global.screenWidth/2,Global.screenHeight/2-80),buttonSize,sb,Yes,"Yes please", 0, Button.Align.center),
 				new Button(new Vector2(Global.screenWidth/2,Global.screenHeight/2+80),buttonSize,sb,No,"NO TAKE ME TO MENU", 1, Button.Align.center),
@@ -27,7 +28,13 @@ namespace Seihou
 
 		private void Yes(object sender)
 		{
-			sm.ChangeState(new HighscoreState(sm, cm, sb, gdm, score, mode));
+			var data = new HighscoreState.PlayData
+			{
+				Score = _score,
+				Difficulty = _difficulty,
+			};
+
+			sm.ChangeState(new HighscoreState(sm, cm, sb, gdm, data));
 		}
 
 		private void No(object sender)
@@ -45,7 +52,7 @@ namespace Seihou
 		public override void Update(GameTime gt)
 		{
 			Cursor.Moved();
-			Global.buttonCount = controls.Length;
+			Global.buttonCount = controls.Count;
 			Button.ButtonKeyControl(gt);
 			foreach (var c in controls) c.Update(gt);
 		}
