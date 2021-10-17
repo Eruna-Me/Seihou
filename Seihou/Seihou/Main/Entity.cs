@@ -41,5 +41,9 @@ namespace Seihou
 			#endif
 		}
 		public abstract void Update(GameTime gt);
+
+		public virtual void OnSpawn() 
+		{ 
+		}
     }
 }

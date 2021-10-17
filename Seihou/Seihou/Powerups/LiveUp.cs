@@ -5,7 +5,7 @@ namespace Seihou
 {
 	class LiveUp : Powerup
 	{
-		public LiveUp (Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
+		public LiveUp ([Position]Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
 		{
 			texture = "LiveUp";
 		}

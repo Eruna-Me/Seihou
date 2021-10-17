@@ -12,7 +12,7 @@ namespace Seihou
         private float fireDelay = 0;
         private readonly int bullets;
 
-        public Ninja(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
+        public Ninja([Position]Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
 			bullets = 2 * (1+(int)Settings.GetDifficulty());
 			maxFireDelay = (5 - (float)Settings.GetDifficulty()) * 0.2f;

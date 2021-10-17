@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Xna.Framework;
@@ -11,22 +12,45 @@ namespace Seihou
 {
     internal class LevelManager
     {
+        private record SpawnTask
+        {
+            public string EntityName { get; init; }
+            public IReadOnlyDictionary<string,string> Properties { get; init; }
+
+            public Vector2 MapPosition { get; init; }
+            public Vector2 MapPositionCenter => MapPosition + Size / 2;
+            public Vector2 Size { get; init; }
+        }
+
         public Vector2 PlayerSpawn { get; private set; }
 
         public float CurrentHeight { get; private set; } = -1f;
         public float SpawnAtY { get; set; } = -100.0f;
         public float LevelSpeed { get; set; } = 40.0f;
-        public bool Paused { get; set; } = false;
 
+        private Queue<object> _pauseRequests = new();
+        private bool _paused = false;
         private Queue<SpawnTask> _tasks;
-
         private readonly EntityFactory _factory;
-        private readonly EntityManager _entityManager;
 
-		public LevelManager(EntityManager entityManager, SpriteBatch spriteBatch)
+		public LevelManager(EntityFactory factory)
         {
-            _factory = new EntityFactory(spriteBatch, entityManager);
-            _entityManager = entityManager;
+            _factory = factory;
+		}
+
+        public void Unpause(object by)
+        {
+            if (_pauseRequests.Peek() == by)
+            {
+                _pauseRequests.Dequeue();
+                _paused = _pauseRequests.Any();
+			}
+		}
+
+        public void Pause(object by)
+        {
+            _pauseRequests.Enqueue(by);
+            _paused = true;
 		}
 
         public void LoadLevel(string name)
@@ -41,7 +65,7 @@ namespace Seihou
             var jobj = JObject.Parse(json);
             var layer = jobj["layers"]
                 .Children()
-                .First(l => (string)l["type"] == "objectgroup");
+                .First(l => (string)l["type"] == "objectgroup" && (string)l["name"] == "Enemies");
 
             return (JArray)layer["objects"];
         }
@@ -51,56 +75,53 @@ namespace Seihou
             List<SpawnTask> tasks = new();
             foreach(JObject obj in objects)
             {
-                var type = (string)obj["type"];
-                switch (type)
-                {
-                    case "Spawner":
-                        tasks.Add(ParseSpawner(obj));
-                        break;
-
-                    //Ignore types used only in editor
-                    case "Screen":
-                    case "Barrier":
-                        break;
-
-                    default:
-                        throw new JsonReaderException($"Unknown type '{type}'");
-                }
+                tasks.Add(ParseObject(obj));
 			}
 
-            _tasks = new Queue<SpawnTask>(tasks.OrderByDescending(t => t.WorldPosition.Y));
+            _tasks = new Queue<SpawnTask>(tasks.OrderByDescending(t => t.MapPosition.Y).ThenBy(t => t.MapPosition.X));
             _factory.Index();
         }
 
-        private static SpawnTask ParseSpawner(JObject spawner)
+        private static SpawnTask ParseObject(JObject obj)
         {
-            var properties = spawner["properties"].ToDictionary(k => (string)k["name"], v => v["value"]);
+            IReadOnlyDictionary<string, string> properties = obj.ContainsKey("properties") ?
+                obj["properties"].ToDictionary(k => (string)k["name"], v => (string)v["value"]) :
+                new Dictionary<string, string>();
+
+            Debug.Assert(obj.ContainsKey("type"), $"Object without a type in map ({obj})");
 
             return new SpawnTask
             {
-                EntityName = (string)properties["name"],
-                WorldPosition = new Vector2(
-                    (float)spawner["x"],
-                    (float)spawner["y"]
-                ),
-                Size = new Vector2(
-                    (float)spawner["width"],
-                    (float)spawner["height"]
-                )
+                EntityName = (string)obj["type"],
+                MapPosition = new Vector2((float)obj["x"], (float)obj["y"]),
+                Size = new Vector2((float)obj["width"], (float)obj["height"]),
+                Properties = properties, 
             };
 		}
         
         public void Update(GameTime gt)
         {
-            CurrentHeight -= LevelSpeed * gt.Time();
-
-            while (_tasks.Any() && _tasks.Peek().WorldPosition.Y > CurrentHeight)
+            if (!_paused)
             {
-                var task = _tasks.Dequeue();
-                var spawnAt = new Vector2(task.CenterWorld.X, SpawnAtY);
-                var entity = _factory.Create(spawnAt, task.EntityName);
-                _entityManager.AddEntity(entity);
-			}
+                CurrentHeight -= LevelSpeed * gt.Time();
+
+                while (_tasks.Any() && _tasks.Peek().MapPosition.Y > CurrentHeight)
+                {
+                    var task = _tasks.Dequeue();
+                    var spawnAt = new Vector2(task.MapPositionCenter.X, SpawnAtY);
+                    _factory.Spawn(new EntityCreationData
+                    {
+                        EntityName = task.EntityName,
+                        Position = spawnAt,
+                        Properties = task.Properties,
+                    });
+
+                    if (_paused)
+                    {
+                        break;
+					}
+                }
+            }
         }
     }
 }

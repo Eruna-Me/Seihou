@@ -13,7 +13,10 @@ namespace Seihou
         private readonly int bullets;
 
 
-        public Shooter(Vector2 pos, SpriteBatch sb, EntityManager em,int bullets = 4,float maxFireDelay = 0.2f) : base(pos, sb, em)
+        public Shooter([Position]Vector2 pos, SpriteBatch sb, EntityManager em,
+            [Param("Bullets")]int bullets = 4,
+            [Param("MaxFireDelay")]float maxFireDelay = 0.2f
+            ) : base(pos, sb, em)
         {
             texture = "MeanMan";
             this.maxFireDelay = maxFireDelay;

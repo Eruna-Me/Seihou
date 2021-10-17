@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 namespace Seihou
 {
-
 	abstract class Boss : Enemy
     {
         protected Stages currentStage = Stages.high;

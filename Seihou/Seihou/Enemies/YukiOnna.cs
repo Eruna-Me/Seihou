@@ -17,7 +17,7 @@ namespace Seihou
 		private Vector2 target;
 		private const float spread = 20;
 
-		public YukiOnna(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
+		public YukiOnna([Position]Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
 		{
 			texture = "YukiOnna";
 			size = 10;

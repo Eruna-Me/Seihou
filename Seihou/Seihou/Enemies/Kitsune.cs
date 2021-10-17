@@ -16,7 +16,7 @@ namespace Seihou
 		private double direction = 0;
 		private readonly bool clockwiseRotation;
 
-		public Kitsune(Vector2 pos, SpriteBatch sb, EntityManager em, bool clockwiseRotation = true) : base(pos, sb, em)
+		public Kitsune([Position]Vector2 pos, SpriteBatch sb, EntityManager em, [Param("Clockwise")]bool clockwiseRotation = true) : base(pos, sb, em)
 		{
 			texture = "Kitsune";
 			ec = EntityManager.EntityClass.enemy;

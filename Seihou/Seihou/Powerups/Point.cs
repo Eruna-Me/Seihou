@@ -5,7 +5,7 @@ namespace Seihou
 {
 	class Point : Powerup
 	{
-		public Point(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
+		public Point([Position]Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
 		{
 			texture = "Point";
 		}
