@@ -72,7 +72,7 @@ namespace Seihou
                 return Color.Red;
             }
 
-			void DrawOutlinedFont(SpriteFont font, string text, Vector2 pos, Color color, Color outline, int thickness = 2)
+			void DrawOutlinedFont(SpriteFont font, string text, Vector2 pos, Color color, Color outline, int thickness = 1)
 			{
 				sb.DrawString(font1, text, new Vector2(pos.X, pos.Y + thickness), outline);
 				sb.DrawString(font1, text, new Vector2(pos.X, pos.Y - thickness), outline);
