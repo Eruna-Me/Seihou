@@ -11,7 +11,7 @@ namespace Seihou
         public const int screenWidth = 1280;
         public const int screenHeight = 720;
         public const int outOfScreenMargin = 100;
-		public const int uiWidth = screenWidth / 3;
+		public const int uiWidth = screenWidth * 3 / 8;
 		public static readonly int playingFieldWidth = screenWidth - uiWidth;
         public static readonly Vector2 FpsCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 100);
         public static readonly Vector2 EntCounterPos = new Vector2(playingFieldWidth+10, screenHeight - 60);

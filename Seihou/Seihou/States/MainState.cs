@@ -61,7 +61,14 @@ namespace Seihou
 			Button.ButtonKeyControl(gt);
 		}
 
-        public void OnPlayerDeath() => death = true;
+        public void OnPlayerDeath()
+        {
+            death = true;
+            if (Keyboard.GetState().IsKeyDown(Settings.GetKey("shootKey")))
+            {
+                Button.AwaitFireKeyUp = true;
+            };
+        }
 
         //When the state starts
         public override void OnStart()

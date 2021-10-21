@@ -32,6 +32,8 @@ namespace Seihou
 		bool selected = false;
 		static bool pressed = false;
 
+		static public bool AwaitFireKeyUp { private get; set; }
+
 		public Button(Vector2 pos, Vector2 size, SpriteBatch sb, ButtonCallBack onClicked, string text, int index = 0, Align align = Align.left, string font = "DefaultFont") : base(sb)
 		{
 			textColor = new Color(100, 100, 100);
@@ -142,8 +144,15 @@ namespace Seihou
 			}
 			if (pressWasDown && pressUp)
 			{
-				pressed = true;
-				Global.keyMode = true;
+				if(AwaitFireKeyUp)
+                {
+					AwaitFireKeyUp = false;
+                }
+				else
+                {
+					pressed = true;
+					Global.keyMode = true;
+				}
 			}
 
 			if (Global.selectedButton < 0) Global.selectedButton = 0;
