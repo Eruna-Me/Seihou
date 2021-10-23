@@ -13,6 +13,60 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Audio/Effects/EnemyPain1.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Effects/EnemyPain1.ogg
+
+#begin Audio/Effects/EnemyPain2.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Effects/EnemyPain2.ogg
+
+#begin Audio/Effects/EnemyPain3.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Effects/EnemyPain3.ogg
+
+#begin Audio/Effects/EnemyPain4.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Effects/EnemyPain4.ogg
+
+#begin Audio/Effects/EnemyPain5.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Effects/EnemyPain5.ogg
+
+#begin Audio/Effects/Shoot1.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Effects/Shoot1.ogg
+
+#begin Audio/Effects/Shoot2.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Effects/Shoot2.ogg
+
+#begin Audio/Effects/Shoot3.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Effects/Shoot3.ogg
+
+#begin Audio/Songs/testsong.ogg
+/importer:OggImporter
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Audio/Songs/testsong.ogg
+
 #begin Bosses/ManekiNeko.png
 /importer:TextureImporter
 /processor:TextureProcessor

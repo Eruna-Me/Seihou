@@ -18,6 +18,7 @@ namespace Seihou
 
         public override void OnDamaged(Entity by, int damage)
         {
+			SoundHelper.PlayRandom("EnemyPain");
 			hp -= damage ;
 
 			if (hp <= 0)

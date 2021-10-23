@@ -1,12 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
 
 namespace Seihou
 {
 	static class ResourceManager
 	{
+		public static readonly Dictionary<string, SoundEffect> soundEffects = new();
+		public static readonly Dictionary<string, Song> songs = new();
+
 		public static readonly Dictionary<string, Texture2D> textures = new();
 		public static readonly Dictionary<string, SpriteFont> fonts = new();
 		public static ContentManager cm;
@@ -74,7 +79,19 @@ namespace Seihou
 			textures.Add("Cloud2",			 cm.Load<Texture2D>("Clouds/Cloud2"));
 			textures.Add("Cloud3",			 cm.Load<Texture2D>("Clouds/Cloud3"));
 			textures.Add("Cloud4",			 cm.Load<Texture2D>("Clouds/Cloud4"));
-        }
+
+			//Audio
+			songs.Add("TestSong", cm.Load<Song>("Audio/Songs/Testsong"));
+
+			soundEffects.Add("EnemyPain1", cm.Load<SoundEffect>("Audio/Effects/EnemyPain1"));
+			soundEffects.Add("EnemyPain2", cm.Load<SoundEffect>("Audio/Effects/EnemyPain2"));
+			soundEffects.Add("EnemyPain3", cm.Load<SoundEffect>("Audio/Effects/EnemyPain3"));
+			soundEffects.Add("EnemyPain4", cm.Load<SoundEffect>("Audio/Effects/EnemyPain4"));
+			soundEffects.Add("EnemyPain5", cm.Load<SoundEffect>("Audio/Effects/EnemyPain5"));
+			soundEffects.Add("Shoot1", cm.Load<SoundEffect>("Audio/Effects/Shoot1"));
+			soundEffects.Add("Shoot2", cm.Load<SoundEffect>("Audio/Effects/Shoot2"));
+			soundEffects.Add("Shoot3", cm.Load<SoundEffect>("Audio/Effects/Shoot3"));
+		}
 
 		public static Vector2 Center(string texture) => new Vector2(textures[texture].Width / 2, textures[texture].Height / 2);
 
