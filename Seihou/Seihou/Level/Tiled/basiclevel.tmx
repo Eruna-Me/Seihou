@@ -10,42 +10,38 @@
   <object id="6" x="800" y="-24032" width="32" height="24768"/>
  </objectgroup>
  <objectgroup id="2" name="Enemies">
-  <object id="25932" name="Intro text" type="LogicDialog" gid="5" x="32" y="-96" width="32" height="32">
+  <object id="25932" name="Intro text" type="LogicDialogBox" gid="5" x="32" y="-96" width="32" height="32">
    <properties>
     <property name="Color" value="30,30,255"/>
-    <property name="Font" value="DefaultFontBig"/>
+    <property name="Font" value="DefaultFont"/>
+    <property name="Name" value="Bill Gates Himself"/>
     <property name="Pause" value="True"/>
-    <property name="Text">Hello welcome to Seihou (1)!
-This is a very good game indeed
-You have a great taste!</property>
-    <property name="Time" value="10"/>
+    <property name="PfpTexture" value="PfpGame"/>
+    <property name="Text">A game is a structured form of play, 
+usually undertaken for entertainment 
+or fun, and sometimes used as 
+an educational tool.[1] 
+Games are distinct from work, 
+which is usually carried out for 
+remuneration, and from art, which is more often an expression of aesthetic or ideological elements. However, the distinction is not clear-cut, and many games are also considered to be work (such as professional players of spectator sports or games) or art (such as jigsaw puzzles or games involving an artistic layout such as Mahjong, solitaire, or some video games).
+
+Games are sometimes played purely for enjoyment, sometimes for achievement or reward as well. They can be played alone, in teams, or online; by amateurs or by professionals. The players may have an audience of non-players, such as when people are entertained by watching a chess championship. On the other hand, players in a game may constitute their own audience as they take their turn to play. Often, part of the entertainment for children playing a game is deciding who is part of their audience and who is a player. A toy and a game are not the same. Toys generally allow for unrestricted play whereas games come with present rules.
+
+Key components of games are goals, rules, challenge, and interaction. Games generally involve mental or physical stimulation, and often both. Many games help develop practical skills, serve as a form of exercise, or otherwise perform an educational, simulational, or psychological role.
+
+Attested as early as 2600 BC,[2][3] games are a universal part of human experience and present in all cultures. The Royal Game of Ur, Senet, and Mancala are some of the oldest known games.[4] </property>
+    <property name="TextColor" value="20,20,0"/>
+    <property name="Time" value=""/>
+    <property name="WaitBeforeClose" value="1"/>
+    <property name="Wpm" value="140"/>
    </properties>
   </object>
   <object id="25937" type="Samurai" gid="10" x="32" y="-158.667" width="48" height="48"/>
   <object id="25938" type="Samurai" gid="10" x="718.667" y="-160" width="48" height="48"/>
   <object id="25939" type="Samurai" gid="10" x="384" y="-158.667" width="48" height="48"/>
   <object id="25941" name="Wait for player" type="LogicWaitForEmpty" gid="5" x="64" y="-352" width="32" height="32"/>
-  <object id="25942" name="Wow" type="LogicDialog" gid="5" x="128" y="-416" width="32" height="32">
-   <properties>
-    <property name="Color" value="30,30,255"/>
-    <property name="Font" value="DefaultFontBig"/>
-    <property name="Pause" value="True"/>
-    <property name="Text">Woah you managed to survive that
-Very impressive</property>
-    <property name="Time" value="5"/>
-   </properties>
-  </object>
   <object id="25943" type="Samurai" gid="10" x="199" y="-177.5" width="48" height="48"/>
   <object id="25944" type="Samurai" gid="10" x="550" y="-193" width="48" height="48"/>
-  <object id="25945" name="Ono" type="LogicDialog" gid="5" x="192" y="-448" width="32" height="32">
-   <properties>
-    <property name="Color" value="30,30,255"/>
-    <property name="Font" value="DefaultFontBig"/>
-    <property name="Pause" value="False"/>
-    <property name="Text" value="But can you survive this"/>
-    <property name="Time" value="3"/>
-   </properties>
-  </object>
   <object id="25946" type="Airmine" gid="1" x="96" y="-477.5" width="32" height="32"/>
   <object id="25948" type="Airmine" gid="1" x="192" y="-480" width="32" height="32"/>
   <object id="25964" type="Airmine" gid="1" x="288" y="-477.5" width="32" height="32"/>
@@ -55,17 +51,6 @@ Very impressive</property>
   <object id="25992" type="Airmine" gid="1" x="576" y="-477.5" width="32" height="32"/>
   <object id="25993" type="Airmine" gid="1" x="768" y="-477.5" width="32" height="32"/>
   <object id="26012" name="Wait for player" type="LogicWaitForEmpty" gid="5" x="128.909" y="-640" width="32" height="32"/>
-  <object id="26013" name="Wow" type="LogicDialog" gid="5" x="192.909" y="-704" width="32" height="32">
-   <properties>
-    <property name="Color" value="30,30,255"/>
-    <property name="Font" value="DefaultFontBig"/>
-    <property name="Pause" value="True"/>
-    <property name="Text">You have earned my respect
-I wish you luck on your journey
-May lenovo denovo be with you</property>
-    <property name="Time" value="10"/>
-   </properties>
-  </object>
   <object id="26016" type="Kitsune" gid="9" x="375.576" y="-1101.67" width="48" height="48">
    <properties>
     <property name="Clockwise" value="True"/>
@@ -135,39 +120,7 @@ May lenovo denovo be with you</property>
   <object id="26088" type="Samurai" gid="10" x="537.576" y="-1833.17" width="48" height="48"/>
   <object id="26093" type="YukiOnna" gid="2" x="331.409" y="-1832.5" width="32" height="48"/>
   <object id="26094" type="YukiOnna" gid="2" x="424.409" y="-1831.5" width="32" height="48"/>
-  <object id="26112" name="Army" type="LogicDialog" gid="5" x="64.909" y="-2080" width="32" height="32">
-   <properties>
-    <property name="Color" value="255,20,12"/>
-    <property name="Font" value="DefaultFont"/>
-    <property name="Pause" value="True"/>
-    <property name="Text">Hey you! How dare you shoot my people!
-This airspace is claimed by the mighty Samurai!
-Leave now or you will regret it!</property>
-    <property name="Time" value="15"/>
-   </properties>
-  </object>
   <object id="26113" name="Wait for player" type="LogicWaitForEmpty" gid="5" x="32.909" y="-2048" width="32" height="32"/>
-  <object id="26115" name="Army" type="LogicDialog" gid="5" x="96.909" y="-2144" width="32" height="32">
-   <properties>
-    <property name="Color" value="255,20,12"/>
-    <property name="Font" value="DefaultFont"/>
-    <property name="Pause" value="True"/>
-    <property name="Text">I'm waiting
-I'm waiting.
-I'm waiting..
-I'm waiting...</property>
-    <property name="Time" value="6"/>
-   </properties>
-  </object>
-  <object id="26116" name="Army" type="LogicDialog" gid="5" x="243.909" y="-2244" width="32" height="32">
-   <properties>
-    <property name="Color" value="255,20,12"/>
-    <property name="Font" value="DefaultFontBig"/>
-    <property name="Pause" value="False"/>
-    <property name="Text" value="ATTAACKKK111!!!11!!@"/>
-    <property name="Time" value="3"/>
-   </properties>
-  </object>
   <object id="26117" type="Samurai" gid="10" x="0.909" y="-2240" width="48" height="48"/>
   <object id="26118" type="Samurai" gid="10" x="64.909" y="-2240" width="48" height="48"/>
   <object id="26119" type="Samurai" gid="10" x="128.909" y="-2240" width="48" height="48"/>
@@ -204,15 +157,6 @@ I'm waiting...</property>
   <object id="26150" type="Samurai" gid="10" x="346" y="-2406.91" width="48" height="48"/>
   <object id="26151" type="Samurai" gid="10" x="410" y="-2406.91" width="48" height="48"/>
   <object id="26152" type="Samurai" gid="10" x="474" y="-2406.91" width="48" height="48"/>
-  <object id="26154" name="Army" type="LogicDialog" gid="5" x="241.909" y="-2413" width="32" height="32">
-   <properties>
-    <property name="Color" value="255,20,12"/>
-    <property name="Font" value="DefaultFontBig"/>
-    <property name="Pause" value="False"/>
-    <property name="Text" value="AAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
-    <property name="Time" value="3"/>
-   </properties>
-  </object>
   <object id="26155" type="Samurai" gid="10" x="0.909" y="-2495.82" width="48" height="48"/>
   <object id="26156" type="Samurai" gid="10" x="64.909" y="-2495.82" width="48" height="48"/>
   <object id="26157" type="Samurai" gid="10" x="128.909" y="-2495.82" width="48" height="48"/>
@@ -329,15 +273,6 @@ I'm waiting...</property>
   <object id="26288" type="Samurai" gid="10" x="315.091" y="-3819.59" width="48" height="48"/>
   <object id="26289" type="Samurai" gid="10" x="446.091" y="-3818.59" width="48" height="48"/>
   <object id="26290" type="Samurai" gid="10" x="381.091" y="-3820.59" width="48" height="48"/>
-  <object id="26291" name="Army" type="LogicDialog" gid="5" x="64" y="-5088" width="32" height="32">
-   <properties>
-    <property name="Color" value="255,255,200"/>
-    <property name="Font" value="DefaultFont"/>
-    <property name="Pause" value="True"/>
-    <property name="Text" value="Insert dialog here"/>
-    <property name="Time" value="10"/>
-   </properties>
-  </object>
   <object id="26292" name="Wait for player" type="LogicWaitForEmpty" gid="5" x="32" y="-5056" width="32" height="32"/>
   <object id="26294" type="Kitsune" gid="9" x="381" y="-3897" width="48" height="48">
    <properties>

@@ -208,6 +208,18 @@
 /processorParam:TextureFormat=Color
 /build:Misc/Bomb.png
 
+#begin Misc/DialogBox.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Misc/DialogBox.png
+
 #begin Misc/Hartje.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -231,6 +243,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Misc/Logo.png
+
+#begin Misc/PfpGame.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Misc/PfpGame.png
 
 #begin Misc/SeihouText1.png
 /importer:TextureImporter

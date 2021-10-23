@@ -65,7 +65,12 @@
                         {
                          "name":"Font",
                          "type":"string",
-                         "value":"DefaultFontBig"
+                         "value":"DefaultFont"
+                        }, 
+                        {
+                         "name":"Name",
+                         "type":"string",
+                         "value":"Bill Gates Himself"
                         }, 
                         {
                          "name":"Pause",
@@ -73,17 +78,37 @@
                          "value":"True"
                         }, 
                         {
+                         "name":"PfpTexture",
+                         "type":"string",
+                         "value":"PfpGame"
+                        }, 
+                        {
                          "name":"Text",
                          "type":"string",
-                         "value":"Hello welcome to Seihou (1)!\nThis is a very good game indeed\nYou have a great taste!"
+                         "value":"A game is a structured form of play, \nusually undertaken for entertainment \nor fun, and sometimes used as \nan educational tool.[1] \nGames are distinct from work, \nwhich is usually carried out for \nremuneration, and from art, which is more often an expression of aesthetic or ideological elements. However, the distinction is not clear-cut, and many games are also considered to be work (such as professional players of spectator sports or games) or art (such as jigsaw puzzles or games involving an artistic layout such as Mahjong, solitaire, or some video games).\n\nGames are sometimes played purely for enjoyment, sometimes for achievement or reward as well. They can be played alone, in teams, or online; by amateurs or by professionals. The players may have an audience of non-players, such as when people are entertained by watching a chess championship. On the other hand, players in a game may constitute their own audience as they take their turn to play. Often, part of the entertainment for children playing a game is deciding who is part of their audience and who is a player. A toy and a game are not the same. Toys generally allow for unrestricted play whereas games come with present rules.\n\nKey components of games are goals, rules, challenge, and interaction. Games generally involve mental or physical stimulation, and often both. Many games help develop practical skills, serve as a form of exercise, or otherwise perform an educational, simulational, or psychological role.\n\nAttested as early as 2600 BC,[2][3] games are a universal part of human experience and present in all cultures. The Royal Game of Ur, Senet, and Mancala are some of the oldest known games.[4] "
+                        }, 
+                        {
+                         "name":"TextColor",
+                         "type":"string",
+                         "value":"20,20,0"
                         }, 
                         {
                          "name":"Time",
                          "type":"string",
-                         "value":"10"
+                         "value":""
+                        }, 
+                        {
+                         "name":"WaitBeforeClose",
+                         "type":"string",
+                         "value":"1"
+                        }, 
+                        {
+                         "name":"Wpm",
+                         "type":"string",
+                         "value":"140"
                         }],
                  "rotation":0,
-                 "type":"LogicDialog",
+                 "type":"LogicDialogBox",
                  "visible":true,
                  "width":32,
                  "x":32,
@@ -138,44 +163,6 @@
                  "y":-352
                 }, 
                 {
-                 "gid":5,
-                 "height":32,
-                 "id":25942,
-                 "name":"Wow",
-                 "properties":[
-                        {
-                         "name":"Color",
-                         "type":"string",
-                         "value":"30,30,255"
-                        }, 
-                        {
-                         "name":"Font",
-                         "type":"string",
-                         "value":"DefaultFontBig"
-                        }, 
-                        {
-                         "name":"Pause",
-                         "type":"string",
-                         "value":"True"
-                        }, 
-                        {
-                         "name":"Text",
-                         "type":"string",
-                         "value":"Woah you managed to survive that\nVery impressive"
-                        }, 
-                        {
-                         "name":"Time",
-                         "type":"string",
-                         "value":"5"
-                        }],
-                 "rotation":0,
-                 "type":"LogicDialog",
-                 "visible":true,
-                 "width":32,
-                 "x":128,
-                 "y":-416
-                }, 
-                {
                  "gid":10,
                  "height":48,
                  "id":25943,
@@ -198,44 +185,6 @@
                  "width":48,
                  "x":550,
                  "y":-193
-                }, 
-                {
-                 "gid":5,
-                 "height":32,
-                 "id":25945,
-                 "name":"Ono",
-                 "properties":[
-                        {
-                         "name":"Color",
-                         "type":"string",
-                         "value":"30,30,255"
-                        }, 
-                        {
-                         "name":"Font",
-                         "type":"string",
-                         "value":"DefaultFontBig"
-                        }, 
-                        {
-                         "name":"Pause",
-                         "type":"string",
-                         "value":"False"
-                        }, 
-                        {
-                         "name":"Text",
-                         "type":"string",
-                         "value":"But can you survive this"
-                        }, 
-                        {
-                         "name":"Time",
-                         "type":"string",
-                         "value":"3"
-                        }],
-                 "rotation":0,
-                 "type":"LogicDialog",
-                 "visible":true,
-                 "width":32,
-                 "x":192,
-                 "y":-448
                 }, 
                 {
                  "gid":1,
@@ -344,44 +293,6 @@
                  "width":32,
                  "x":128.909,
                  "y":-640
-                }, 
-                {
-                 "gid":5,
-                 "height":32,
-                 "id":26013,
-                 "name":"Wow",
-                 "properties":[
-                        {
-                         "name":"Color",
-                         "type":"string",
-                         "value":"30,30,255"
-                        }, 
-                        {
-                         "name":"Font",
-                         "type":"string",
-                         "value":"DefaultFontBig"
-                        }, 
-                        {
-                         "name":"Pause",
-                         "type":"string",
-                         "value":"True"
-                        }, 
-                        {
-                         "name":"Text",
-                         "type":"string",
-                         "value":"You have earned my respect\nI wish you luck on your journey\nMay lenovo denovo be with you"
-                        }, 
-                        {
-                         "name":"Time",
-                         "type":"string",
-                         "value":"10"
-                        }],
-                 "rotation":0,
-                 "type":"LogicDialog",
-                 "visible":true,
-                 "width":32,
-                 "x":192.909,
-                 "y":-704
                 }, 
                 {
                  "gid":9,
@@ -1130,44 +1041,6 @@
                 {
                  "gid":5,
                  "height":32,
-                 "id":26112,
-                 "name":"Army",
-                 "properties":[
-                        {
-                         "name":"Color",
-                         "type":"string",
-                         "value":"255,20,12"
-                        }, 
-                        {
-                         "name":"Font",
-                         "type":"string",
-                         "value":"DefaultFont"
-                        }, 
-                        {
-                         "name":"Pause",
-                         "type":"string",
-                         "value":"True"
-                        }, 
-                        {
-                         "name":"Text",
-                         "type":"string",
-                         "value":"Hey you! How dare you shoot my people!\nThis airspace is claimed by the mighty Samurai!\nLeave now or you will regret it!"
-                        }, 
-                        {
-                         "name":"Time",
-                         "type":"string",
-                         "value":"15"
-                        }],
-                 "rotation":0,
-                 "type":"LogicDialog",
-                 "visible":true,
-                 "width":32,
-                 "x":64.909,
-                 "y":-2080
-                }, 
-                {
-                 "gid":5,
-                 "height":32,
                  "id":26113,
                  "name":"Wait for player",
                  "rotation":0,
@@ -1176,82 +1049,6 @@
                  "width":32,
                  "x":32.909,
                  "y":-2048
-                }, 
-                {
-                 "gid":5,
-                 "height":32,
-                 "id":26115,
-                 "name":"Army",
-                 "properties":[
-                        {
-                         "name":"Color",
-                         "type":"string",
-                         "value":"255,20,12"
-                        }, 
-                        {
-                         "name":"Font",
-                         "type":"string",
-                         "value":"DefaultFont"
-                        }, 
-                        {
-                         "name":"Pause",
-                         "type":"string",
-                         "value":"True"
-                        }, 
-                        {
-                         "name":"Text",
-                         "type":"string",
-                         "value":"I'm waiting\nI'm waiting.\nI'm waiting..\nI'm waiting..."
-                        }, 
-                        {
-                         "name":"Time",
-                         "type":"string",
-                         "value":"6"
-                        }],
-                 "rotation":0,
-                 "type":"LogicDialog",
-                 "visible":true,
-                 "width":32,
-                 "x":96.909,
-                 "y":-2144
-                }, 
-                {
-                 "gid":5,
-                 "height":32,
-                 "id":26116,
-                 "name":"Army",
-                 "properties":[
-                        {
-                         "name":"Color",
-                         "type":"string",
-                         "value":"255,20,12"
-                        }, 
-                        {
-                         "name":"Font",
-                         "type":"string",
-                         "value":"DefaultFontBig"
-                        }, 
-                        {
-                         "name":"Pause",
-                         "type":"string",
-                         "value":"False"
-                        }, 
-                        {
-                         "name":"Text",
-                         "type":"string",
-                         "value":"ATTAACKKK111!!!11!!@"
-                        }, 
-                        {
-                         "name":"Time",
-                         "type":"string",
-                         "value":"3"
-                        }],
-                 "rotation":0,
-                 "type":"LogicDialog",
-                 "visible":true,
-                 "width":32,
-                 "x":243.909,
-                 "y":-2244
                 }, 
                 {
                  "gid":10,
@@ -1684,44 +1481,6 @@
                  "width":48,
                  "x":474,
                  "y":-2406.91
-                }, 
-                {
-                 "gid":5,
-                 "height":32,
-                 "id":26154,
-                 "name":"Army",
-                 "properties":[
-                        {
-                         "name":"Color",
-                         "type":"string",
-                         "value":"255,20,12"
-                        }, 
-                        {
-                         "name":"Font",
-                         "type":"string",
-                         "value":"DefaultFontBig"
-                        }, 
-                        {
-                         "name":"Pause",
-                         "type":"string",
-                         "value":"False"
-                        }, 
-                        {
-                         "name":"Text",
-                         "type":"string",
-                         "value":"AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-                        }, 
-                        {
-                         "name":"Time",
-                         "type":"string",
-                         "value":"3"
-                        }],
-                 "rotation":0,
-                 "type":"LogicDialog",
-                 "visible":true,
-                 "width":32,
-                 "x":241.909,
-                 "y":-2413
                 }, 
                 {
                  "gid":10,
@@ -2869,44 +2628,6 @@
                  "width":48,
                  "x":381.091,
                  "y":-3820.59
-                }, 
-                {
-                 "gid":5,
-                 "height":32,
-                 "id":26291,
-                 "name":"Army",
-                 "properties":[
-                        {
-                         "name":"Color",
-                         "type":"string",
-                         "value":"255,255,200"
-                        }, 
-                        {
-                         "name":"Font",
-                         "type":"string",
-                         "value":"DefaultFont"
-                        }, 
-                        {
-                         "name":"Pause",
-                         "type":"string",
-                         "value":"True"
-                        }, 
-                        {
-                         "name":"Text",
-                         "type":"string",
-                         "value":"Insert dialog here"
-                        }, 
-                        {
-                         "name":"Time",
-                         "type":"string",
-                         "value":"10"
-                        }],
-                 "rotation":0,
-                 "type":"LogicDialog",
-                 "visible":true,
-                 "width":32,
-                 "x":64,
-                 "y":-5088
                 }, 
                 {
                  "gid":5,

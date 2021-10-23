@@ -26,15 +26,16 @@
   <objecttype name="HomingBullet" color="#D0022B" />
   <objecttype name="PlayerBullet" color="#402862" />
   <objecttype name="Shuriken" color="#7B33E5" />
-  <objecttype name="LogicDialog" color="#1321D9">
-    <property name="Time" />
-    <property name="Pause" />
-    <property name="Text" />
-    <property name="Color" />
-    <property name="Font" />
-  </objecttype>
-  <objecttype name="LogicPause" color="#D640DC">
+  <objecttype name="LogicPause" color="#1321D9">
     <property name="Time" />
   </objecttype>
-  <objecttype name="LogicWaitForEmpty" color="#C783C8" />
+  <objecttype name="LogicWaitForEmpty" color="#D640DC" />
+  <objecttype name="LogicDialogBox" color="#C783C8">
+    <property name="Wpm" />
+    <property name="WaitBeforeClose" />
+    <property name="PfpTexture" />
+    <property name="Name" />
+    <property name="font" />
+    <property name="TextColor" />
+  </objecttype>
 </objecttypes>
