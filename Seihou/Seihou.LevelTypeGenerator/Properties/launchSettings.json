@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Seihou.LevelTypeGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "$(solutionDir)Seihou/Level/Tiled/objecttypes.xml"
+    }
+  }
+}

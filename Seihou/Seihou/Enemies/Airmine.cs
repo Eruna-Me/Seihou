@@ -11,7 +11,7 @@ namespace Seihou
 		private const float minBulletSpeed = 100.0f;
 		private readonly int bullets = 10;
 
-        public Airmine(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
+        public Airmine([Position]Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
             texture = "Mine";
             ec = EntityManager.EntityClass.enemy;
