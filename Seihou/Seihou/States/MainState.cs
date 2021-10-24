@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Media;
 
 namespace Seihou
 {
@@ -29,6 +30,11 @@ namespace Seihou
             SetupLevelDependencies();
 
             font1 = ResourceManager.fonts["DefaultFont"];
+
+            MediaPlayer.Play(ResourceManager.songs["TestSong"]);
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Volume = 0.05f;
+
             player = new LenovoDenovoMan(sb, _entityManager, this.sm, this);
             Global.player = player;
         }
@@ -96,6 +102,7 @@ namespace Seihou
         //When the state exits
         public override void OnExit()
         {
+            MediaPlayer.Stop();
             Debugging.Write(this,"Rip");
         }
     }
