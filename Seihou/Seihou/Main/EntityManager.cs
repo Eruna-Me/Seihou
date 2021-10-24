@@ -14,6 +14,7 @@ namespace Seihou
 			enemy,
             player,
             ui,
+            logic,
         }
 
 		public enum Collections
@@ -104,7 +105,11 @@ namespace Seihou
 
 		public void RemoveEntity(Entity ent) => EntityCollections[Collections.PollRemove][ent.ec].Add(ent);
 
-		public void AddEntity(Entity ent) => EntityCollections[Collections.PollAdd][ent.ec].Add(ent);
+        public void AddEntity(Entity ent)
+        {
+            EntityCollections[Collections.PollAdd][ent.ec].Add(ent);
+            ent.OnSpawn();
+        }
 
         public void Update(GameTime gt)
         {

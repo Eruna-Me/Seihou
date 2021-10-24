@@ -11,7 +11,7 @@ namespace Seihou
 		private float fireDelay = 2.0f;
 		private readonly float maxFireDelay = 2.0f;
 
-		public Samurai(Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
+		public Samurai([Position]Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
 		{
 			texture = "Samurai";
 			ec = EntityManager.EntityClass.enemy;

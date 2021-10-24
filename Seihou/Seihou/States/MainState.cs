@@ -9,8 +9,10 @@ namespace Seihou
     partial class MainState : State
     {
         //Variables
-        EntityManager em = new EntityManager();
-        LevelManager lm;
+        private readonly EntityManager _entityManager = new();
+        private readonly EntityFactory _entityFactory;
+        private readonly LevelManager _levelManager;
+
         SpriteFont font1;
         Player player;
         KeyboardState oldKeyState;
@@ -22,17 +24,29 @@ namespace Seihou
         public MainState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
         {
             BuildMenus();
-            lm = new LevelManager(em, sb);
+            _entityFactory = new EntityFactory(_entityManager);
+            _levelManager = new LevelManager(_entityFactory);
+            SetupLevelDependencies();
+
             font1 = ResourceManager.fonts["DefaultFont"];
-            player = new LenovoDenovoMan(sb, em, this.sm, this);
+            player = new LenovoDenovoMan(sb, _entityManager, this.sm, this);
             Global.player = player;
         }
+
+        private void SetupLevelDependencies()
+        {
+            _entityFactory.AddDependency(_levelManager);
+            _entityFactory.AddDependency(_entityManager);
+            _entityFactory.AddDependency(sb);
+            _entityFactory.AddDependency(gdm);
+            _entityFactory.AddDependency(sm);
+		}
 
         public override void Draw(GameTime gt)
         {
             MonoGame.Primitives2D.FillRectangle(sb, new Vector2(0, 0), new Vector2(Global.playingFieldWidth, Global.screenHeight),Global.gameBackgroundColor, 0);
-            em.Draw(gt);
-            UI.Draw(gt, sb, sm, em);
+            _entityManager.Draw(gt);
+            UI.Draw(gt, sb, sm, _entityManager);
 
             if (pause) DrawPauseMenu(gt);
             if (death) DrawDeathMenu(gt);
@@ -50,8 +64,8 @@ namespace Seihou
 
             if (!(pause || death))
             {
-                lm.Update(gt);
-                em.Update(gt);
+                _levelManager.Update(gt);
+                _entityManager.Update(gt);
 				CloudManager.Instance.Update(gt);
             }
 
@@ -73,9 +87,10 @@ namespace Seihou
         //When the state starts
         public override void OnStart()
         {
-            lm.LoadLevel("Basiclevel");
-            CloudManager.Initialize(sb, em);
-            em.AddEntity(player);
+            CloudManager.Initialize(sb, _entityManager);
+            _levelManager.LoadLevel("Basiclevel");
+            _entityManager.AddEntity(player);
+            _entityFactory.Index();
         }
 
         //When the state exits

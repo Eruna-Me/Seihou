@@ -1,9 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <objecttypes>
- <objecttype name="Barrier" color="#000000"/>
- <objecttype name="Screen" color="#ff0206"/>
- <objecttype name="Spawner" color="#0051ff">
-  <property name="name" type="string" default=""/>
- </objecttype>
- <objecttype name="Start" color="#22ff00"/>
+  <objecttype name="ManekiNeko" color="#569F67" />
+  <objecttype name="Airmine" color="#48CFA5" />
+  <objecttype name="Kitsune" color="#435185">
+    <property name="Clockwise" />
+  </objecttype>
+  <objecttype name="Ninja" color="#A018A1" />
+  <objecttype name="Samurai" color="#76A56F" />
+  <objecttype name="Shooter" color="#EDA9E8">
+    <property name="Bullets" />
+    <property name="MaxFireDelay" />
+  </objecttype>
+  <objecttype name="YukiOnna" color="#25749B" />
+  <objecttype name="Cloud" color="#F35A83" />
+  <objecttype name="MessageBox" color="#989C30" />
+  <objecttype name="Particle" color="#1E11DA" />
+  <objecttype name="LenovoDenovoMan" color="#F9BE3A" />
+  <objecttype name="LiveUp" color="#5EF272" />
+  <objecttype name="Point" color="#11E5E8" />
+  <objecttype name="Power" color="#121F2D" />
+  <objecttype name="FlowerBombShrapnel" color="#7B650B" />
+  <objecttype name="Coin" color="#272923" />
+  <objecttype name="EnemyBullet" color="#F6D38C" />
+  <objecttype name="EnergyBall" color="#186872" />
+  <objecttype name="HomingBullet" color="#D0022B" />
+  <objecttype name="PlayerBullet" color="#402862" />
+  <objecttype name="Shuriken" color="#7B33E5" />
+  <objecttype name="LogicPause" color="#1321D9">
+    <property name="Time" />
+  </objecttype>
+  <objecttype name="LogicWaitForEmpty" color="#D640DC" />
+  <objecttype name="LogicDialogBox" color="#C783C8">
+    <property name="Wpm" />
+    <property name="WaitBeforeClose" />
+    <property name="PfpTexture" />
+    <property name="Name" />
+    <property name="font" />
+    <property name="TextColor" />
+  </objecttype>
 </objecttypes>

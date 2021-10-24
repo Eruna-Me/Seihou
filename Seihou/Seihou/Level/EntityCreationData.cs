@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace Seihou
 {
-	record SpawnTask
+	record EntityCreationData
 	{
 		public string EntityName { get; init; }
-
-		public Vector2 WorldPosition { get; init; }
-		public Vector2 Size { get; init; }
-		public Vector2 CenterWorld => WorldPosition + Size / 2;
+		public Vector2 Position { get; init; }
+		public IReadOnlyDictionary<string, string> Properties { get; init; }
 	}
 }
