@@ -23,7 +23,7 @@ namespace Seihou
 
 		public override void Fire(bool slowMode)
 		{
-			SoundHelper.PlayRandom("Shoot");
+			//SoundHelper.PlayRandom("Shoot");
 			spread = slowMode ? preciseBulletSpread : baseBulletSpread;
 
 			float direction = (float)-Math.PI / 2;

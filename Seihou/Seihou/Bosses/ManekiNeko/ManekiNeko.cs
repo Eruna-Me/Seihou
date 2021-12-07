@@ -75,11 +75,13 @@ namespace Seihou
 
         public override void OnDamaged(Entity by, int damage)
         {
+            SoundHelper.PlayRandom("EnemyPain");
             hp--;
 
             if (hp <= 0)
             {
-                
+                SoundHelper.PlayRandom("ExplosionLong");
+
                 for (int i = 0; i < explosionParticles; i++)
                 {
                     em.AddEntity(new Particle(pos, sb, em));

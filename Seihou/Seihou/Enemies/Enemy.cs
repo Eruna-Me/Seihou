@@ -23,6 +23,8 @@ namespace Seihou
 
 			if (hp <= 0)
 			{
+				SoundHelper.PlayRandom("ExplosionShort");
+
 				int randomNumber = Global.random.Next(0, 100);
 
 				for (int i = 0; i < explosionParticles; i++)

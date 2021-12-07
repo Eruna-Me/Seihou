@@ -43,6 +43,18 @@
 /processorParam:Quality=Best
 /build:Audio/Effects/EnemyPain5.ogg
 
+#begin Audio/Effects/ExplosionShort1.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Effects/ExplosionShort1.ogg
+
+#begin Audio/Effects/ExplosionLong1.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Effects/ExplosionLong1.ogg
+
 #begin Audio/Effects/Shoot1.ogg
 /importer:OggImporter
 /processor:SoundEffectProcessor

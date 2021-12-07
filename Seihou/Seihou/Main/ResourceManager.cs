@@ -93,6 +93,9 @@ namespace Seihou
 			soundEffects.Add("Shoot1", cm.Load<SoundEffect>("Audio/Effects/Shoot1"));
 			soundEffects.Add("Shoot2", cm.Load<SoundEffect>("Audio/Effects/Shoot2"));
 			soundEffects.Add("Shoot3", cm.Load<SoundEffect>("Audio/Effects/Shoot3"));
+
+			soundEffects.Add("ExplosionShort1", cm.Load<SoundEffect>("Audio/Effects/ExplosionShort1"));
+			soundEffects.Add("ExplosionLong1", cm.Load<SoundEffect>("Audio/Effects/ExplosionLong1"));
 		}
 
 		public static Vector2 Center(string texture) => new Vector2(textures[texture].Width / 2, textures[texture].Height / 2);

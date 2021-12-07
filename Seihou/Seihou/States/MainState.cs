@@ -94,7 +94,7 @@ namespace Seihou
         public override void OnStart()
         {
             CloudManager.Initialize(sb, _entityManager);
-            _levelManager.LoadLevel("Boss1Test");
+            _levelManager.LoadLevel("BasicLevel");
             _entityManager.AddEntity(player);
             _entityFactory.Index();
         }
