@@ -19,30 +19,6 @@
 /processorParam:Quality=Best
 /build:Audio/Effects/EnemyPain1.ogg
 
-#begin Audio/Effects/EnemyPain2.ogg
-/importer:OggImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Effects/EnemyPain2.ogg
-
-#begin Audio/Effects/EnemyPain3.ogg
-/importer:OggImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Effects/EnemyPain3.ogg
-
-#begin Audio/Effects/EnemyPain4.ogg
-/importer:OggImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Effects/EnemyPain4.ogg
-
-#begin Audio/Effects/EnemyPain5.ogg
-/importer:OggImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Effects/EnemyPain5.ogg
-
 #begin Audio/Effects/ExplosionShort1.ogg
 /importer:OggImporter
 /processor:SoundEffectProcessor

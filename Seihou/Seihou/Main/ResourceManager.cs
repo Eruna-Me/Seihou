@@ -86,10 +86,6 @@ namespace Seihou
 			songs.Add("TestSong", cm.Load<Song>("Audio/Songs/Testsong"));
 
 			soundEffects.Add("EnemyPain1", cm.Load<SoundEffect>("Audio/Effects/EnemyPain1"));
-			soundEffects.Add("EnemyPain2", cm.Load<SoundEffect>("Audio/Effects/EnemyPain2"));
-			soundEffects.Add("EnemyPain3", cm.Load<SoundEffect>("Audio/Effects/EnemyPain3"));
-			soundEffects.Add("EnemyPain4", cm.Load<SoundEffect>("Audio/Effects/EnemyPain4"));
-			soundEffects.Add("EnemyPain5", cm.Load<SoundEffect>("Audio/Effects/EnemyPain5"));
 			soundEffects.Add("Shoot1", cm.Load<SoundEffect>("Audio/Effects/Shoot1"));
 			soundEffects.Add("Shoot2", cm.Load<SoundEffect>("Audio/Effects/Shoot2"));
 			soundEffects.Add("Shoot3", cm.Load<SoundEffect>("Audio/Effects/Shoot3"));
