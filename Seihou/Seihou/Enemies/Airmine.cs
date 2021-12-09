@@ -26,9 +26,10 @@ namespace Seihou
 
 		public override void OnDamaged(Entity by, int damage)
 		{
-
 			if (Global.OnScreen(pos))
 			{
+				SoundHelper.PlayRandom("ExplosionShort");
+
 				for (int i = 0; i < bullets; i++)
 				{
 					float s = (float)(Global.random.NextDouble() * (maxBulletSpeed - minBulletSpeed) + minBulletSpeed);

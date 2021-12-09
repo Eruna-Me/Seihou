@@ -159,6 +159,8 @@ namespace Seihou
 
 		public void CollectPoint()
 		{
+			SoundHelper.PlayRandom("PowerUp");
+
 			collectedPowerUps++;
 			float scoreGain = pointBaseScore + collectedPowerUps * pointCPUbonusScore;
 			score += scoreGain;
@@ -168,7 +170,8 @@ namespace Seihou
 
 		public void CollectPower()
 		{
-			
+			SoundHelper.PlayRandom("PowerUp");
+
 			power++;
 			power = power > fullPower ? fullPower : power;
 			collectedPowerUps++;

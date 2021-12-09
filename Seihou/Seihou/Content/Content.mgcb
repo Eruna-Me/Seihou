@@ -19,6 +19,12 @@
 /processorParam:Quality=Best
 /build:Audio/Effects/EnemyPain1.ogg
 
+#begin Audio/Effects/PowerUp1.ogg
+/importer:OggImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Audio/Effects/PowerUp1.ogg
+
 #begin Audio/Effects/ExplosionShort1.ogg
 /importer:OggImporter
 /processor:SoundEffectProcessor
@@ -30,24 +36,6 @@
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
 /build:Audio/Effects/ExplosionLong1.ogg
-
-#begin Audio/Effects/Shoot1.ogg
-/importer:OggImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Effects/Shoot1.ogg
-
-#begin Audio/Effects/Shoot2.ogg
-/importer:OggImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Effects/Shoot2.ogg
-
-#begin Audio/Effects/Shoot3.ogg
-/importer:OggImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Effects/Shoot3.ogg
 
 #begin Audio/Songs/testsong.ogg
 /importer:OggImporter
