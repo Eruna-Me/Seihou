@@ -8,7 +8,7 @@ namespace Seihou
 		private const float drops = 20;
         private const float borderWidth = 100;
         private const float hoverHeight = 100;
-        private const float fallspeed = 20;
+        private const float fallspeed = 100;
         private float moveSpeed = 125;
         private const float lowHpSpeed = 200;
 
@@ -28,15 +28,15 @@ namespace Seihou
 			lowHp = (int)(hp * 0.25f);
 			
 			//Patterns
-			patterns[Stages.high].Add(new CoinCircle(this, em, 0.6f / (float)Settings.GetDifficulty(), 24));
-			patterns[Stages.high].Add(new CoinThrow(this, em, 1.3f / (float)Settings.GetDifficulty()));
+			patterns[Stages.high].Add(new CoinCircle(this, em, 0.75f / (float)(Settings.GetDifficulty() + 1), 24));
+			patterns[Stages.high].Add(new CoinThrow(this, em, 1.5f / (float)(Settings.GetDifficulty() + 1)));
 
-			patterns[Stages.mid].Add(new CoinThrow(this, em, 0.5f / (float)Settings.GetDifficulty()));
-			patterns[Stages.mid].Add(new CoinDirectional(this, em, 0.5f / (float)Settings.GetDifficulty(), 25));
+			patterns[Stages.mid].Add(new CoinThrow(this, em, 0.65f / (float)(Settings.GetDifficulty() + 1)));
+			patterns[Stages.mid].Add(new CoinDirectional(this, em, 0.65f / (float)(Settings.GetDifficulty() + 1), 25));
 
-			patterns[Stages.low].Add(new CoinThrow(this, em, 0.75f / (float)Settings.GetDifficulty()));
-			patterns[Stages.low].Add(new CoinDirectional(this, em, 0.8f / (float)Settings.GetDifficulty(), 1));
-			patterns[Stages.low].Add(new CoinCircle(this, em, 0.85f / (float)Settings.GetDifficulty(), 32));
+			patterns[Stages.low].Add(new CoinThrow(this, em, 0.95f / (float)(Settings.GetDifficulty() + 1)));
+			patterns[Stages.low].Add(new CoinDirectional(this, em, 1.0f / (float)(Settings.GetDifficulty() + 1), 1));
+			patterns[Stages.low].Add(new CoinCircle(this, em, 1.05f / (float)(Settings.GetDifficulty() + 1), 32));
         }
 
 

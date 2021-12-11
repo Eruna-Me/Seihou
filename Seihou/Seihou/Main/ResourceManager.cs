@@ -73,9 +73,6 @@ namespace Seihou
 			//Other
 			textures.Add("FireParticle",     cm.Load<Texture2D>("FireParticle"));
 
-            //Wallpapers
-            textures.Add("Wallpaper1",       cm.Load<Texture2D>("Wallpapers/Wallpaper1"));
-
 			//Clouds
 			textures.Add("Cloud1",			 cm.Load<Texture2D>("Clouds/Cloud1"));
 			textures.Add("Cloud2",			 cm.Load<Texture2D>("Clouds/Cloud2"));
