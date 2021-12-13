@@ -6,7 +6,7 @@ namespace Seihou
 {
 	class Kitsune : Enemy
     {
-        private const float fallSpeed = 10.0f;
+        private const float fallSpeed = 30.0f;
 		private const float bulletSpeed = 100.0f;
 		private float fireDelay = 1.5f;
 		private readonly float maxFireDelay = 0.5f;

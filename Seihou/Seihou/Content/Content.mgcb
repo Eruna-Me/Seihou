@@ -19,11 +19,11 @@
 /processorParam:Quality=Best
 /build:Audio/Effects/EnemyPain1.ogg
 
-#begin Audio/Effects/PowerUp1.ogg
+#begin Audio/Effects/ExplosionLong1.ogg
 /importer:OggImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/Effects/PowerUp1.ogg
+/build:Audio/Effects/ExplosionLong1.ogg
 
 #begin Audio/Effects/ExplosionShort1.ogg
 /importer:OggImporter
@@ -31,11 +31,11 @@
 /processorParam:Quality=Best
 /build:Audio/Effects/ExplosionShort1.ogg
 
-#begin Audio/Effects/ExplosionLong1.ogg
+#begin Audio/Effects/PowerUp1.ogg
 /importer:OggImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/Effects/ExplosionLong1.ogg
+/build:Audio/Effects/PowerUp1.ogg
 
 #begin Audio/Songs/testsong.ogg
 /importer:OggImporter
@@ -213,6 +213,9 @@
 
 #begin Levels/Basiclevel.json
 /copy:Levels/Basiclevel.json
+
+#begin Levels/level1.json
+/copy:Levels/level1.json
 
 #begin Misc/backgroundUI.png
 /importer:TextureImporter
@@ -517,3 +520,4 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:Spritefonts/KosugiMaru-Small.spritefont
+

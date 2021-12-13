@@ -12,7 +12,7 @@ namespace Seihou
 		private const float maxFireDelay = 0.1f;
 		private int ammo = 5;
 		private readonly int bulletsPerShot = 5;
-		private const string bulletTexture = "Snowflake";
+		private const string bulletTexture = "EnemyBullet";
 		private bool targetSet = false;
 		private Vector2 target;
 		private const float spread = 20;
