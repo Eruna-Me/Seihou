@@ -32,9 +32,9 @@ namespace Seihou
 					em.AddEntity(new Particle(pos, sb, em));
 				}
 
-				if (randomNumber > scoreDropChance)
+				if (randomNumber < scoreDropChance + powerDropChance)
 				{
-					if (randomNumber > scoreDropChance + powerDropChance)
+					if (randomNumber < powerDropChance)
 						em.AddEntity(new Power(pos, sb, em));
 					else
 						em.AddEntity(new Point(pos, sb, em));

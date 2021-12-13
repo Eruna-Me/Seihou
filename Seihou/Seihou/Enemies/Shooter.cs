@@ -4,7 +4,7 @@ using System;
 
 namespace Seihou
 {
-	class Shooter : Enemy
+    class Shooter : Enemy
     {
         private const float fallSpeed = 40.0f;
         private readonly float maxFireDelay;
@@ -13,18 +13,21 @@ namespace Seihou
         private readonly int bullets;
 
 
-        public Shooter([Position]Vector2 pos, SpriteBatch sb, EntityManager em,
-            [Param("Bullets")]int bullets = 4,
-            [Param("MaxFireDelay")]float maxFireDelay = 0.2f
+        public Shooter([Position] Vector2 pos, SpriteBatch sb, EntityManager em,
+            [Param("Bullets")] int bullets = 4,
+            [Param("MaxFireDelay")] float maxFireDelay = 2f    
             ) : base(pos, sb, em)
         {
             texture = "MeanMan";
-            this.maxFireDelay = maxFireDelay;
+            this.maxFireDelay = maxFireDelay / (float)(Settings.GetDifficulty() + 1);
             this.bullets = bullets;
             ec = EntityManager.EntityClass.enemy;
-            size = 40; 
+            size = 40;
             speed.Y = fallSpeed;
-			hp = 10;
+            hp = 10;
+
+            scoreDropChance = 50;
+            powerDropChance = 50;
         }
 
         public override void Update(GameTime gt)
@@ -36,7 +39,7 @@ namespace Seihou
                 for (int i = 0; i < bullets; i++)
                 {
                     float dir = (i + 1) * (float)((Math.PI * 2) / bullets);
-                    em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(dir),(float)Math.Sin(dir)) * bulletSpeed));
+                    em.AddEntity(new EnemyBullet(pos, sb, em, this, new Vector2((float)Math.Cos(dir), (float)Math.Sin(dir)) * bulletSpeed));
                 }
                 fireDelay = maxFireDelay;
             }

@@ -22,7 +22,11 @@ namespace Seihou
 			texture = "YukiOnna";
 			size = 10;
 			speed.Y = fallSpeed;
-			hp = 15;
+			hp = 10;
+
+			scoreDropChance = 50;
+			powerDropChance = 50;
+
 			if (Settings.GetDifficulty() == Settings.Difficulty.easy)
 			{
 				ammo = 3;
