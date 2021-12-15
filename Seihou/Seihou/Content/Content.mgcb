@@ -217,6 +217,9 @@
 #begin Levels/level1.json
 /copy:Levels/level1.json
 
+#begin Levels/level2.json
+/copy:Levels/level2.json
+
 #begin Misc/backgroundUI.png
 /importer:TextureImporter
 /processor:TextureProcessor
