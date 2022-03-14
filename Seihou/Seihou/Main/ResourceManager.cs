@@ -73,9 +73,6 @@ namespace Seihou
 			//Other
 			textures.Add("FireParticle",     cm.Load<Texture2D>("FireParticle"));
 
-            //Wallpapers
-            textures.Add("Wallpaper1",       cm.Load<Texture2D>("Wallpapers/Wallpaper1"));
-
 			//Clouds
 			textures.Add("Cloud1",			 cm.Load<Texture2D>("Clouds/Cloud1"));
 			textures.Add("Cloud2",			 cm.Load<Texture2D>("Clouds/Cloud2"));
@@ -86,13 +83,11 @@ namespace Seihou
 			songs.Add("TestSong", cm.Load<Song>("Audio/Songs/Testsong"));
 
 			soundEffects.Add("EnemyPain1", cm.Load<SoundEffect>("Audio/Effects/EnemyPain1"));
-			soundEffects.Add("EnemyPain2", cm.Load<SoundEffect>("Audio/Effects/EnemyPain2"));
-			soundEffects.Add("EnemyPain3", cm.Load<SoundEffect>("Audio/Effects/EnemyPain3"));
-			soundEffects.Add("EnemyPain4", cm.Load<SoundEffect>("Audio/Effects/EnemyPain4"));
-			soundEffects.Add("EnemyPain5", cm.Load<SoundEffect>("Audio/Effects/EnemyPain5"));
-			soundEffects.Add("Shoot1", cm.Load<SoundEffect>("Audio/Effects/Shoot1"));
-			soundEffects.Add("Shoot2", cm.Load<SoundEffect>("Audio/Effects/Shoot2"));
-			soundEffects.Add("Shoot3", cm.Load<SoundEffect>("Audio/Effects/Shoot3"));
+
+			soundEffects.Add("PowerUp1", cm.Load<SoundEffect>("Audio/Effects/PowerUp1"));
+
+			soundEffects.Add("ExplosionShort1", cm.Load<SoundEffect>("Audio/Effects/ExplosionShort1"));
+			soundEffects.Add("ExplosionLong1", cm.Load<SoundEffect>("Audio/Effects/ExplosionLong1"));
 		}
 
 		public static Vector2 Center(string texture) => new Vector2(textures[texture].Width / 2, textures[texture].Height / 2);

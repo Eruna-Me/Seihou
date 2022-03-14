@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="100" height="600" tilewidth="16" tileheight="16" infinite="1" nextlayerid="4" nextobjectid="26588">
+ <editorsettings>
+  <export format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" source="SeihouSprites.tsx"/>
+ <objectgroup id="3" name="Ignore">
+  <object id="4" name="Screen Area" x="0" y="0" width="800" height="720"/>
+  <object id="5" x="-32" y="-24032" width="32" height="24768"/>
+  <object id="6" x="798" y="-23710" width="32" height="24768"/>
+ </objectgroup>
+ <objectgroup id="2" name="Enemies">
+  <object id="26084" type="Samurai" gid="10" x="320" y="-1232" width="48" height="48"/>
+  <object id="26085" type="Samurai" gid="10" x="432" y="-1184" width="48" height="48"/>
+  <object id="26087" type="Samurai" gid="10" x="432" y="-1232" width="48" height="48"/>
+  <object id="26088" type="Samurai" gid="10" x="320" y="-1184" width="48" height="48"/>
+  <object id="26093" type="YukiOnna" gid="2" x="384" y="-1488" width="32" height="48"/>
+  <object id="26094" type="YukiOnna" gid="2" x="448" y="-1552" width="32" height="48"/>
+  <object id="26117" type="Samurai" gid="10" x="0" y="-2112" width="48" height="48"/>
+  <object id="26118" type="Samurai" gid="10" x="64" y="-2112" width="48" height="48"/>
+  <object id="26119" type="Samurai" gid="10" x="128" y="-2112" width="48" height="48"/>
+  <object id="26245" type="Shooter" gid="4" x="32" y="-2656" width="64" height="64">
+   <properties>
+    <property name="Bullets" value="5"/>
+    <property name="MaxFireDelay" value="2"/>
+   </properties>
+  </object>
+  <object id="26246" type="Shooter" gid="4" x="704" y="-2656" width="64" height="64">
+   <properties>
+    <property name="Bullets" value="5"/>
+    <property name="MaxFireDelay" value="2"/>
+   </properties>
+  </object>
+  <object id="26247" type="Shooter" gid="4" x="576" y="-2720" width="64" height="64">
+   <properties>
+    <property name="Bullets" value="5"/>
+    <property name="MaxFireDelay" value="2"/>
+   </properties>
+  </object>
+  <object id="26248" type="Shooter" gid="4" x="160" y="-2720" width="64" height="64">
+   <properties>
+    <property name="Bullets" value="5"/>
+    <property name="MaxFireDelay" value="2"/>
+   </properties>
+  </object>
+  <object id="26249" type="Shooter" gid="4" x="368" y="-2784" width="64" height="64">
+   <properties>
+    <property name="Bullets" value="5"/>
+    <property name="MaxFireDelay" value="2"/>
+   </properties>
+  </object>
+  <object id="26250" type="Ninja" gid="3" x="48" y="-2752" width="45" height="43"/>
+  <object id="26251" type="Ninja" gid="3" x="704" y="-2752" width="45" height="43"/>
+  <object id="26294" type="Kitsune" gid="9" x="224" y="-2448" width="48" height="48">
+   <properties>
+    <property name="Clockwise" value="False"/>
+   </properties>
+  </object>
+  <object id="26371" type="ManekiNeko" gid="6" x="368" y="-3120" width="74" height="74"/>
+  <object id="26390" type="Airmine" gid="1" x="480" y="-928" width="32" height="32"/>
+  <object id="26391" type="Airmine" gid="1" x="576" y="-928" width="32" height="32"/>
+  <object id="26392" type="Airmine" gid="1" x="528" y="-976" width="32" height="32"/>
+  <object id="26393" type="Airmine" gid="1" x="672" y="-928" width="32" height="32"/>
+  <object id="26394" type="Airmine" gid="1" x="624" y="-976" width="32" height="32"/>
+  <object id="26395" type="Airmine" gid="1" x="720" y="-976" width="32" height="32"/>
+  <object id="26396" type="Airmine" gid="1" x="768" y="-928" width="32" height="32"/>
+  <object id="26397" type="YukiOnna" gid="2" x="320" y="-1552" width="32" height="48"/>
+  <object id="26408" name="Wait for player" type="LogicWaitForEmpty" gid="5" x="32" y="-2928" width="32" height="32"/>
+  <object id="26409" type="Samurai" gid="10" x="320" y="-640" width="48" height="48"/>
+  <object id="26410" type="Samurai" gid="10" x="272" y="-640" width="48" height="48"/>
+  <object id="26411" type="Samurai" gid="10" x="432" y="-640" width="50.5044" height="50.5044"/>
+  <object id="26412" type="Samurai" gid="10" x="480" y="-640" width="50.5044" height="50.5044"/>
+  <object id="26413" type="Samurai" gid="10" x="432" y="-688" width="50.5044" height="50.5044"/>
+  <object id="26414" type="Samurai" gid="10" x="480" y="-688" width="50.5044" height="50.5044"/>
+  <object id="26415" type="Samurai" gid="10" x="272" y="-688" width="50.5044" height="50.5044"/>
+  <object id="26416" type="Samurai" gid="10" x="320" y="-688" width="50.5044" height="50.5044"/>
+  <object id="26419" type="Airmine" gid="1" x="0" y="-928" width="32" height="32"/>
+  <object id="26420" type="Airmine" gid="1" x="96" y="-928" width="32" height="32"/>
+  <object id="26421" type="Airmine" gid="1" x="48" y="-976" width="32" height="32"/>
+  <object id="26422" type="Airmine" gid="1" x="192" y="-928" width="32" height="32"/>
+  <object id="26423" type="Airmine" gid="1" x="144" y="-976" width="32" height="32"/>
+  <object id="26424" type="Airmine" gid="1" x="240" y="-976" width="32" height="32"/>
+  <object id="26425" type="Airmine" gid="1" x="288" y="-928" width="32" height="32"/>
+  <object id="26426" type="Samurai" gid="10" x="0" y="-2208" width="48" height="48"/>
+  <object id="26427" type="Samurai" gid="10" x="64" y="-2208" width="48" height="48"/>
+  <object id="26428" type="Samurai" gid="10" x="128" y="-2208" width="48" height="48"/>
+  <object id="26429" type="Samurai" gid="10" x="0" y="-2304" width="48" height="48"/>
+  <object id="26430" type="Samurai" gid="10" x="64" y="-2304" width="48" height="48"/>
+  <object id="26431" type="Samurai" gid="10" x="128" y="-2304" width="48" height="48"/>
+  <object id="26432" type="Samurai" gid="10" x="624" y="-2112" width="48" height="48"/>
+  <object id="26433" type="Samurai" gid="10" x="688" y="-2112" width="48" height="48"/>
+  <object id="26434" type="Samurai" gid="10" x="752" y="-2112" width="48" height="48"/>
+  <object id="26435" type="Samurai" gid="10" x="624" y="-2208" width="48" height="48"/>
+  <object id="26436" type="Samurai" gid="10" x="688" y="-2208" width="48" height="48"/>
+  <object id="26437" type="Samurai" gid="10" x="752" y="-2208" width="48" height="48"/>
+  <object id="26438" type="Samurai" gid="10" x="624" y="-2304" width="48" height="48"/>
+  <object id="26439" type="Samurai" gid="10" x="688" y="-2304" width="48" height="48"/>
+  <object id="26440" type="Samurai" gid="10" x="752" y="-2304" width="48" height="48"/>
+  <object id="26441" type="Samurai" gid="10" x="304" y="-2112" width="48" height="48"/>
+  <object id="26442" type="Samurai" gid="10" x="368" y="-2112" width="48" height="48"/>
+  <object id="26443" type="Samurai" gid="10" x="432" y="-2112" width="48" height="48"/>
+  <object id="26444" type="Samurai" gid="10" x="304" y="-2208" width="48" height="48"/>
+  <object id="26445" type="Samurai" gid="10" x="368" y="-2208" width="48" height="48"/>
+  <object id="26446" type="Samurai" gid="10" x="432" y="-2208" width="48" height="48"/>
+  <object id="26447" type="Samurai" gid="10" x="304" y="-2304" width="48" height="48"/>
+  <object id="26448" type="Samurai" gid="10" x="368" y="-2304" width="48" height="48"/>
+  <object id="26449" type="Samurai" gid="10" x="432" y="-2304" width="48" height="48"/>
+  <object id="26506" type="YukiOnna" gid="2" x="672" y="-16" width="32" height="48"/>
+  <object id="26507" type="YukiOnna" gid="2" x="640" y="-64" width="32" height="48"/>
+  <object id="26508" type="YukiOnna" gid="2" x="704" y="-64" width="32" height="48"/>
+  <object id="26509" type="YukiOnna" gid="2" x="96" y="-112" width="32" height="48"/>
+  <object id="26510" type="YukiOnna" gid="2" x="128" y="-160" width="32" height="48"/>
+  <object id="26511" type="YukiOnna" gid="2" x="64" y="-160" width="32" height="48"/>
+  <object id="26512" type="Kitsune" gid="9" x="112" y="-320" width="48" height="48">
+   <properties>
+    <property name="Clockwise" value="False"/>
+   </properties>
+  </object>
+  <object id="26513" type="Kitsune" gid="9" x="640" y="-320" width="48" height="48">
+   <properties>
+    <property name="Clockwise" value="False"/>
+   </properties>
+  </object>
+  <object id="26514" name="Wait for player" type="LogicWaitForEmpty" gid="5" x="0" y="-384" width="32" height="32"/>
+  <object id="26516" type="YukiOnna" gid="2" x="640" y="-704" width="32" height="48"/>
+  <object id="26517" type="YukiOnna" gid="2" x="704" y="-704" width="32" height="48"/>
+  <object id="26518" type="YukiOnna" gid="2" x="128" y="-704" width="32" height="48"/>
+  <object id="26519" type="YukiOnna" gid="2" x="64" y="-704" width="32" height="48"/>
+  <object id="26520" type="Airmine" gid="1" x="480" y="-976" width="32" height="32"/>
+  <object id="26521" type="Airmine" gid="1" x="576" y="-976" width="32" height="32"/>
+  <object id="26522" type="Airmine" gid="1" x="528" y="-1024" width="32" height="32"/>
+  <object id="26523" type="Airmine" gid="1" x="672" y="-976" width="32" height="32"/>
+  <object id="26524" type="Airmine" gid="1" x="624" y="-1024" width="32" height="32"/>
+  <object id="26525" type="Airmine" gid="1" x="720" y="-1024" width="32" height="32"/>
+  <object id="26526" type="Airmine" gid="1" x="768" y="-976" width="32" height="32"/>
+  <object id="26527" type="Airmine" gid="1" x="0" y="-976" width="32" height="32"/>
+  <object id="26528" type="Airmine" gid="1" x="96" y="-976" width="32" height="32"/>
+  <object id="26529" type="Airmine" gid="1" x="48" y="-1024" width="32" height="32"/>
+  <object id="26530" type="Airmine" gid="1" x="192" y="-976" width="32" height="32"/>
+  <object id="26531" type="Airmine" gid="1" x="144" y="-1024" width="32" height="32"/>
+  <object id="26532" type="Airmine" gid="1" x="240" y="-1024" width="32" height="32"/>
+  <object id="26533" type="Airmine" gid="1" x="288" y="-976" width="32" height="32"/>
+  <object id="26534" type="Airmine" gid="1" x="480" y="-1024" width="32" height="32"/>
+  <object id="26535" type="Airmine" gid="1" x="576" y="-1024" width="32" height="32"/>
+  <object id="26536" type="Airmine" gid="1" x="528" y="-1072" width="32" height="32"/>
+  <object id="26537" type="Airmine" gid="1" x="672" y="-1024" width="32" height="32"/>
+  <object id="26538" type="Airmine" gid="1" x="624" y="-1072" width="32" height="32"/>
+  <object id="26539" type="Airmine" gid="1" x="720" y="-1072" width="32" height="32"/>
+  <object id="26540" type="Airmine" gid="1" x="768" y="-1024" width="32" height="32"/>
+  <object id="26541" type="Airmine" gid="1" x="0" y="-1024" width="32" height="32"/>
+  <object id="26542" type="Airmine" gid="1" x="96" y="-1024" width="32" height="32"/>
+  <object id="26543" type="Airmine" gid="1" x="48" y="-1072" width="32" height="32"/>
+  <object id="26544" type="Airmine" gid="1" x="192" y="-1024" width="32" height="32"/>
+  <object id="26545" type="Airmine" gid="1" x="144" y="-1072" width="32" height="32"/>
+  <object id="26546" type="Airmine" gid="1" x="240" y="-1072" width="32" height="32"/>
+  <object id="26547" type="Airmine" gid="1" x="288" y="-1024" width="32" height="32"/>
+  <object id="26548" type="Shooter" gid="4" x="96" y="-1472" width="64" height="64">
+   <properties>
+    <property name="Bullets" value="5"/>
+    <property name="MaxFireDelay" value="3"/>
+   </properties>
+  </object>
+  <object id="26549" type="Shooter" gid="4" x="640" y="-1472" width="64" height="64">
+   <properties>
+    <property name="Bullets" value="5"/>
+    <property name="MaxFireDelay" value="3"/>
+   </properties>
+  </object>
+  <object id="26550" type="Shooter" gid="4" x="96" y="-1760" width="64" height="64">
+   <properties>
+    <property name="Bullets" value="7"/>
+    <property name="MaxFireDelay" value="3"/>
+   </properties>
+  </object>
+  <object id="26551" type="Shooter" gid="4" x="640" y="-1760" width="64" height="64">
+   <properties>
+    <property name="Bullets" value="7"/>
+    <property name="MaxFireDelay" value="3"/>
+   </properties>
+  </object>
+  <object id="26552" type="Ninja" gid="3" x="272" y="-1920" width="45" height="43"/>
+  <object id="26553" type="Ninja" gid="3" x="480" y="-1920" width="45" height="43"/>
+  <object id="26554" type="Samurai" gid="10" x="0" y="-2160" width="48" height="48"/>
+  <object id="26555" type="Samurai" gid="10" x="64" y="-2160" width="48" height="48"/>
+  <object id="26556" type="Samurai" gid="10" x="128" y="-2160" width="48" height="48"/>
+  <object id="26557" type="Samurai" gid="10" x="0" y="-2256" width="48" height="48"/>
+  <object id="26558" type="Samurai" gid="10" x="64" y="-2256" width="48" height="48"/>
+  <object id="26559" type="Samurai" gid="10" x="128" y="-2256" width="48" height="48"/>
+  <object id="26560" type="Samurai" gid="10" x="0" y="-2352" width="48" height="48"/>
+  <object id="26561" type="Samurai" gid="10" x="64" y="-2352" width="48" height="48"/>
+  <object id="26562" type="Samurai" gid="10" x="128" y="-2352" width="48" height="48"/>
+  <object id="26563" type="Samurai" gid="10" x="624" y="-2160" width="48" height="48"/>
+  <object id="26564" type="Samurai" gid="10" x="688" y="-2160" width="48" height="48"/>
+  <object id="26565" type="Samurai" gid="10" x="752" y="-2160" width="48" height="48"/>
+  <object id="26566" type="Samurai" gid="10" x="624" y="-2256" width="48" height="48"/>
+  <object id="26567" type="Samurai" gid="10" x="688" y="-2256" width="48" height="48"/>
+  <object id="26568" type="Samurai" gid="10" x="752" y="-2256" width="48" height="48"/>
+  <object id="26569" type="Samurai" gid="10" x="624" y="-2352" width="48" height="48"/>
+  <object id="26570" type="Samurai" gid="10" x="688" y="-2352" width="48" height="48"/>
+  <object id="26571" type="Samurai" gid="10" x="752" y="-2352" width="48" height="48"/>
+  <object id="26572" type="Samurai" gid="10" x="304" y="-2160" width="48" height="48"/>
+  <object id="26573" type="Samurai" gid="10" x="368" y="-2160" width="48" height="48"/>
+  <object id="26574" type="Samurai" gid="10" x="432" y="-2160" width="48" height="48"/>
+  <object id="26575" type="Samurai" gid="10" x="304" y="-2256" width="48" height="48"/>
+  <object id="26576" type="Samurai" gid="10" x="368" y="-2256" width="48" height="48"/>
+  <object id="26577" type="Samurai" gid="10" x="432" y="-2256" width="48" height="48"/>
+  <object id="26578" type="Samurai" gid="10" x="304" y="-2352" width="48" height="48"/>
+  <object id="26579" type="Samurai" gid="10" x="368" y="-2352" width="48" height="48"/>
+  <object id="26580" type="Samurai" gid="10" x="432" y="-2352" width="48" height="48"/>
+  <object id="26581" type="Kitsune" gid="9" x="544" y="-2448" width="48" height="48">
+   <properties>
+    <property name="Clockwise" value="False"/>
+   </properties>
+  </object>
+  <object id="26583" type="YukiOnna" gid="2" x="176" y="-2800" width="32" height="48"/>
+  <object id="26584" type="YukiOnna" gid="2" x="384" y="-2864" width="32" height="48"/>
+  <object id="26585" type="YukiOnna" gid="2" x="592" y="-2800" width="32" height="48"/>
+  <object id="26586" type="YukiOnna" gid="2" x="720" y="-2864" width="32" height="48"/>
+  <object id="26587" type="YukiOnna" gid="2" x="48" y="-2864" width="32" height="48"/>
+ </objectgroup>
+</map>

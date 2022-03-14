@@ -120,6 +120,8 @@ namespace Seihou
 		{
 			if (invincibilityTimer <= 0)
 			{
+				SoundHelper.PlayRandom("ExplosionLong");
+
 				for (int i = 0; i < 20; i++)
 				{
 					em.AddEntity(new Particle(pos, sb, em));
@@ -157,6 +159,8 @@ namespace Seihou
 
 		public void CollectPoint()
 		{
+			SoundHelper.PlayRandom("PowerUp");
+
 			collectedPowerUps++;
 			float scoreGain = pointBaseScore + collectedPowerUps * pointCPUbonusScore;
 			score += scoreGain;
@@ -166,7 +170,8 @@ namespace Seihou
 
 		public void CollectPower()
 		{
-			
+			SoundHelper.PlayRandom("PowerUp");
+
 			power++;
 			power = power > fullPower ? fullPower : power;
 			collectedPowerUps++;

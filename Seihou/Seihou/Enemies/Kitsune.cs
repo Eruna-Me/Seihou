@@ -2,12 +2,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-//standard faller
 namespace Seihou
 {
 	class Kitsune : Enemy
     {
-        private const float fallSpeed = 10.0f;
+        private const float fallSpeed = 30.0f;
 		private const float bulletSpeed = 100.0f;
 		private float fireDelay = 1.5f;
 		private readonly float maxFireDelay = 0.5f;
@@ -23,6 +22,10 @@ namespace Seihou
 			size = 24;
 			speed.Y = fallSpeed;
 			hp = 30;
+
+			scoreDropChance = 0;
+			powerDropChance = 100;
+
 			this.clockwiseRotation = clockwiseRotation;
 			if (Settings.GetDifficulty() == Settings.Difficulty.easy)	maxFireDelay = 1.5f;
 			if (Settings.GetDifficulty() == Settings.Difficulty.normal) maxFireDelay = 0.75f;

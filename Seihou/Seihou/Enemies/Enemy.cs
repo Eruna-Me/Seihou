@@ -23,6 +23,8 @@ namespace Seihou
 
 			if (hp <= 0)
 			{
+				SoundHelper.PlayRandom("ExplosionShort");
+
 				int randomNumber = Global.random.Next(0, 100);
 
 				for (int i = 0; i < explosionParticles; i++)
@@ -30,9 +32,9 @@ namespace Seihou
 					em.AddEntity(new Particle(pos, sb, em));
 				}
 
-				if (randomNumber > scoreDropChance)
+				if (randomNumber < scoreDropChance + powerDropChance)
 				{
-					if (randomNumber > scoreDropChance + powerDropChance)
+					if (randomNumber < powerDropChance)
 						em.AddEntity(new Power(pos, sb, em));
 					else
 						em.AddEntity(new Point(pos, sb, em));

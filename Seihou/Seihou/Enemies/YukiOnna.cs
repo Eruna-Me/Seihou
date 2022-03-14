@@ -12,7 +12,7 @@ namespace Seihou
 		private const float maxFireDelay = 0.1f;
 		private int ammo = 5;
 		private readonly int bulletsPerShot = 5;
-		private const string bulletTexture = "Snowflake";
+		private const string bulletTexture = "EnemyBullet";
 		private bool targetSet = false;
 		private Vector2 target;
 		private const float spread = 20;
@@ -22,7 +22,11 @@ namespace Seihou
 			texture = "YukiOnna";
 			size = 10;
 			speed.Y = fallSpeed;
-			hp = 15;
+			hp = 10;
+
+			scoreDropChance = 50;
+			powerDropChance = 50;
+
 			if (Settings.GetDifficulty() == Settings.Difficulty.easy)
 			{
 				ammo = 3;

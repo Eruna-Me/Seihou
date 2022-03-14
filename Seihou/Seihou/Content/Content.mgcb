@@ -19,47 +19,23 @@
 /processorParam:Quality=Best
 /build:Audio/Effects/EnemyPain1.ogg
 
-#begin Audio/Effects/EnemyPain2.ogg
+#begin Audio/Effects/ExplosionLong1.ogg
 /importer:OggImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/Effects/EnemyPain2.ogg
+/build:Audio/Effects/ExplosionLong1.ogg
 
-#begin Audio/Effects/EnemyPain3.ogg
+#begin Audio/Effects/ExplosionShort1.ogg
 /importer:OggImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/Effects/EnemyPain3.ogg
+/build:Audio/Effects/ExplosionShort1.ogg
 
-#begin Audio/Effects/EnemyPain4.ogg
+#begin Audio/Effects/PowerUp1.ogg
 /importer:OggImporter
 /processor:SoundEffectProcessor
 /processorParam:Quality=Best
-/build:Audio/Effects/EnemyPain4.ogg
-
-#begin Audio/Effects/EnemyPain5.ogg
-/importer:OggImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Effects/EnemyPain5.ogg
-
-#begin Audio/Effects/Shoot1.ogg
-/importer:OggImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Effects/Shoot1.ogg
-
-#begin Audio/Effects/Shoot2.ogg
-/importer:OggImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Effects/Shoot2.ogg
-
-#begin Audio/Effects/Shoot3.ogg
-/importer:OggImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Audio/Effects/Shoot3.ogg
+/build:Audio/Effects/PowerUp1.ogg
 
 #begin Audio/Songs/testsong.ogg
 /importer:OggImporter
@@ -237,6 +213,12 @@
 
 #begin Levels/Basiclevel.json
 /copy:Levels/Basiclevel.json
+
+#begin Levels/level1.json
+/copy:Levels/level1.json
+
+#begin Levels/level2.json
+/copy:Levels/level2.json
 
 #begin Misc/backgroundUI.png
 /importer:TextureImporter
@@ -541,16 +523,4 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:Spritefonts/KosugiMaru-Small.spritefont
-
-#begin Wallpapers/Wallpaper1.jpg
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Wallpapers/Wallpaper1.jpg
 

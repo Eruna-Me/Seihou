@@ -6,7 +6,7 @@ namespace Seihou
 {
 	class LenovoDenovoMan : Player
 	{
-		private const int powerStage1 = 20;
+		private const int powerStage1 = 25;
 		private const int powerStage2 = 60;
 		private const float bulletSpeed = 500.0f;
 		private int bulletsPerShot = 5;
@@ -23,7 +23,7 @@ namespace Seihou
 
 		public override void Fire(bool slowMode)
 		{
-			SoundHelper.PlayRandom("Shoot");
+			//SoundHelper.PlayRandom("Shoot");
 			spread = slowMode ? preciseBulletSpread : baseBulletSpread;
 
 			float direction = (float)-Math.PI / 2;

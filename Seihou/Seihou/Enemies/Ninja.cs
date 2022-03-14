@@ -15,7 +15,7 @@ namespace Seihou
         public Ninja([Position]Vector2 pos, SpriteBatch sb, EntityManager em) : base(pos, sb, em)
         {
 			bullets = 2 * (1+(int)Settings.GetDifficulty());
-			maxFireDelay = (5 - (float)Settings.GetDifficulty()) * 0.2f;
+			maxFireDelay = (5 - (float)Settings.GetDifficulty()) * 0.4f;
 
 
             texture = "Ninja";
