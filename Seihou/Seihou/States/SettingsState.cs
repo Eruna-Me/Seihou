@@ -17,9 +17,9 @@ namespace Seihou
 		public SettingsState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
 		{
 			int i = 0;
-			buttons.Add(new PickerButton(spacing * i + ButtonStart,ButtonSize, sb, "Starting Lives" ,"startingLives" , Settings.Get("startingLives"), i++,"1", "2", "3", "4", "5"));
-			buttons.Add(new PickerButton(spacing * i + ButtonStart, ButtonSize, sb, "Starting Bombs" , "startingBombs", Settings.Get("startingBombs"), i++, "0", "1", "2", "3"));
-			buttons.Add(new PickerButton(spacing * i + ButtonStart, ButtonSize, sb, "Simple Graphics", "simpleGraphics", Settings.Get("simpleGraphics"), i++, "True", "False"));
+			buttons.Add(new PickerButton(spacing * i + ButtonStart,ButtonSize, sb, "Starting Lives" ,"startingLives" , Settings.Get("game", "startingLives"), i++,"1", "2", "3", "4", "5"));
+			buttons.Add(new PickerButton(spacing * i + ButtonStart, ButtonSize, sb, "Starting Bombs" , "startingBombs", Settings.Get("game", "startingBombs"), i++, "0", "1", "2", "3"));
+			buttons.Add(new PickerButton(spacing * i + ButtonStart, ButtonSize, sb, "Simple Graphics", "simpleGraphics", Settings.Get("graphics", "simpleGraphics"), i++, "True", "False"));
 			buttons.Add(new KeyPicker(spacing * i + ButtonStart, ButtonSize, sb, "Move Up", "upKey", Settings.GetKey("upKey"), i++));
 			buttons.Add(new KeyPicker(spacing * i + ButtonStart, ButtonSize, sb, "Move Down", "downKey", Settings.GetKey("downKey"), i++));
 			buttons.Add(new KeyPicker(spacing * i + ButtonStart, ButtonSize, sb, "Move Left", "leftKey", Settings.GetKey("leftKey"), i++));
@@ -37,13 +37,13 @@ namespace Seihou
 			{
 				if (b is PickerButton pkb)
 				{
-					Settings.Set(pkb.question, pkb.GetAnswer());
+					Settings.Set("controls", pkb.question, pkb.GetAnswer());
 					continue;
 				}
 
 				if (b is KeyPicker kp)
 				{
-					Settings.Set(kp.keyName, (Keys)int.Parse(kp.GetKey()));
+					Settings.SetKey(kp.keyName, (Keys)int.Parse(kp.GetKey()));
 					continue;
 				}
 			}

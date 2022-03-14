@@ -54,8 +54,8 @@ namespace Seihou
 			ResetPosition();
 			trail = new Trail(sb, texture,5,0.01f);
 			size = 5;
-			lives = Settings.GetInt("startingLives");
-			bombs = Settings.GetInt("startingBombs");
+			lives = Settings.GetInt("game", "startingLives");
+			bombs = Settings.GetInt("game", "startingBombs");
 			ec = EntityManager.EntityClass.player;
 		}
 
@@ -134,7 +134,7 @@ namespace Seihou
 					((MainState)sm.GetCurrentState()).OnPlayerDeath();
 
 				lives--;
-				bombs = Settings.GetInt("startingBombs");
+				bombs = Settings.GetInt("game", "startingBombs");
 				collectedPowerUps = 0;
 				//decrease powah?
 			}
@@ -195,7 +195,7 @@ namespace Seihou
 
 		public void Continue()
 		{
-			lives = Settings.GetInt("startingLives");
+			lives = Settings.GetInt("game", "startingLives");
 			score = 0;
 		}
 	}
