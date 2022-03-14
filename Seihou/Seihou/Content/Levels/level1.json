@@ -19,7 +19,7 @@
                  "y":0
                 }, 
                 {
-                 "height":24768,
+                 "height":24400,
                  "id":5,
                  "name":"",
                  "rotation":0,
@@ -27,10 +27,10 @@
                  "visible":true,
                  "width":32,
                  "x":-32,
-                 "y":-24032
+                 "y":-23680
                 }, 
                 {
-                 "height":24768,
+                 "height":24400,
                  "id":6,
                  "name":"",
                  "rotation":0,
@@ -38,7 +38,7 @@
                  "visible":true,
                  "width":32,
                  "x":798,
-                 "y":-23710
+                 "y":-23680
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -834,97 +834,97 @@
                 }, 
                 {
                  "gid":10,
-                 "height":50.5043543591853,
+                 "height":50.5044,
                  "id":26372,
                  "name":"",
                  "rotation":0,
                  "type":"Samurai",
                  "visible":true,
-                 "width":50.5043543591853,
+                 "width":50.5044,
                  "x":144,
                  "y":-480
                 }, 
                 {
                  "gid":10,
-                 "height":50.5043543591853,
+                 "height":50.5044,
                  "id":26373,
                  "name":"",
                  "rotation":0,
                  "type":"Samurai",
                  "visible":true,
-                 "width":50.5043543591853,
+                 "width":50.5044,
                  "x":192,
                  "y":-480
                 }, 
                 {
                  "gid":10,
-                 "height":50.5043543591853,
+                 "height":50.5044,
                  "id":26374,
                  "name":"",
                  "rotation":0,
                  "type":"Samurai",
                  "visible":true,
-                 "width":50.5043543591853,
+                 "width":50.5044,
                  "x":144,
                  "y":-528
                 }, 
                 {
                  "gid":10,
-                 "height":50.5043543591853,
+                 "height":50.5044,
                  "id":26375,
                  "name":"",
                  "rotation":0,
                  "type":"Samurai",
                  "visible":true,
-                 "width":50.5043543591853,
+                 "width":50.5044,
                  "x":192,
                  "y":-528
                 }, 
                 {
                  "gid":10,
-                 "height":50.5043543591853,
+                 "height":50.5044,
                  "id":26376,
                  "name":"",
                  "rotation":0,
                  "type":"Samurai",
                  "visible":true,
-                 "width":50.5043543591853,
+                 "width":50.5044,
                  "x":144,
                  "y":-576
                 }, 
                 {
                  "gid":10,
-                 "height":50.5043543591853,
+                 "height":50.5044,
                  "id":26377,
                  "name":"",
                  "rotation":0,
                  "type":"Samurai",
                  "visible":true,
-                 "width":50.5043543591853,
+                 "width":50.5044,
                  "x":192,
                  "y":-576
                 }, 
                 {
                  "gid":10,
-                 "height":50.5043543591853,
+                 "height":50.5044,
                  "id":26378,
                  "name":"",
                  "rotation":0,
                  "type":"Samurai",
                  "visible":true,
-                 "width":50.5043543591853,
+                 "width":50.5044,
                  "x":144,
                  "y":-624
                 }, 
                 {
                  "gid":10,
-                 "height":50.5043543591853,
+                 "height":50.5044,
                  "id":26379,
                  "name":"",
                  "rotation":0,
                  "type":"Samurai",
                  "visible":true,
-                 "width":50.5043543591853,
+                 "width":50.5044,
                  "x":192,
                  "y":-624
                 }, 
@@ -2169,6 +2169,36 @@
                  "width":32,
                  "x":32,
                  "y":-4688
+                }, 
+                {
+                 "gid":5,
+                 "height":32,
+                 "id":26506,
+                 "name":"Wait for player",
+                 "rotation":0,
+                 "type":"LogicWaitForEmpty",
+                 "visible":true,
+                 "width":32,
+                 "x":48,
+                 "y":-5248
+                }, 
+                {
+                 "gid":5,
+                 "height":32,
+                 "id":26507,
+                 "name":"Move to next level",
+                 "properties":[
+                        {
+                         "name":"NextLevelName",
+                         "type":"string",
+                         "value":"level2"
+                        }],
+                 "rotation":0,
+                 "type":"LogicNextLevel",
+                 "visible":true,
+                 "width":32,
+                 "x":48,
+                 "y":-5488
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2177,10 +2207,10 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":26506,
+ "nextobjectid":26508,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.2",
+ "tiledversion":"1.8.2",
  "tileheight":16,
  "tilesets":[
         {
@@ -2189,6 +2219,6 @@
         }],
  "tilewidth":16,
  "type":"map",
- "version":"1.6",
+ "version":"1.8",
  "width":100
 }
