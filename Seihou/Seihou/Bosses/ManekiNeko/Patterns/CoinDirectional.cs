@@ -21,7 +21,7 @@ namespace Seihou
 
             if (spawnTimer > spawnRate)
             {
-                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, Global.Normalize(Global.player.pos - daddy.pos) * bulletSpeed));
+                em.AddEntity(new Coin(owner.pos, owner.sb, em, owner, Global.Normalize(Global.player.pos - owner.pos) * bulletSpeed));
                 spawnTimer = 0;
             }
 

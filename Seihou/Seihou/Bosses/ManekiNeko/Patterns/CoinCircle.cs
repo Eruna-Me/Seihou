@@ -27,7 +27,7 @@ namespace Seihou
 				for (float i = 0; i <= Math.PI*2-((float)(Math.PI*2/amount)/2); i += (float)(Math.PI*2/amount))
 				{
 					Vector2 dir = new Vector2((float)Math.Cos(i),(float)Math.Sin(i)) * bulletSpeed;
-					em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, dir));
+					em.AddEntity(new Coin(owner.pos, owner.sb, em, owner, dir));
 				}
             }
 

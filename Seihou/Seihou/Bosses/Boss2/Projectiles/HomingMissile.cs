@@ -29,11 +29,6 @@ namespace Seihou
 
             pos += speed * gt.Time();
 
-            if (pos.Y + Global.outOfScreenMargin < 0 || pos.Y > Global.screenHeight + Global.outOfScreenMargin || pos.X + Global.outOfScreenMargin < 0 || pos.X > Global.playingFieldWidth + Global.outOfScreenMargin)
-            {
-                em.RemoveEntity(this);
-            }
-
             if (homingTime < 0)
             {
                 return;
@@ -46,14 +41,6 @@ namespace Seihou
             speed = (Global.Normalize(Global.player.pos - pos) * bulletSpeed + speed * mooiBoogjeLevel) / (mooiBoogjeLevel + 1);
 
             base.Update(gt);    
-        }
-
-        public override void Draw(GameTime gt)
-        {
-            ResourceManager.DrawAngledTexture(sb, texture, pos, speed);
-#if DRAWCOLBOX
-			MonoGame.Primitives2D.DrawCircle(sb, pos, size, 10, Color.White, 1);
-#endif
         }
     }
 }

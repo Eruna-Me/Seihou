@@ -28,7 +28,7 @@ namespace Seihou
 			lowHp = (int)(hp * 0.30f);
 			
 			//Patterns
-			patterns[Stages.high].Add(new LaunchHomingMissiles(this, em, 3f / (float)(Settings.GetDifficulty() + 1)));
+			patterns[Stages.high].Add(new FlakBarrage(this, em, 3f / (float)(Settings.GetDifficulty() + 1),10));
 
 			patterns[Stages.mid].Add(new LaunchHomingMissiles(this, em, 3f / (float)(Settings.GetDifficulty() + 1)));
 

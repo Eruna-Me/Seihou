@@ -7,7 +7,7 @@ namespace Seihou
         public bool finsihed;
         private float timer;
         private readonly float duration;
-        protected Boss daddy;
+        protected Boss owner;
         protected EntityManager em;
 
         public void Reset()
@@ -18,7 +18,7 @@ namespace Seihou
 
         public Pattern(float duration,EntityManager em, Boss daddy)
         {
-            this.daddy = daddy;
+            this.owner = daddy;
             this.em = em;
             this.duration = duration;
             timer = duration;

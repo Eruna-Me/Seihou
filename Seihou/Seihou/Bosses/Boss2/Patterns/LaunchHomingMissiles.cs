@@ -9,7 +9,7 @@ namespace Seihou
         const float bulletSpeed = 150;
 		const float spread = 150;
 
-        public LaunchHomingMissiles(Boss daddy,EntityManager em,float spawnRate) : base(2,em,daddy)
+        public LaunchHomingMissiles(Boss owner,EntityManager em,float spawnRate) : base(2,em,owner)
         {
             this.spawnRate = spawnRate;
         }
@@ -21,11 +21,11 @@ namespace Seihou
             if (spawnTimer > spawnRate)
             {
                 spawnTimer = 0;
-                em.AddEntity(new HomingMissile(daddy.pos,daddy.sb, em, daddy, new Vector2(0,    bulletSpeed)));
-                em.AddEntity(new HomingMissile(daddy.pos, daddy.sb, em, daddy, new Vector2(spread,  bulletSpeed)));
-                em.AddEntity(new HomingMissile(daddy.pos, daddy.sb, em, daddy, new Vector2(-spread, bulletSpeed)));
-                em.AddEntity(new HomingMissile(daddy.pos, daddy.sb, em, daddy, new Vector2(spread * 2, bulletSpeed)));
-                em.AddEntity(new HomingMissile(daddy.pos, daddy.sb, em, daddy, new Vector2(-spread * 2, bulletSpeed)));
+                em.AddEntity(new HomingMissile(owner.pos, owner.sb, em, owner, new Vector2(0, bulletSpeed)));
+                em.AddEntity(new HomingMissile(owner.pos, owner.sb, em, owner, new Vector2(spread, bulletSpeed)));
+                em.AddEntity(new HomingMissile(owner.pos, owner.sb, em, owner, new Vector2(-spread, bulletSpeed)));
+                em.AddEntity(new HomingMissile(owner.pos, owner.sb, em, owner, new Vector2(spread * 2, bulletSpeed)));
+                em.AddEntity(new HomingMissile(owner.pos, owner.sb, em, owner, new Vector2(-spread * 2, bulletSpeed)));
             }
 
             base.Update(gt);
