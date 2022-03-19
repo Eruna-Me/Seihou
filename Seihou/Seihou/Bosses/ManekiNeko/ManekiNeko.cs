@@ -32,10 +32,10 @@ namespace Seihou
 			patterns[Stages.high].Add(new CoinThrow(this, em, 1.5f / (float)(Settings.GetDifficulty() + 1)));
 
 			patterns[Stages.mid].Add(new CoinThrow(this, em, 0.65f / (float)(Settings.GetDifficulty() + 1)));
-			patterns[Stages.mid].Add(new CoinDirectional(this, em, 0.65f / (float)(Settings.GetDifficulty() + 1), 25));
+			patterns[Stages.mid].Add(new CoinDirectional(this, em, 0.65f / (float)(Settings.GetDifficulty() + 1)));
 
 			patterns[Stages.low].Add(new CoinThrow(this, em, 0.95f / (float)(Settings.GetDifficulty() + 1)));
-			patterns[Stages.low].Add(new CoinDirectional(this, em, 1.0f / (float)(Settings.GetDifficulty() + 1), 1));
+			patterns[Stages.low].Add(new CoinDirectional(this, em, 1.0f / (float)(Settings.GetDifficulty() + 1)));
 			patterns[Stages.low].Add(new CoinCircle(this, em, 1.05f / (float)(Settings.GetDifficulty() + 1), 32));
         }
 
@@ -89,7 +89,7 @@ namespace Seihou
 
                 for (int i = 0; i < drops; i++)
                 {
-                    Vector2 randomVec = new Vector2(Global.random.Next(-20, 21), Global.random.Next(-20, 21));
+                    var randomVec = new Vector2(Global.random.Next(-20, 21), Global.random.Next(-20, 21));
 
                     em.AddEntity(new Power(pos + randomVec, sb, em));
 

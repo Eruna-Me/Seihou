@@ -28,9 +28,10 @@ namespace Seihou
 			lowHp = (int)(hp * 0.30f);
 			
 			//Patterns
-			patterns[Stages.high].Add(new FlakBarrage(this, em, 3f / (float)(Settings.GetDifficulty() + 1),10));
+			patterns[Stages.high].Add(new Bouncers(this, em, 5f / (float)(Settings.GetDifficulty() + 1),7));
+            //patterns[Stages.high].Add(new FlakBarrage(this, em, 3f / (float)(Settings.GetDifficulty() + 1), 10));
 
-			patterns[Stages.mid].Add(new LaunchHomingMissiles(this, em, 3f / (float)(Settings.GetDifficulty() + 1)));
+            patterns[Stages.mid].Add(new LaunchHomingMissiles(this, em, 3f / (float)(Settings.GetDifficulty() + 1)));
 
 			patterns[Stages.low].Add(new LaunchHomingMissiles(this, em, 3f / (float)(Settings.GetDifficulty() + 1)));
         }
@@ -85,7 +86,7 @@ namespace Seihou
 
                 for (int i = 0; i < drops; i++)
                 {
-                    Vector2 randomVec = new Vector2(Global.random.Next(-20, 21), Global.random.Next(-20, 21));
+                    var randomVec = new Vector2(Global.random.Next(-20, 21), Global.random.Next(-20, 21));
 
                     em.AddEntity(new Power(pos + randomVec, sb, em));
 

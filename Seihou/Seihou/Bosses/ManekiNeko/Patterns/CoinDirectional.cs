@@ -7,11 +7,9 @@ namespace Seihou
 		readonly float spawnRate;
         float spawnTimer = 0;
         const float bulletSpeed = 300;
-		readonly int amount;
 
-        public CoinDirectional(Boss daddy,EntityManager em,float spawnRate,int amount) : base(2,em,daddy)
+        public CoinDirectional(Boss daddy,EntityManager em,float spawnRate) : base(2,em,daddy)
         {
-            this.amount = amount;
             this.spawnRate = spawnRate;
         }
 

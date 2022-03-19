@@ -1,21 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Seihou
 {
     internal class FlakBarrage : Pattern
     {
         readonly float spawnRate;
+        readonly int fragments;
 
         const float bulletSpeed = 150;
         const float spread = 150;
         const float fragmentSpeed = 250;
 
-        int fragments;
         float spawnTimer = 0;
 
         public FlakBarrage(Boss owner, EntityManager em, float spawnRate, int fragments) : base(2, em, owner)

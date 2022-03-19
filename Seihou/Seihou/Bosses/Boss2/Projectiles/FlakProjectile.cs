@@ -1,18 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Seihou
 {
     internal class FlakProjectile : EnemyProjectile
     {
         private float homingTime;
-        private int fragments;
-        private float fragmentSpeed;
+        private readonly int fragments;
+        private readonly float fragmentSpeed;
 
         public FlakProjectile(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed, int fragments, float fragmentSpeed) : base(pos, sb, em, owner)
         {
