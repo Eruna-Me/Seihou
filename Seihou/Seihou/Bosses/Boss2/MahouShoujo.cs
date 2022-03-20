@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Seihou
 {
-	class Boss2 : Boss
+	class MahouShoujo : Boss
     {
 		private const float drops = 20;
         private const float borderWidth = 100;
@@ -15,7 +15,7 @@ namespace Seihou
         //Variable
         private bool startMoving = false;
 
-		public Boss2(SpriteBatch sb, EntityManager em) : base(new Vector2(Global.Center.X, Global.spawnHeight), sb, em)
+		public MahouShoujo(SpriteBatch sb, EntityManager em) : base(new Vector2(Global.Center.X, Global.spawnHeight), sb, em)
 		{
 			speed.Y = fallspeed;
 			texture = "ManekiNeko";
@@ -28,12 +28,13 @@ namespace Seihou
 			lowHp = (int)(hp * 0.30f);
 			
 			//Patterns
-			patterns[Stages.high].Add(new Bouncers(this, em, 5f / (float)(Settings.GetDifficulty() + 1),7));
-            //patterns[Stages.high].Add(new FlakBarrage(this, em, 3f / (float)(Settings.GetDifficulty() + 1), 10));
+			//patterns[Stages.high].Add(new Bouncers(this, em, 4f / (float)(Settings.GetDifficulty() + 1),7));
+            patterns[Stages.high].Add(new LaunchHomingMissiles(this, em, 2f / (float)(Settings.GetDifficulty() + 1)));
 
-            patterns[Stages.mid].Add(new LaunchHomingMissiles(this, em, 3f / (float)(Settings.GetDifficulty() + 1)));
+            patterns[Stages.mid].Add(new FlakBarrage(this, em, 3f / (float)(Settings.GetDifficulty() + 1), 13));
 
-			patterns[Stages.low].Add(new LaunchHomingMissiles(this, em, 3f / (float)(Settings.GetDifficulty() + 1)));
+            patterns[Stages.low].Add(new Bouncers(this, em, 5f / (float)(Settings.GetDifficulty() + 1), 13));
+            patterns[Stages.low].Add(new LaunchHomingMissiles(this, em, 3f / (float)(Settings.GetDifficulty() + 1)));
         }
 
 

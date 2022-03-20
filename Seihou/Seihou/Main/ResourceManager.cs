@@ -37,6 +37,12 @@ namespace Seihou
 			textures.Add("Tanto",			 cm.Load<Texture2D>("Projectiles/Tanto"));
 			textures.Add("Shuriken",         cm.Load<Texture2D>("Projectiles/Shuriken"));
 
+			textures.Add("GreenBear", cm.Load<Texture2D>("Projectiles/GreenBear"));
+			textures.Add("PinkHeart", cm.Load<Texture2D>("Projectiles/PinkHeart"));
+			textures.Add("YellowStar", cm.Load<Texture2D>("Projectiles/YellowStar"));
+			textures.Add("RedStar", cm.Load<Texture2D>("Projectiles/RedStar"));
+
+
 			//Bosses
 			textures.Add("ManekiNeko",		 cm.Load<Texture2D>("Bosses/ManekiNeko"));
 

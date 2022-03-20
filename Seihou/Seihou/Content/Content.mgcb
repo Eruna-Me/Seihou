@@ -424,6 +424,18 @@
 /processorParam:TextureFormat=Color
 /build:Projectiles/EnergyBall.png
 
+#begin Projectiles/GreenBear.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Projectiles/GreenBear.png
+
 #begin Projectiles/Laser1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -460,6 +472,30 @@
 /processorParam:TextureFormat=Color
 /build:Projectiles/Laser3.png
 
+#begin Projectiles/PinkHeart.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Projectiles/PinkHeart.png
+
+#begin Projectiles/RedStar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Projectiles/RedStar.png
+
 #begin Projectiles/shuriken.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -495,6 +531,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Projectiles/Tanto.png
+
+#begin Projectiles/YellowStar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Projectiles/YellowStar.png
 
 #begin Spritefonts/Arial-Small.spritefont
 /importer:FontDescriptionImporter

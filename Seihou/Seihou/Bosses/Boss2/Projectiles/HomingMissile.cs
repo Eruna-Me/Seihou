@@ -12,7 +12,7 @@ namespace Seihou
 
         public HomingMissile(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em, owner)
         {
-            texture = "Dart2";
+            texture = "PinkHeart";
             this.speed = speed;
             minimumBulletSpeed = speed.Length() / 2;
             homingTime = Global.screenHeight / speed.Length();
