@@ -21,11 +21,11 @@ namespace Seihou
             if (spawnTimer > spawnRate)
             {
                 spawnTimer = 0;
-                em.AddEntity(new Coin(daddy.pos,daddy.sb, em, daddy, new Vector2(0,    bulletSpeed)));
-                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(spread,  bulletSpeed)));
-                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(-spread, bulletSpeed)));
-                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(spread * 2, bulletSpeed)));
-                em.AddEntity(new Coin(daddy.pos, daddy.sb, em, daddy, new Vector2(-spread * 2, bulletSpeed)));
+                em.AddEntity(new Coin(owner.pos,owner.sb, em, owner, new Vector2(0,    bulletSpeed)));
+                em.AddEntity(new Coin(owner.pos, owner.sb, em, owner, new Vector2(spread,  bulletSpeed)));
+                em.AddEntity(new Coin(owner.pos, owner.sb, em, owner, new Vector2(-spread, bulletSpeed)));
+                em.AddEntity(new Coin(owner.pos, owner.sb, em, owner, new Vector2(spread * 2, bulletSpeed)));
+                em.AddEntity(new Coin(owner.pos, owner.sb, em, owner, new Vector2(-spread * 2, bulletSpeed)));
             }
 
             base.Update(gt);

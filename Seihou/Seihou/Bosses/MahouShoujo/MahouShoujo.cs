@@ -3,40 +3,38 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Seihou
 {
-	class ManekiNeko : Boss
+	class MahouShoujo : Boss
     {
 		private const float drops = 20;
         private const float borderWidth = 100;
         private const float hoverHeight = 100;
-        private const float fallspeed = 100;
+        private const float fallspeed = 200;
         private float moveSpeed = 125;
-        private const float lowHpSpeed = 200;
+        private const float lowHpSpeed = 150;
 
         //Variable
         private bool startMoving = false;
 
-		public ManekiNeko(SpriteBatch sb, EntityManager em) : base(new Vector2(Global.Center.X, Global.spawnHeight), sb, em)
+		public MahouShoujo(SpriteBatch sb, EntityManager em) : base(new Vector2(Global.Center.X, Global.spawnHeight), sb, em)
 		{
 			speed.Y = fallspeed;
-			texture = "ManekiNeko";
+            texture = "MahouShoujo";
 
 			size = ResourceManager.textures[texture].Height / 2;
-			hp = 300;
+			hp = 500;
 
 			highHp = hp;
-			midHp = (int)(hp * 0.55f);
-			lowHp = (int)(hp * 0.25f);
-			
-			//Patterns
-			patterns[Stages.high].Add(new CoinCircle(this, em, 0.75f / (float)(Settings.GetDifficulty() + 1), 24));
-			patterns[Stages.high].Add(new CoinThrow(this, em, 1.5f / (float)(Settings.GetDifficulty() + 1)));
+			midHp = (int)(hp * 0.80f);
+			lowHp = (int)(hp * 0.45f);
 
-			patterns[Stages.mid].Add(new CoinThrow(this, em, 0.65f / (float)(Settings.GetDifficulty() + 1)));
-			patterns[Stages.mid].Add(new CoinDirectional(this, em, 0.65f / (float)(Settings.GetDifficulty() + 1)));
+            float difficulty = (float)Settings.GetDifficulty() + 1;
+            
+            patterns[Stages.high].Add(new LaunchHomingMissiles(this, em, 0.5f + 2.5f / difficulty));
 
-			patterns[Stages.low].Add(new CoinThrow(this, em, 0.95f / (float)(Settings.GetDifficulty() + 1)));
-			patterns[Stages.low].Add(new CoinDirectional(this, em, 1.0f / (float)(Settings.GetDifficulty() + 1)));
-			patterns[Stages.low].Add(new CoinCircle(this, em, 1.05f / (float)(Settings.GetDifficulty() + 1), 32));
+            patterns[Stages.mid].Add(new FlakBarrage(this, em, 0.75f + 4f / difficulty, difficulty == 1 ? 7 : 13));
+
+            patterns[Stages.low].Add(new Bouncers(this, em, 0.5f + 3f / difficulty, difficulty == 1 ? 7 : 13));
+            patterns[Stages.low].Add(new LaunchHomingMissiles(this, em, 0.5f + 3f / difficulty));
         }
 
 

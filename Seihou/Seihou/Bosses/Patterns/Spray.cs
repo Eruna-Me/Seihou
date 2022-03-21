@@ -21,13 +21,13 @@ namespace Seihou
 
             if (spawnTimer > spawnRate)
             {
-                float Direction = Global.VtoD(Global.player.pos - daddy.pos);
+                float Direction = Global.VtoD(Global.player.pos - owner.pos);
 
                 spawnTimer = 0;
-                em.AddEntity(new EnemyBullet(daddy.pos,daddy.sb, em, daddy, new Vector2((float)Math.Cos(Direction - Math.PI / (spread / 2)) * bulletSpeed, (float)Math.Sin(Direction - Math.PI / (spread / 2)) * bulletSpeed), "Snowflake"));
-                em.AddEntity(new EnemyBullet(daddy.pos,daddy.sb, em, daddy, new Vector2((float)Math.Cos(Direction + Math.PI / (spread / 2)) * bulletSpeed, (float)Math.Sin(Direction + Math.PI / (spread / 2)) * bulletSpeed), "Snowflake"));
+                em.AddEntity(new EnemyBullet(owner.pos,owner.sb, em, owner, new Vector2((float)Math.Cos(Direction - Math.PI / (spread / 2)) * bulletSpeed, (float)Math.Sin(Direction - Math.PI / (spread / 2)) * bulletSpeed), "Snowflake"));
+                em.AddEntity(new EnemyBullet(owner.pos,owner.sb, em, owner, new Vector2((float)Math.Cos(Direction + Math.PI / (spread / 2)) * bulletSpeed, (float)Math.Sin(Direction + Math.PI / (spread / 2)) * bulletSpeed), "Snowflake"));
 
-                em.AddEntity(new EnemyBullet(daddy.pos,daddy.sb, em, daddy, Global.Normalize(Global.player.pos - daddy.pos) * bulletSpeed, "Snowflake"));
+                em.AddEntity(new EnemyBullet(owner.pos,owner.sb, em, owner, Global.Normalize(Global.player.pos - owner.pos) * bulletSpeed, "Snowflake"));
             }
 
             base.Update(gt);
