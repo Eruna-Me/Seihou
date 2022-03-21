@@ -8,7 +8,7 @@ namespace Seihou
 		private const float drops = 20;
         private const float borderWidth = 100;
         private const float hoverHeight = 100;
-        private const float fallspeed = 150;
+        private const float fallspeed = 200;
         private float moveSpeed = 125;
         private const float lowHpSpeed = 150;
 
@@ -24,17 +24,17 @@ namespace Seihou
 			hp = 500;
 
 			highHp = hp;
-			midHp = (int)(hp * 0.60f);
-			lowHp = (int)(hp * 0.30f);
-			
-			//Patterns
-			//patterns[Stages.high].Add(new Bouncers(this, em, 4f / (float)(Settings.GetDifficulty() + 1),7));
-            patterns[Stages.high].Add(new LaunchHomingMissiles(this, em, 2f / (float)(Settings.GetDifficulty() + 1)));
+			midHp = (int)(hp * 0.80f);
+			lowHp = (int)(hp * 0.45f);
 
-            patterns[Stages.mid].Add(new FlakBarrage(this, em, 3f / (float)(Settings.GetDifficulty() + 1), 13));
+            float difficulty = (float)Settings.GetDifficulty() + 1;
+            
+            patterns[Stages.high].Add(new LaunchHomingMissiles(this, em, 0.5f + 2.5f / difficulty));
 
-            patterns[Stages.low].Add(new Bouncers(this, em, 5f / (float)(Settings.GetDifficulty() + 1), 13));
-            patterns[Stages.low].Add(new LaunchHomingMissiles(this, em, 3f / (float)(Settings.GetDifficulty() + 1)));
+            patterns[Stages.mid].Add(new FlakBarrage(this, em, 0.75f + 3f / difficulty, difficulty == 1 ? 7 : 13));
+
+            patterns[Stages.low].Add(new Bouncers(this, em, 3f / difficulty, difficulty == 1 ? 7 : 13));
+            patterns[Stages.low].Add(new LaunchHomingMissiles(this, em, 0.5f + 3f / difficulty));
         }
 
 

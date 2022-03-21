@@ -56,7 +56,7 @@
     <property name="Clockwise" value="False"/>
    </properties>
   </object>
-  <object id="26371" type="ManekiNeko" gid="6" x="368" y="-3120" width="74" height="74"/>
+  <object id="26371" type="MahouShoujo" gid="6" x="368" y="-3120" width="74" height="74"/>
   <object id="26390" type="Airmine" gid="1" x="480" y="-928" width="32" height="32"/>
   <object id="26391" type="Airmine" gid="1" x="576" y="-928" width="32" height="32"/>
   <object id="26392" type="Airmine" gid="1" x="528" y="-976" width="32" height="32"/>
