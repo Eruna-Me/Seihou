@@ -18,7 +18,7 @@ namespace Seihou
 		public MahouShoujo(SpriteBatch sb, EntityManager em) : base(new Vector2(Global.Center.X, Global.spawnHeight), sb, em)
 		{
 			speed.Y = fallspeed;
-			texture = "ManekiNeko";
+            texture = "MahouShoujo";
 
 			size = ResourceManager.textures[texture].Height / 2;
 			hp = 500;
@@ -31,9 +31,9 @@ namespace Seihou
             
             patterns[Stages.high].Add(new LaunchHomingMissiles(this, em, 0.5f + 2.5f / difficulty));
 
-            patterns[Stages.mid].Add(new FlakBarrage(this, em, 0.75f + 3f / difficulty, difficulty == 1 ? 7 : 13));
+            patterns[Stages.mid].Add(new FlakBarrage(this, em, 0.75f + 4f / difficulty, difficulty == 1 ? 7 : 13));
 
-            patterns[Stages.low].Add(new Bouncers(this, em, 3f / difficulty, difficulty == 1 ? 7 : 13));
+            patterns[Stages.low].Add(new Bouncers(this, em, 0.5f + 3f / difficulty, difficulty == 1 ? 7 : 13));
             patterns[Stages.low].Add(new LaunchHomingMissiles(this, em, 0.5f + 3f / difficulty));
         }
 

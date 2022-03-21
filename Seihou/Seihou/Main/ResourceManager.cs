@@ -45,6 +45,7 @@ namespace Seihou
 
 			//Bosses
 			textures.Add("ManekiNeko",		 cm.Load<Texture2D>("Bosses/ManekiNeko"));
+			textures.Add("MahouShoujo", cm.Load<Texture2D>("Bosses/MahouShoujo"));
 
 			//Enemies
 			textures.Add("Ninja",	         cm.Load<Texture2D>("Enemies/Ninja"));

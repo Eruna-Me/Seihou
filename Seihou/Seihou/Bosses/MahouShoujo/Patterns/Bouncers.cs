@@ -5,7 +5,7 @@ namespace Seihou
 {
     internal class Bouncers : Pattern
     {
-        const float bulletSpeed = 175;
+        const float bulletSpeed = 125;
 
         readonly float spawnRate;
         readonly int amount;
