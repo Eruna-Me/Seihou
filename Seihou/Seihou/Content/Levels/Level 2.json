@@ -1925,6 +1925,49 @@
                  "width":32,
                  "x":48,
                  "y":-2864
+                }, 
+                {
+                 "gid":5,
+                 "height":32,
+                 "id":26589,
+                 "name":"Wait for player",
+                 "properties":[
+                        {
+                         "name":"FadeInTime",
+                         "type":"string",
+                         "value":"1"
+                        }, 
+                        {
+                         "name":"FadeOutTime",
+                         "type":"string",
+                         "value":"2"
+                        }, 
+                        {
+                         "name":"Font",
+                         "type":"string",
+                         "value":"DefaultFontBig"
+                        }, 
+                        {
+                         "name":"HoldTime",
+                         "type":"string",
+                         "value":"2"
+                        }, 
+                        {
+                         "name":"Text",
+                         "type":"string",
+                         "value":"~Level 2~"
+                        }, 
+                        {
+                         "name":"TextColor",
+                         "type":"string",
+                         "value":"2,2,2"
+                        }],
+                 "rotation":0,
+                 "type":"LogicIntro",
+                 "visible":true,
+                 "width":32,
+                 "x":384,
+                 "y":-32
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1933,10 +1976,10 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":26588,
+ "nextobjectid":26590,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.7.2",
+ "tiledversion":"1.8.2",
  "tileheight":16,
  "tilesets":[
         {
@@ -1945,6 +1988,6 @@
         }],
  "tilewidth":16,
  "type":"map",
- "version":"1.6",
+ "version":"1.8",
  "width":100
 }

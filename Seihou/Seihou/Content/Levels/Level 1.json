@@ -2191,7 +2191,7 @@
                         {
                          "name":"NextLevelName",
                          "type":"string",
-                         "value":"level2"
+                         "value":"Level 2"
                         }],
                  "rotation":0,
                  "type":"LogicNextLevel",
@@ -2199,6 +2199,49 @@
                  "width":32,
                  "x":48,
                  "y":-5488
+                }, 
+                {
+                 "gid":5,
+                 "height":32,
+                 "id":26508,
+                 "name":"Intro",
+                 "properties":[
+                        {
+                         "name":"FadeInTime",
+                         "type":"string",
+                         "value":"1"
+                        }, 
+                        {
+                         "name":"FadeOutTime",
+                         "type":"string",
+                         "value":"3"
+                        }, 
+                        {
+                         "name":"Font",
+                         "type":"string",
+                         "value":"DefaultFontBig"
+                        }, 
+                        {
+                         "name":"HoldTime",
+                         "type":"string",
+                         "value":"2"
+                        }, 
+                        {
+                         "name":"Text",
+                         "type":"string",
+                         "value":"Level 1"
+                        }, 
+                        {
+                         "name":"TextColor",
+                         "type":"string",
+                         "value":"25,20,10"
+                        }],
+                 "rotation":0,
+                 "type":"LogicIntro",
+                 "visible":true,
+                 "width":32,
+                 "x":368,
+                 "y":144
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -2207,7 +2250,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":26508,
+ "nextobjectid":26509,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.2",

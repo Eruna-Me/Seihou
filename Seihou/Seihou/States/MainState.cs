@@ -52,7 +52,7 @@ namespace Seihou
         {
             MonoGame.Primitives2D.FillRectangle(sb, new Vector2(0, 0), new Vector2(Global.playingFieldWidth, Global.screenHeight),Global.gameBackgroundColor, 0);
             _entityManager.Draw(gt);
-            UI.Draw(gt, sb, sm, _entityManager);
+            UI.Draw(gt, sb, sm, _entityManager, _levelManager);
 
             if (pause) DrawPauseMenu(gt);
             if (death) DrawDeathMenu(gt);
@@ -94,7 +94,7 @@ namespace Seihou
         public override void OnStart()
         {
             CloudManager.Initialize(sb, _entityManager);
-            _levelManager.LoadLevel("Level1");
+            _levelManager.LoadLevel("Level 1");
             _entityManager.AddEntity(player);
             _entityFactory.Index();
         }

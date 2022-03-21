@@ -214,11 +214,11 @@
 #begin Levels/Basiclevel.json
 /copy:Levels/Basiclevel.json
 
-#begin Levels/level1.json
-/copy:Levels/level1.json
+#begin Levels/Level 1.json
+/copy:Levels/Level 1.json
 
-#begin Levels/level2.json
-/copy:Levels/level2.json
+#begin Levels/Level 2.json
+/copy:Levels/Level 2.json
 
 #begin Misc/backgroundUI.png
 /importer:TextureImporter

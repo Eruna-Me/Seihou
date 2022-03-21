@@ -56,7 +56,8 @@ namespace Seihou
                 graphics.ApplyChanges();
             }
 
-            stateManager.Update(gameTime);
+            float timeScale = Keyboard.GetState().IsKeyDown(Keys.F2) ? 30 : 1;
+            stateManager.Update(new GameTime(gameTime.TotalGameTime, gameTime.ElapsedGameTime * timeScale));
 
             if (stateManager.abort) Exit();
 

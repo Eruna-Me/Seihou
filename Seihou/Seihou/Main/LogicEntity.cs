@@ -10,13 +10,15 @@ namespace Seihou
 {
 	abstract class LogicEntity : Entity
 	{
-		protected float Time => _time.Value;
+		protected float? Duration { get; private set; }
+		protected float? TimeLeft => _time;
 		private float? _time;
 
 		public LogicEntity(EntityManager em, SpriteBatch sb, float? timer = null) : base(default, sb, em)
 		{
 			ec = EntityManager.EntityClass.logic;
 			_time = timer;
+			Duration = timer;
 		}
 
 		public override void OnDamaged(Entity by, int damage)

@@ -22,6 +22,7 @@ namespace Seihou
             public Vector2 Size { get; init; }
         }
 
+        public string CurrentLevelName { get; private set; }
         public Vector2 PlayerSpawn { get; private set; }
 
         public float CurrentHeight { get; private set; } = -1f;
@@ -55,6 +56,7 @@ namespace Seihou
 
         public void LoadLevel(string name)
         {
+            CurrentLevelName = name;
             var level = File.ReadAllText(Path.Join("Content", "Levels", name + ".json"));
             var objects = ParseObjects(level);
             LoadObjects(objects);

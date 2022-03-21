@@ -4,9 +4,9 @@ using System;
 
 namespace Seihou
 {
-	public static class UI
+	internal static class UI
 	{
-		public static void Draw(GameTime gt, SpriteBatch sb,StateManager sm,EntityManager em)
+		public static void Draw(GameTime gt, SpriteBatch sb, StateManager sm, EntityManager em, LevelManager levelManager)
 		{
             var font1 = ResourceManager.fonts["DefaultFont"];
             var font2 = ResourceManager.fonts["DefaultFontBig"];
@@ -51,17 +51,17 @@ namespace Seihou
 			DrawOutlinedFont(font1, "Power: ", new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White, Color.Black);
 			DrawOutlinedFont(font1,powerText, new Vector2(Global.playingFieldWidth + 20 + font1.MeasureString("Power: ").X, y), Color.Red, Color.Black);
 
-			//Grace
+			//Graze
 			DrawOutlinedFont(font1, "Graze: ", new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White, Color.Black);
 			DrawOutlinedFont(font1, Math.Round(Global.player.graze).ToString(), new Vector2(Global.playingFieldWidth + 20 + font1.MeasureString("Grace: ").X, y), Color.Blue, Color.Black);
 
             y += uiLineHeight; //New line
 
-			//Grace
-			DrawOutlinedFont(font1, "Stage: 1", new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White, Color.Black);
+			//Current level
+			DrawOutlinedFont(font1, levelManager.CurrentLevelName, new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White, Color.Black);
 
-            //Fps
-            sb.DrawString(font1, $"Fps: {sm.GetFps()}", Global.FpsCounterPos, CoolFpsColorThing(sm.GetFps()));
+			//Fps
+			sb.DrawString(font1, $"Fps: {sm.GetFps()}", Global.FpsCounterPos, CoolFpsColorThing(sm.GetFps()));
             sb.DrawString(font1, $"Entities: {em.GetEntityCount()}", Global.EntCounterPos, Color.Black);
 
             //Make the fps counter the proper color
