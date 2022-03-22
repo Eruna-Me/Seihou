@@ -39,10 +39,10 @@
     <None Update="Content\Levels\Boss1Test.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Content\Levels\level1.json">
+    <None Update="Content\Levels\Level 1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Content\Levels\level2.json">
+    <None Update="Content\Levels\Level 2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

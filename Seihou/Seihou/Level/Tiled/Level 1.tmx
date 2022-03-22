@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="100" height="600" tilewidth="16" tileheight="16" infinite="1" nextlayerid="4" nextobjectid="26508">
+<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="100" height="600" tilewidth="16" tileheight="16" infinite="1" nextlayerid="4" nextobjectid="26509">
  <editorsettings>
-  <export target="../../Content/Levels/level1.json" format="json"/>
+  <export target="../../Content/Levels/Level 1.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" source="SeihouSprites.tsx"/>
  <objectgroup id="3" name="Ignore">
@@ -217,7 +217,17 @@
   <object id="26506" name="Wait for player" type="LogicWaitForEmpty" gid="5" x="48" y="-5248" width="32" height="32"/>
   <object id="26507" name="Move to next level" type="LogicNextLevel" gid="5" x="48" y="-5488" width="32" height="32">
    <properties>
-    <property name="NextLevelName" value="level2"/>
+    <property name="NextLevelName" value="Level 2"/>
+   </properties>
+  </object>
+  <object id="26508" name="Intro" type="LogicIntro" gid="5" x="368" y="144" width="32" height="32">
+   <properties>
+    <property name="FadeInTime" value="1"/>
+    <property name="FadeOutTime" value="3"/>
+    <property name="Font" value="DefaultFontBig"/>
+    <property name="HoldTime" value="2"/>
+    <property name="Text" value="Level 1"/>
+    <property name="TextColor" value="25,20,10"/>
    </properties>
   </object>
  </objectgroup>

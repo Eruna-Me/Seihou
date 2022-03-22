@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 
 namespace Seihou
 {
@@ -56,11 +57,18 @@ namespace Seihou
                 graphics.ApplyChanges();
             }
 
+            DeveloperGameTime(ref gameTime);
             stateManager.Update(gameTime);
 
             if (stateManager.abort) Exit();
 
             base.Update(gameTime);
+        }
+
+        [Conditional("DEBUG")]
+        private static void DeveloperGameTime(ref GameTime time)
+        {
+            time.ElapsedGameTime *= Keyboard.GetState().IsKeyDown(Keys.F2) ? 30 : 1;
         }
 
         protected override void Draw(GameTime gameTime)

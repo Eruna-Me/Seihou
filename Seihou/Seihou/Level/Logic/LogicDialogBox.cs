@@ -120,8 +120,6 @@ namespace Seihou.Form.Dialog
 			_alpha = touchingPlayer ? 0.4f : 1f;
 		}
 
-
-
 		public override void Draw(GameTime gt)
 		{
 			var box = ResourceManager.textures["DialogBox"];
