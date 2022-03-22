@@ -1955,7 +1955,7 @@
                         {
                          "name":"Text",
                          "type":"string",
-                         "value":"~Level 2~"
+                         "value":"Level 2"
                         }, 
                         {
                          "name":"TextColor",
@@ -1968,6 +1968,73 @@
                  "width":32,
                  "x":384,
                  "y":-32
+                }, 
+                {
+                 "gid":5,
+                 "height":32,
+                 "id":26590,
+                 "name":"Wait for player",
+                 "rotation":0,
+                 "type":"LogicWaitForEmpty",
+                 "visible":true,
+                 "width":32,
+                 "x":32,
+                 "y":-3376
+                }, 
+                {
+                 "gid":5,
+                 "height":32,
+                 "id":26592,
+                 "name":"EndGame",
+                 "rotation":0,
+                 "type":"LogicEndGame",
+                 "visible":true,
+                 "width":32,
+                 "x":32,
+                 "y":-3664
+                }, 
+                {
+                 "gid":5,
+                 "height":32,
+                 "id":26593,
+                 "name":"Outro",
+                 "properties":[
+                        {
+                         "name":"FadeInTime",
+                         "type":"string",
+                         "value":"1"
+                        }, 
+                        {
+                         "name":"FadeOutTime",
+                         "type":"string",
+                         "value":"2"
+                        }, 
+                        {
+                         "name":"Font",
+                         "type":"string",
+                         "value":"DefaultFontBig"
+                        }, 
+                        {
+                         "name":"HoldTime",
+                         "type":"string",
+                         "value":"2"
+                        }, 
+                        {
+                         "name":"Text",
+                         "type":"string",
+                         "value":"You are winner!"
+                        }, 
+                        {
+                         "name":"TextColor",
+                         "type":"string",
+                         "value":"2,2,2"
+                        }],
+                 "rotation":0,
+                 "type":"LogicIntro",
+                 "visible":true,
+                 "width":32,
+                 "x":400,
+                 "y":-3488
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1976,10 +2043,10 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":26590,
+ "nextobjectid":26594,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.8.2",
+ "tiledversion":"1.7.2",
  "tileheight":16,
  "tilesets":[
         {
@@ -1988,6 +2055,6 @@
         }],
  "tilewidth":16,
  "type":"map",
- "version":"1.8",
+ "version":"1.6",
  "width":100
 }

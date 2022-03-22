@@ -28,16 +28,11 @@ namespace Seihou
 
             pos += speed * gt.Time();
 
-            if (homingTime < 0)
-            {
-                return;
-            }
-            else
+            if (homingTime > 0)
             {
                 homingTime -= gt.Time();
+                speed = (Global.Normalize(Global.player.pos - pos) * bulletSpeed + speed * mooiBoogjeLevel) / (mooiBoogjeLevel + 1);
             }
-
-            speed = (Global.Normalize(Global.player.pos - pos) * bulletSpeed + speed * mooiBoogjeLevel) / (mooiBoogjeLevel + 1);
 
             base.Update(gt);    
         }

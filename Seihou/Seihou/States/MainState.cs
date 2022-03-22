@@ -14,12 +14,13 @@ namespace Seihou
         private readonly EntityFactory _entityFactory;
         private readonly LevelManager _levelManager;
 
-        SpriteFont font1;
-        Player player;
+        //SpriteFont font1;
+        readonly Player player;
         KeyboardState oldKeyState;
 
         bool pause = false;
         bool death = false;
+        bool gameEnd = false;
 
         //Constructor
         public MainState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
@@ -29,7 +30,7 @@ namespace Seihou
             _levelManager = new LevelManager(_entityFactory);
             SetupLevelDependencies();
 
-            font1 = ResourceManager.fonts["DefaultFont"];
+            //font1 = ResourceManager.fonts["DefaultFont"];
 
             MediaPlayer.Play(ResourceManager.songs["TestSong"]);
             MediaPlayer.IsRepeating = true;
@@ -56,7 +57,7 @@ namespace Seihou
 
             if (pause) DrawPauseMenu(gt);
             if (death) DrawDeathMenu(gt);
-            //DrawDennis();
+            if (gameEnd) DrawGameEndMenu(gt);
         }
 
         public override void Update(GameTime gt)
@@ -77,6 +78,8 @@ namespace Seihou
 
             if (pause) UpdatePauseMenu(gt);
             if (death) UpdateDeathMenu(gt);
+            if (gameEnd) UpdateGameEndMenu(gt);
+
 			Cursor.Moved();
 			Button.ButtonKeyControl(gt);
 		}
@@ -84,6 +87,14 @@ namespace Seihou
         public void OnPlayerDeath()
         {
             death = true;
+            if (Keyboard.GetState().IsKeyDown(Settings.GetKey("shootKey")))
+            {
+                Button.AwaitFireKeyUp = true;
+            };
+        }
+        public void OnGameOver()
+        {
+            gameEnd = true;
             if (Keyboard.GetState().IsKeyDown(Settings.GetKey("shootKey")))
             {
                 Button.AwaitFireKeyUp = true;

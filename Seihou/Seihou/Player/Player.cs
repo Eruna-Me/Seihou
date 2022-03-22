@@ -9,7 +9,7 @@ namespace Seihou
 	abstract class Player : Entity
 	{
         //Other
-        StateManager sm;
+        public StateManager sm;
         protected State myState;
 
 		//Graphics
@@ -61,7 +61,6 @@ namespace Seihou
 
 		public override void Update(GameTime gt)
 		{
-			int SpriteSize = ResourceManager.textures[texture].Height / 2;
 			trail.Update(pos,gt);
 			KeyboardState kb = Keyboard.GetState();
 
