@@ -8,7 +8,7 @@ namespace Seihou
     {
         private const float fallSpeed = 40.0f;
         private readonly float maxFireDelay;
-        private const float bulletSpeed = 200.0f;
+        private const float bulletSpeed = 300.0f;
         private float fireDelay = 0;
         private readonly int bullets;
 

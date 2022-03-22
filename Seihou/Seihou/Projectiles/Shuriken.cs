@@ -4,60 +4,54 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Seihou
 {
-    class Shuriken : EnemyProjectile
+    internal class Shuriken : EnemyProjectile
     {
-        Trail trail;
-        float rotation = 0;
-		const float acceleration = 1.005f;
-		float timerUntilPause = 0;
-		const float timeUntilPause = 0.2f;
-		float timerPause = 0;
-		const float timePause = 0.01f;
-		bool pause = false;
-		bool resume = false;
-		const float resumeSpeed = 300;
+        private readonly Trail trail;
 
-		Vector2 pauseSpeed;
-		
+		private const float acceleration = 500f;
+		private const float timeUntilPause = 0.2f;
+		private const float pauseDuration = 0.1f;
+
+		private bool isResumed = false;
+		private float rotation = 0;
+		private float resumeSpeed = 300;
+		private float timer = 0;
+		private Vector2 pauseSpeed;
+		private Vector2 target;
+			
         public Shuriken(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed,Vector2 pauseSpeed) : base(pos, sb, em, owner)
         {
-			this.pauseSpeed = pauseSpeed;
             texture = "Shuriken";
-            trail = new Trail(sb, texture,20,0.01f);
+			
+			this.pauseSpeed = pauseSpeed;
 			this.speed = speed + pauseSpeed;
+            trail = new Trail(sb, texture,20,0.01f);
             size = ResourceManager.textures[texture].Height/2;
         }
 
         public override void Update(GameTime gt)
         {
-            rotation += gt.Time();
+			rotation += gt.Time();
+			timer += gt.Time();
             trail.Update(pos,gt, rotation);
 
-			if (pause)
-			{
-				speed = pauseSpeed;
-				timerPause += gt.Time();
-				if (timerPause >= timePause)
-				{
-					resume = true;
-					pause = false;
-					speed = Global.Normalize(Global.player.pos - pos) * resumeSpeed;
-				}
+			if (timer < timeUntilPause)
+			{//Prepare
 			}
-			else if (!resume)
-			{
-				speed *= acceleration;
-
-				timerUntilPause += gt.Time();
-				if (timerUntilPause >= timeUntilPause)
-				{
-					pause = true;
-					speed = new Vector2(0, 0);
-				}
+			else if (timer < pauseDuration + timeUntilPause)
+			{//Pause
+				speed = pauseSpeed;
 			}
 			else
-			{
-				speed *= acceleration;
+			{//Attack
+				if (!isResumed)
+				{
+					target = Global.player.pos - pos;
+				}
+
+				speed = Global.Normalize(target) * resumeSpeed;
+				resumeSpeed += acceleration * gt.Time();
+				isResumed = true;
 			}
 
             base.Update(gt);
