@@ -3,8 +3,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Seihou
 {
-	abstract class Control
+	internal abstract class Control
     {
+		public int TabIndex { get; set; } = -1;
+
 		protected SpriteBatch sb;
 
 		public Control(SpriteBatch sb)
@@ -12,10 +14,13 @@ namespace Seihou
 			this.sb = sb;
 		}
 
-		public Color background = Color.Transparent;
-		public Color textColor = Color.White;
-
         public abstract void Draw(GameTime gt);
-        public abstract void Update(GameTime gt);
-    }
+		public abstract void Update(GameTime gt);
+		public virtual void MouseMove(Vector2 mouse) { }
+		public virtual void SetTabIndex(int index) { }
+
+		public virtual void Press() { }
+		public virtual void Release() { }
+		public virtual void OnKeyboardPress() { }
+	}
 }

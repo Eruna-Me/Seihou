@@ -5,7 +5,7 @@ namespace Seihou.Level.Logic
 {
     internal class LogicIntro : LogicEntity
     {
-        private readonly TextBlock _textBlock;
+        private readonly TextLabel _label;
 		private readonly SpriteFont _font;
 		private readonly Color _color;
         private readonly float _fadeInTime;
@@ -30,15 +30,14 @@ namespace Seihou.Level.Logic
             _holdTime = holdTime;
             _fadeOutTime = fadeOutTime;
 
-            //TODO: should probably use the TextLabel from JTTE but this works too
-            _textBlock = new TextBlock(_font)
+            _label = new TextLabel()
 			{
 				Color = Color.Transparent,
 				TextAlign = TextAlign.Center,
 				Position = new Vector2(Global.playingFieldWidth/2, Global.screenHeight/2),
 				TextGravity = TextGravity.Center,
 				Size = new Vector2(-1, -1),
-				ParseOnDraw = false,
+				Font = _font,
 				TextString = text,
 			};
 		}
@@ -51,21 +50,21 @@ namespace Seihou.Level.Logic
 
 			if (_timer < _fadeInTime)
             {
-				_textBlock.Color = _color * (_timer / _fadeInTime);
+				_label.Color = _color * (_timer / _fadeInTime);
             }
 			else if (_timer > _fadeInTime + _holdTime)
             {
-				_textBlock.Color = _color * (1 - ((_timer - (_fadeInTime + _holdTime)) / _fadeOutTime));
+				_label.Color = _color * (1 - ((_timer - (_fadeInTime + _holdTime)) / _fadeOutTime));
             }
 			else
             {
-				_textBlock.Color = _color;
+				_label.Color = _color;
 			}
 		}
 
 		public override void Draw(GameTime gt)
 		{
-			_textBlock.Draw(sb);
+			_label.Draw(sb);
 		}
 	}
 }

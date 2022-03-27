@@ -54,8 +54,9 @@ namespace Seihou.Form.Dialog
 			_font = ResourceManager.fonts[font];
 			_allText = text;
 
-			_textBlock = new TextBlock(_font)
+			_textBlock = new TextBlock()
 			{
+				Font = _font,
 				TextAlign = TextAlign.Left,
 				Position = _location + _dialogTextLocation,
 				TextGravity = TextGravity.Top,

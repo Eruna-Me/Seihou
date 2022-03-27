@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using static Seihou.Settings;
+using System.Collections.Generic;
 
 namespace Seihou
 {
@@ -62,5 +64,17 @@ namespace Seihou
 			}
 			return true;
 		}
-	}
+
+		public static Color GetDifficultyColor(Difficulty difficulty)
+        {
+            return difficulty switch
+            {
+                Difficulty.easy => Color.Green,
+                Difficulty.normal => Color.Yellow,
+                Difficulty.hard => Color.Red,
+                Difficulty.usagi => Color.Purple,
+                _ => throw new KeyNotFoundException(),
+            };
+        }
+    }
 }
