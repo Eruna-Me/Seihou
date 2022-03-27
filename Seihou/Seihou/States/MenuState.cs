@@ -12,10 +12,8 @@ namespace Seihou
 
 		public MenuState (StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
         {
+			host.DefaultTabIndex = 0;
 
-
-
-			host.DefaultTabIndex = 4;
             host.AddControl(new Button(sb, OnClickedStart) { Text = "Start" });
 			host.AddControl(new Button(sb, OnClickedHighscores) { Text = "Highscores" });
 			host.AddControl(new Button(sb, OnClickedSettings) { Text = "Settings" });
@@ -30,7 +28,7 @@ namespace Seihou
 				button.Gravity = TextGravity.Center;
 				button.Size = new(200, 50);
 				button.Position = new(buttonsX, firstButtonHeight + spacing * i);
-				button.TabIndex = 4 - i;
+				button.TabIndex = i;
 			}
 		}
 

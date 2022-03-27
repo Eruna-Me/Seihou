@@ -42,11 +42,11 @@ namespace Seihou
 
         public override void Draw(GameTime gt)
         {
-			MonoGame.Primitives2D.FillRectangle(sb, _position, _size, background, 0);
+			MonoGame.Primitives2D.FillRectangle(sb, _position, _size, Color.Gray, 0);
 
 			for (int i = 0; i < ScoreText.Count; i++)
 			{
-				sb.DrawString(ResourceManager.fonts[FONT], ScoreText[i] ?? "Empty", new Vector2(_position.X, _position.Y + (i * Y_SPACING)), textColor);
+				sb.DrawString(ResourceManager.fonts[FONT], ScoreText[i] ?? "Empty", new Vector2(_position.X, _position.Y + (i * Y_SPACING)), Color.White);
 			}			
         }
 

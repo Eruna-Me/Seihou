@@ -17,7 +17,7 @@ namespace Seihou
 
 			//I did not make up these difficulty texts
 
-			host.DefaultTabIndex = 2;
+			host.DefaultTabIndex = 1;
 
 			host.AddControl(new Button(sb, () => StartGame(Settings.Difficulty.easy), Global.GetDifficultyColor(Settings.Difficulty.easy)) 
 			{ Text = "EASY \n    Eh? Easy modo? How lame! Only kids play on easy modo!!" });
@@ -31,13 +31,15 @@ namespace Seihou
 			host.AddControl(new Button(sb, () => StartGame(Settings.Difficulty.usagi), Global.GetDifficultyColor(Settings.Difficulty.usagi))
 			{ Text = "USAGI \n    Rabbits are scary animals." });
 
+			int tabIndex = 0;
+
 			for (int i = 0; i < host.Controls.Count; i++)
             {
 				var button = host.Controls[i] as Button;
 				button.Align = TextAlign.Left;
 				button.Position = new Vector2(buttonsX, firstButtonHeight + spacing * i);
 				button.Size = new Vector2(1000, 90);
-				button.TabIndex = 3 - i;
+				button.TabIndex = tabIndex++;
 				button.TextColorTabIndex = button.TextColor;
 				button.BackgroundColorTabIndex = new Color(40, 40, 0, 50);
 			}
@@ -47,7 +49,7 @@ namespace Seihou
 				Text = "Back",
 				Position = new Vector2(50, 50),
 				Size = new Vector2(100, 50),
-				TabIndex = 4,
+				TabIndex = tabIndex++,
 			}); ;
 		}
 

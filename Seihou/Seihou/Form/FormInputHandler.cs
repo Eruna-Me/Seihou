@@ -6,6 +6,9 @@ namespace Seihou
 {
     internal class FormInputHandler
     {
+        public bool BlockKeyboard { get; set; } = false;
+        public bool Block { get; set; } = false;
+
         public event Action<int> OnTabIndexChanged;
         public event Action<Vector2> OnMouseMoved;
         public event Action OnPressed;
@@ -18,8 +21,23 @@ namespace Seihou
 
         public void Update()
         {
-            UpdateMouse();
-            UpdateKeyboard();
+            if (Block)
+            {
+                lastMouseState = new();
+            }
+            else
+            {
+                UpdateMouse();
+            }
+
+            if (Block || BlockKeyboard)
+            {
+                lastKeyboardState = new();
+            }
+            else
+            {
+                UpdateKeyboard();
+            }
         }
 
         public void UpdateKeyboard()
@@ -41,11 +59,11 @@ namespace Seihou
             }
 
             if (!lastUp && nowUp)
-                OnTabIndexChanged?.Invoke(+1);
-
-            if (!lastDown && nowDown)
                 OnTabIndexChanged?.Invoke(-1);
-
+            
+            if (!lastDown && nowDown)
+                OnTabIndexChanged?.Invoke(+1);
+            
             lastKeyboardState = state;
         }
 
@@ -54,7 +72,9 @@ namespace Seihou
             var state = Mouse.GetState();
 
             if (state.LeftButton == ButtonState.Pressed && lastMouseState.LeftButton == ButtonState.Released)
+            {
                 OnPressed?.Invoke();
+            }
 
             if (state.LeftButton == ButtonState.Released && lastMouseState.LeftButton == ButtonState.Pressed)
                 OnReleased?.Invoke();

@@ -22,9 +22,9 @@ namespace Seihou
 		public TextAlign Align { get; set; } = TextAlign.Center;
 		public TextGravity Gravity { get; set; } = TextGravity.Center;
 
-		public Vector2 Position { get; set; }
-		public Vector2 Size { get; set; }
-		public string Text { get; set; }
+		public Vector2 Position { get; set; } = new Vector2(0, 0);
+		public Vector2 Size { get; set; } = new Vector2(100, 50);
+		public string Text { get; set; } = string.Empty;
 		public string Font { get; set; } = "DefaultFont";
 
 		private bool isSelected = false;
@@ -53,11 +53,23 @@ namespace Seihou
 		public void SetSimpleColorText(Color c)
         {
 			TextColor = c;
-			TextColorSelected = new Color(c.R - 50, c.G - 50, c.B - 50, c.A);
-			TextColorOnMouseDown = new Color(c.R - 100, c.G - 100, c.B - 100, c.A);
-        }
+			TextColorSelected = Darken(c, 0.5f);
+			TextColorOnMouseDown  = Darken(c, 0.2f);
+		}
 
-		private Color GetCurrentBackgroundColor()
+		public void SetSimpleColorBackground(Color c)
+		{
+			BackgroundColor = c;
+			BackgroundColorSelected = Darken(c, 0.5f);
+			BackgroundColorOnMouseDown = Darken(c, 0.2f);
+		}
+
+		private static Color Darken(Color c, float m)
+        {
+			return new Color((byte)(c.R * m), (byte)(c.G * m), (byte)(c.B * m), c.A);
+		}
+
+		protected virtual Color GetCurrentBackgroundColor()
         {
 			if (isPressed)
 				return BackgroundColorOnMouseDown;
@@ -72,7 +84,7 @@ namespace Seihou
 			return BackgroundColor;
         }
 
-		private Color GetCurrentTextColor()
+		protected virtual Color GetCurrentTextColor()
 		{
 			if (isPressed)
 				return TextColorOnMouseDown;

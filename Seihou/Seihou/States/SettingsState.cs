@@ -6,69 +6,81 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Seihou
 {
-	class SettingsState : State
-	{
-		List<Control> buttons = new List<Control>();
+    class SettingsState : State
+    {
+        private readonly FormHost host = new();
 
-		static Vector2 ButtonStart = new Vector2(400,100);
-		static Vector2 ButtonSize = new Vector2(500, 50);
-		static Vector2 spacing = new Vector2(0, ButtonSize.Y);
+        static Vector2 ButtonStart = new(30, 100);
+        static Vector2 ButtonSize = new(500, 50);
+        static Vector2 spacing = new(0, ButtonSize.Y);
 
-		public SettingsState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
-		{
-			int i = 0;
-			buttons.Add(new PickerButton(spacing * i + ButtonStart,ButtonSize, sb, "Starting Lives" ,"startingLives" , Settings.Get("game", "startingLives"), i++,"1", "2", "3", "4", "5"));
-			buttons.Add(new PickerButton(spacing * i + ButtonStart, ButtonSize, sb, "Starting Bombs" , "startingBombs", Settings.Get("game", "startingBombs"), i++, "0", "1", "2", "3"));
-			buttons.Add(new PickerButton(spacing * i + ButtonStart, ButtonSize, sb, "Simple Graphics", "simpleGraphics", Settings.Get("graphics", "simpleGraphics"), i++, "True", "False"));
-			buttons.Add(new KeyPicker(spacing * i + ButtonStart, ButtonSize, sb, "Move Up", "upKey", Settings.GetKey("upKey"), i++));
-			buttons.Add(new KeyPicker(spacing * i + ButtonStart, ButtonSize, sb, "Move Down", "downKey", Settings.GetKey("downKey"), i++));
-			buttons.Add(new KeyPicker(spacing * i + ButtonStart, ButtonSize, sb, "Move Left", "leftKey", Settings.GetKey("leftKey"), i++));
-			buttons.Add(new KeyPicker(spacing * i + ButtonStart, ButtonSize, sb, "Move Right", "rightKey", Settings.GetKey("rightKey"), i++));
-			buttons.Add(new KeyPicker(spacing * i + ButtonStart, ButtonSize, sb, "Precision Mode", "slowKey", Settings.GetKey("slowKey"), i++));
-			buttons.Add(new KeyPicker(spacing * i + ButtonStart, ButtonSize, sb, "Fire", "shootKey", Settings.GetKey("shootKey"), i++));
-			buttons.Add(new KeyPicker(spacing * i + ButtonStart, ButtonSize, sb, "Bomb", "bombKey", Settings.GetKey("bombKey"), i++));
+        public SettingsState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
+        {
+            int i = 0;
+            void Block(bool block) => host.BlockUserInput = block;
 
-			buttons.Add(new Button(new Vector2(300, 670), ButtonSize, sb,OnExit, "Save & Exit", i++));
-		}
+            host.AddControl(new PickerButton(spacing * i + ButtonStart, ButtonSize, sb, "Starting Lives", "startingLives", Settings.Get("game", "startingLives"), i++, "1", "2", "3", "4", "5"));
+            host.AddControl(new PickerButton(spacing * i + ButtonStart, ButtonSize, sb, "Starting Bombs", "startingBombs", Settings.Get("game", "startingBombs"), i++, "0", "1", "2", "3"));
+            host.AddControl(new PickerButton(spacing * i + ButtonStart, ButtonSize, sb, "Simple Graphics", "simpleGraphics", Settings.Get("graphics", "simpleGraphics"), i++, "True", "False"));
+            host.AddControl(new KeyPicker(Block, spacing * i + ButtonStart, ButtonSize, sb, "Move Up", "upKey", Settings.GetKey("upKey"), i++));
+            host.AddControl(new KeyPicker(Block, spacing * i + ButtonStart, ButtonSize, sb, "Move Down", "downKey", Settings.GetKey("downKey"), i++));
+            host.AddControl(new KeyPicker(Block, spacing * i + ButtonStart, ButtonSize, sb, "Move Left", "leftKey", Settings.GetKey("leftKey"), i++));
+            host.AddControl(new KeyPicker(Block, spacing * i + ButtonStart, ButtonSize, sb, "Move Right", "rightKey", Settings.GetKey("rightKey"), i++));
+            host.AddControl(new KeyPicker(Block, spacing * i + ButtonStart, ButtonSize, sb, "Precision Mode", "slowKey", Settings.GetKey("slowKey"), i++));
+            host.AddControl(new KeyPicker(Block, spacing * i + ButtonStart, ButtonSize, sb, "Fire", "shootKey", Settings.GetKey("shootKey"), i++));
+            host.AddControl(new KeyPicker(Block, spacing * i + ButtonStart, ButtonSize, sb, "Bomb", "bombKey", Settings.GetKey("bombKey"), i++));
 
-		public void OnExit(object Sender)
-		{
-			foreach (object b in buttons)
-			{
-				if (b is PickerButton pkb)
-				{
-					Settings.Set("controls", pkb.question, pkb.GetAnswer());
-					continue;
-				}
+            foreach(var control in host.Controls)
+            {
+                if (control is Button button)
+                    button.Align = TextAlign.Left;
+            }
 
-				if (b is KeyPicker kp)
-				{
-					Settings.SetKey(kp.keyName, (Keys)int.Parse(kp.GetKey()));
-					continue;
-				}
-			}
 
-			Settings.ExportSettings();
-			sm.ChangeState(new MenuState(sm, cm, sb, gdm));
-		}
+            host.AddControl(new Button(sb, OnExitScreen)
+            {
+                Position = new Vector2(300, 670),
+                Size = ButtonSize,
+                Text = "Save & Exit",
+                TabIndex = i++,
+            });
+        }
 
-		public override void Draw(GameTime gt)
-		{
-			sb.Draw(ResourceManager.textures["Logo"], new Vector2(Global.screenWidth / 2, 100), Color.White);
+        public void OnExitScreen()
+        {
+            foreach (object b in host.Controls)
+            {
+                if (b is PickerButton pkb)
+                {
+                    Settings.Set("controls", pkb.question, pkb.GetAnswer());
+                    continue;
+                }
 
-			sb.DrawString(ResourceManager.fonts["DefaultFont"], "Settings menu", new Vector2(10, 10), Color.White);
+                if (b is KeyPicker kp)
+                {
+                    Settings.SetKey(kp.KeyName, (Keys)int.Parse(kp.GetKey()));
+                    continue;
+                }
+            }
 
-			sb.DrawString(ResourceManager.fonts["DefaultFont"], "Hold your mouse on \nthe selected key setting \nand press the key you wish to use.", new Vector2(670,500), Color.White);
+            Settings.ExportSettings();
+            sm.ChangeState(new MenuState(sm, cm, sb, gdm));
+        }
 
-			foreach (var b in buttons) b.Draw(gt) ;
-		}
+        public override void Draw(GameTime gt)
+        {
+            sb.Draw(ResourceManager.textures["Logo"], new Vector2(Global.screenWidth / 2, 100), Color.White);
 
-		public override void Update(GameTime gt)
-		{
-			Cursor.Moved();
-			Global.buttonCount = buttons.Count;
-			Button.ButtonKeyControl(gt);
-			foreach (var b in buttons) b.Update(gt);
-		}
-	}
+            sb.DrawString(ResourceManager.fonts["DefaultFont"], "Settings menu", new Vector2(10, 10), Color.White);
+
+            if (host.BlockUserInput)
+            {
+                sb.DrawString(ResourceManager.fonts["DefaultFont"], "Press the key you wish to use.", new Vector2(670, 550), Color.BlueViolet);
+            }
+
+            host.Draw(gt);
+        }
+
+        public override void Update(GameTime gt) => host.Update(gt);
+    }
 }

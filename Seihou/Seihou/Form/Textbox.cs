@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 
 namespace Seihou
 {
-	class Textbox : Control
+	class OnScreenKeyboard : Control
     {
         const int maxLength = 15;
 
@@ -19,33 +20,41 @@ namespace Seihou
         Vector2 pos;
 
         List<Button> buttons = new List<Button>();
-		readonly ButtonCallBack onSubmit;
+		readonly Action onSubmit;
 
         const int xSpacing = 40;
 		const int ySpacing = 40;
 
-        public Textbox(Vector2 pos, SpriteBatch sb,ButtonCallBack onSubmit) : base(sb)
+        public OnScreenKeyboard(Vector2 pos, SpriteBatch sb,Action onSubmit) : base(sb)
         {
 			this.onSubmit = onSubmit;
             this.pos = pos;
 
             for (int row = 0; row < keys.GetLength(0); row++)
             {
-                for (int key = 0; key < keys.GetLength(1); key++)
-                {
-                    buttons.Add(new Button(new Vector2(pos.X + key * xSpacing, pos.Y + (row + 1) * ySpacing), new Vector2(xSpacing, ySpacing), sb, Pressed, keys[row, key].ToString(), 0, Button.Align.center) { background = Color.Gray});
-                }
+				for (int key = 0; key < keys.GetLength(1); key++)
+				{
+					var button = new Button(sb)
+					{
+						Position = new Vector2(pos.X + key * xSpacing, pos.Y + (row + 1) * ySpacing),
+						Size = new Vector2(xSpacing, ySpacing),
+						Text = keys[row, key].ToString(),
+						BackgroundColor = Color.Gray
+					};
+
+                    button.OnReleased += Pressed;
+				}
             }
 
 			foreach (var b in buttons)
 			{
-				switch(b.text)
+				switch(b.Text)
 				{
 					case "OK":
-						b.textColor = Color.Green;
+						b.TextColor = Color.Green;
 						break;
 					case "<":
-						b.textColor = Color.Red;
+						b.BackgroundColor = Color.Red;
 						break;
 				}
 			}
@@ -78,9 +87,9 @@ namespace Seihou
 			}
         }
 
-        private void Pressed(object sender)
-        {
-			string input = ((Button)sender).text;
+        private void Pressed(object sender, EventArgs e)
+		{
+			string input = ((Button)sender).Text;
 
 			switch(input)
 			{
@@ -92,7 +101,7 @@ namespace Seihou
 					if (text.Length > 0)
 					{
 						done = true;
-						onSubmit(this);
+						onSubmit?.Invoke();
 					}
 					break;
 
