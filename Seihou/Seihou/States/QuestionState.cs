@@ -11,6 +11,7 @@ namespace Seihou
 
 		Vector2 buttonSize = new(400, 60);
 		readonly FormHost host = new();
+		const int controlSpacing = 100;
 
 		public QuestionState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm,double score, Settings.Difficulty difficulty) : base(sm, cm,sb,gdm)
 		{
@@ -20,7 +21,7 @@ namespace Seihou
 			host.AddControl(new Button(sb, No)
 			{
 				TabIndex = 0,
-				Position = new Vector2(Global.screenWidth / 2 - buttonSize.X / 2, Global.screenHeight / 2 - 80),
+				Position = new Vector2(Global.screenWidth / 2 - buttonSize.X / 2, controlSpacing * 2),
 				Size = buttonSize,
 				Text = "No"
 			});
@@ -28,7 +29,7 @@ namespace Seihou
 			host.AddControl(new Button(sb, Yes)
 			{
 				TabIndex = 1,
-				Position = new Vector2(Global.screenWidth / 2 - buttonSize.X / 2, Global.screenHeight / 2 + 80),
+				Position = new Vector2(Global.screenWidth / 2 - buttonSize.X / 2, controlSpacing * 3),
 				Size = buttonSize,
 				Text = "Yes"
 			});
@@ -53,7 +54,7 @@ namespace Seihou
 		public override void Draw(GameTime gt)
 		{
 			var txt = "Do you want to save your PATHETIC score?";
-			sb.DrawString(ResourceManager.fonts["DefaultFont"],txt,new Vector2(Global.screenWidth/2,100),Color.White,0,new Vector2(ResourceManager.fonts["DefaultFont"].MeasureString(txt).X/2,0),1,SpriteEffects.None,0);
+			sb.DrawString(ResourceManager.fonts["DefaultFont"],txt,new Vector2(Global.screenWidth/2,controlSpacing),Color.White,0,new Vector2(ResourceManager.fonts["DefaultFont"].MeasureString(txt).X/2,0),1,SpriteEffects.None,0);
 			host.Draw(gt);
 		}
 

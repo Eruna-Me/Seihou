@@ -37,7 +37,7 @@ namespace Seihou
         private readonly EntityFactory _entityFactory;
         private readonly LevelManager _levelManager;
 
-        SpriteFont font1;
+        //SpriteFont font1;
         readonly Player player;
         KeyboardState oldKeyState;
 
@@ -49,7 +49,7 @@ namespace Seihou
             _levelManager = new LevelManager(_entityFactory);
             SetupLevelDependencies();
 
-            font1 = ResourceManager.fonts["DefaultFont"];
+            //font1 = ResourceManager.fonts["DefaultFont"];
 
             MediaPlayer.Play(ResourceManager.songs["TestSong"]);
             MediaPlayer.IsRepeating = true;
@@ -85,6 +85,8 @@ namespace Seihou
             {
                 if (currentStatus == Status.none)
                     SetStatus(Status.pause);
+                else if(currentStatus == Status.pause)
+                    SetStatus(Status.none);
             }
 
             oldKeyState = currentKeyState;
@@ -152,23 +154,22 @@ namespace Seihou
         {
             int width = 500;
 
-            GetHost(Status.death).AddControl(new Button(sb, OnClickedContinue) { Text = "Continue", TabIndex = 0, Position = new Vector2(Global.Center.X, Global.Center.Y - buttonSpacing * 2) });
-            GetHost(Status.death).AddControl(new Button(sb, OnClickedMenuScore) { Text = "Menu/Save score", TabIndex = 1, Position = new Vector2(Global.Center.X, Global.Center.Y) });
-            GetHost(Status.death).AddControl(new Button(sb, OnClickedExit) { Text = "Exit", TabIndex = 2, Position = new Vector2(Global.Center.X, Global.Center.Y + buttonSpacing * 2) });
+            GetHost(Status.death).AddControl(new Button(sb, OnClickedContinue) { Text = "Continue", TabIndex = 0, Position = new Vector2(Global.Center.X - width / 2, Global.Center.Y - buttonSpacing * 2) });
+            GetHost(Status.death).AddControl(new Button(sb, OnClickedMenuScore) { Text = "Menu/Save score", TabIndex = 1, Position = new Vector2(Global.Center.X - width / 2, Global.Center.Y) });
+            GetHost(Status.death).AddControl(new Button(sb, OnClickedExit) { Text = "Exit", TabIndex = 2, Position = new Vector2(Global.Center.X - width / 2, Global.Center.Y + buttonSpacing * 2) });
 
-            GetHost(Status.pause).AddControl(new Button(sb, OnClickedResume) { Text = "Resume", TabIndex = 0, Position = new Vector2(Global.Center.X, Global.Center.Y - buttonSpacing * 2) });
-            GetHost(Status.pause).AddControl(new Button(sb, OnClickedMenuScore) { Text = "Menu/Save score", TabIndex = 1, Position = new Vector2(Global.Center.X, Global.Center.Y) });
-            GetHost(Status.pause).AddControl(new Button(sb, OnClickedExit) { Text = "Exit", TabIndex = 2, Position = new Vector2(Global.Center.X, Global.Center.Y + buttonSpacing * 2) });
+            GetHost(Status.pause).AddControl(new Button(sb, OnClickedResume) { Text = "Resume", TabIndex = 0, Position = new Vector2(Global.Center.X -width/2, Global.Center.Y - buttonSpacing * 2) });
+            GetHost(Status.pause).AddControl(new Button(sb, OnClickedMenuScore) { Text = "Menu/Save score", TabIndex = 1, Position = new Vector2(Global.Center.X - width / 2, Global.Center.Y) });
+            GetHost(Status.pause).AddControl(new Button(sb, OnClickedExit) { Text = "Exit", TabIndex = 2, Position = new Vector2(Global.Center.X - width / 2, Global.Center.Y + buttonSpacing * 2) });
 
-            GetHost(Status.gameEnd).AddControl(new Button(sb, OnClickedMenuScore) { Text = "Menu/Save score", TabIndex = 0, Position = new Vector2(Global.Center.X, Global.Center.Y) });
-            GetHost(Status.gameEnd).AddControl(new Button(sb, OnClickedExit) { Text = "Exit", TabIndex = 1, Position = new Vector2(Global.Center.X, Global.Center.Y + buttonSpacing * 2) });
+            GetHost(Status.gameEnd).AddControl(new Button(sb, OnClickedMenuScore) { Text = "Menu/Save score", TabIndex = 0, Position = new Vector2(Global.Center.X - width / 2, Global.Center.Y) });
+            GetHost(Status.gameEnd).AddControl(new Button(sb, OnClickedExit) { Text = "Exit", TabIndex = 1, Position = new Vector2(Global.Center.X - width / 2, Global.Center.Y + buttonSpacing * 2) });
 
-            int tabIndex = 0;
             foreach (var control in menus.SelectMany(m => m.Controls))
             {
                 var button = control as Button;
                 button.Size = new Vector2(width, buttonSpacing);
-                button.TabIndex = tabIndex++;
+                button.Align = TextAlign.Center;
             }
         }
 
