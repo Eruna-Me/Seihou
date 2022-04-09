@@ -11,6 +11,7 @@ namespace Seihou
 	{
 		public event EventHandler OnSubmit;
 
+		public int MaxLength { get; set; } = 12;
 		public bool ClearOnClick { get; set; } = true;
 		public string KeyName { get; set; }
 
@@ -84,15 +85,15 @@ namespace Seihou
             {
 				case Keys.Enter:
 					Submit();
-					return;
+					break;
 
 				case Keys.Back:
 					Text = Text.Length > 0 ? Text[..^1] : Text;
-					return;
+					break;
 
 				case Keys.Space: 
-					Text += " "; 
-					return;
+					Text += " ";
+					break;
 
 				default:
 					if (key >= Keys.A && key <= Keys.Z)
@@ -100,6 +101,9 @@ namespace Seihou
 
 					break;
 			}
+
+			if (Text.Length > MaxLength)
+				Text = Text[..MaxLength];
 		}
 		
 		private void Submit()
