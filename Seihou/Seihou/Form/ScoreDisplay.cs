@@ -22,7 +22,6 @@ namespace Seihou
 		private Vector2 _position;
 		private Vector2 _size;
 		private Dictionary<Settings.Difficulty, float> _scroll = new();
-		private Guid? _submittedId;
 		private float _lastScroll;
 
 		public ScoreDisplay(Vector2 pos, Vector2 size, SpriteBatch sb) : base(sb)
@@ -47,7 +46,6 @@ namespace Seihou
 			_scoreRepository.Write(record);
 			_scoreRepository.Save();
 			_filter = record.Difficulty;
-			_submittedId = record.Id;
 
 			AutoScrollTo(record.Id);
 			UpdateScoreText();
@@ -55,7 +53,7 @@ namespace Seihou
 
         public override void Draw(GameTime gt)
         {
-			MonoGame.Primitives2D.FillRectangle(sb, _position, _size, Color.Gray, 0);
+			MonoGame.Primitives2D.FillRectangle(sb, _position, _size, new Color(20,20,50), 0);
 
 			for (int i = 0; i < ScoreText.Count; i++)
 			{
@@ -99,9 +97,6 @@ namespace Seihou
 				{
 					var name = records[i].Name?.ToString() ?? string.Empty;
 					var score = records[i].Score.ToString();
-
-					if (records[i].Id == _submittedId)
-						name += " (YOU)";
 
 					scoreText.Add(number + $"{Clip(name, 20)} | {Clip(score, 20)}");
 				}

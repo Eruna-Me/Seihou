@@ -73,9 +73,8 @@ namespace Seihou
 				Text = "Back",
 				Position = new Vector2(80, 640),
 				Size = new Vector2(100, 25),
-				TabIndex = tabIndex++
+				TabIndex = tabIndex++,
 			});
-
 
 			SelectDifficulty(_playData?.Difficulty ?? Difficulty.normal);
 		}
@@ -85,11 +84,11 @@ namespace Seihou
 			foreach(var item in _buttonLookup)
             {
 				item.Value.SetSimpleColorText(Global.GetDifficultyColor(item.Key));
-				item.Value.Text = Global.GetDifficultyDisplayName(item.Key);
+				item.Value.Text = "  " + Global.GetDifficultyDisplayName(item.Key);
             }
 
 			_buttonLookup[difficulty].SetSimpleColorText(Color.Orange);
-			_buttonLookup[difficulty].Text = $"-> {Global.GetDifficultyDisplayName(difficulty)}";
+			_buttonLookup[difficulty].Text = $"> {Global.GetDifficultyDisplayName(difficulty)}";
 
 			_viewDifficulty = difficulty;
 			_scoreDisplay.SetModeFilter(difficulty);
