@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -20,11 +21,19 @@ namespace Seihou
 		private Settings.Difficulty _filter = Settings.Difficulty.easy;
 		private Vector2 _position;
 		private Vector2 _size;
+		private Dictionary<Settings.Difficulty, float> _scroll = new();
+		private Guid? _submittedId;
+		private float _lastScroll;
 
 		public ScoreDisplay(Vector2 pos, Vector2 size, SpriteBatch sb) : base(sb)
         {
 			_size = size;
 			_position = pos;
+			_lastScroll = Mouse.GetState().ScrollWheelValue;
+			foreach (var d in Enum.GetValues<Settings.Difficulty>())
+            {
+				_scroll[d] = 0;
+            }
 		}
 
 		public void Load()
@@ -37,6 +46,10 @@ namespace Seihou
 		{
 			_scoreRepository.Write(record);
 			_scoreRepository.Save();
+			_filter = record.Difficulty;
+			_submittedId = record.Id;
+
+			AutoScrollTo(record.Id);
 			UpdateScoreText();
 		}
 
@@ -56,23 +69,46 @@ namespace Seihou
 			UpdateScoreText();
 		}
 
+		private void AutoScrollTo(Guid id)
+        {
+			//TODO: make this less hacky
+			var offset = _scoreRepository.GetScoreRecords(_filter)
+				.TakeWhile(x => x.Id != id)
+				.Count();
+
+			_scroll[_filter] = offset;
+		}
+
 		private void UpdateScoreText()
 		{
 			List<string> scoreText = new();
+			int offset = (int)Math.Round(_scroll[_filter]);
+
 			var records = _scoreRepository.GetScoreRecords(_filter)
+				.Skip(offset)
 				.Take(MAX_RECORDS_DISPLAY)
 				.ToArray();
 
 			var numberLength = MAX_RECORDS_DISPLAY.ToString().Length + 2;
 
-			for (int i = 0; i < records.Length; i++)
+			for (int i = 0; i < MAX_RECORDS_DISPLAY; i++)
 			{
-				var name = records[i].Name.ToString();
-				var score = records[i].Score.ToString();
+				string number = Clip($"#{offset + i + 1}", numberLength);
 
-				scoreText.Add(
-					Clip($"#{i + 1}", numberLength) + $"{Clip(name, 20)} | {Clip(score, 20)}"
-				);
+				if (i < records.Length)
+				{
+					var name = records[i].Name?.ToString() ?? string.Empty;
+					var score = records[i].Score.ToString();
+
+					if (records[i].Id == _submittedId)
+						name += " (YOU)";
+
+					scoreText.Add(number + $"{Clip(name, 20)} | {Clip(score, 20)}");
+				}
+				else
+                {
+					scoreText.Add(number);
+                }
 			}
 
 			ScoreText = scoreText;
@@ -91,7 +127,25 @@ namespace Seihou
 
 		public override void Update(GameTime gt)
 		{
+			var mState = Mouse.GetState();
+			if (Intersects(mState.Position.ToVector2()))
+            {
+				_scroll[_filter] += (_lastScroll - mState.ScrollWheelValue) * 0.01f;
+				_scroll[_filter] = _scroll[_filter] < 0 ? 0 : _scroll[_filter];
+				
+				UpdateScoreText();
+            }
 
+			_lastScroll = mState.ScrollWheelValue;
+		}
+
+		private bool Intersects(Vector2 point)
+		{
+			return
+				(point.X > _position.X) &&
+				(point.X < _position.X + _size.X) &&
+				(point.Y > _position.Y) &&
+				(point.Y < _position.Y + _size.Y);
 		}
 	}
 }
