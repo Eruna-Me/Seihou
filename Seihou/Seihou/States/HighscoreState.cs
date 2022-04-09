@@ -119,6 +119,7 @@ namespace Seihou
 				Id = Guid.NewGuid(),
 			});
 
+			SelectDifficulty(_playData.Difficulty);
 			_textField.Enabled = false;
 		}
 
