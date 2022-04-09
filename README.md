@@ -3,7 +3,7 @@ A vertical scrolling shooter made using Monogame.
 
 ![Gameplay](https://i.imgur.com/PPWDBPW.png)
 
-Made by [TheMightyNose](https://github.com/TheMightyNose) and [Dennnnis](https://github.com/Dennnnis)
+Made by [Eruna-Me](https://github.com/Eruna-Me) and [Den-nis](https://github.com/Den-nis)
 
 ## Setup
 Make sure to install the monogame content builder.
