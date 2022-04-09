@@ -76,5 +76,17 @@ namespace Seihou
                 _ => throw new KeyNotFoundException(),
             };
         }
+
+		public static string GetDifficultyDisplayName(Difficulty difficulty)
+        {
+			return difficulty switch
+			{
+				Difficulty.easy => "EASY",
+				Difficulty.normal => "MEDIUM",
+				Difficulty.hard => "HARD",
+				Difficulty.usagi => "USAGI",
+				_ => throw new KeyNotFoundException(),
+			};
+        }
     }
 }

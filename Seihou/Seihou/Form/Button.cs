@@ -10,6 +10,8 @@ namespace Seihou
 		public event EventHandler OnReleased;
 		public event EventHandler OnSelect;
 
+		public bool Enabled { get; set; } = true;
+
 		public Color TextColor { get; set; } = Color.White;
 		public Color TextColorSelected { get; set; } = new Color(170,170,170);
 		public Color TextColorOnMouseDown { get; set; } = new Color(110,110,110);
@@ -61,6 +63,7 @@ namespace Seihou
 		{
 			BackgroundColor = c;
 			BackgroundColorSelected = Darken(c, 0.5f);
+			BackgroundColorTabIndex = Darken(c, 0.5f);
 			BackgroundColorOnMouseDown = Darken(c, 0.2f);
 		}
 
@@ -100,6 +103,8 @@ namespace Seihou
 
 		public override void Draw(GameTime gt)
 		{
+			if (!Enabled) return;
+
             var font = ResourceManager.fonts[Font];
 
             Primitives2D.FillRectangle(sb, Position, Size, GetCurrentBackgroundColor());
@@ -116,6 +121,8 @@ namespace Seihou
 
 		public override void Update(GameTime gt)
 		{
+			if (!Enabled) return;
+
 			if (isSelected)
 			{
 				OnSelect?.Invoke(this, EventArgs.Empty);

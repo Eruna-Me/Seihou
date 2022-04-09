@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using System.Collections.Generic;
+using System;
 
 namespace Seihou
 {
@@ -15,21 +17,25 @@ namespace Seihou
         {
 			int spacing = 100;
 
-			//I did not make up these difficulty texts
 
 			host.DefaultTabIndex = 1;
 
-			host.AddControl(new Button(sb, () => StartGame(Settings.Difficulty.easy), Global.GetDifficultyColor(Settings.Difficulty.easy)) 
-			{ Text = "EASY \n    Eh? Easy modo? How lame! Only kids play on easy modo!!" });
+			var texts = new Dictionary<Settings.Difficulty, string>
+			{
+				//I did not make up these difficulty texts. !
+				[Settings.Difficulty.easy] = "Eh? Easy modo? How lame! Only kids play on easy modo!!",
+				[Settings.Difficulty.normal] = "Why don't you at least challenge as much as normal mode \n     once in your life.",
+				[Settings.Difficulty.hard] = "The only proper difficulty setting.",
+				[Settings.Difficulty.usagi] = "Rabbits are scary animals.",
+			};
 
-			host.AddControl(new Button(sb, () => StartGame(Settings.Difficulty.normal), Global.GetDifficultyColor(Settings.Difficulty.normal))
-			{ Text = "MEDIUM \n    Why don't you at least challenge as much as normal mode \n     once in your life." });
-
-			host.AddControl(new Button(sb, () => StartGame(Settings.Difficulty.hard), Global.GetDifficultyColor(Settings.Difficulty.hard))
-			{ Text = "HARD \n    The only proper difficulty setting." });
-
-			host.AddControl(new Button(sb, () => StartGame(Settings.Difficulty.usagi), Global.GetDifficultyColor(Settings.Difficulty.usagi))
-			{ Text = "USAGI \n    Rabbits are scary animals." });
+			foreach(var difficulty in Enum.GetValues<Settings.Difficulty>())
+            {
+				host.AddControl(new Button(sb, () => StartGame(difficulty), Global.GetDifficultyColor(difficulty))
+				{ 
+					Text = $"{Global.GetDifficultyDisplayName(difficulty)} \n    {texts[difficulty]}" 
+				});
+			}
 
 			int tabIndex = 0;
 
@@ -50,7 +56,7 @@ namespace Seihou
 				Position = new Vector2(50, 50),
 				Size = new Vector2(100, 50),
 				TabIndex = tabIndex++,
-			}); ;
+			});
 		}
 
 		public override void Draw(GameTime gt)
