@@ -19,8 +19,6 @@ namespace Seihou
             int i = 0;
             void Block(bool block) => host.BlockUserInput = block;
 
-            //host.AddControl(new PickerButton(spacing * i + ButtonStart, ButtonSize, sb, "Starting Lives", "startingLives", Settings.Get("game", "startingLives"), i++, "1", "2", "3", "4", "5"));
-            //host.AddControl(new PickerButton(spacing * i + ButtonStart, ButtonSize, sb, "Starting Bombs", "startingBombs", Settings.Get("game", "startingBombs"), i++, "0", "1", "2", "3"));
             host.AddControl(new PickerButton(spacing * i + ButtonStart, ButtonSize, sb, "Simple Graphics", "simpleGraphics", Settings.Get("graphics", "simpleGraphics"), i++, "True", "False"));
             host.AddControl(new KeyPicker(Block, spacing * i + ButtonStart, ButtonSize, sb, "Move Up", "upKey", Settings.GetKey("upKey"), i++));
             host.AddControl(new KeyPicker(Block, spacing * i + ButtonStart, ButtonSize, sb, "Move Down", "downKey", Settings.GetKey("downKey"), i++));
