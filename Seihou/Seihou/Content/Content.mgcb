@@ -232,6 +232,18 @@
 #begin Levels/Level 2.json
 /copy:Levels/Level 2.json
 
+#begin Misc/BackgroundMainMenu.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Misc/BackgroundMainMenu.png
+
 #begin Misc/backgroundUI.png
 /importer:TextureImporter
 /processor:TextureProcessor

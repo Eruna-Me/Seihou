@@ -76,6 +76,8 @@ namespace Seihou
 			textures.Add("Heart",			 cm.Load<Texture2D>("Misc/Hartje"));
 			textures.Add("Bomb",			 cm.Load<Texture2D>("Misc/Bomb"));
 			textures.Add("backgroundUI",	 cm.Load<Texture2D>("Misc/backgroundUI"));
+			textures.Add("BackgroundMainMenu", cm.Load<Texture2D>("Misc/BackgroundMainMenu"));
+
 
 			//Other
 			textures.Add("FireParticle",     cm.Load<Texture2D>("FireParticle"));
