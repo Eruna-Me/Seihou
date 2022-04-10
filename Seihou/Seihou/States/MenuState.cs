@@ -16,14 +16,18 @@ namespace Seihou
         private const int firstButtonHeight = 110;
         private const int buttonsX = Global.screenWidth - 300;
 
+        private readonly Color textColor = new(245, 250, 255);
+        private readonly Color creditsColor = new(0, 0, 0);
+        private readonly Color creditsHoverColor = new(70, 70, 70);
+
         public MenuState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
         {
             host.DefaultTabIndex = 0;
 
-            host.AddControl(new Button(sb, OnClickedStart) { Text = "Start" });
-            host.AddControl(new Button(sb, OnClickedHighscores) { Text = "Highscores" });
-            host.AddControl(new Button(sb, OnClickedSettings) { Text = "Settings" });
-            host.AddControl(new Button(sb, OnClickedExit) { Text = "Exit", });
+            host.AddControl(new Button(sb, OnClickedStart) { Text = "Start", TextColor = textColor });
+            host.AddControl(new Button(sb, OnClickedHighscores) { Text = "Highscores", TextColor = textColor });
+            host.AddControl(new Button(sb, OnClickedSettings) { Text = "Settings", TextColor = textColor });
+            host.AddControl(new Button(sb, OnClickedExit) { Text = "Exit", TextColor = textColor });
 
             int tabIndex = 0;
             const int spacing = 80;
@@ -44,8 +48,8 @@ namespace Seihou
                 Text = "Hidde Bartelink - Eruna.Me",
                 Align = TextAlign.Left,
                 TabIndex = tabIndex++,
-                TextColor = new Color(0, 0, 0),
-                TextColorSelected = new Color(70, 70, 70),
+                TextColor = creditsColor,
+                TextColorSelected = creditsHoverColor,
             });
 
             host.AddControl(new Button(sb, OnClickedDennis)
@@ -55,15 +59,15 @@ namespace Seihou
                 Text = "Den-nis - github.com/den-nis",
                 TabIndex = tabIndex++,
                 Align = TextAlign.Left,
-                TextColor = new Color(0, 0, 0),
-                TextColorSelected = new Color(70, 70, 70),
+                TextColor = creditsColor,
+                TextColorSelected = creditsHoverColor,
             });
         }
 
         public override void Draw(GameTime gt)
         {
             sb.Draw(ResourceManager.textures["BackgroundMainMenu"], new Vector2(0, 0), Color.White);
-            sb.DrawString(ResourceManager.fonts["DefaultFont"], "Made by", new Vector2(contributorsX, contributorsY - contributorsSpacing), new Color(0, 0, 0));
+            sb.DrawString(ResourceManager.fonts["DefaultFont"], "Made by", new Vector2(contributorsX, contributorsY - contributorsSpacing), creditsColor);
             host.Draw(gt);
         }
 
