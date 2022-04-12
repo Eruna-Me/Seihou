@@ -20,14 +20,16 @@ namespace Seihou
         private readonly Color creditsColor = new(0, 0, 0);
         private readonly Color creditsHoverColor = new(70, 70, 70);
 
+        private const string font = "DefaultFontBig";
+
         public MenuState(StateManager sm, ContentManager cm, SpriteBatch sb, GraphicsDeviceManager gdm) : base(sm, cm, sb, gdm)
         {
             host.DefaultTabIndex = 0;
 
-            host.AddControl(new Button(sb, OnClickedStart) { Text = "Start", TextColor = textColor });
-            host.AddControl(new Button(sb, OnClickedHighscores) { Text = "Highscores", TextColor = textColor });
-            host.AddControl(new Button(sb, OnClickedSettings) { Text = "Settings", TextColor = textColor });
-            host.AddControl(new Button(sb, OnClickedExit) { Text = "Exit", TextColor = textColor });
+            host.AddControl(new Button(sb, OnClickedStart) { Text = "Start", TextColor = textColor, Font = font });
+            host.AddControl(new Button(sb, OnClickedHighscores) { Text = "Highscores", TextColor = textColor, Font = font });
+            host.AddControl(new Button(sb, OnClickedSettings) { Text = "Settings", TextColor = textColor, Font = font });
+            host.AddControl(new Button(sb, OnClickedExit) { Text = "Exit", TextColor = textColor, Font = font });
 
             int tabIndex = 0;
             const int spacing = 80;
