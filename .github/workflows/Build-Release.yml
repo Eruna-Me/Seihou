@@ -33,12 +33,6 @@ jobs:
       
     - name: Build-All
       run: msbuild Seihou /verbosity:normal /t:Rebuild /p:Configuration=Release
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
       
     - name: Remove debug files
       run: del ./Seihou/bin/Release/net6.0/win-x64/publish/*.pdb
