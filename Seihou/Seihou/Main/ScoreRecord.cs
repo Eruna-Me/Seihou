@@ -1,9 +1,12 @@
-﻿namespace Seihou
+﻿using System;
+
+namespace Seihou
 { 
 	internal record ScoreRecord
 	{
 		public double Score { get; init; }
 		public string Name { get; init; }
 		public Settings.Difficulty Difficulty { get; init; }
+		public Guid Id { get; init; }
 	}
 }

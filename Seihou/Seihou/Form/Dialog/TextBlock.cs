@@ -36,21 +36,14 @@ namespace Seihou
 
         public int MaxLines { get; set; } = -1;
 
-
-        public Vector2 Position { get; set; }
-        public Vector2 Size { get; set; }
         private Vector2? PreviouslyParsedSize { get; set; }
         private string PreviouslyParsedTextString { get; set; }
-
-        public TextBlock(SpriteFont spritefont) : base(spritefont)
-        {
-        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             if (ParseOnDraw) ParseText();
 
-            spriteBatch.DrawStringAligned(spriteFont, ParsedText ?? TextString, Position, Color, TextAlign, TextGravity, Size, 0);
+            spriteBatch.DrawStringAligned(Font, ParsedText ?? TextString, Position, Color, TextAlign, TextGravity, Size, 0);
         }
 
         public void ParseText()
@@ -77,13 +70,13 @@ namespace Seihou
         public float GetRequiredHeight(float width)
         {
             var parsedText = ParseText(TextString, width, int.MaxValue, out _, out _);
-            return spriteFont.MeasureString(parsedText).Y;
+            return Font.MeasureString(parsedText).Y;
         }
 
         private string ParseText(string text, float width, float height, out string trimmedText, out int trimmedIndex)
         {
             trimmedIndex = 0;
-            int maxPossibleLines = Math.Min((int)(height / spriteFont.LineSpacing), MaxLines == -1 ? int.MaxValue : MaxLines);
+            int maxPossibleLines = Math.Min((int)(height / Font.LineSpacing), MaxLines == -1 ? int.MaxValue : MaxLines);
             List<string> lines = text.Split('\n').Take(maxPossibleLines).ToList();
             var insertedNewlines = 0;
 
@@ -128,7 +121,7 @@ namespace Seihou
 
             var offset = Vector2.Zero;
             var firstGlyphOfLine = true;
-            var gly = spriteFont.GetGlyphs();
+            var gly = Font.GetGlyphs();
 
             for (var i = 0; i < line.Length; ++i)
             {
@@ -146,7 +139,7 @@ namespace Seihou
                 }
                 else
                 {
-                    offset.X += spriteFont.Spacing + g.LeftSideBearing;
+                    offset.X += Font.Spacing + g.LeftSideBearing;
                 }
 
                 offset.X += g.Width;

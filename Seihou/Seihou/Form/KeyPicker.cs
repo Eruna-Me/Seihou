@@ -1,44 +1,81 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace Seihou
 {
-	class KeyPicker : Control
+	class KeyPicker : Button
 	{
-		Keys Key;
-		public string keyName;
-		Button button;
-		readonly string text;
+		public Keys Key { get; set; }
+		public string KeyName { get; set; }
+		public string PrefixText { get; set; }
+        private readonly Action<bool> blockUserInput;
+		private bool isInEnterMode = false;
+		private bool configuredKey = false;
 
-		public KeyPicker(Vector2 pos, Vector2 size, SpriteBatch sb, string text, string keyName,Keys startWith, int index) : base(sb)
+		/// <param name="blockUserInput">Delegate that should disable or enable user input based on the bool passed</param>
+        public KeyPicker(Action<bool> blockUserInput, Vector2 pos, Vector2 size, SpriteBatch sb, string text, string keyName, Keys startWith, int index) : 
+			this(sb, blockUserInput, startWith, keyName)
 		{
-			this.text = text;
-			this.Key = startWith;
-			this.keyName = keyName;
-			button = new Button(pos, size, sb, null, keyName, index, Button.Align.left);
-			button.onHover += OnHover;
-			this.sb = sb;
+			TabIndex = index;
+			Size = size;
+			Position = pos;
+			PrefixText = text;
 		}
 
-		private void OnHover(object sender)
-		{
-			Keys[] getKeys = Keyboard.GetState().GetPressedKeys();
-			if (getKeys.Length > 0 && getKeys[0] != Keys.OemAuto)
-				Key = getKeys[0];
+		/// <param name="blockUserInput">Delegate that should disable or enable user input based on the bool passed</param>
+        public KeyPicker(SpriteBatch sb, Action<bool> blockUserInput, Keys startWith, string keyName) : base(sb)
+        {
+            this.blockUserInput = blockUserInput;
+			Key = startWith;
+			KeyName = keyName;
+
+			OnReleased += (_,_) => OnClicked();
+        }
+
+		private void OnClicked()
+        {
+			isInEnterMode = true;
+			blockUserInput(true);
 		}
 
 		public string GetKey() => ((int)Key).ToString();
 
-		public override void Draw(GameTime gt)
-		{
-			button.Draw(gt);
-		}
+        protected override Color GetCurrentTextColor()
+        {
+			if (isInEnterMode)
+				return Color.BlueViolet;
 
-		public override void Update(GameTime gt)
+            return base.GetCurrentTextColor();
+        }
+
+        public override void Update(GameTime gt)
 		{
-			button.text = $"{text}:  {Key.ToString()}";
-			button.Update(gt);
+			if (isInEnterMode)
+			{
+				if (configuredKey)
+				{
+					if (Keyboard.GetState().IsKeyUp(Key))
+                    {
+						isInEnterMode = configuredKey = false;
+						blockUserInput(false);
+                    }
+				}
+				else
+				{
+					Keys[] getKeys = Keyboard.GetState().GetPressedKeys();
+					if (getKeys.Length > 0 && getKeys[0] != Keys.OemAuto)
+					{
+						Key = getKeys[0];
+						configuredKey = true;
+					}
+				}
+			}
+
+			Text = $"{PrefixText}:  {Key}";
+
+			base.Update(gt);
 		}
 	}
 }

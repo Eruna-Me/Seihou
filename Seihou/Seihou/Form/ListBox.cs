@@ -23,12 +23,12 @@ namespace Seihou
         public override void Draw(GameTime gt)
         {
             var f = ResourceManager.fonts[font];
-            MonoGame.Primitives2D.FillRectangle(sb, pos,size, background, 0);
+            MonoGame.Primitives2D.FillRectangle(sb, pos,size, Color.Beige, 0); //TODO
 
             for (int i = 0; i < text.Length; i++)
             {
                 string txt = text[i];
-                sb.DrawString(f,txt,new Vector2(pos.X,pos.Y + f.MeasureString(txt).Y*i+2),textColor);
+                sb.DrawString(f,txt,new Vector2(pos.X,pos.Y + f.MeasureString(txt).Y*i+2),Color.Gray); //TODO
             }
 
         }
