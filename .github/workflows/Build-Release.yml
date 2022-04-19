@@ -32,11 +32,11 @@ jobs:
       run: dotnet publish seihou -p:PublishSingleFile=true -r win-x64 -c Release --self-contained true
       
     - name: Remove debug files
-      run: del ./Seihou/bin/Release/net6.0-windows/win-x64/publish/*.pdb
+      run: del ./seihou/Seihou/bin/Release/net6.0-windows/win-x64/publish/*.pdb
       
     - name: Publish-Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: Seihou.exe
-        path:  ./Seihou/bin/Release/net6.0-windows/win-x64/publish
+        path:  ./seihou/Seihou/bin/Release/net6.0-windows/win-x64/publish
         retention-days: 5
