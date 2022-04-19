@@ -21,28 +21,22 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
-      
-    - name: Setup-Msbuild
-      uses: microsoft/setup-msbuild@v1
-     
+   
     - name: Setup-Monogame
-      run: dotnet tool install -g dotnet-mgcb
+      run: dotnet tool install -g dotnet-mgcb 
       
-    - name: Restore-Nuget
-      run: msbuild Seihou /t:restore
+    - name: Restore dependencies
+      run: dotnet restore Seihou
       
     - name: Build-All
-      run: msbuild Seihou /verbosity:normal /t:Rebuild /p:Configuration=Release
+      run: dotnet publish seihou -p:PublishSingleFile=true -r win-x64 -c Release --self-contained true
       
     - name: Remove debug files
-      run: del ./Seihou/bin/Release/net6.0/win-x64/publish/*.pdb
-      
-    - name: Remove jsons
-      run: del ./Seihou/bin/Release/net6.0/win-x64/publish/*.json
+      run: del ./seihou/Seihou/bin/Release/net6.0-windows/win-x64/publish/*.pdb
       
     - name: Publish-Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: Seihou.exe
-        path:  ./Seihou/bin/Release/net6.0/win-x64/publish
+        path:  ./seihou/Seihou/bin/Release/net6.0-windows/win-x64/publish
         retention-days: 5
