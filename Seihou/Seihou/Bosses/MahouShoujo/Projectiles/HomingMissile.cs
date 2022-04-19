@@ -5,9 +5,9 @@ namespace Seihou
 {
     class HomingMissile : EnemyProjectile
     {
-        private readonly float bulletSpeed;
-        private const float mooiBoogjeLevel = 50;
+        private const float acceleration = 300;
         private readonly float minimumBulletSpeed;
+        private readonly float maximumBulletSpeed;
         private float homingTime;
 
         public HomingMissile(Vector2 pos, SpriteBatch sb, EntityManager em, Entity owner, Vector2 speed) : base(pos, sb, em, owner)
@@ -15,24 +15,30 @@ namespace Seihou
             texture = "PinkHeart";
             this.speed = speed;
             minimumBulletSpeed = speed.Length() / 2;
+            maximumBulletSpeed = speed.Length();
             homingTime = Global.screenHeight / speed.Length();
-            bulletSpeed = speed.Length();
         }
 
         public override void Update(GameTime gt)
-        {
+        {            
+
+            if (homingTime > 0)
+            {
+                homingTime -= gt.Time();
+                speed += (Global.Normalize(Global.player.pos - pos)) * acceleration * gt.Time();
+            }
+
             if (speed.Length() < minimumBulletSpeed)
             {
                 speed *= (minimumBulletSpeed / speed.Length());
             }
 
-            pos += speed * gt.Time();
-
-            if (homingTime > 0)
+            if (speed.Length() > maximumBulletSpeed)
             {
-                homingTime -= gt.Time();
-                speed = (Global.Normalize(Global.player.pos - pos) * bulletSpeed + speed * mooiBoogjeLevel) / (mooiBoogjeLevel + 1);
+                speed *= (maximumBulletSpeed / speed.Length());
             }
+
+            pos += speed * gt.Time();
 
             base.Update(gt);    
         }
