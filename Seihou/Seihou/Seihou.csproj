@@ -1,55 +1,59 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <StartupObject />
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<ApplicationIcon>Icon.ico</ApplicationIcon>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<StartupObject />
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Properties\**" />
-    <EmbeddedResource Remove="Properties\**" />
-    <None Remove="Properties\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="Properties\**" />
+		<EmbeddedResource Remove="Properties\**" />
+		<None Remove="Properties\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Remove="GameData.mdf" />
-    <None Remove="GameData_log.ldf" />
-    <None Remove="Icon.ico" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="GameData.mdf" />
+		<None Remove="GameData_log.ldf" />
+		<None Remove="Icon.ico" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="Icon.ico" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="Icon.ico" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="ini-parser-netstandard" Version="2.5.2" />
-    <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.0.1641" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="ini-parser-netstandard" Version="2.5.2" />
+		<PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.0.1641" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="Configuration.ini">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Content\Levels\Boss2Test.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Content\Levels\Boss1Test.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Content\Levels\Level 1.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Content\Levels\Level 2.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="Configuration.ini">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<!--<None Update="Content\Levels\Boss2Test.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Content\Levels\Boss1Test.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>-->
+		<None Update="Content\Levels\Level 1.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Content\Levels\Level 2.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="mgcb /r /c Content\Content.mgcb&#xD;&#xA;mkdir $(ProjectDir)$(OutDir)content&#xD;&#xA;xcopy $(ProjectDir)bin\content $(ProjectDir)$(OutDir)content /y /s" />
-  </Target>
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+		<Exec Command="mgcb /r /c Content\Content.mgcb&#xD;&#xA;mkdir $(ProjectDir)$(OutDir)content&#xD;&#xA;xcopy $(ProjectDir)bin\content $(ProjectDir)$(OutDir)content /y /s" />
+	</Target>
+
+	<Target Name="PostBuild" BeforeTargets="Publish">
+		<Exec Command="xcopy $(ProjectDir)bin\content\ $(ProjectDir)$(OutDir)\publish\Content\ /y /s"/>
+	</Target>
 
 </Project>
