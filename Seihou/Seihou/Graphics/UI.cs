@@ -61,6 +61,8 @@ namespace Seihou
 			DrawOutlinedFont(font1, levelManager.CurrentLevelName, new Vector2(Global.playingFieldWidth + 20, y += uiLineHeight), Color.White, Color.Black);
 
 			//Fps
+
+#if DEBUG
 			sb.DrawString(font1, $"Fps: {sm.GetFps()}", Global.FpsCounterPos, CoolFpsColorThing(sm.GetFps()));
             sb.DrawString(font1, $"Entities: {em.GetEntityCount()}", Global.EntCounterPos, Color.Black);
 
@@ -71,6 +73,7 @@ namespace Seihou
                 if (fps > 30.0f) { return Color.Orange; }
                 return Color.Red;
             }
+#endif
 
 			void DrawOutlinedFont(SpriteFont font, string text, Vector2 pos, Color color, Color outline, int thickness = 1)
 			{
