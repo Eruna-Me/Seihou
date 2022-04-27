@@ -37,6 +37,6 @@ jobs:
     - name: Publish-Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: Seihou.exe
+        name: Seihou
         path:  ./seihou/Seihou/bin/Release/net6.0-windows/win-x64/publish
         retention-days: 5
